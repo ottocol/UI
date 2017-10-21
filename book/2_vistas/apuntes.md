@@ -1,8 +1,8 @@
 # Sesión 2: Vistas
 
-## Creación de la interfaz por código
+## Interacción con la interfaz por código {#codigo}
 
-Hasta ahora hemos visto como crear la interfaz visualmente con Xcode, mediante *storyboars* o NIBs,  pero todo lo que se puede hacer con dicha herramienta se puede hacer también de forma programática, ya que lo único que hace el entorno es crear objetos de la API de Cocoa Touch (o definidos por nosotros) y establecer visualmente sus propiedades.
+Hasta ahora hemos visto como crear la interfaz visualmente con Xcode, mediante *storyboards* o NIBs,  pero todo lo que se puede hacer con dicha herramienta se puede hacer también de forma programática, ya que lo único que hace el entorno es crear objetos de la API de Cocoa Touch (o definidos por nosotros) y establecer visualmente sus propiedades.
 
 ### Ventanas
 
@@ -85,7 +85,7 @@ Puede que tengamos una jerarquía compleja y necesitemos acceder desde el códig
 
 > La jerarquía de vistas de una pantalla determinada de nuestra aplicación puede llegar a ser muy compleja. Es por eso que en Xcode 6 se ha añadido una opción que nos permite mostrar un “despiece” visual en 3D de las vistas que componen la pantalla actual. Dicha opción está disponible en `Debug > View Debugging`.En modo texto podemos usar la propiedad `recursiveDescription` para [imprimir la descripción textual](https://developer.apple.com/library/ios/technotes/tn2239/_index.html#//apple_ref/doc/uid/DTS40010638-CH1-SUBSECTION34) de las vistas que contiene una vista dada.
 
-## Propiedades de una vista
+## Propiedades de una vista {#propiedades}
 
 A continuación vamos a repasar las propiedades básicas de las vistas, que podremos modificar tanto desde Xcode como de forma programática.
 
@@ -111,6 +111,7 @@ CGRect areaLocal = vista.bounds
 CGPoint centro = vista.center
 // Marco en coordenadas de la supervista
 CGRect marco = vista.frame
+```
 
 > Nótese que a partir de `bounds` y `center` podemos calcular `frame`, aunque nos lo da directamente el sistema
 
@@ -125,6 +126,7 @@ La transformación se define mediante una matriz de transformación 2D de dimens
 > Si nuestra vista tiene aplicada una transformación diferente a la identidad, su propiedad `frame` no será significativa. En este caso sólo deberemos utilizar `center` y `bounds`.
 
 ### Otras propiedades
+
 En las vistas encontramos otras propiedades que nos permiten determinar su color o su opacidad. En primer lugar tenemos `backgroundColor`, con la que podemos fijar el color de fondo de una vista. En el inspector de atributos (sección `View`) podemos verlo como propiedad `Background`. El color de fondo puede ser transparente, o puede utilizarse como fondo un determinado patrón basado en una imagen.
 
 De forma programática, el color se especifica mediante un objeto de clase `UIColor`. En esta clase podemos crear un color personalizado a partir de sus componentes (rojo, verde, azul, alpha), como en `UIColor(red:,green:,blue:,alpha:)` o con una constante predefinida (por ejemplo, `UIColor.green`)
@@ -133,7 +135,7 @@ Por otro lado, también podemos hacer que una vista tenga un cierto grado de tra
 
 Por último, también podemos ocultar una vista con la propiedad `isHidden`. Cuando hagamos que una vista se oculte, aunque seguirá ocupando su correspondiente espacio en pantalla, no será visible ni recibirá eventos.
 
-## Algunos controles de interfaz de usuario
+## Algunos componentes de interfaz de usuario {#componentes}
 
 A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. Se remite al lector a la documentación de Apple, en concreto el [UIKit User Interface Catalog](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog/UIKitUICatalog.pdf), excelente y bastante exhaustivo.
 
@@ -178,8 +180,6 @@ override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
    self.view.viewWithTag(100)?.resignFirstResponder()
 }
 ```
-
-
 
 ### Botones
 

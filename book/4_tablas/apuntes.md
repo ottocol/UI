@@ -1,25 +1,21 @@
-# Sesión 4: tablas
+# Tablas
 
-<!--TOC-->
-
-
-
-## Introducción
+## Introducción {#intro}
 
 Las vistas de tabla (`UITableView`) se encargan de mostrar, gestionar y hacer *scrolling* de una tabla de elementos de una sola columna. Cada una de las filas se modela con un `UITableViewCell`.
  
 > Si necesitamos más de una columna podemos usar `UICollectionView`, que veréis  en la parte “avanzada” de la asignatura.
 
-El aspecto de las tablas es enormemente configurable, lo que hace que aparezcan múltiples veces en sus distintas “encarnaciones” en muchas aplicaciones iOS, por ejemplo, en las aplicaciones de Mail, Ajustes, Reloj…
+Descritas así, puede parecer que las tablas deben desempeñar un papel muy limitado en las aplicaciones iOS, pero nada más lejos de la realidad. Son la forma más habitual en aplicaciones móviles de mostrar listas de elementos, no solo en iOS sino en todas las plataformas. Además su aspecto visual es enormemente configurable, con lo que que muchas "pantallas" de *apps* que a primera vista no lo parecen, en realidad son tablas, por ejemplo en las aplicaciones de Mail, Ajustes, Reloj…
 
-![](apps_tablas.png)
+![](images/apps_tablas.png)
 
 Las tablas pueden ser *simples* (`UITableViewStylePlain`)
  o *agrupadas* (`UITableViewStyleGrouped`)
 
 Hay varios estilos predefinidos para las filas, que nos permiten mostrar diversos elementos: título, subtítulo, icono a la izquierda, … También podemos crear nuestros propios estilos de celda bien por código o bien gráficamente en el *interface builder*.
 
-## Creación de vistas de tabla
+## Creación de vistas de tabla {#vistas}
 
 Una vista de tabla interactúa básicamente con tres objetos (aunque podemos implementar todas las funcionalidades en una única clase, como se suele hacer en los casos más simples)
 
@@ -33,52 +29,55 @@ Es muy habitual que el *controller*, el *delegate* y el *data source* sean el mi
 
 Si usamos una vista de tabla dibujada en el *storyboard* podemos conectarla con los dos “colaboradores” gráficamente mediante el “Connections Inspector” del panel “Utilities”  
 
-## Tablas estáticas
+## Tablas estáticas {#estaticas}
+
 En algunos casos conocemos de partida los elementos que queremos dibujar en la tabla. Ejemplo típico de esto es la aplicación de *Ajustes*, en la que las opciones están colocadas en una tabla simplemente para que estén más organizadas y tengan un formato atractivo. Esto lo podemos conseguir con una *tabla estática*.
 
 Para crear una pantalla con una tabla estática arrastramos un `Table View Controller` al *storyboard*. Es un *controller* asociado a una vista de tabla que ocupa toda la pantalla del dispositivo. Por defecto usa una tabla dinámica, pero podemos cambiarlo seleccionando la tabla en el `Attributes inspector` y seleccionando `Static Cells` en la primera propiedad, `Content`.
 
 Podemos añadir secciones a la tabla y cambiar el número de celdas en cada sección. Para poder cambiar el número de celdas hay que tener seleccionada la sección deseada, lo que a veces es difícil con el ratón, por lo que podemos usar los nodos del `Document outline`:
 
-![](outline.png)
+![](images/outline.png)
 
 
 > Podemos aumentar el número de celdas de modo que no quepan en la pantalla. Para desplazarnos por la tabla podemos seleccionarla y hacer *scroll* con la rueda del ratón
 
-## Tablas dinámicas
+## Tablas dinámicas {#dinamicas}
+
 En este tipo de tablas los datos son dinámicos: no se conocen por adelantado cuando se está diseñando la aplicación y suelen proceder de alguna fuente externa como una base de datos o un servidor.
 
 Vamos a ver primero cómo crear la tabla en sí y luego el objeto que va a ocuparse de los datos que queremos mostrar en la tabla
-
 
 ### El objeto Tabla
 
 La tabla en sí es una componente más de interfaz de usuario, como un botón, un *slider*,… Para crear una tabla, arrastramos un *table view* desde la librería de componentes de la parte inferior derecha de Xcode
 
-![](Captura%20de%20pantalla%202016-10-09%20a%20las%2013.06.10.png)
+![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2013.06.10.png)
 
 > Cuidado: no uséis para este caso un *table view controller* sino un *table view*. El primero incluye no solo la tabla en sí sino también un *controller*, y la tabla ocupa todo el tamaño de la pantalla y no se puede cambiar de tamaño.
 
-Una vez creada la tabla, nos vamos al *attributes inspector* (icono ![](Captura%20de%20pantalla%202016-10-09%20a%20las%2014.46.16.png), en la parte superior derecha de Xcode) y hacemos que el  `Content` sea `Dynamic prototypes` y el número de `Prototype cells` al menos 1.
+Una vez creada la tabla, nos vamos al *attributes inspector* (icono ![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.46.16.png), en la parte superior derecha de Xcode) y hacemos que el  `Content` sea `Dynamic prototypes` y el número de `Prototype cells` al menos 1.
 
-![](Captura%20de%20pantalla%202016-10-09%20a%20las%2014.47.49.png)
+![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.47.49.png)
 
 Veremos que en la tabla aparece una “sección” titulada `Prototype cells`. En esta aparecen los *prototypes* o plantillas en las que se basarán las celdas de nuestra tabla. En   muchas tablas todas las celdas son iguales y por eso nos basta con un prototipo, pero podemos crear los necesarios.
 
 Para editar gráficamente el prototipo basta con seleccionarlo con el ratón y editarlo cambiando sus atributos con el *attributes inspector*. El más importante es el `Style`. Podemos usar uno propio (`Custom`) o uno de los predefinidos 
 
-![](Captura%20de%20pantalla%202016-10-09%20a%20las%2014.51.40.png)
+![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.51.40.png)
 
 Para cada estilo tenemos una serie de elementos con los que podemos “jugar”: un título, una imagen, en algunos casos un texto adicional…. En general, como queremos que el contenido concreto de la celda sea distinto para cada una, lo que haremos será fijarlos por código. Aquí solo elegimos el aspecto general y si ciertos elementos estarán o no presentes. Por ejemplo en el estilo `basic` la celda solo contiene un texto, mientras que en el `detail` contiene uno más grande y otro más pequeño.
 
 > Otro atributo importante es el `reuse identifier`, donde escribiremos un identificador inventado por nosotros para este prototipo. Cuando hablemos del *datasource* veremos dónde referenciar este identificador en nuestro código.
 
 ### La fuente de datos o *datasource*
+
 En iOS se usa el patrón *delegación* para delegar en otro objeto distinto a la propia tabla la responsabilidad de devolver los datos cuando es necesario pintarlos en pantalla. Este delegado se denomina en iOS *datasource*. Cuando iOS necesite pintar una celda le pedirá al *datasource* que se la devuelva rellenada con  sus contenidos.
 
 El *datasource* puede ser cualquier objeto con tal de que implemente el *protocol* `UITableViewDataSource`. En los ejemplos más sencillos habitualmente es el *controller* de la pantalla en la que está la tabla, aunque este enfoque suele llevar a que acabe habiendo demasiado código en el *controller*. Por ello nosotros vamos a usar otra clase adicional
 
 #### Implementar el *datasource*
+
 Como hemos dicho, nuestro objeto debe implementar el protocolo `UITableViewDataSource`. Este protocolo tiene dos métodos obligatorios:
 
 - Un método que dado un número de sección nos devuelva cuántas filas hay en esa sección.
@@ -130,7 +129,7 @@ Podemos sacar una celda del *pool* con el método de la vista de tabla `dequeueR
 
 > MUY IMPORTANTE: el identificador del `reuseIdentifier` **debe ser el mismo que elegimos gráficamente** al editar el prototipo de la celda. Si no fallará nuestro código
 
-![](Captura%20de%20pantalla%202016-10-09%20a%20las%2015.02.22.png)
+![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2015.02.22.png)
 
 La nueva versión del código queda así:
 
@@ -145,8 +144,8 @@ func tableView(_ tableView: UITableView,
 ```
 
 
-
 #### Conectar la tabla y el *datasource*
+
 Podemos hacer la conexión usando dos métodos alternativos: gráficamente o por código. Cuando el *datasource* es una clase adicional es algo más sencillo por código. Cuando es el *controller* la forma más directa es la gráfica.
 
 Como en el ejemplo de la sección anterior hemos hecho que el *datasource* sea una clase adicional, vamos a ver en primer lugar cómo se haría la **conexión por código**. Basta con asignar la propiedad `dataSource` del objeto tabla a una instancia de nuestro objeto *datasource*. Por ejemplo podríamos hacer la asignación en el `viewDidLoad()` del *controller* de la pantalla donde está la tabla:
@@ -170,17 +169,17 @@ override func viewDidLoad() {
 
 Otra alternativa a lo anterior es hacer la conexión con Xcode. Para **conectar gráficamente la tabla con el *datasource*** primero necesitamos tener una “representación gráfica” en pantalla del objeto `MiDataSource` con el que queremos conectar. Podemos arrastrar a la pantalla un `Object` de la librería de objetos de la parte inferior derecha de Xcode. Este es como si fuera un componente más de la interfaz gráfica pero no tiene representación en pantalla. En lugar de arrastrarlo a la pantalla en sí como ocurre con los componentes gráficos convencionales, debemos arrastrarlo al árbol de componentes que aparece a su izquierda
 
-![](Captura%20de%20pantalla%202016-10-09%20a%20las%2016.55.44.png)
+![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.55.44.png)
 
 Una vez colocado aquí, vamos a indicar que este objeto es de la clase `MiDataSource`. Para ello usamos el `Identity inspector`, y en la propiedad `Custom class` escribimos el nombre de la clase
 
-![](Captura%20de%20pantalla%202016-10-09%20a%20las%2016.56.46.png)
+![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.56.46.png)
 
-Ya podemos conectar la propiedad `dataSource` de la tabla con este objeto. La propiedad la podemos ver si seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el icono ![](Captura%20de%20pantalla%202016-10-09%20a%20las%2016.50.06.png) del área de `Utilities`). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `datasource` hasta el icono del objeto que representa a la clase `MiDataSource`	
+Ya podemos conectar la propiedad `dataSource` de la tabla con este objeto. La propiedad la podemos ver si seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el icono ![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.50.06.png) del área de `Utilities`). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `datasource` hasta el icono del objeto que representa a la clase `MiDataSource`	
 
-![](connect.png)
+![](images/connect.png)
 
-## Gestión de tablas
+## Gestión de tablas {#gestion}
 
 En las tablas dinámicas podemos por supuesto insertar y eliminar celdas. También podemos seleccionarlas haciendo *tap* sobre ellas. 
 
@@ -224,11 +223,12 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   }
 }
 ```
+
 ### Insertar y eliminar filas
 
 iOS nos ofrece de forma automática el “modo edición”, en el que en la parte izquierda de cada celda aparece un icono indicador de las operaciones que se pueden hacer con ella. Hay dos indicadores: 
-- ![](DraggedImage.png) Una señal de “prohibido” para poder borrar la celda(pulsando sobre la señal y luego sobre el botón “Borrar” que aparece).
-- ![](DraggedImage-1.png) Un símbolo de ‘+’ que sirve para insertar una nueva celda
+- ![](images/DraggedImage.png) Una señal de “prohibido” para poder borrar la celda(pulsando sobre la señal y luego sobre el botón “Borrar” que aparece).
+- ![](images/DraggedImage-1.png) Un símbolo de ‘+’ que sirve para insertar una nueva celda
 
 Podemos activar el modo edición con el método `setEditing` del objeto tabla:
 
@@ -239,7 +239,7 @@ Por defecto al activar el modo edición en todas las celdas aparecerá la señal
 
 Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS **avisará al *datasource* de que se está intentando insertar o eliminar una celda, NO al *delegate***. Esto es lógico ya que los datos los gestiona el *datasource*.
 
-Así, cuando se pulse sobre el ![](DraggedImage-2.png) y luego sobre “delete” o sobre el ![](DraggedImage-3.png), se llamará al método del *datasource* llamado `tableView(_:, commit:, forRowAt:)`. En este método tenemos que hacer dos cosas:
+Así, cuando se pulse sobre el ![](images/DraggedImage-2.png) y luego sobre “delete” o sobre el ![](images/DraggedImage-3.png), se llamará al método del *datasource* llamado `tableView(_:, commit:, forRowAt:)`. En este método tenemos que hacer dos cosas:
 - Actualizar los datos (borrar el dato o insertar uno nuevo)
 - LLamar a un método del API de tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)
 
