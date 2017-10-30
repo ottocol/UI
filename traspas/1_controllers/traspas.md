@@ -23,7 +23,6 @@ Apple usa el confuso término "View Controller" para referirse al controlador de
 - Introducción. Tipos de *controllers*
 - Ciclo de vida
 - *Storyboards* y *segues*
-- NIBs 
 
 ---
 
@@ -51,9 +50,8 @@ Apple usa el confuso término "View Controller" para referirse al controlador de
 
 ---
 
-## Show me the code!
 
-Un *controller* no es más que una clase que hereda de `UIViewController`. Podemos escribirla nosotros o ser propia de Cocoa
+Un *controller* no es más que una **clase que hereda de `UIViewController`**. Podemos escribirla nosotros o ser propia de Cocoa
 
 ```swift
 class MiViewController : UIViewController {
@@ -171,18 +169,41 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 ## Pasar datos entre controllers
 
+Normalmente en un *controller* al que llegamos a través de un *segue* queremos mostrar información relacionada con el *controller* anterior. ¿Cómo pasamos los datos?
+
 1. Definimos una propiedad en el controller destino
 2. En el `prepareForSegue:sender` modificamos el valor de la propiedad desde el *controller* origen
 3. Cuando llegamos al destino, en la propiedad tenemos la información deseada
 
+---
+
+Supongamos dos *controllers*, `ViewController1` y `ViewController2` conectados por un *segue*. Primero definimos la propiedad en el destino
 
 ```swift
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let controller = segue.destination as! SecundarioViewController
-        controller.mensaje = segue.identifier
+class ViewController2 : UIViewController {
+    var mensaje = ""
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(self.mensaje)
+    }
 }
 ```
 
+
+---
+
+En el momento de la transición, modificamos la propiedad del *controller* destino
+
+```swift
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if (segue.identifier=="siguiente") {
+        if let vc2 = segue.destination as? ViewController2 {
+            vc2.mensaje = "Bienvenidos a la pantalla 2"
+        }
+    }
+}
+```
 ---
 
 ## Volver atrás en un *segue*
@@ -197,70 +218,10 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 ---
 
-
-
 ## Volver atrás en un *segue* (II)
 
 **Paso 2**. `Ctrl+Arrastrar` desde el elemento de interfaz que queremos que desencadene el *unwind*, hasta el icono de `Exit` 
 
 ![](img/unwind_segue.png)
-
----
-
-## 4. NIBs
-
----
-
-## NIBs
-
-- Un NIB (o `.xib`) contiene la jerarquía de vistas de un *view controller* (una pantalla)
-    -  No se crea de manera manual, sino visualmente con Xcode (el nombre viene de “NeXT Interface Builder”)
-    -  Es responsabilidad del desarrollador cambiar de un controlador a otro y cargar el NIB correspondiente
-
----
-
-## Crear NIBs con Xcode
-
-- Opciones en las plantillas de Xcode:
-    + Crear un controller y automáticamente un NIB asociado
-    + Crear directamente el NIB y luego asociarle manualmente un *controller*    
-
----
-
-
-## Cargar un NIB (opción 1)
-
-Si el NIB tiene un *controller* asociado, se cargará automáticamente al instanciar el *controller*.
-
-```swift
-//creamos el controller
-let vc = ViewControllerNIB()
-//Seleccionamos la transición. Por defecto es "coverVertical"
-vc.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal;
-//presentamos el controller. Usamos una "trailing closure"
-self.present(vc, animated: true) {
-   print("presentado!")
-}
-```
-
----
-
-
-
-## El File's Owner
-
-- Es el objeto que ha cargado en memoria el NIB (normalmente el *controller* asociado). Tiene su propio icono en el editor visual
-
-- Se pueden crear *outlets* y actions arrastrando entre el icono del File’s Owner y el elemento de interfaz (primero se escribe manualmente el código y luego se hace la conexión).
-
-
----
-
-## Storyboards vs. NIBs
-
-- El principal problema del *storyboard* es que no es factible que dos desarrolladores distintos lo modifiquen simultáneamente. Por ello muchos equipos de desarrollo optaban por los NIBs
-
-- Desde iOS9 los *storyboards* [se pueden modularizar](https://www.shinobicontrols.com/blog/ios9-day-by-day-day3-storyboard-references), lo que hace el trabajo en equipo mucho más sencillo
-
 
 
