@@ -1,9 +1,9 @@
-#Interfaz de usuario en dispositivos móviles
-##iOS, sesión 2: Vistas
+# Interfaz de usuario en dispositivos móviles
+## iOS, sesión 2: Vistas
 
 ---
 
-##Puntos a tratar
+## Puntos a tratar
 
 1. Creación de vistas por código
 2. Propiedades de una vista
@@ -11,47 +11,43 @@
 
 ---
 
-##Creación de vistas por código
+## Creación de vistas por código
 
 Todo lo que se puede hacer **visualmente** con Xcode se puede hacer también de forma **programática**, ya que lo único que hace el entorno es crear objetos de la API de Cocoa Touch y establecer sus propiedades.
 
 ---
 
-##Ventanas
-
-- Las aplicaciones iOS tienen una única ventana, accesible en la propiedad `window` del *Application delegate*
-
-```objectivec
-//En el application:didFinishLaunchingWithOptions: del UIApplicationDelegate
-CGRect frame = [[UIScreen mainScreen] bounds]; 
-UIWindow *window = [[UIWindow alloc] initWithFrame:frame];
-self.window = window;
-[self.window makeKeyAndVisible];
-```
-
----
-
-##Vistas y jerarquía de vistas
+## Vistas y jerarquía de vistas
 
 - cada vista está asociada a un controller, como ya sabemos, y tiene subvistas
 
-```objectivec
-UIView* vista = miViewController.view;
-UIButton *boton = [[UIButton alloc] init];
-[boton setTitle:@"Hola" forState:UIControlStateNormal];
-[boton setFrame:CGRectMake(0,0,100,50)];
-[vista addSubview:boton];
-vista.backgroundColor = [UIColor redColor];
+```swift
+//este código estaría en un controller
+let boton = UIButton(type: .system)
+boton.setTitle("Soy un botón", for: .normal)
+boton.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+self.view.addSubview(boton)
 ```
 
 ---
 
-##2. Propiedades de una vista
+## 2. Propiedades de una vista
 
 
 ---
 
-##Algunas propiedades geométricas de las vistas
+## Sistema de coordenadas
+
+<!-- .element class="stretch" -->
+![](img/flipped_coordinates-2_2x.png)
+
+- [resoluciones de dispositivos iOS](http://iosres.com)
+
+
+---
+
+
+## Algunas propiedades geométricas de las vistas
 
 ```swift
 // Limites en coordenadas locales
@@ -65,16 +61,7 @@ CGRect marco = vista.frame
 
 ---
 
-## Sistema de coordenadas
-
-<!-- .element class="stretch" -->
-![](img/flipped_coordinates-2_2x.png)
-
-- [resoluciones de dispositivos iOS](http://iosres.com)
-
----
-
-##Color, transparencia, estado...
+## Color, transparencia, estado...
 
 ```swift
 boton = UIButton()
@@ -87,7 +74,7 @@ boton.isEnabled = true; //Lo deshabilitamos
 
 ---
 
-##3. Controles de usuario básicos
+## 3. Controles de usuario básicos
 
 
 ---
@@ -117,7 +104,7 @@ Las alertas suelen ser inesperadas para el usuario. Sin embargo las *action shee
 ---
 
 
-##UIAlertController
+## UIAlertController
 
 Sirve tanto para alertas como para *action sheets*
 
@@ -180,7 +167,7 @@ self.present(actionSheet, animated: true) {
 ---
 
 
-##Teclado en pantalla
+## Teclado en pantalla
 
 Un problema típico es cómo "quitarlo de enmedio". Para quitarlo al pulsar sobre "intro"
 
@@ -198,7 +185,7 @@ Un problema típico es cómo "quitarlo de enmedio". Para quitarlo al pulsar sobr
 
 ---
 
-##Teclado sin intro
+## Teclado sin intro
 
 El teclado numérico no tiene intro, en este caso lo típico es hacer que se oculte cuando se hace *tap* en el background
 
