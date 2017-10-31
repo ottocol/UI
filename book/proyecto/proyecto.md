@@ -10,7 +10,9 @@ Lo primero que necesitas es [registrarte](https://secure.marvel.com/user/registe
 
 ###Acceso a la API 
 
-La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo *parsear* el JSON, que en Swift es algo tedioso. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. 
+La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo *parsear* el JSON. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. 
+
+> **IMPORTANTE**: para acelerar el trabajo en el aula se os ha dejado en moodle la plantilla de *workspace* ya creada. **Podéis saltar directamente al paso "Uso de Marvelous"**. Las instrucciones siguientes se dan solo para que sepáis cómo se ha creado la plantilla y la podáis reproducir si queréis.
 
 ####Instalación de las librerías auxiliares
 
@@ -45,9 +47,9 @@ end
 6. **A partir de ahora para trabajar en el proyecto siempre abriremos el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**).
 7. Veremos que en Xcode se muestra nuestro proyecto y además un proyecto adicional llamado `Pods`, que contiene las dependencias. Este último no lo tocaremos, pero es necesario que esté ahí para que funcione el nuestro.
 
-> ANTES de empezar a escribir código asegúrate de hacer en Xcode un `Product > Clean`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código.
+###Uso de `Marvelous`
 
-###Ejemplo de uso de `Marvelous`
+> ANTES de empezar a escribir código asegúrate de hacer en Xcode un `Product > Clean`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código.
 
 > Para poder hacer llamadas al API de Marvel necesitas un par de claves. Las puedes ver, una vez dado de alta y autentificado en Marvel, en `https://developer.marvel.com/account`
 
