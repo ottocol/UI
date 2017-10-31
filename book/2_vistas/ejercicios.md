@@ -5,7 +5,7 @@ El objetivo es practicar con los controles básicos de la interfaz de usuario en
 
 ![](images/panel_control.png)
 
-Puedes ayudarte de la [documentación de referencia de UIKit](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/UIKitUICatalog) para ver los métodos y propiedades de los componentes:
+Puedes ayudarte de la [documentación de referencia de UIKit](https://developer.apple.com/documentation/uikit/views_and_controls) para ver los métodos y propiedades de los componentes:
 
 - **(0,25 puntos)** Campo de texto: Al escribir en él y pulsar intro en el teclado *onscreen* ,debe concatenarse lo escrito al campo de texto de varias líneas (un *text view*)
 - **(0,5 puntos)** *Slider*: 
