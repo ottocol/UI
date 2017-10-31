@@ -8,6 +8,9 @@ El objetivo es practicar con los controles básicos de la interfaz de usuario en
 Puedes ayudarte de la [documentación de referencia de UIKit](https://developer.apple.com/documentation/uikit/views_and_controls) para ver los métodos y propiedades de los componentes:
 
 - **(0,25 puntos)** Campo de texto: Al escribir en él y pulsar intro en el teclado *onscreen* ,debe concatenarse lo escrito al campo de texto de varias líneas (un *text view*)
+
+> Si quieres que aparezca el teclado *onscreen* en el simulador debes desactivar la opción de menú de `Hardware > Keyboard > Connect Hardware Keyboard`, ya que si está activada se usará el teclado físico del Mac pero no aparecerá el teclado en pantalla.
+
 - **(0,5 puntos)** *Slider*: 
     + Debes fijar el valor inicial en 0 y el final en 100 (son propiedades del objeto). **Fíjalas por código** en el `viewDidLoad` del controller, consulta la documentación para ver el nombre. Necesitarás un *outlet* para acceder al *slider* y poder cambiar sus propiedades por código.
     + Al cambiar su valor debe aparecer en un *label* al lado cuál es el valor actual. Al igual que los botones, para procesar un cambio en un slider puedes crear un *action* con Ctrl+Arrastrar
