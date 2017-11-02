@@ -2,65 +2,85 @@
 
 ## El por qué de *autolayout* {#intro}
 
-El problema de colocar los elementos de la interfaz en unas coordenadas fijas es que si rota la pantalla o cambiamos de dispositivo, el interfaz no se va adaptar adecuadamente, ya que las dimensiones han cambiado y las coordenadas antes especificadas ahora pueden no tener sentido.
-
-> Para que la previsualización del interfaz en Xcode tenga el mismo aspecto que las figuras, hay que desmarcar la casilla “Use size classes” del “File Inspector” (Área a la derecha de la pantalla, primer icono)
+Hasta ahora en todas las *apps* que hemos desarrollado hemos colocado los componentes de interfaz en coordenadas fijas, arrastrándolas hasta su posición visualmente con Xcode o bien especificando directamente las coordenadas en Swift. El problema de esto es que si cambiamos de dispositivo o se rota la pantalla la interfaz no se va adaptar adecuadamente, ya que las dimensiones han cambiado y las coordenadas antes especificadas ahora pueden no tener sentido.
 
 Por ejemplo, supongamos que queremos centrar un botón en la pantalla, tanto vertical como horizontalmente. En principio parece que basta con moverlo con el ratón hacia el centro. En el momento que el botón está centrado, aparecen unas guías punteadas que nos lo indican.
 
 ![](images/center_guides_xcode.png)
 
-Si ejecutamos la aplicación en el simulador veremos que efectivamente está centrado. Pero si rotamos la pantalla (tecla Cmd-Flecha izquierda) podremos ver que cuando cambia la resolución no es así.
+Sin embargo estas guías solo nos están indicando que el componente está centrado **con la resolución actual**, pero no va a seguir centrado si esta cambia.
+
+Si ejecutamos la aplicación en el simulador usando el mismo dispositivo que hemos usado en el proceso de diseño veremos que efectivamente está centrado. Pero no es así si cambiamos el dispositivo, o si por ejemplo rotamos la pantalla en el simulador (tecla Cmd-Flecha izquierda)
 
 ![](images/noautolayout_portrait_landscape.png)
 
 Necesitamos algún sistema que adapte automáticamente las dimensiones de los componentes de la interfaz a la resolución actual. En iOS ese sistema es **Autolayout**. Es un sistema declarativo y basado en restricciones. El sistema usa las restricciones especificadas para calcular automáticamente el *frame* de cada vista de la interfaz, y adaptarlo a las dimensiones actuales de la ventana.
 
-## Manejo de restricciones con el Interface Builder {#ib}
+## Manejo de restricciones desde Xcode {#ib}
 
 Para especificar qué aspecto queremos que tenga la interfaz independientemente de la resolución hay que añadir **restricciones**. Básicamente las hay de dos tipos:
 
 - **De alineación** (*align*): por ejemplo queremos que un botón esté centrado horizontalmente o verticalmente en su contenedor. O que varios componentes estén alineados entre sí.
 - **De espaciado** (*pin*): por ejemplo queremos que entre un componente y otro, o entre un componente y el borde izquierdo de la pantalla haya un espacio vacío. Aquí también se incluirían las restricciones de tamaño de un componente individual. (fijar el ancho, el alto,…)
 
-Hay dos formas de añadir restricciones en XCode: “haciendo clic y arrastrando” con el ratón o bien a través de la barra de herramientas de AutoLayout.
-
-> Cuando se añaden restricciones de espaciado con respecto al borde superior e inferior de la pantalla, puede verse que en realidad no se están referenciando los bordes sino lo que Xcode llama `top layout guide` y `bottom layout guide`. La verdadera utilidad de estas guías es que se “mueven automáticamente” para dejar espacio a las barras de navegación y de botones que veremos cuando usemos *navigation controllers* y *tab bar controllers*, asegurándonos así de que dichas barras no tapan a nuestras vistas. 
+Hay dos formas de añadir restricciones en Xcode: "haciendo clic y arrastrando" con el ratón o bien a través de la barra de herramientas de AutoLayout.
 
 ### Añadiendo restricciones con botones/menús
 
-En la parte inferior derecha del *storyboard* hay una barra de botones específicos para autolayout
+En la parte inferior derecha del *storyboard* hay una barra de botones específicos para *autolayout*:
 
 ![](images/barra_autolayout.png)
 
-Si queremos conseguir que funcione el ejemplo anterior en el que queríamos centrar horizontal y verticalmente el botón, pulsamos sobre el icono de `Align` (el primero), marcamos las casillas de `Horizontal center in container` y `Vertical center in container` y pulsamos sobre el botón que ahora pondrá `Add 2 constraints` para hacer efectivas las restricciones.
+Los que nos sirven para añadir restricciones son el tercero y el cuarto. Luego veremos el uso de los restantes.
+
+Vamos a arreglar el ejemplo anterior en el que queríamos centrar horizontal y verticalmente el botón. Tenemos que añadir dos restricciones: una de centrado horizontal y otra de centrado vertical. En terminología de *autolayout* esto son restricciones de alineado (*align*).
+
+1. Seleccionamos este con el ratón y pulsamos sobre el icono de `Align` (el tercero).
+2. En el *popup* que aparece marcamos las casillas de `Horizontally in container` y `Vertically in container`
+3. Pulsamos sobre el botón que ahora pondrá `Add 2 constraints` para hacer efectivas las restricciones.
 
 ![](images/hv_center_autolayout.png)
 
-Las líneas de guía, que antes aparecían punteadas, ahora serán continuas indicando que ahora son restricciones de autolayout. Dichas restricciones podemos verlas en varios sitios de Xcode:
+Las líneas de guía, que antes aparecían punteadas, ahora serán continuas indicando que ahora son restricciones de *autolayout*. Aunque cambiemos de dispositivo o de orientación veremos que el botón sigue centrado.
+
+Las restricciones añadidas las podemos ver en varios sitios de Xcode:
+
 - En el área de `Document outline`, que es accesible pulsando sobre el icono ![](images/Captura%20de%20pantalla%202014-10-15%20a%20la(s)%2018.03.41.png) que aparece en la parte inferior izquierda del *storyboard*. Aquí podemos ver un “árbol” desplegable con las restricciones. 
-	- Si hacemos clic sobre una restricción, en el área de `Utilities` de la derecha de la pantalla, dentro del `Size inspector` (el pequeño icono con una regla ![](images/Captura%20de%20pantalla%202014-10-15%20a%20la(s)%2018.09.58.png)) aparecerán sus propiedades, que podemos editar (luego veremos qué significan).
-	- Si hacemos clic sobre una restricción y pulsamos la tecla `Backspace` se eliminará.
+   ![](images/doc_outline_constraints.png)
+- En el `Size inspector` (icono ![](images/size_inspector_icon.png) del panel de la derecha de Xcode) aparece una lista de restricciones aplicadas al componente actual. Cada una tiene un botón `Edit` para cambiar sus propiedades. 
 
-![](images/doc_outline_constraints.png)
-- Directamente en el `Size inspector` aparece una lista de restricciones. Cada una tiene un botón `Edit` para cambiar sus propiedades. 
+Para editar las restricciones:
 
-Las mismas operaciones también las tenemos disponibles en la opción `Editor` del menú principal, a través de los submenús `Align` y `Pin`. 
+* Si hacemos clic sobre una restricción, en el área de `Utilities` de la derecha de la pantalla, dentro del `Size inspector` (el icono con una regla ![](images/Captura%20de%20pantalla%202014-10-15%20a%20la(s)%2018.09.58.png) del panel derecho de Xcode) aparecerán sus propiedades, que podemos editar. Luego veremos qué significan exactamente estas propiedades.
+* Si seleccionamos una restricción y pulsamos la tecla `Backspace` se eliminará esta.
 
 ### Añadiendo restricciones con el ratón
 
 Esta forma es algo más ágil que la anterior pero requiere de cierta práctica.  Cuando queremos establecer una restricción entre dos elementos **arrastramos de uno a otro manteniendo pulsada la tecla `Ctrl`** (igual que para crear un *outlet* o un *action*). Cuando soltamos el botón del ratón, aparece un menú contextual donde elegir la restricción. 
 Las opciones disponibles en el menú dependen de la dirección y sentido en que se haya arrastrado: 
-- Si arrastramos en sentido horizontal, podemos (entre otros) centrar verticalmente  (aunque suene un poco a contrasentido). Y al contrario si arrastramos en vertical.
+- Si arrastramos en sentido horizontal, podemos (entre otros) centrar verticalmente. Y al contrario si arrastramos en vertical.
 - Las restricciones de espaciado serán hacia el borde que hayamos arrastrado.
+
+Cuando se añaden restricciones de espaciado con respecto al borde superior e inferior de la pantalla, puede verse que en realidad no se están referenciando los bordes de la pantalla en sí sino los de un área que Xcode llama `safe area`
+
+Estas áreas “crecen automáticamente” para dejar espacio a las barras de navegación y de botones que veremos cuando usemos *navigation controllers* y *tab bar controllers*, asegurándonos así de que dichas barras no tapan a nuestras vistas. 
 
 ### Restricciones insuficientes o contradictorias
 
-Generalmente cuando comenzamos a añadir restricciones, las líneas que las representan aparecen en color naranja en lugar de azul. Esto sucede porque todavía **las restricciones son insuficientes** para determinar unívocamente las coordenadas del *frame* del componente. Por ejemplo si acabamos de crear un botón y lo centramos verticalmente, lo hemos “fijado” en el eje de las `x` pero no así en el de las `y`. Además se muestra un contorno dibujado en línea punteada que indica dónde calcula Xcode que acabará posicionándose el componente con las restricciones actuales (y que muy probablemente no sea donde nosotros queremos).
+Generalmente cuando comenzamos a añadir restricciones, las líneas que las representan aparecen en color naranja en lugar de azul. Esto sucede porque todavía **las restricciones son insuficientes** para determinar unívocamente las coordenadas del *frame* del componente. Por ejemplo si acabamos de crear un botón y lo centramos verticalmente, lo hemos “fijado” en el eje de las `x` pero no así en el de las `y`. Además se muestra un contorno dibujado en línea punteada que indica dónde calcula Xcode que acabará posicionándose el componente con las restricciones actuales (y que a lo mejor no es donde nosotros queremos).
 
-Otro problema típico es **mover el elemento una vez se ha establecido la restricción,** de modo que no ocupa la posición que esta indica. Las líneas de restricción también aparecerán en naranja, y el número que indica su tamaño tendrá un símbolo `+` o `-` para indicar el desplazamiento.
+Como regla general nos van a hacer falta **dos restricciones por cada dimensión** (X e Y) para eliminar la ambigüedad, aunque hay elementos que solo necesitan una restricción por dimensión, como los botones. Veamos por qué.
+
+Los botones tienen lo que se denomina un *tamaño intrínseco*. Es decir, aunque no lo digamos explícitamente, iOS le asigna el ancho y el alto justo para que quepa el texto mostrado. O sea, es como si ya tuvieran una restricción implícita en la X y en la Y. Así que cuando decimos que el botón esté centrado en la X (verticalmente), a *autolayout* le basta esta restricción para determinar el comportamiento del botón en esta dimensión, ya que la combina con el tamaño implícito. 
+
+Sin embargo no ocurre lo mismo con las `Label`. Estas no tienen un *tamaño intrínseco*, así que añadir la restricción de centrar una `Label` en la dimensión X no resuelve la ambigüedad de qué ancho debería tener, o visto de otro modo, en qué valor de x debería empezar su borde izquierdo. Para este tipo de elementos nos harán falta dos restricciones por cada dimensión, o dicho de otro modo 4 en total para posicionar el elemento sin ambigüedades.
+
+
+
+Otro problema típico es **cuando movemos con el ratón el elemento una vez se ha establecido la restricción,** de modo que no ocupa la posición que esta restricción está induciendo. Las líneas de restricción también aparecerán en naranja, y el número que indica su tamaño tendrá un símbolo `+` o `-` para indicar el desplazamiento. Podemos hacer que el elemento vuelva a la posición que indican las restricciones pulsando sobre el primero de los botones de *autolayout*, `Update Frames`.
 
 Cuando **las restricciones son contradictorias**, las líneas que las representan aparecen en color rojo. Por ejemplo en la siguiente figura hemos intentado especificar un espaciado de 20 puntos con el margen derecho y simultáneamente que esté centrado en horizontal. Claramente esto es imposible, y así lo indica Xcode.
+
 ![](images/restricciones_contradictorias.png)
 
 Cuando hay problemas con las restricciones estos se muestran también en el `Document outline` del storyboard. En el ángulo superior derecho del `Document outline` aparece una pequeña flecha roja indicando que hay problemas, y si la pulsamos aparecerá la lista de restricciones contradictorias e insuficientes.
