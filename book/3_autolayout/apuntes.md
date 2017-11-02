@@ -75,8 +75,6 @@ Los botones tienen lo que se denomina un *tamaño intrínseco*. Es decir, aunque
 
 Sin embargo no ocurre lo mismo con las `Label`. Estas no tienen un *tamaño intrínseco*, así que añadir la restricción de centrar una `Label` en la dimensión X no resuelve la ambigüedad de qué ancho debería tener, o visto de otro modo, en qué valor de x debería empezar su borde izquierdo. Para este tipo de elementos nos harán falta dos restricciones por cada dimensión, o dicho de otro modo 4 en total para posicionar el elemento sin ambigüedades.
 
-
-
 Otro problema típico es **cuando movemos con el ratón el elemento una vez se ha establecido la restricción,** de modo que no ocupa la posición que esta restricción está induciendo. Las líneas de restricción también aparecerán en naranja, y el número que indica su tamaño tendrá un símbolo `+` o `-` para indicar el desplazamiento. Podemos hacer que el elemento vuelva a la posición que indican las restricciones pulsando sobre el primero de los botones de *autolayout*, `Update Frames`.
 
 Cuando **las restricciones son contradictorias**, las líneas que las representan aparecen en color rojo. Por ejemplo en la siguiente figura hemos intentado especificar un espaciado de 20 puntos con el margen derecho y simultáneamente que esté centrado en horizontal. Claramente esto es imposible, y así lo indica Xcode.
