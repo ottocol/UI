@@ -73,7 +73,7 @@ Como regla general nos van a hacer falta **dos restricciones por cada dimensión
 
 Los botones tienen lo que se denomina un *tamaño intrínseco*. Es decir, aunque no lo digamos explícitamente, iOS le asigna el ancho y el alto justo para que quepa el texto mostrado. O sea, es como si ya tuvieran una restricción implícita en la X y en la Y. Así que cuando decimos que el botón esté centrado en la X (verticalmente), a *autolayout* le basta esta restricción para determinar el comportamiento del botón en esta dimensión, ya que la combina con el tamaño implícito. 
 
-Sin embargo no ocurre lo mismo con las `Label`. Estas no tienen un *tamaño intrínseco*, así que añadir la restricción de centrar una `Label` en la dimensión X no resuelve la ambigüedad de qué ancho debería tener, o visto de otro modo, en qué valor de x debería empezar su borde izquierdo. Para este tipo de elementos nos harán falta dos restricciones por cada dimensión, o dicho de otro modo 4 en total para posicionar el elemento sin ambigüedades.
+Sin embargo no ocurre lo mismo con otros componentes. Por ejemplo los *text view* no tienen un *tamaño intrínseco*. De este modo, añadir la restricción de centrar un `Text View` en la dimensión X no resuelve la ambigüedad de qué ancho debería tener, o visto de otro modo, en qué valor de x debería empezar su borde izquierdo. Para este tipo de elementos nos harán falta dos restricciones por cada dimensión, o dicho de otro modo 4 en total para posicionar el elemento sin ambigüedades. Otros componentes tienen un tamaño intrínseco solo en una dimensión, por ejemplo los *slider* lo tienen en la Y pero no en la X, por lo que nos hará falta una única restricción en la Y pero dos en la X.
 
 Otro problema típico es **cuando movemos con el ratón el elemento una vez se ha establecido la restricción,** de modo que no ocupa la posición que esta restricción está induciendo. Las líneas de restricción también aparecerán en naranja, y el número que indica su tamaño tendrá un símbolo `+` o `-` para indicar el desplazamiento. Podemos hacer que el elemento vuelva a la posición que indican las restricciones pulsando sobre el primero de los botones de *autolayout*, `Update Frames`.
 
@@ -113,9 +113,9 @@ No obstante, también podemos poner restricciones sobre el tamaño. Podemos fija
 
 Si especificamos el tamaño mediante una restricción podemos forzar a que el contenido del botón tenga que “cortarse” porque no cabe, o bien que tenga que añadirse un *padding* al sobrar espacio. 
 
-### Más sobre las restricciones
+## Más sobre las restricciones
 
-#### Formulación completa de una restricción
+### Formulación completa de una restricción
 
 Internamente, cada restricción se formula como una ecuación lineal en la que:
 
@@ -139,7 +139,7 @@ Podemos por ejemplo cambiar la constante por 50, con lo que conseguiremos que el
 
 Si en lugar de seleccionar el componente GUI seleccionamos directamente una restricción y nos vamos al `Size inspector` podremos editar directamente las propiedades de la restricción, incluyendo también los propios atributos.
 
-#### Prioridades
+### Prioridades
 
 Cada restricción tiene asignada una **prioridad**, que es un valor numérico que especifica su “importancia” (a mayor valor, mayor prioridad). El valor por defecto es 1000, que significa que el sistema entiende que la restricción **debe cumplirse**. Valores menores que 1000 indican que el sistema intentará cumplir la restricción pero que es posible que no lo haga si hay restricciones contradictorias de mayor prioridad.
 
@@ -152,7 +152,7 @@ Además de las restricciones, también los componentes GUI tienen dos valores de
 
 ## Formular restricciones usando código {#codigo}
 
-En lugar de usar el editor visual del Interface Builder podemos especificar las restricciones en el código fuente. Esto puede resultar interesante en diversas situaciones: a veces los elementos de la interfaz se crean dinámicamente y por tanto no se puede especificar el *layout* en Xcode. Otras veces puede ser que aunque los elementos del interfaz no cambien sí queramos que cambien dinámicamente las restricciones para conseguir distintos efectos de *layout*.
+En lugar de usar el editor visual de Xcode podemos especificar las restricciones en el código fuente. Esto puede resultar interesante en diversas situaciones: a veces los elementos de la interfaz se crean dinámicamente y por tanto no se puede especificar el *layout* en Xcode. Otras veces puede ser que aunque los elementos del interfaz no cambien sí queramos que cambien dinámicamente las restricciones para conseguir distintos efectos de *layout*.
 
 Hay dos formas de hacerlo: directamente con el API de autolayout o con un mayor nivel de abstracción usando el llamado “Visual Format Language”. Si podemos elegir, la mejor forma es la segunda, ya que es mucho más intuitivo especificar las restricciones y entenderlas leyendo luego el código.
 
@@ -182,7 +182,9 @@ centradoX.isActive = true
 
 **Una alternativa** es añadir la restricción a la vista con `addConstraint()`
 
-	self.view.addConstraint(centradoX)
+```swift
+self.view.addConstraint(centradoX)
+```
 
 Como vemos, hemos añadido la restricción al contenedor del botón. Como norma general, si son vistas “madre/hija” la añadiremos a la “madre”, y en otro caso *al ancestro común más cercano de ambas vistas*. Por ejemplo si fuera una relación entre dos botones dentro del mismo contenedor la añadiríamos al contenedor.
 
@@ -240,12 +242,3 @@ Algunos ejemplos adicionales de cadenas de formato:
 Se recomienda consultar la documentación de Apple para más información sobre la sintaxis y ejemplos adicionales.
 
 > En el diseño del formato, se ha preferido la claridad y el paralelismo con la representación gráfica a la expresividad. Como resultado, ciertas restricciones no son expresables. Por ejemplo no se puede especificar que el ancho de un botón sea el doble que el de otro.
-
-## Referencias
-
-- [Videos de las sesiones](https://developer.apple.com/videos/wwdc/2012/) de la Apple WWDC 2012 (requieren un id. de Apple)
-	- Introduction to Auto Layout for iOS and OS X
-	- Best Practices for Mastering Auto Layout
-- [Tutorial](http://www.raywenderlich.com/50317/beginning-auto-layout-tutorial-in-ios-7-part-1) de Ray Wenderlich
-- [Tutorial Avanzado](http://www.objc.io/issue-3/advanced-auto-layout-toolbox.html) de Objc.io
-
