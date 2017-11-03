@@ -113,7 +113,7 @@ No obstante, también podemos poner restricciones sobre el tamaño. Podemos fija
 
 Si especificamos el tamaño mediante una restricción podemos forzar a que el contenido del botón tenga que “cortarse” porque no cabe, o bien que tenga que añadirse un *padding* al sobrar espacio. 
 
-## Más sobre las restricciones
+## Más sobre las restricciones {#mas}
 
 ### Formulación completa de una restricción
 
