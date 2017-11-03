@@ -1,5 +1,5 @@
-#Interfaz de usuario en dispositivos móviles
-##iOS, sesión 4: Tablas
+# Interfaz de usuario en dispositivos móviles
+## iOS, sesión 4: Tablas
 
 
 
@@ -12,14 +12,14 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 
 ---
 
-##Tablas agrupadas/sin agrupar
+## Tablas agrupadas/sin agrupar
 
 ![](img/tabla_agrup_plain.png)
 
 
 ---
 
-##Estilos de las celdas
+## Estilos de las celdas
 
 - Predefinidos: por defecto, subtítulo, value1, value2
 - Personalizados (en el *storyboard* o por código)
@@ -27,14 +27,14 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 
 ---
 
-##Estilos value1 y value2
+## Estilos value1 y value2
 
 ![](img/tabla_value1_value2.png)
 
 
 ---
 
-##Puntos a tratar
+## Puntos a tratar
 
 1. Tablas estáticas 
 2. Tablas dinámicas
@@ -47,7 +47,7 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 
 ---
 
-##Tablas estáticas
+## Tablas estáticas
 
 - El número y tamaño de filas y secciones es conocido con anterioridad. Que sean estáticas no quiere decir que el contenido no pueda cambiar
 - Usadas simplemente para organizar mejor la información
@@ -58,7 +58,7 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 
 ---
 
-##Tablas dinámicas
+## Tablas dinámicas
 
 - Normalmente no conocemos el número de datos en tiempo de compilación
 - Se pueden añadir/eliminar filas y/o secciones
@@ -66,14 +66,31 @@ Las tablas están por todos lados en iOS. Su aspecto es bastante configurable
 
 ---
 
-##Necesario para una tabla dinámica
+## Necesario para una tabla dinámica
 
-+ El **View controller**. iOS nos ofrece el `UITableViewController`, implementa el esqueleto de algunos métodos útiles, pero **ocupa toda la pantalla**
++ La tabla en sí (una *table view*)
 + El **datasource**, al que el *controller* le va pidiendo datos dinámicamente
 + El **delegate** (opcional). gestiona algunos eventos de edición y algunos aspectos de la apariencia de las celdas
 
-En ejemplos sencillos es común que el mismo objeto esté en los tres papeles (normalmente el *view controller* de la pantalla)
+En ejemplos sencillos es común que el mismo objeto esté en los tres papeles (normalmente el *view controller* de la pantalla). iOS nos ofrece una clase de este tipo, el `UITableViewController`
 
+
+---
+
+## Insertar la tabla en una pantalla
+
+- Arrastrar un componente `table view`
+- Crear "prototipos de celda": diseños básicos de celda que se van a repetir. **Como mínimo debe haber uno** (la cantidad es la propiedad `Prototype Cells` de la tabla) 
+- Editar el prototipo: seleccionar el prototipo de entre los creados, en la parte titulada `Prototype Cells` 
+
+![](img/select_prototype.png)
+
+---
+
+   - Elegimos un `Style` de entre los predefinidos, o bien `custom`
+   - **Debemos asignarle un identificador (`Identifier`)** arbitrario, luego veremos dónde aparece este en el código
+
+![](img/propiedades_prototipo.png)
 
 ---
 
@@ -90,7 +107,6 @@ Un *datasource* es un caso concreto del patrón de diseño *delegación*: la tab
 Pasos:
 
 1. Implementar la clase del *datasource*
-
     - La clase debe declarar que cumple el protocolo `UITableViewDatasource`
     - Debemos escribir el código necesario para dibujar la tabla
 2.  Conectar componente de UI con *datasource*: gráficamente o por código
@@ -100,14 +116,14 @@ Pasos:
 
 ## Paso 1a: Clase del *datasource*
 
-además del protocolo, debe ser "compatible" con ObjC. Esto lo podemos conseguir heredando de `NSObject` (entre otras formas)
+además del protocolo propio del `DataSource`, debe implementar `NSObjectProtocol`. La forma más sencilla de conseguirlo es heredando de `NSObject`
 
 ```swift
 import Foundation
 import UIKit
 
 class MiDataSource : NSObject, UITableViewDataSource {
-    var datos = ["Uno", "Dos", "Tres"]
+    var datos = ["Uno", "Dos", "Tres",...]
 
     //Ahora veremos qué métodos debemos implementar
 
@@ -123,7 +139,7 @@ Una idea clave: la vista de tabla **no necesita todos los datos** simultáneamen
 
 ---
 
-##Paso 1b: Implementar los métodos del *datasource*
+## Paso 1b: Implementar los métodos del *datasource*
 
 Hay dos métodos obligatorios en el protocolo `UITableViewDataSource`:
 
@@ -163,7 +179,7 @@ Como mucho necesitamos las celdas que caben en pantalla, el resto serán reutili
 
 ---
 
-##Reutilizando las celdas
+## Reutilizando las celdas
 
 ```swift
  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -175,9 +191,9 @@ Como mucho necesitamos las celdas que caben en pantalla, el resto serán reutili
 
 ---
 
-## Paso 2: Conectar la tabla con el *datasource*
+## Paso 2: Conexión tabla -> *datasource*
 
-Por código (para hacerlo gráficamente, ver los apuntes). Vamos a hacerlo en el *controller* de la pantalla que contiene a la tabla
+Aquí lo vemos por código (para hacerlo gráficamente, ver los apuntes). Vamos a hacerlo en el *controller* de la pantalla que contiene a la tabla
 
 Suponemos definido un *outlet* que representa a la tabla y una propiedad que representa al datasource 
 
@@ -203,14 +219,14 @@ override func viewDidLoad() {
 
 ---
 
-El mismo patrón *delegacion* de antes. Ahora la tabla delega en otro objeto las tareas de edición y borrado. Gráficamente es el API de la tabla el que se encarga de insertar/eliminar filas visualmente, pero es el *delegate* el que se encarga de decidir qué fila/s se pueden borrar, qué hacer cuando se selecciona una celda, cómo mostrar títulos de sección, etc.
+El mismo patrón *delegación* de antes. Ahora la tabla delega en otro objeto las tareas de edición y borrado. Gráficamente es el componente tabla (`UITableView`) el encargado de la parte visual de insertar/eliminar filas, pero es el *delegate* el que se encarga de decidir qué fila/s se pueden borrar, qué hacer cuando se selecciona una celda, cómo mostrar títulos de sección, etc.
 
 Editar es realmente una colaboración entre *datasource* y *delegate*. El único que puede editar de verdad es el *datasource*, que es el que tiene acceso a los datos.
 
 
 ---
 
-##El *delegate*
+## El *delegate*
 
 - Debe implementar el protocolo `UITableViewDelegate`
 
@@ -227,7 +243,7 @@ class MiDelegate : NSObject, UITableViewDelegate {
 
 ---
 
-##Seleccionar celdas
+## Seleccionar celdas
 
  - El designado como *delegate* recibirá una llamada a este método
  - En este ejemplo añadimos una marca de verificación a la celda sobre la que hemos hecho *tap*, y la quitamos si ya la tenía
@@ -249,7 +265,7 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
 ---
 
-##Poner/quitar modo edición
+## Poner/quitar modo edición
 
 
 ```swift
@@ -267,7 +283,7 @@ else {
 
 ---
 
-##Estilo de edición
+## Estilo de edición
 
 - El estilo "delete" muestra una señal de "prohibido" en la izquierda, indicando que si la pulsamos podemos borrar la celda
 - El "insert" muestra un "+"
@@ -286,7 +302,7 @@ func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPa
 
 ---
 
-##Editar filas con los botones del sistema 
+## Editar filas con los botones del sistema 
 
 Esto es en el *datasource*, no en el *delegate*
 
@@ -305,9 +321,9 @@ func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEdi
 
 ---
 
-##Insertar una celda "manualmente"
+## Insertar una celda "manualmente"
 
-Con "manualmente" queremos decir que los que disparamos la acción somos nosotros, no iOS (por ejemplo al pulsar en un botón "Nueva celda")
+Con "manualmente" queremos decir que los que disparamos la acción somos nosotros, no iOS con los botones del sistema
 
 Esto es en realidad tarea del *datasource*
 
