@@ -12,7 +12,7 @@ Lo primero que necesitas es [registrarte](https://secure.marvel.com/user/registe
 
 La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo *parsear* el JSON. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. 
 
-> **IMPORTANTE**: para acelerar el trabajo en el aula se os ha dejado en moodle la plantilla de *workspace* ya creada. **Podéis saltar directamente al paso "Uso de Marvelous"**. Las instrucciones siguientes se dan solo para que sepáis cómo se ha creado la plantilla y la podáis reproducir si queréis.
+> **IMPORTANTE**: para acelerar el trabajo en el aula tenéis disponible [la plantilla de *workspace* ya creada](https://bitbucket.org/ottocol/marvel/get/9d99e1ad5651.zip). **Podéis saltar directamente al paso "Crear los componentes de la interfaz"**. Las instrucciones siguientes se dan solo para que sepáis cómo se ha creado la plantilla y la podáis reproducir si queréis.
 
 ####Instalación de las librerías auxiliares
 
@@ -47,11 +47,13 @@ end
 6. **A partir de ahora para trabajar en el proyecto siempre abriremos el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**).
 7. Veremos que en Xcode se muestra nuestro proyecto y además un proyecto adicional llamado `Pods`, que contiene las dependencias. Este último no lo tocaremos, pero es necesario que esté ahí para que funcione el nuestro.
 
-###Uso de `Marvelous`
+### Uso de `Marvelous`
 
 > ANTES de empezar a escribir código asegúrate de hacer en Xcode un `Product > Clean`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código.
 
 > Para poder hacer llamadas al API de Marvel necesitas un par de claves. Las puedes ver, una vez dado de alta y autentificado en Marvel, en `https://developer.marvel.com/account`
+
+El siguiente código ya está metido en la plantilla, si te la has bajado. Solo es necesario poner en marcha el proyecto para probar si sale en la consola la lista de personajes.
 
 Para probar de manera sencilla la librería `Marvelous` puedes poner este `import` en el `ViewController`
 
@@ -59,27 +61,39 @@ Para probar de manera sencilla la librería `Marvelous` puedes poner este `impor
 import Marvelous
 ```
 
-Y ahora colocar el siguiente código en el `viewDidLoad()` y comprobar que se muestran en la consola todos los personajes cuyo nombre comienza por "spider".
+Y ahora copiar la siguiente función en el *view controller*, quemuestran en la consola todos los personajes cuyo nombre comienza por una determinada cadena.
 
 ```swift
-let marvelAPI = RCMarvelAPI()
-//CAMBIA ESTO PARA PONER TUS CLAVES!!!!!
-marvelAPI.publicKey = "a6927e7e15930110aade56ef90244f6d"
-marvelAPI.privateKey = "487b621fc3c0d6f128b468ba86c99c508f24d357"
-let filtro = RCCharacterFilter()
-filtro.nameStartsWith = "spider"
-marvelAPI.characters(by: filtro) {
-    resultados, info, error in
-    if let personajes = resultados as! [RCCharacterObject]? {
-        for personaje in personajes {
-            print(personaje.name)
+func mostrarPersonajes(comienzanPor cadena : String) {
+        let marvelAPI = RCMarvelAPI()
+        //PUEDES CAMBIAR ESTO PARA PONER TUS CLAVES
+        marvelAPI.publicKey = "a6927e7e15930110aade56ef90244f6d"
+        marvelAPI.privateKey = "487b621fc3c0d6f128b468ba86c99c508f24d357"
+        let filtro = RCCharacterFilter()
+        filtro.nameStartsWith = cadena
+        marvelAPI.characters(by: filtro) {
+            resultados, info, error in
+            if let personajes = resultados as! [RCCharacterObject]? {
+                for personaje in personajes {
+                    print(personaje.name)
+                }
+                print("Hay \(personajes.count) personajes")
+            }
         }
-        print("Hay \(personajes.count) personajes")
-    }
 }
 ```
 
-##Estructura general de la interfaz
+Puedes llamar a la función anterior desde el `viewDidLoad` del *view controller*
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+    mostrarPersonajes(comienzanPor: "Spider")
+}
+```
+
+## Estructura general de la interfaz
 
 Para que te hagas una idea de la estructura, se muestra el *storyboard* de la aplicación ya terminada
 
@@ -91,7 +105,7 @@ En la aplicación se podrá buscar, listar y mostrar los detalles de alguno de l
 
 Puedes comenzar creando un *tab bar* a partir de la pantalla inicial: selecciónala y en el menú `Editor` elige `Embed In > Tab Bar Controller`.
 
-##Vista maestro 
+## Vista maestro 
 
 Esta debe ser una pantalla con una barra de búsqueda y una vista de tabla en la que se puede buscar y listar el recurso elegido (por ejemplo personajes). El resultado final será algo como:
 
@@ -103,7 +117,7 @@ Ve a la primera (y por el momento única) pantalla de contenido del *tab bar*, s
 
 > Recuerda que tienes unas cuantas webs de donde puedes coger iconos "planos", por ejemplo [https://www.iconfinder.com/iconsets/ios-7-icons](https://www.iconfinder.com/iconsets/ios-7-icons) o [http://www.flaticon.com/packs/line-icon-set](http://www.flaticon.com/packs/line-icon-set)
 
-###Crear los componentes de la interfaz
+### Crear los componentes de la interfaz
 
 La tabla:
 
@@ -122,7 +136,7 @@ Nos falta fijar el *autolayout*:
 
 Una vez hecho esto puedes poner en marcha la *app* para ver si la interfaz tiene buen aspecto. La tabla aparecerá vacía, por supuesto.
 
-###Gestionar la barra de búsqueda
+### Gestionar la barra de búsqueda
 
 La barra de búsqueda utiliza el patrón *delegación* para gestionar los eventos de escribir en ella, pulsar "buscar" en el teclado, etc.
 
@@ -152,7 +166,7 @@ Ejecuta la *app* y comprueba que efectivamente funciona.
 Ahora **tendrás que poner código propio** para que cuando se pulse en el botón de buscar se haga la llamada a la API de Marvel. Por el momento lo más simple es mostrar los resultados con `print`. Puedes asignárselos también a un array que sea una propiedad del *controller*, para que luego sean sencillos de mostrar en la tabla.
 
 
-###Mostrar los resultados en la tabla
+### Mostrar los resultados en la tabla
 
 Una vez conseguido esto, tendrás que hacer que los resultados aparezcan en la tabla. Recuerda que necesitas un *datasource* para ella, y que para simplificar puedes hacer que sea el `ListaController`. A grandes rasgos esto implica:
 
@@ -234,9 +248,9 @@ colaBackground.addOperation {
 
 Puedes consultar [esta página](http://developer.marvel.com/documentation/images) para ver el formato de las URL de las imágenes. Básicamente se construyen con una trayectoria base seguidas de un "modificador" de aspecto y tamaño (`portrait_small`, `landscape_medium`, ...) y la extensión del archivo.
 
-> En el código anterior se obtiene la URL de la imagen y luego se cambia el `http:` por `https:`. Como ya hemos visto en otras sesiones, en principio en iOS>=9 una *app* no puede hacer una petición a una URL web si no es con `https:`. Esto debería cambiarse en la propia librería `Marvelous`, pero podemos salir del paso con este pequeño *parche*.
+> En el código anterior se obtiene la URL de la imagen y luego se cambia el `http:` por `https:`. En iOS>=9 una *app* no puede hacer una petición a una URL web si no es con `https:`. Esto debería cambiarse en la propia librería `Marvelous`, pero podemos salir del paso con este pequeño *parche*.
 
-##Imagen a tamaño completo
+## Imagen a tamaño completo
 
 Implementa una nueva pantalla en la que se pueda ver solo la imagen a mayor tamaño. Haz que la transición se realice con un *segue* modal pulsando sobre algún botón "ver imagen ampliada" (si tienes activadas las *size classes* el tipo equivalente es `present modally`).
 
