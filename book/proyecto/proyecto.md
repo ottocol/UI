@@ -111,9 +111,7 @@ Esta debe ser una pantalla con una barra de búsqueda y una vista de tabla en la
 
 ![](images/maestro.png)
 
-
 Ve a la primera (y por el momento única) pantalla de contenido del *tab bar*, selecciona la barra inferior y en las propiedades `bar item` ponle un título apropiado (por ejemplo "Personajes") y un icono relevante.
-
 
 > Recuerda que tienes unas cuantas webs de donde puedes coger iconos "planos", por ejemplo [https://www.iconfinder.com/iconsets/ios-7-icons](https://www.iconfinder.com/iconsets/ios-7-icons) o [http://www.flaticon.com/packs/line-icon-set](http://www.flaticon.com/packs/line-icon-set)
 
@@ -149,7 +147,6 @@ Vamos a crear este *view controller*:
 
 Ahora vamos a conectar el *view controller* con la barra de búsqueda:
 
-
 - Selecciona la *search bar* (te será más fácil si lo haces en el árbol de componentes) y en el `connections inspector` conecta el *outlet* `delegate` con el *controller* de esta pantalla.
 - Pon en la cabecera `ListaController` que esta clase implementa el protocolo `UISearchBarDelegate`
 - En el `ListaController` implementa el método `searchBarSearchButtonClicked(_)`, que se llamará cuando se escriba algo en la barra y se pulse el botón del teclado "buscar". Para probar que funciona de momento basta que imprimas en la consola el texto escrito en la barra y quites el teclado *on screen*.
@@ -164,7 +161,6 @@ func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 Ejecuta la *app* y comprueba que efectivamente funciona.
 
 Ahora **tendrás que poner código propio** para que cuando se pulse en el botón de buscar se haga la llamada a la API de Marvel. Por el momento lo más simple es mostrar los resultados con `print`. Puedes asignárselos también a un array que sea una propiedad del *controller*, para que luego sean sencillos de mostrar en la tabla.
-
 
 ### Mostrar los resultados en la tabla
 
