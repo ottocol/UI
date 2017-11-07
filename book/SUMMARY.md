@@ -26,6 +26,5 @@
 * [Controladores contenedores](5_contenedores/apuntes.md)
     - [Tab bar controllers](5_contenedores/apuntes.md#tabbar)
     - [Navigation controllers](5_contenedores/apuntes.md#navigation)
-    - [Ejercicios](5_contenedores/ejercicios.md)
 * [Proyecto](proyecto/proyecto.md)
     
