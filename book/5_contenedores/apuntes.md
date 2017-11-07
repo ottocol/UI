@@ -28,7 +28,7 @@ Desde el *interface builder* podemos cambiar algunas propiedades básicas de los
 
 En el apartado `Tab bar item`, si elegimos uno de los iconos del sistema no podremos cambiar el título ya que Apple considera que lo contrario podría inducir a confusión al usuario
 
-Si queremos personalizar el icono poniendo nuestra propia imagen hay que tener en cuenta que los iconos de un *tab bar* son monocromáticos. El formato a usar es .png, del que el sistema examinará el canal alfa o de transparencia. Tomará como forma del icono los pixels que sean opacos ignorando su color. Podéis consultar más detalles sobre el formato y el tamaño recomendado en el apartado “[Custom icons](https://developer.apple.com/ios/human-interface-guidelines/graphics/custom-icons/)”  de las *[iOS Human Interface Guidelines ](https://developer.apple.com/library/ios/documentation/userexperience/conceptual/mobilehig/)* de Apple.
+Si queremos personalizar el icono poniendo nuestra propia imagen hay que tener en cuenta que los iconos de un *tab bar* son monocromáticos. El formato a usar es .png, del que el sistema examinará el canal alfa o de transparencia. Tomará como forma del icono los pixels que sean opacos ignorando su color. En principio los iconos deben ser aproximadamente de 75x75 píxeles. Podéis consultar más detalles sobre el formato y el tamaño recomendado en el apartado “[Custom icons](https://developer.apple.com/ios/human-interface-guidelines/icons-and-images/custom-icons/)”  de las *[iOS Human Interface Guidelines ](https://developer.apple.com/ios/human-interface-guidelines/overview/themes/)* de Apple.
 
 ## Navigation controllers {#navigation}
 
