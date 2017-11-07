@@ -105,7 +105,7 @@ En la aplicación se podrá buscar, listar y mostrar los detalles de alguno de l
 
 Puedes comenzar creando un *tab bar* a partir de la pantalla inicial: selecciónala y en el menú `Editor` elige `Embed In > Tab Bar Controller`.
 
-## Vista maestro 
+## Vista maestro (2 puntos)
 
 Esta debe ser una pantalla con una barra de búsqueda y una vista de tabla en la que se puede buscar y listar el recurso elegido (por ejemplo personajes). El resultado final será algo como:
 
@@ -188,7 +188,7 @@ Opcionalmente **(0,25 puntos extra)**, puedes hacer que aparezca un *spinner* mi
 
 > Es posible que el *activity indicator* se te quede detrás de los otros elementos de interfaz y no se vea. Puedes usar el método `bringSubviewToFront` que se llama desde la vista "madre" para pasar a una vista "hija" a "primer plano". Si estamos en el *controller* sería algo como `self.view bringSubview(toFront:self.miActivityIndicator)`, ya que recuerda que `self.view`en un *controller* es la vista principal. Tendrás que sustituir la referencia `self.miActivityIndicator` por la apropiada en tu caso. Además de esto lleva cuidado también con el color, otro problema típico es usar uno del mismo color que el fondo.
 
-## Vista de detalle 
+## Vista de detalle (1,5 puntos)
 
 La nueva pantalla mostrará los datos de un *item* al hacer *tap*. Como una vez en los detalles queremos poder volver atrás al listado de forma sencilla, lo mejor es usar un *navigation controller*:
 
@@ -246,12 +246,12 @@ Puedes consultar [esta página](http://developer.marvel.com/documentation/images
 
 > En el código anterior se obtiene la URL de la imagen y luego se cambia el `http:` por `https:`. En iOS>=9 una *app* no puede hacer una petición a una URL web si no es con `https:`. Esto debería cambiarse en la propia librería `Marvelous`, pero podemos salir del paso con este pequeño *parche*.
 
-## Imagen a tamaño completo
+## Imagen a tamaño completo (1 punto)
 
 Implementa una nueva pantalla en la que se pueda ver solo la imagen a mayor tamaño. Haz que la transición se realice con un *segue* modal pulsando sobre algún botón "ver imagen ampliada" (si tienes activadas las *size classes* el tipo equivalente es `present modally`).
 
 En el API de Marvel, la URL de la imagen a tamaño completo se consigue simplemente concatenando las propiedades `basePath` y `extension`, y añadiendo un punto entre ellas, de modo que sería prácticamente igual al código para cargar la imagen en la pantalla anterior pero sin poner el "modificador" (en el ejemplo era `portrait-uncanny`).
             
-## Vista "Acerca de" 
+## Vista "Acerca de" (0,25 puntos)
 
 Esta es la segunda de las pantallas del *tab bar*. Simplemente debe consistir en una imagen estática y un *text view* con información sobre la aplicación.
