@@ -245,6 +245,8 @@ Así, cuando se pulse sobre el ![](images/DraggedImage-2.png) y luego sobre “d
 
 Es muy importante destacar que **primero hay que actualizar los datos** y luego ocuparse de la parte gráfica. Si lo hacemos al revés no funcionará bien, ya que iOS intentará redibujar la tabla usando los datos “antiguos”.
 
+> Simplemente implementando el siguiente método (aunque estuviera vacío) activaremos el *swipe to delete*, pero el botón *delete* no va a funcionar salvo que implementemos el borrado como aquí se muestra
+
 ```swift
 func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle==UITableViewCellEditingStyle.delete {
