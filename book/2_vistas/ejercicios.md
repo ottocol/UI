@@ -1,5 +1,5 @@
 # Ejercicio de vistas en iOS
-## Controles básicos (2 puntos)
+## Controles básicos (2,5 puntos)
 
 El objetivo es practicar con los controles básicos de la interfaz de usuario en iOS creando un "panel de control" ficticio para una supuesta nave espacial al estilo del que aparece en la figura.
 
@@ -16,4 +16,4 @@ Puedes ayudarte de la [documentación de referencia de UIKit](https://developer.
     + Al cambiar su valor debe aparecer en un *label* al lado cuál es el valor actual. Al igual que los botones, para procesar un cambio en un slider puedes crear un *action* con Ctrl+Arrastrar
 - **(0,5 puntos)** Al pulsar el botón ¡Emergencia! debe aparecer un *action sheet* con tres opciones: "nave salvavidas", "hiperespacio" o "autodestrucción" (como ves, una opción a la que deberías ponerle `style: .destructive`). Las opciones simplemente imprimirán un mensaje adecuado con `print`, no es necesario que destruyas nada en el mundo real.
 - **(0,25 puntos)** Si el *switch* está activado, el botón de "emergencia" estará habilitado, en caso contrario, deshabilitado. Al igual que los botones o los *slider* puedes detectar un cambio en el *switch* con un *action*.
-- **(0,5 puntos)** Elige cualquier otro control adicional y  añádelo al panel y haz que cuando se manipule se modifique algo de pantalla (por ejemplo un *datepicker* que permita elegir la fecha para hacer un salto temporal :), o cualquier otra cosa que se te ocurra)
+- **(1 punto)** Añade un *picker* para elegir el destino del viaje de entre una serie de destinos prefijados (por ejemplo "Saturno", "M13", "Nebulosa de Orión",...). Cada vez que cambie el valor seleccionado en el *picker* debe aparecer un mensaje en la consola indicándolo y mostrando el valor actual.
