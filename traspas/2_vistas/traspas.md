@@ -50,9 +50,11 @@ self.view.addSubview(boton)
 ## Algunas propiedades geométricas de las vistas
 
 ```swift
-// Limites en coordenadas locales
-// Su origen siempre es (0,0)
+//Limites en coordenadas locales
+//Su origen siempre es (0,0)
+//Aclaración: CGRect tiene 4 campos: x, y, width y height
 CGRect areaLocal = vista.bounds
+print("\(arealocal.width)x\(arealocal.height)")
 // Posición del centro de la vista en coordenadas de su supervista
 CGPoint centro = vista.center
 // Marco en coordenadas de la supervista
@@ -195,4 +197,96 @@ override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
     self.view.endEditing(true);
 }
 ```
+
+---
+
+Para saber cuándo cambia el valor de la mayoría de los controles usamos *actions*, como ya hemos visto con botones y campos de texto. Esto se usa por ejemplo con *sliders* (`UISlider`), *switches* (`UISwitch`) o *date pickers* (`UIDatePicker`):
+
+```swift
+//Este método se ha creado con el "assistant editor" y Ctrl+Arrastrar
+//de la ventana del storyboard al editor con el código del view controller
+//Elegimos Connection "action" y type "UISlider"
+@IBAction func cambiaSlider(_ sender: UISlider) {
+    print("El valor es: \sender.")
+}
+```
+
+---
+
+
+El `Picker` es un control algo más complejo ya que requiere de dos "ayudantes" (objetos que implementan ciertos protocolos)
+
+- Un *delegate* (protocolo `UIPickerViewDelegate`): gestiona el comportamiento general del *picker*
+- Un *datasource* (protocolo `UIPickerViewDataSource`): gestiona el "modelo de datos": cuántas filas y columnas tiene
+
+Estos dos protocolos heredan de `NSObjectProtocol` con lo que los objetos conformes a ellos deben ser conformes también a este último (esto se consigue de modo sencillo heredando de `NSObject`)
+
+---
+
+
+```swift
+class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+    var lista = ["Pepe", "Eva", "Juan", "María"]
+
+    //METODOS DE UIPickerViewDelegate
+    //número de "columnas" del Picker
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    //número de "filas"
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return lista.count
+    }
+
+    //METODOS DE UIPickerViewDataSource
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return lista[row]
+    }   
+}
+```
+
+---
+
+## En el view controller:
+
+- Definimos una instancia de `GestorPicker`
+
+```swift
+let gestorPicker = GestorPicker()
+```
+- Creamos un *outlet* que represente al *picker* con Ctrl+Arrastrar
+
+```swift
+@IBOutlet weak var miPicker: UIPickerView! 
+```
+- dentro del `viewDidLoad` "enlazamos" el *picker* con su *datasource* y su *delegate* 
+
+```swift
+self.miPicker.delegate = self.gestorPicker
+self.miPicker.dataSource = self.gestorPicker
+```
+
+---
+
+**Detectar que se ha seleccionado** un valor distinto en el *picker*. En el *delegate*, método `pickerView(_:,didSelectRow:,inComponent:)`
+
+```swift
+class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+    var lista = ["Pepe", "Eva", "Juan", "María"]
+    ...
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Seleccionada fila: \(row), dato: \(lista[row])")
+    }
+    ...
+}
+```
+
+**Obtener la selección actual**
+
+```swift
+//Cambiar el 0 por la "columna" que queramos
+self.miPicker.selectedRow(inComponent: 0)
+```
+
+---
 

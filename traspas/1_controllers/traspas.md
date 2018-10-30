@@ -59,6 +59,8 @@ class MiViewController : UIViewController {
 }
 ```
 
+Para enlazar este código con la pantalla que se ve en el *storyboard* se usa el *identity inspector*. Como `Custom class` hay que poner la que hemos hecho.
+
 ---
 
 ## Métodos del ciclo de vida de un *controller*
@@ -120,7 +122,7 @@ override func loadView {
 
 ## Añadir una "pantalla" a nuestra aplicación
 
-- Área de `Utilities` (derecha), `Object Library`: todos los objetos que contienen en su nombre "View controller"
+- Parte superior derecha de la pantalla, botón `Library`: todos los objetos que contienen en su nombre "View controller"
 
 ![](img/controllers_library.png) <!-- .element class="stretch" -->
 
