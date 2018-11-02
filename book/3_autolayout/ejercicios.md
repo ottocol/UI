@@ -11,5 +11,5 @@ Usa un stack view en la pantalla principal (la de los botones) para que estos ap
 Añadid restricciones a la pantalla secundaria (la que muestra información sobre cada pionera). Se deben cumplir las siguientes condiciones:
 
 - El *text view* debe aparecer centrado horizontal y verticalmente
-- El botón debe aparecer en la parte inferior de la pantalla y centrado verticalmente
+- El botón debe aparecer en la parte inferior de la pantalla y centrado horizontalmente
 
