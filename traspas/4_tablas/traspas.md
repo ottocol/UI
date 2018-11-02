@@ -308,13 +308,13 @@ Esto es en el *datasource*, no en el *delegate*
 
 ```swift
 func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle==UITableViewCellEditingStyle.delete {
+    if editingStyle==UITableViewCell.EditingStyle.delete {
         self.datos.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
     }
     else if editingStyle==UITableViewCellEditingStyle.insert {
         self.datos.insert("Nueva celda", at: indexPath.row)
-        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
+        tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
     }
 }
 ```
