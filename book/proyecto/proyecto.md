@@ -73,7 +73,10 @@ Vamos a crear este *view controller*:
 
 Ahora vamos a conectar el *view controller* con la barra de búsqueda:
 
-- Selecciona la *search bar* (te será más fácil si lo haces en el árbol de componentes) y en el `connections inspector` conecta el *outlet* `delegate` con el *controller* de esta pantalla.
+- Selecciona la *search bar* (te será más fácil si lo haces en el árbol de componentes) y en el `connections inspector` (panel de la derecha de Xcode, icono de más a la derecha) conecta el *outlet* `delegate` con el *controller* de esta pantalla. Recuerda que el *controller* está representado gráficamente con un icono de color amarillo que aparece en la parte superior de cada pantalla de la *app* en el *storyboard*.
+
+![](images/connect_delegate.gif)
+
 - Pon en la cabecera `ListaController` que esta clase implementa el protocolo `UISearchBarDelegate`
 - En el `ListaController` implementa el método `searchBarSearchButtonClicked(_)`, que se llamará cuando se escriba algo en la barra y se pulse el botón del teclado "buscar". Para probar que funciona de momento basta que imprimas en la consola el texto escrito en la barra y quites el teclado *on screen*.
 
