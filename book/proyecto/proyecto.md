@@ -12,88 +12,14 @@ Lo primero que necesitas es [registrarte](https://secure.marvel.com/user/registe
 
 La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo *parsear* el JSON. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. 
 
-> **IMPORTANTE**: para acelerar el trabajo en el aula tenéis disponible [la plantilla de *workspace* ya creada](https://bitbucket.org/ottocol/marvel/get/9d99e1ad5651.zip). **Podéis saltar directamente al paso "Crear los componentes de la interfaz"**. Las instrucciones siguientes se dan solo para que sepáis cómo se ha creado la plantilla y la podáis reproducir si queréis.
+> **IMPORTANTE**: para acelerar el trabajo en el aula tenéis disponible en moodle la plantilla de *workspace* ya creada. 
 
-####Instalación de las librerías auxiliares
-
-Por desgracia Xcode no integra ningún sistema de gestión de dependencias de librerías de terceros, así que acudiremos a una herramienta que no es de Apple pero que se ha convertido en un estándar *de facto* en el mundo iOS: [*CocoaPods*](http://cocoapods.org).
-
-Cocoapods es a la vez un repositorio de librerías y un gestor de dependencias para instalar automáticamente estas librerías en nuestros proyectos. Hay muchas librerías de terceros disponibles con este sistema, puedes buscarlas desde la página de CocoaPods.
-
-Para instalar `cocoapods`, desde la terminal hacer
-
-```bash
-#Con --pre decimos que queremos instalar la última versión, aunque sea RC
-sudo gem install cocoapods  --pre
-```
-
-> Esto instala la herramienta desde un repositorio de Internet, así que  necesitarás conectividad...y paciencia, según vaya la red.
-
-Si todo va bien se instalará un comando llamado `pod`. Ejecútalo desde la terminal para comprobar al menos que existe. Ahora debes seguir estos pasos:
-
-1. Crear un proyecto Xcode para la aplicación. Llámalo por ejemplo `Marvel`
-2. Con un editor de textos cualquiera, crear un fichero llamado `Podfile` en el directorio del proyecto (el que contiene el fichero `.xcodeproj`). Este archivo debe contener la configuración y las dependencias (o *pods*) del proyecto
-
-```bash
-platform :ios, '11.0'
-use_frameworks!
-//SUSTITUYE 'Marvel' por el nombre de tu proyecto, si no se llama así!!!
-target 'Marvel' do
-   pod 'Marvelous'
-end
-```
-
-5. Abre una terminal. Muévete hasta el directorio donde está el `Podfile` y desde él ejecuta el comando `pod install`. Las dependencias de nuestro proyecto se bajarán automáticamente y se creará en el directorio actual un `Marvel.xcworkspace`
-6. **A partir de ahora para trabajar en el proyecto siempre abriremos el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**).
-7. Veremos que en Xcode se muestra nuestro proyecto y además un proyecto adicional llamado `Pods`, que contiene las dependencias. Este último no lo tocaremos, pero es necesario que esté ahí para que funcione el nuestro.
-
-### Uso de `Marvelous`
-
-> ANTES de empezar a escribir código asegúrate de hacer en Xcode un `Product > Clean`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código.
-
-> Para poder hacer llamadas al API de Marvel necesitas un par de claves. Las puedes ver, una vez dado de alta y autentificado en Marvel, en `https://developer.marvel.com/account`
-
-El siguiente código ya está metido en la plantilla, si te la has bajado. Solo es necesario poner en marcha el proyecto para probar si sale en la consola la lista de personajes.
-
-Para probar de manera sencilla la librería `Marvelous` puedes poner este `import` en el `ViewController`
-
-```swift
-import Marvelous
-```
-
-Y ahora copiar la siguiente función en el *view controller*, quemuestran en la consola todos los personajes cuyo nombre comienza por una determinada cadena.
-
-```swift
-func mostrarPersonajes(comienzanPor cadena : String) {
-        let marvelAPI = RCMarvelAPI()
-        //PUEDES CAMBIAR ESTO PARA PONER TUS CLAVES
-        marvelAPI.publicKey = "a6927e7e15930110aade56ef90244f6d"
-        marvelAPI.privateKey = "487b621fc3c0d6f128b468ba86c99c508f24d357"
-        let filtro = RCCharacterFilter()
-        filtro.nameStartsWith = cadena
-        marvelAPI.characters(by: filtro) {
-            resultados, info, error in
-            if let personajes = resultados as! [RCCharacterObject]? {
-                for personaje in personajes {
-                    print(personaje.name)
-                }
-                print("Hay \(personajes.count) personajes")
-            }
-        }
-}
-```
-
-Puedes llamar a la función anterior desde el `viewDidLoad` del *view controller*
-
-```swift
-override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-    mostrarPersonajes(comienzanPor: "Spider")
-}
-```
 
 ## Estructura general de la interfaz
+
+> En la plantilla de workspace descargada **abre el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**).
+> 
+> Primero hay que hacer un `Product > Clean Build Folder`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código. Una vez hecho esto podemos ejecutar la app, en la consola aparecerá una lista de personajes cuyo nombre empieza por "Spider". Puedes mirar el código del View Controller para ver cómo se ha hecho.
 
 Para que te hagas una idea de la estructura, se muestra el *storyboard* de la aplicación ya terminada
 
@@ -255,3 +181,85 @@ En el API de Marvel, la URL de la imagen a tamaño completo se consigue simpleme
 ## Vista "Acerca de" (0,25 puntos)
 
 Esta es la segunda de las pantallas del *tab bar*. Simplemente debe consistir en una imagen estática y un *text view* con información sobre la aplicación.
+
+## Apéndice: creación de la plantilla de proyecto desde cero
+
+> Esta sección está solo para que veas cómo se ha creado la plantilla de proyecto, no es necesario que lo hagas si has usado la plantilla que está en moodle
+ 
+Por desgracia Xcode no integra ningún sistema de gestión de dependencias de librerías de terceros, así que acudiremos a una herramienta que no es de Apple pero que se ha convertido en un estándar *de facto* en el mundo iOS: [*CocoaPods*](http://cocoapods.org).
+
+Cocoapods es a la vez un repositorio de librerías y un gestor de dependencias para instalar automáticamente estas librerías en nuestros proyectos. Hay muchas librerías de terceros disponibles con este sistema, puedes buscarlas desde la página de CocoaPods.
+
+Para instalar `cocoapods`, desde la terminal hacer
+
+```bash
+#Con --pre decimos que queremos instalar la última versión, aunque sea RC
+sudo gem install cocoapods  --pre
+```
+
+> Esto instala la herramienta desde un repositorio de Internet, así que  necesitarás conectividad...y paciencia, según vaya la red.
+
+Si todo va bien se instalará un comando llamado `pod`. Ejecútalo desde la terminal para comprobar al menos que existe. Ahora debes seguir estos pasos:
+
+1. Crear un proyecto Xcode para la aplicación. Llámalo por ejemplo `Marvel`
+2. Con un editor de textos cualquiera, crear un fichero llamado `Podfile` en el directorio del proyecto (el que contiene el fichero `.xcodeproj`). Este archivo debe contener la configuración y las dependencias (o *pods*) del proyecto
+
+```bash
+platform :ios, '11.0'
+use_frameworks!
+//SUSTITUYE 'Marvel' por el nombre de tu proyecto, si no se llama así!!!
+target 'Marvel' do
+   pod 'Marvelous'
+end
+```
+
+5. Abre una terminal. Muévete hasta el directorio donde está el `Podfile` y desde él ejecuta el comando `pod install`. Las dependencias de nuestro proyecto se bajarán automáticamente y se creará en el directorio actual un `Marvel.xcworkspace`
+6. **A partir de ahora para trabajar en el proyecto siempre abriremos el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**).
+7. Veremos que en Xcode se muestra nuestro proyecto y además un proyecto adicional llamado `Pods`, que contiene las dependencias. Este último no lo tocaremos, pero es necesario que esté ahí para que funcione el nuestro.
+
+### Uso de `Marvelous`
+
+> ANTES de empezar a escribir código asegúrate de hacer en Xcode un `Product > Clean Build Folder`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código.
+
+> Para poder hacer llamadas al API de Marvel necesitas un par de claves. Las puedes ver, una vez dado de alta y autentificado en Marvel, en `https://developer.marvel.com/account`
+
+El siguiente código ya está metido en la plantilla, si te la has bajado. Solo es necesario poner en marcha el proyecto para probar si sale en la consola la lista de personajes.
+
+Para probar de manera sencilla la librería `Marvelous` puedes poner este `import` en el `ViewController`
+
+```swift
+import Marvelous
+```
+
+Y ahora copiar la siguiente función en el *view controller*, quemuestran en la consola todos los personajes cuyo nombre comienza por una determinada cadena.
+
+```swift
+func mostrarPersonajes(comienzanPor cadena : String) {
+        let marvelAPI = RCMarvelAPI()
+        //PUEDES CAMBIAR ESTO PARA PONER TUS CLAVES
+        marvelAPI.publicKey = "a6927e7e15930110aade56ef90244f6d"
+        marvelAPI.privateKey = "487b621fc3c0d6f128b468ba86c99c508f24d357"
+        let filtro = RCCharacterFilter()
+        filtro.nameStartsWith = cadena
+        marvelAPI.characters(by: filtro) {
+            resultados, info, error in
+            if let personajes = resultados as! [RCCharacterObject]? {
+                for personaje in personajes {
+                    print(personaje.name)
+                }
+                print("Hay \(personajes.count) personajes")
+            }
+        }
+}
+```
+
+Puedes llamar a la función anterior desde el `viewDidLoad` del *view controller*
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+    mostrarPersonajes(comienzanPor: "Spider")
+}
+```
+
