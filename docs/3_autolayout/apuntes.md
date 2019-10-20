@@ -45,13 +45,13 @@ Las líneas de guía, que antes aparecían punteadas, ahora serán continuas ind
 
 Las restricciones añadidas las podemos ver en varios sitios de Xcode:
 
-- En el área de `Document outline`, que es accesible pulsando sobre el icono ![](images/Captura%20de%20pantalla%202014-10-15%20a%20la(s)%2018.03.41.png) que aparece en la parte inferior izquierda del *storyboard*. Aquí podemos ver un “árbol” desplegable con las restricciones. 
+- En el área de `Document outline`, que es accesible pulsando sobre el icono ![](images/document_outline.png) que aparece en la parte inferior izquierda del *storyboard*. Aquí podemos ver un “árbol” desplegable con las restricciones. 
    ![](images/doc_outline_constraints.png)
 - En el `Size inspector` (icono ![](images/size_inspector_icon.png) del panel de la derecha de Xcode) aparece una lista de restricciones aplicadas al componente actual. Cada una tiene un botón `Edit` para cambiar sus propiedades. 
 
 Para editar las restricciones:
 
-* Si hacemos clic sobre una restricción, en el área de `Utilities` de la derecha de la pantalla, dentro del `Size inspector` (el icono con una regla ![](images/Captura%20de%20pantalla%202014-10-15%20a%20la(s)%2018.09.58.png) del panel derecho de Xcode) aparecerán sus propiedades, que podemos editar. Luego veremos qué significan exactamente estas propiedades.
+* Si hacemos clic sobre una restricción, en el área de `Utilities` de la derecha de la pantalla, dentro del `Size inspector` (el icono con una regla ![](images/size_inspector.png) del panel derecho de Xcode) aparecerán sus propiedades, que podemos editar. Luego veremos qué significan exactamente estas propiedades.
 * Si seleccionamos una restricción y pulsamos la tecla `Backspace` se eliminará esta.
 
 ### Añadiendo restricciones con el ratón

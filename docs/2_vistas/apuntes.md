@@ -156,8 +156,6 @@ Cuando un campo de texto adquiere el foco porque el usuario hace *tap* sobre él
 
 Si queremos que desaparezca cuando pulsamos sobre la tecla de “Aceptar” tenemos que escribir un *action* que responda al evento `Did end on exit` del campo de texto. 
 
-![](images/Captura%20de%20pantalla%202016-10-08%20a%20las%2020.25.05.png)
-
 > Cuando crees el *action* indica en el menú *popup* que el `type` debe ser `UITextField`. Esta opción es el parámetro que se le pasará al *action* y representa el objeto que ha disparado el evento, en nuestro caso el campo de texto. Si lo pasamos como `AnyObject` no tendremos acceso a los métodos del API de `UITextField` (salvo que hiciéramos una conversión con `as`)
 
 En teoría dentro de este *action* debemos hacer que el campo deje de ser el objeto que hace de *first responder* para que el teclado deje de mostrarse
@@ -199,7 +197,7 @@ Vamos a ver primero cómo crear una *alerta*. En realidad el API para *alertas* 
 
 Por ejemplo veamos cómo se mostraría una alerta con dos opciones
 
-![](images/Captura%20de%20pantalla%202016-10-08%20a%20las%2023.20.24.png)
+![](images/alert_2_opciones.png)
 
 ```swift
 //El alert en sí. Vemos que el preferredStyle es .alert
@@ -228,7 +226,7 @@ self.present(alert, animated: true) {
 
 Por otro lado un *action sheet* es un cuadro de diálogo que se usa para dar alternativas al usuario cuando ha realizado una acción. Por ejemplo supongamos un gestor de email en el que el usuario ha hecho *tap* sobre un mensaje. Podría aparecer la siguiente *action sheet*
 
-![](images/Captura%20de%20pantalla%202016-10-08%20a%20las%2023.44.18.png)
+![](images/action_sheet.png)
 
 El API es exactamente el mismo, solo que en el inicializador de `UIAlertController` se pasa como parámetro `preferredStyle` el valor `actionSheet`.
 

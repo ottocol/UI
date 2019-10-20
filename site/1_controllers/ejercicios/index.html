@@ -1,0 +1,647 @@
+
+
+
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copiar al portapapeles">
+      
+        <meta name="lang:clipboard.copied" content="Copiado al portapapeles">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No se encontraron documentos">
+      
+        <meta name="lang:search.result.one" content="1 documento encontrado">
+      
+        <meta name="lang:search.result.other" content="# documentos encontrados">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>Ejercicios - IUDM-iOS-basico</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#ejercicios-de-view-controllers-15-puntos" tabindex="1" class="md-skip">
+        Saltar a contenido
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="IUDM-iOS-basico" class="md-header-nav__button md-logo">
+          
+            <img src="../../logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              IUDM-iOS-basico
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Ejercicios
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Teclee para comenzar búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="IUDM-iOS-basico" class="md-nav__button md-logo">
+      
+        <img src="../../logo.png" width="48" height="48">
+      
+    </a>
+    IUDM-iOS-basico
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../apuntes/" title="View Controllers" class="md-nav__link">
+      View Controllers
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Ejercicios
+      </label>
+    
+    <a href="./" title="Ejercicios" class="md-nav__link md-nav__link--active">
+      Ejercicios
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-view-controllers-15-puntos" class="md-nav__link">
+    Ejercicios de view controllers (1,5 puntos)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realizar-la-estructura-basica-de-la-aplicacion-05-puntos" class="md-nav__link">
+    Realizar la estructura básica de la aplicación (0,5 puntos)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicar-un-controller-con-otro-1-punto" class="md-nav__link">
+    Comunicar un controller con otro (1 punto)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-nueva-interfaz" class="md-nav__link">
+    Crear la nueva interfaz
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-controlador-personalizado-para-la-pantalla-secundaria" class="md-nav__link">
+    Crear un controlador personalizado para la pantalla secundaria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadirle-un-outlet-al-controlador-secundario" class="md-nav__link">
+    Añadirle un outlet al controlador secundario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacer-que-el-texto-cambie-segun-el-boton-pulsado" class="md-nav__link">
+    Hacer que el texto cambie según el botón pulsado
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2_vistas/apuntes/" title="Vistas" class="md-nav__link">
+      Vistas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2_vistas/ejercicios/" title="Ejercicios" class="md-nav__link">
+      Ejercicios
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../3_autolayout/apuntes/" title="Autolayout" class="md-nav__link">
+      Autolayout
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../3_autolayout/ejercicios/" title="Ejercicios" class="md-nav__link">
+      Ejercicios
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../4_tablas/apuntes/" title="Tablas" class="md-nav__link">
+      Tablas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../4_tablas/ejercicios/" title="Ejercicios" class="md-nav__link">
+      Ejercicios
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../5_contenedores/apuntes/" title="Controladores contenedores" class="md-nav__link">
+      Controladores contenedores
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../proyecto/proyecto/" title="Miniproyecto" class="md-nav__link">
+      Miniproyecto
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ejercicios-de-view-controllers-15-puntos" class="md-nav__link">
+    Ejercicios de view controllers (1,5 puntos)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#realizar-la-estructura-basica-de-la-aplicacion-05-puntos" class="md-nav__link">
+    Realizar la estructura básica de la aplicación (0,5 puntos)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comunicar-un-controller-con-otro-1-punto" class="md-nav__link">
+    Comunicar un controller con otro (1 punto)
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-nueva-interfaz" class="md-nav__link">
+    Crear la nueva interfaz
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-un-controlador-personalizado-para-la-pantalla-secundaria" class="md-nav__link">
+    Crear un controlador personalizado para la pantalla secundaria
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadirle-un-outlet-al-controlador-secundario" class="md-nav__link">
+    Añadirle un outlet al controlador secundario
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hacer-que-el-texto-cambie-segun-el-boton-pulsado" class="md-nav__link">
+    Hacer que el texto cambie según el botón pulsado
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Ejercicios</h1>
+                
+                <h2 id="ejercicios-de-view-controllers-15-puntos">Ejercicios de <em>view controllers</em> (1,5 puntos)<a class="headerlink" href="#ejercicios-de-view-controllers-15-puntos" title="Permanent link">&para;</a></h2>
+<p>Vamos a hacer una aplicación que vamos a llamar “Pioneras”, y que nos dará datos de algunas mujeres pioneras de la informática. La aplicación tendrá una pantalla principal en la que aparecerán sus imágenes, y haciendo <em>tap</em> sobre cada una podremos ir a las pantallas secundarias donde se nos dará más información.</p>
+<blockquote>
+<p>Al crear el proyecto aseguráos de estar usando git (Sea desde Xcode o manualmente) ya que habrá que guardar y marcar el estado con un commit especial en un momento intermedio</p>
+</blockquote>
+<h3 id="realizar-la-estructura-basica-de-la-aplicacion-05-puntos">Realizar la estructura básica de la aplicación (0,5 puntos)<a class="headerlink" href="#realizar-la-estructura-basica-de-la-aplicacion-05-puntos" title="Permanent link">&para;</a></h3>
+<ol>
+<li>En <a href="https://github.com/ottocol/UI/raw/master/material/pioneras.zip">este archivo</a> tenemos las imágenes de las tres pioneras: Ada Lovelace, Grace Hopper y Barbara Liskov, que como siempre <strong>arrastraremos al <code>Assets.xcassets</code></strong>. También tenemos los textos sobre ellas que se mostrarán en las pantallas secundarias.</li>
+<li>Crea tres botones en la pantalla principal, y para cada uno de ellos en lugar de texto vamos a usar como imagen de fondo la de cada mujer. Al final cada botón debería ocupar todo el ancho de la pantalla y más o menos un tercio del alto.<blockquote>
+<p>Importante: no es necesario que la interfaz sea perfecta (todos los botones exactamente del mismo alto, etc). De hecho si la pruebas en un dispositivo de tamaño de pantalla distinto al que estás usando ahora mismo en Xcode verás que se ve “fatal”. Para hacer que todos los botones tengan el mismo alto  y que se adapten bien a la pantalla usaremos un mecanismo que todavía no hemos visto denominado <em>autolayout</em>. Por el momento  vamos a ignorar este tema</p>
+</blockquote>
+</li>
+<li>Arrastra un nuevo “view controller” al storyboard (una “pantalla” nueva), que será el que aparezca cuando se pulse en el primero de los botones (el de Ada Lovelace). Inserta un campo de texto de varias líneas (<em>text view</em>) y copia en él el contenido de <code>lovelace.txt</code></li>
+<li>Ahora <strong>establece el <em>segue</em> entre las dos pantallas</strong>: haz <code>Ctrl+Arrastrar</code> desde el primero de los botones con la imagen de Ada Lovelace hasta la segunda pantalla. <ul>
+<li>Ejecuta el proyecto para comprobar que funciona lo que has hecho, aunque <em>todavía no puede volver atrás desde la pantalla secundaria</em></li>
+</ul>
+</li>
+<li>Implementa la opción de <strong>volver atrás</strong> de la secundaria a la principal<ul>
+<li>Crea un botón “atrás” en la pantalla secundaria y colócalo en la parte de arriba (para que no lo tape el teclado <em>on-screen</em> si aparece)</li>
+<li>En el <em>controller</em> destino crea un método para que funcione el <em>unwinding</em> (no hace falta que haga nada, solo que exista)</li>
+</ul>
+</li>
+</ol>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">retornoDeSecundaria</span><span class="p">(</span><span class="n">segue</span><span class="p">:</span> <span class="bp">UIStoryboardSegue</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>Con <code>Ctrl+Arrastrar</code> conecta el botón “atrás” con el icono de “Exit” de la parte superior del <em>controller</em><ul>
+<li>Ejecuta el proyecto y comprueba que puedes volver atrás desde la pantalla secundaria
+6. Repite lo que has hecho en el caso de Ada Lovelace para las otras dos mujeres, creando las pantallas secundarias y la navegación adelante y atrás.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Aseguráos de guardar el estado actual del proyecto</strong> con un commit cuyo comentario sea “version 1”.</p>
+<h2 id="comunicar-un-controller-con-otro-1-punto">Comunicar un <em>controller</em> con otro (1 punto)<a class="headerlink" href="#comunicar-un-controller-con-otro-1-punto" title="Permanent link">&para;</a></h2>
+<p>Es un poco redundante tener tantas pantallas secundarias cuando en realidad lo único que cambia es el texto a mostrar. Valdría con una sola secundaria en la que cambiáramos dinámicamente dicho texto. Vamos a implementarlo así.</p>
+<p>Ahora podéis eliminar los segues y las pantallas secundarias, es mejor crearlos de nuevo.</p>
+<h3 id="crear-la-nueva-interfaz">Crear la nueva interfaz<a class="headerlink" href="#crear-la-nueva-interfaz" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crea de nuevo una pantalla secundaria con un campo de texto de varias líneas</li>
+<li>Con <code>Ctrl+arrastrar</code> podemos crear un <em>segue</em> desde cada uno de los botones hasta la pantalla. Habrán tres <em>segues</em> que lleguen a la misma, no debería ser problema.</li>
+<li>Añádele a la pantalla el botón de “atrás” y conéctalo con el icono de “exit”. El código necesario para el <em>unwinding</em> (método <code>retornoDeSecundaria</code>) ya debería estar en el <code>ViewController</code></li>
+<li>Comprueba que la navegación funciona correctamente yendo adelante y atrás</li>
+</ul>
+<h3 id="crear-un-controlador-personalizado-para-la-pantalla-secundaria">Crear un controlador personalizado para la pantalla secundaria<a class="headerlink" href="#crear-un-controlador-personalizado-para-la-pantalla-secundaria" title="Permanent link">&para;</a></h3>
+<p>Si en la parte derecha de la pantalla miras el <em>identity inspector</em> verás que el controlador de la pantalla secundaria es un tipo propio de Cocoa, el <code>UIViewController</code>. Vamos a cambiarlo por uno propio</p>
+<ol>
+<li>Crea una nueva clase de Cocoa Touch, (File> New > File…, plantilla “cocoa touch class”). En la segunda pantalla del asistente dale a la clase el nombre <code>SecundarioViewController</code> y haz que sea una subclase de <code>UIViewController</code>. Deja sin marcar la opción de crear el .XIB</li>
+<li>En el <em>storyboard</em>, selecciona el <em>controller</em> de la pantalla secundaria (es mejor que lo hagas pulsando en el primero de los iconos que aparecen en  la parte superior) 
+<img alt="" src="iconos_arriba_storyboard.png" /></li>
+<li>Una vez seleccionado, ve al <em>identity inspector</em> en el área de <code>Utilities</code> y en el apartado de <code>Custom class</code> selecciona como clase la que has creado, <code>SecundarioViewController</code></li>
+</ol>
+<h3 id="anadirle-un-outlet-al-controlador-secundario">Añadirle un <em>outlet</em> al controlador secundario<a class="headerlink" href="#anadirle-un-outlet-al-controlador-secundario" title="Permanent link">&para;</a></h3>
+<p>Tienes que añadir un <em>outlet</em> al campo de texto para que su contenido se pueda cambiar desde el controlador secundario. Hazlo como habitualmente, con ctrl+arrastrar entre el campo y el <code>SecundarioViewController</code>, en el <code>assistant editor</code>.</p>
+<h3 id="hacer-que-el-texto-cambie-segun-el-boton-pulsado">Hacer que el texto cambie según el botón pulsado<a class="headerlink" href="#hacer-que-el-texto-cambie-segun-el-boton-pulsado" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Lo primero es añadir físicamente los ficheros <code>*.txt</code> con los textos al proyecto para que se puedan cargar dinámicamente por código. Pulsa con el botón derecho sobre el proyecto y selecciona <code>Add files to Pioneras</code>. Selecciona los tres <code>.txt</code>, que se añadirán al proyecto</li>
+<li>
+<p>Para que le podamos decir al controlador secundario qué fichero tiene que abrir, debes crear una propiedad en el <code>SecundarioViewController</code> llamada <code>nomFich</code> de tipo <code>String</code></p>
+</li>
+<li>
+<p>Para establecer una asociación sencilla entre cada segue y los datos a mostrar puedes usar el identificador del <em>segue</em>. Haz clic sobre él y en el <code>Attributes inspector</code> cambia su <code>identifier</code>, respectivamente por <code>lovelace</code>, <code>hopper</code> y <code>liskov</code></p>
+</li>
+<li>ahora en la clase <code>ViewController</code>, que es el controlador de la pantalla principal, puedes implementar el <code>prepare(for:,sender:)</code></li>
+</ul>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">override</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="k">for</span> <span class="n">segue</span><span class="p">:</span> <span class="bp">UIStoryboardSegue</span><span class="p">,</span> <span class="n">sender</span><span class="p">:</span> <span class="nb">Any</span><span class="p">?)</span> <span class="p">{</span> 
+  <span class="c1">//obtenemos el controller destino y forzamos la conversión al tipo adecuado</span>
+  <span class="kd">let</span> <span class="nv">controller</span> <span class="p">=</span> <span class="n">segue</span><span class="p">.</span><span class="n">destination</span> <span class="k">as</span><span class="p">!</span> <span class="n">SecundarioViewController</span>
+  <span class="c1">//fijamosla propiedad &quot;nomFich&quot; al identificador del segue</span>
+  <span class="n">controller</span><span class="p">.</span><span class="n">nomFich</span> <span class="p">=</span> <span class="n">segue</span><span class="p">.</span><span class="n">identifier</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<ul>
+<li>Finalmente, en el <code>viewDidLoad()</code> del <code>SecundarioViewController</code> puedes acceder a la propiedad <code>self.nomFich</code>, cargar el texto del fichero y mostrarlo en el campo de texto. <em>Tendrás que escribir el código tú mismo</em>. Haz uso de los métodos:<ul>
+<li><code>Bundle.main.path(forResource:, ofType:)</code>, que devuelve la trayectoria completa para acceder a un recurso incluido en el proyecto sabiendo su nombre y su tipo (en el tipo pon solo “txt”, sin el punto).</li>
+<li>Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de <code>String(contentsOfFile:encoding)</code>. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado <code>String.Encoding.utf8</code>). CUIDADO, este método está marcado con <code>throws</code>, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)</li>
+</ul>
+</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../apuntes/" title="View Controllers" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                View Controllers
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../2_vistas/apuntes/" title="Vistas" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Vistas
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

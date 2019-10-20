@@ -45,6 +45,6 @@ Ahora vamos a conectar el *delegate* con la tabla gráficamente, en vez de por c
 
 1. Arrastrar un componente `Object` al árbol de componentes de la pantalla del móvil (al árbol que aparece a la izquierda, no a la pantalla en sí).
 2. Seleccionar el componente, y en el `Identity inspector` (tercer icono del panel derecho de Xcode), escribir el nombre de la clase `DelegateTabla` en `Custom Class`.
-3. Conectar tabla y delegate: seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el icono ![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.50.06.png) panel derecho de Xcode). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `delegate` hasta el icono del objeto que representa a la clase `TablaDelegate`
+3. Conectar tabla y delegate: seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el icono ![](images/conn_inspector.png) panel derecho de Xcode). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `delegate` hasta el icono del objeto que representa a la clase `TablaDelegate`
 
 Una vez hecho esto, comprueba que funciona correctamente.

@@ -47,7 +47,7 @@ Si en la parte derecha de la pantalla miras el *identity inspector* verás que e
 
 1. Crea una nueva clase de Cocoa Touch, (File\> New \> File…, plantilla “cocoa touch class”). En la segunda pantalla del asistente dale a la clase el nombre `SecundarioViewController` y haz que sea una subclase de `UIViewController`. Deja sin marcar la opción de crear el .XIB
 2. En el *storyboard*, selecciona el *controller* de la pantalla secundaria (es mejor que lo hagas pulsando en el primero de los iconos que aparecen en  la parte superior) 
-![](iconos_arriba_storyboard.png)
+![](images/iconos_arriba_storyboard.png)
 3. Una vez seleccionado, ve al *identity inspector* en el área de `Utilities` y en el apartado de `Custom class` selecciona como clase la que has creado, `SecundarioViewController`
 
 ### Añadirle un *outlet* al controlador secundario

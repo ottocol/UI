@@ -52,19 +52,19 @@ Vamos a ver primero cómo crear la tabla en sí y luego el objeto que va a ocupa
 
 La tabla en sí es una componente más de interfaz de usuario, como un botón, un *slider*,… Para crear una tabla, arrastramos un *table view* desde la librería de componentes de la parte inferior derecha de Xcode
 
-![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2013.06.10.png)
+![](images/table_view.png)
 
 > Cuidado: no uséis para este caso un *table view controller* sino un *table view*. El primero incluye no solo la tabla en sí sino también un *controller*, y la tabla ocupa todo el tamaño de la pantalla y no se puede cambiar de tamaño.
 
-Una vez creada la tabla, nos vamos al *attributes inspector* (icono ![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.46.16.png), en la parte superior derecha de Xcode) y hacemos que el  `Content` sea `Dynamic prototypes` y el número de `Prototype cells` al menos 1.
+Una vez creada la tabla, nos vamos al *attributes inspector* (icono ![](images/attr_inspector.png), en la parte superior derecha de Xcode) y hacemos que el  `Content` sea `Dynamic prototypes` y el número de `Prototype cells` al menos 1.
 
-![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.47.49.png)
+![](images/prototypes.png)
 
 Veremos que en la tabla aparece una “sección” titulada `Prototype cells`. En esta aparecen los *prototypes* o plantillas en las que se basarán las celdas de nuestra tabla. En   muchas tablas todas las celdas son iguales y por eso nos basta con un prototipo, pero podemos crear los necesarios.
 
 Para editar gráficamente el prototipo basta con seleccionarlo con el ratón y editarlo cambiando sus atributos con el *attributes inspector*. El más importante es el `Style`. Podemos usar uno propio (`Custom`) o uno de los predefinidos 
 
-![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.51.40.png)
+![](images/style_basic.png)
 
 Para cada estilo tenemos una serie de elementos con los que podemos “jugar”: un título, una imagen, en algunos casos un texto adicional…. En general, como queremos que el contenido concreto de la celda sea distinto para cada una, lo que haremos será fijarlos por código. Aquí solo elegimos el aspecto general y si ciertos elementos estarán o no presentes. Por ejemplo en el estilo `basic` la celda solo contiene un texto, mientras que en el `detail` contiene uno más grande y otro más pequeño.
 
@@ -129,7 +129,7 @@ Podemos sacar una celda del *pool* con el método de la vista de tabla `dequeueR
 
 > MUY IMPORTANTE: el identificador del `reuseIdentifier` **debe ser el mismo que elegimos gráficamente** al editar el prototipo de la celda. Si no fallará nuestro código
 
-![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2015.02.22.png)
+![](images/reuse_identifier.png)
 
 La nueva versión del código queda así:
 
@@ -169,13 +169,13 @@ override func viewDidLoad() {
 
 Otra alternativa a lo anterior es hacer la conexión con Xcode. Para **conectar gráficamente la tabla con el *datasource*** primero necesitamos tener una “representación gráfica” en pantalla del objeto `MiDataSource` con el que queremos conectar. Podemos arrastrar a la pantalla un `Object` de la librería de objetos de la parte inferior derecha de Xcode. Este es como si fuera un componente más de la interfaz gráfica pero no tiene representación en pantalla. En lugar de arrastrarlo a la pantalla en sí como ocurre con los componentes gráficos convencionales, debemos arrastrarlo al árbol de componentes que aparece a su izquierda
 
-![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.55.44.png)
+![](images/object.png)
 
 Una vez colocado aquí, vamos a indicar que este objeto es de la clase `MiDataSource`. Para ello usamos el `Identity inspector`, y en la propiedad `Custom class` escribimos el nombre de la clase
 
-![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.56.46.png)
+![](images/class_name.png)
 
-Ya podemos conectar la propiedad `dataSource` de la tabla con este objeto. La propiedad la podemos ver si seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el icono ![](images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.50.06.png) del área de `Utilities`). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `datasource` hasta el icono del objeto que representa a la clase `MiDataSource`	
+Ya podemos conectar la propiedad `dataSource` de la tabla con este objeto. La propiedad la podemos ver si seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el icono ![](images/conn_inspector.png) del área de `Utilities`). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `datasource` hasta el icono del objeto que representa a la clase `MiDataSource`	
 
 ![](images/connect.png)
 

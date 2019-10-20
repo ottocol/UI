@@ -56,10 +56,10 @@ Desde Xcode 5 los *storyboards* son la forma recomendada por Apple de crear inte
 
 ### El *controller* de cada pantalla 
 
-Por defecto, los view controller que añadimos visualmente al *storyboard* son clases propias de Cocoa, es decir, no tenemos que escribir código pero tampoco podemos sobreescribir sus métodos ya que no son clases nuestras. Podemos cambiar la clase de cualquier elemento en el Interface Builder seleccionándolo y yendo al icono del `Identity inspector`: ![](images/Captura%20de%20pantalla%202014-10-18%20a%20las%201.45.18.png) en el área de `Utilities`. Seleccionaremos el *controller* y cambiaremos su `Class` por una escrita por nosotros y que herede de `UIViewController`.
+Por defecto, los view controller que añadimos visualmente al *storyboard* son clases propias de Cocoa, es decir, no tenemos que escribir código pero tampoco podemos sobreescribir sus métodos ya que no son clases nuestras. Podemos cambiar la clase de cualquier elemento en el Interface Builder seleccionándolo y yendo al icono del `Identity inspector`: ![](images/identity_inspector.png) en el área de `Utilities`. Seleccionaremos el *controller* y cambiaremos su `Class` por una escrita por nosotros y que herede de `UIViewController`.
 
 > Seleccionar el *view controller* con el ratón haciendo clic sobre él a veces no es sencillo, ya que acabamos seleccionando los elementos de la vista contenidos en él. Podemos hacerlo más fácilmente pulsando el icono de *view controller* que aparece en su parte superior
-> ![](images/Captura%20de%20pantalla%202016-10-05%20a%20las%2018.03.29.png)
+> ![](images/vc_icon.png)
 
 ### El *controller* inicial 
 
@@ -67,7 +67,7 @@ En cada momento habrá un *view controller* inicial que es el que se muestra cua
 
 ![](images/controlador_inicial.png)
 
-Para **convertir un *view controller* en inicial**, teniéndolo seleccionado ir al icono de propiedades ![](images/Captura%20de%20pantalla%202014-10-18%20a%20las%200.49.25.png) del área de `Utilities` y marcar sobre el *checkbox* `Is initial view controller`
+Para **convertir un *view controller* en inicial**, teniéndolo seleccionado ir al icono de propiedades ![](images/attr_inspector.png) del área de `Utilities` y marcar sobre el *checkbox* `Is initial view controller`
 
 ![](images/view_controller_icon.png)
 
@@ -84,7 +84,7 @@ Son las transiciones entre los *controllers*. Podemos **crear un *segue* visualm
 Como vemos en el menú contextual hay cuatro tipos de *segue*. Dos de ellos son *mostrar* (*show*) y otros dos *presentar* (*present*). Además podemos programar nuestro propio tipo de *segue* con *custom*.
 
 -  *Show* es la forma recomendada habitualmente, ya que permite que el controlador actual “decida” cómo mostrar físicamente el nuevo. Por ejemplo si el controlador actual “ocupa” toda la pantalla, el nuevo también lo hará, pero si por ejemplo es un *tab bar controller* solo cambiará la parte de la pantalla que muestra contenido, no la barra de herramientas
-![Tab bar controller: cuando se muestra un nuevo controlador, se hace solo en el área de contenido, sin "machacar" la barra de botones](images/Captura%20de%20pantalla%202016-10-07%20a%20las%2015.27.09.png "Tab bar controller: cuando se muestra un nuevo controlador, se hace solo en el área de contenido, sin "machacar" la barra de botones")
+![Tab bar controller: cuando se muestra un nuevo controlador, se hace solo en el área de contenido, sin "machacar" la barra de botones](images/tab_bar.png)
 -  *Present* quiere decir que el nuevo *controller* se mostrará de forma modal, de manera similar a cuando en un interfaz gráfico se muestra por ejemplo un cuadro de diálogo modal. No obstante esto no quiere decir que el *controller* antiguo se siga viendo “por debajo”, ya que en dispositivos con tamaño de pantalla limitado el nuevo ocupará toda la pantalla. 
 
 Como vemos en el menú contextual, en el caso del *show* se distingue además entre `Show` “a secas” y `Show detail`. El primero es el indicado cuando el nuevo *controller* va a sustituir completamente al anterior y el segundo cuando el nuevo es “secundario” con respecto al anterior (como en el ejemplo que poníamos del *tab bar*.
@@ -95,16 +95,16 @@ En el caso del *present*, se distingue entre `Present Modally` y `Present As Pop
 
 > En realidad la forma concreta de mostrar exactamente el nuevo controlador la decide iOS dependiendo de las dimensiones actuales del dispositivo. Por ejemplo en un iPhone SE en vertical no aparecerá un *popover* aunque lo especifiquemos, la que la pantalla es muy pequeña para ello.
 
-Podemos **configurar las propiedades del *segue*** haciendo clic sobre él y yendo al icono de propiedades ![](images/Captura%20de%20pantalla%202014-10-18%20a%20las%200.49.25-1.png) del área de `Utilities`. Aquí podemos cambiar el tipo y también la transición usada para navegar de una pantalla a otra.
+Podemos **configurar las propiedades del *segue*** haciendo clic sobre él y yendo al icono de propiedades ![](images/attr_inspector.png) del área de `Utilities`. Aquí podemos cambiar el tipo y también la transición usada para navegar de una pantalla a otra.
 
 #### Estilos de presentación y de transición
 Podemos usar diversos estilos a la hora de presentar de forma modal un *controller*. Por ejemplo podemos indicar que el nuevo controlador debe ocupar toda la pantalla, o bien solo el alto dejando una zona a los lados, o bien un recuadro central como un cuadro de diálogo…
 
 ![Tomado de la documentación de Apple](images/DraggedImage-4.png "Tomado de la documentación de Apple")
 
-Estos estilos se definen **en una propiedad del *controller* a presentar, y no del *segue***. En Xcode podemos cambiarlos con la propiedad `Presentation` en el *attribute inspector* ![](images/Captura%20de%20pantalla%202014-10-18%20a%20las%200.49.25-2.png) del *controller*:
+Estos estilos se definen **en una propiedad del *controller* a presentar, y no del *segue***. En Xcode podemos cambiarlos con la propiedad `Presentation` en el *attribute inspector* ![](images/attr_inspector.png) del *controller*:
 
-![](images/Captura%20de%20pantalla%202016-10-07%20a%20las%2016.37.20.png)
+![](images/presentation.png)
 
 En Swift especificamos el estilo dando valores a la propiedad `modalPresentationStyle` del controller que vamos a presentar.
 
