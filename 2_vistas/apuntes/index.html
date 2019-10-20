@@ -707,7 +707,6 @@
 <h4>Teclado en pantalla</h4>
 <p>Cuando un campo de texto adquiere el foco porque el usuario hace <em>tap</em> sobre él, automáticamente aparece el teclado software <em>on screen</em>. El problema es que por defecto no desaparece salvo que escribamos algo de código.</p>
 <p>Si queremos que desaparezca cuando pulsamos sobre la tecla de “Aceptar” tenemos que escribir un <em>action</em> que responda al evento <code>Did end on exit</code> del campo de texto. </p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-08%20a%20las%2020.25.05.png" /></p>
 <blockquote>
 <p>Cuando crees el <em>action</em> indica en el menú <em>popup</em> que el <code>type</code> debe ser <code>UITextField</code>. Esta opción es el parámetro que se le pasará al <em>action</em> y representa el objeto que ha disparado el evento, en nuestro caso el campo de texto. Si lo pasamos como <code>AnyObject</code> no tendremos acceso a los métodos del API de <code>UITextField</code> (salvo que hiciéramos una conversión con <code>as</code>)</p>
 </blockquote>
@@ -746,7 +745,7 @@
 <p>Son cuadros de diálogo modales que se usan para informar al usuario de eventos importantes. No se crean gráficamente en Xcode sino por código Pueden simplemente informar de algo o además pedir al usuario que elija uno entre varios cursos de acción.</p>
 <p>Vamos a ver primero cómo crear una <em>alerta</em>. En realidad el API para <em>alertas</em> y <em>action sheets</em> es el mismo, solo se diferencian en una constante que se le pasa al inicializador. Luego veremos las diferencias en cuanto a su significado de cara al usuario.</p>
 <p>Por ejemplo veamos cómo se mostraría una alerta con dos opciones</p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-08%20a%20las%2023.20.24.png" /></p>
+<p><img alt="" src="../images/alert_2_opciones.png" /></p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2
  3
@@ -793,7 +792,7 @@
 <p>Podemos tener el número de botones que queramos. No obstante, las “iOS Human Interface Guidelines” <a href="https://developer.apple.com/ios/human-interface-guidelines/ui-views/alerts/">recomiendan como máximo dos</a>, y en caso que necesitemos más usar un <em>“Action Sheet”</em>.</p>
 </blockquote>
 <p>Por otro lado un <em>action sheet</em> es un cuadro de diálogo que se usa para dar alternativas al usuario cuando ha realizado una acción. Por ejemplo supongamos un gestor de email en el que el usuario ha hecho <em>tap</em> sobre un mensaje. Podría aparecer la siguiente <em>action sheet</em></p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-08%20a%20las%2023.44.18.png" /></p>
+<p><img alt="" src="../images/action_sheet.png" /></p>
 <p>El API es exactamente el mismo, solo que en el inicializador de <code>UIAlertController</code> se pasa como parámetro <code>preferredStyle</code> el valor <code>actionSheet</code>.</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
  2

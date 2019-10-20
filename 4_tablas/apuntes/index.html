@@ -541,15 +541,15 @@
 <p>Vamos a ver primero cómo crear la tabla en sí y luego el objeto que va a ocuparse de los datos que queremos mostrar en la tabla</p>
 <h3 id="el-objeto-tabla">El objeto Tabla<a class="headerlink" href="#el-objeto-tabla" title="Permanent link">&para;</a></h3>
 <p>La tabla en sí es una componente más de interfaz de usuario, como un botón, un <em>slider</em>,… Para crear una tabla, arrastramos un <em>table view</em> desde la librería de componentes de la parte inferior derecha de Xcode</p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2013.06.10.png" /></p>
+<p><img alt="" src="../images/table_view.png" /></p>
 <blockquote>
 <p>Cuidado: no uséis para este caso un <em>table view controller</em> sino un <em>table view</em>. El primero incluye no solo la tabla en sí sino también un <em>controller</em>, y la tabla ocupa todo el tamaño de la pantalla y no se puede cambiar de tamaño.</p>
 </blockquote>
-<p>Una vez creada la tabla, nos vamos al <em>attributes inspector</em> (icono <img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.46.16.png" />, en la parte superior derecha de Xcode) y hacemos que el  <code>Content</code> sea <code>Dynamic prototypes</code> y el número de <code>Prototype cells</code> al menos 1.</p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.47.49.png" /></p>
+<p>Una vez creada la tabla, nos vamos al <em>attributes inspector</em> (icono <img alt="" src="../images/attr_inspector.png" />, en la parte superior derecha de Xcode) y hacemos que el  <code>Content</code> sea <code>Dynamic prototypes</code> y el número de <code>Prototype cells</code> al menos 1.</p>
+<p><img alt="" src="../images/prototypes.png" /></p>
 <p>Veremos que en la tabla aparece una “sección” titulada <code>Prototype cells</code>. En esta aparecen los <em>prototypes</em> o plantillas en las que se basarán las celdas de nuestra tabla. En   muchas tablas todas las celdas son iguales y por eso nos basta con un prototipo, pero podemos crear los necesarios.</p>
 <p>Para editar gráficamente el prototipo basta con seleccionarlo con el ratón y editarlo cambiando sus atributos con el <em>attributes inspector</em>. El más importante es el <code>Style</code>. Podemos usar uno propio (<code>Custom</code>) o uno de los predefinidos </p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2014.51.40.png" /></p>
+<p><img alt="" src="../images/style_basic.png" /></p>
 <p>Para cada estilo tenemos una serie de elementos con los que podemos “jugar”: un título, una imagen, en algunos casos un texto adicional…. En general, como queremos que el contenido concreto de la celda sea distinto para cada una, lo que haremos será fijarlos por código. Aquí solo elegimos el aspecto general y si ciertos elementos estarán o no presentes. Por ejemplo en el estilo <code>basic</code> la celda solo contiene un texto, mientras que en el <code>detail</code> contiene uno más grande y otro más pequeño.</p>
 <blockquote>
 <p>Otro atributo importante es el <code>reuse identifier</code>, donde escribiremos un identificador inventado por nosotros para este prototipo. Cuando hablemos del <em>datasource</em> veremos dónde referenciar este identificador en nuestro código.</p>
@@ -615,7 +615,7 @@
 <blockquote>
 <p>MUY IMPORTANTE: el identificador del <code>reuseIdentifier</code> <strong>debe ser el mismo que elegimos gráficamente</strong> al editar el prototipo de la celda. Si no fallará nuestro código</p>
 </blockquote>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2015.02.22.png" /></p>
+<p><img alt="" src="../images/reuse_identifier.png" /></p>
 <p>La nueva versión del código queda así:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
 2
@@ -663,10 +663,10 @@
 <p>En el código anterior accedemos al objeto tabla con un <em>outlet</em> creado previamente en Xcode de modo gráfico, pero esto no parece tener mucho sentido si hemos dicho que íbamos a establecer la conexión por código. Si no estamos usando el <em>outlet</em> para alguna tarea adicional, una alternativa sería asignar un <em>tag</em> fijo a la tabla (por ejemplo 100) y acceder a ella con <code>self.view.viewWithTag(tag:100)</code></p>
 </blockquote>
 <p>Otra alternativa a lo anterior es hacer la conexión con Xcode. Para <strong>conectar gráficamente la tabla con el *datasource</strong>* primero necesitamos tener una “representación gráfica” en pantalla del objeto <code>MiDataSource</code> con el que queremos conectar. Podemos arrastrar a la pantalla un <code>Object</code> de la librería de objetos de la parte inferior derecha de Xcode. Este es como si fuera un componente más de la interfaz gráfica pero no tiene representación en pantalla. En lugar de arrastrarlo a la pantalla en sí como ocurre con los componentes gráficos convencionales, debemos arrastrarlo al árbol de componentes que aparece a su izquierda</p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.55.44.png" /></p>
+<p><img alt="" src="../images/object.png" /></p>
 <p>Una vez colocado aquí, vamos a indicar que este objeto es de la clase <code>MiDataSource</code>. Para ello usamos el <code>Identity inspector</code>, y en la propiedad <code>Custom class</code> escribimos el nombre de la clase</p>
-<p><img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.56.46.png" /></p>
-<p>Ya podemos conectar la propiedad <code>dataSource</code> de la tabla con este objeto. La propiedad la podemos ver si seleccionamos la tabla con el ratón y vamos al <code>Connections inspector</code> (el icono <img alt="" src="images/Captura%20de%20pantalla%202016-10-09%20a%20las%2016.50.06.png" /> del área de <code>Utilities</code>). Arrastramos con el ratón (no hace falta <code>Ctrl</code>) desde el círculo que representa al <code>datasource</code> hasta el icono del objeto que representa a la clase <code>MiDataSource</code>   </p>
+<p><img alt="" src="../images/class_name.png" /></p>
+<p>Ya podemos conectar la propiedad <code>dataSource</code> de la tabla con este objeto. La propiedad la podemos ver si seleccionamos la tabla con el ratón y vamos al <code>Connections inspector</code> (el icono <img alt="" src="../images/conn_inspector.png" /> del área de <code>Utilities</code>). Arrastramos con el ratón (no hace falta <code>Ctrl</code>) desde el círculo que representa al <code>datasource</code> hasta el icono del objeto que representa a la clase <code>MiDataSource</code>  </p>
 <p><img alt="" src="../images/connect.png" /></p>
 <h2 id="gestion-de-tablas">Gestión de tablas<a class="headerlink" href="#gestion-de-tablas" title="Permanent link">&para;</a></h2>
 <p>En las tablas dinámicas podemos por supuesto insertar y eliminar celdas. También podemos seleccionarlas haciendo <em>tap</em> sobre ellas. </p>
