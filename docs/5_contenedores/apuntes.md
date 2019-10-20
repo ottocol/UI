@@ -4,7 +4,7 @@ A diferencia de los otros tipos de *controllers* que hemos visto, los controlado
 
 En esta parte básica de la asignatura vamos a ver los dos controladores contenedores más típicos: el *tab bar* y el *navigation*.
 
-## Tab bar controllers {#tabbar}
+## Tab bar controllers 
 
 Permiten diseñar la típica aplicación dividida por “apartados” o “tabs”. Por ejemplo lo podemos ver en la aplicación de “salud” de iOS (entre muchísimas otras)
 
@@ -30,7 +30,7 @@ En el apartado `Tab bar item`, si elegimos uno de los iconos del sistema no podr
 
 Si queremos personalizar el icono poniendo nuestra propia imagen hay que tener en cuenta que los iconos de un *tab bar* son monocromáticos. El formato a usar es .png, del que el sistema examinará el canal alfa o de transparencia. Tomará como forma del icono los pixels que sean opacos ignorando su color. El tamaño recomendado para los iconos varía según la interfaz se muestre en modo *compact* (que en un iPhone correspondería a *portrait*/vertical) o *regular* (en un iPhone sería *landscape*/horizontal, y en un iPad sería cualquier modo, ya que un iPad en vertical es mucho más ancho que un iPhone). Podéis consultar más detalles sobre el formato y el tamaño recomendado en el apartado "[Tab bar icon size](https://developer.apple.com/design/human-interface-guidelines/ios/icons-and-images/custom-icons#tab-bar-icon-size)"  de las *[iOS Human Interface Guidelines ](https://developer.apple.com/design/human-interface-guidelines/ios/overview/themes/)* de Apple.
 
-## Navigation controllers {#navigation}
+## Navigation controllers 
 
 Los *navigation controller* sirven para crear estructuras de navegación jerárquica en las que tenemos pantallas y “subpantallas”. Estando en una de ellas podemos volver atrás una a una. El *navigation controller* se encargará de que se vaya cambiando automáticamente al controlador apropiado (el de la pantalla actual).
 

@@ -1,6 +1,6 @@
 # Sesión 1: View Controllers
 
-## *View controllers*. Funciones básicas {#funciones}
+## *View controllers*. Funciones básicas 
 
 Los *view controllers* son la C del MVC. Su tarea más importante es gestionar una jerarquía de vistas. Cada *controller* tiene una vista “principal” o “raíz” (su propiedad `view`), y esa a su vez tiene *subvistas* que por supuesto pueden contener otras *subvistas* y así sucesivamente. 
 
@@ -10,7 +10,7 @@ Hay dos tipos básicos de controladores: los que muestran directamente contenido
 
 ![Ejemplo de contenedor: split view en un iPad (tomado de la View Controller Programming Guide de Apple)](images/DraggedImage-1.png "Ejemplo de contenedor: split view en un iPad (tomado de la View Controller Programming Guide de Apple)")
 
-### Otras tareas de los *view controllers* {#tareas}
+### Otras tareas de los *view controllers* 
 
 Además de gestionar la jerarquía de vistas, los controladores actúan como el “pegamento” que relaciona la vista con el modelo. El controlador es el lugar típico para poner el código que reacciona a los eventos del usuario, como por ejemplo qué hacer cuando se pulsa un botón.
 
@@ -18,7 +18,7 @@ Además de gestionar la jerarquía de vistas, los controladores actúan como el 
 
 Por otro lado, los *controllers* son los responsables de adaptar las dimensiones de los componentes de la interfaz a las dimensiones reales de la pantalla. Para ello se usan varios mecanismos: *autolayout*, *size classes* y *traits*, que veremos a nivel introductorio en las siguientes sesiones.
 
-### Ciclo de vida de un *controller* {#ciclo}
+### Ciclo de vida de un *controller* 
 
 Cada controlador va pasando por una serie de estados conforme se carga la aplicación, se muestra la pantalla que este gestiona, se cambia de pantalla, etc. 
 
@@ -32,12 +32,12 @@ Los métodos anteriores y sus “complementarios” (con `disappear` en lugar de
 
 ![](images/DraggedImage-2.png)
 
-### Rotaciones {#rotaciones}
+### Rotaciones 
 
 [https://developer.apple.com/reference/uikit/uiviewcontroller](images/https://developer.apple.com/reference/uikit/uiviewcontroller)
 
 
-### Instanciar controladores y vistas {#instanciar}
+### Instanciar controladores y vistas 
 
 Podemos hacerlo de varias formas. De más sencilla a más compleja (pero también más flexible)
 
@@ -49,19 +49,19 @@ En los siguientes apartados vamos a ver las dos primeras opciones con algo más 
 
 
 
-## Storyboards {#storyboards}
+## Storyboards 
 
 Desde Xcode 5 los *storyboards* son la forma recomendada por Apple de crear interfaces de usuario. Un *storyboard* contiene la representación gráfica de las “pantallas” (los controladores) que componen nuestra aplicación y de las relaciones entre ellas. Además el sistema se encarga automáticamente de moverse por las pantallas cuando sucedan determinados eventos, instanciando los controladores y las vistas automáticamente.
 
 
-### El *controller* de cada pantalla {#pantalla}
+### El *controller* de cada pantalla 
 
 Por defecto, los view controller que añadimos visualmente al *storyboard* son clases propias de Cocoa, es decir, no tenemos que escribir código pero tampoco podemos sobreescribir sus métodos ya que no son clases nuestras. Podemos cambiar la clase de cualquier elemento en el Interface Builder seleccionándolo y yendo al icono del `Identity inspector`: ![](images/Captura%20de%20pantalla%202014-10-18%20a%20las%201.45.18.png) en el área de `Utilities`. Seleccionaremos el *controller* y cambiaremos su `Class` por una escrita por nosotros y que herede de `UIViewController`.
 
 > Seleccionar el *view controller* con el ratón haciendo clic sobre él a veces no es sencillo, ya que acabamos seleccionando los elementos de la vista contenidos en él. Podemos hacerlo más fácilmente pulsando el icono de *view controller* que aparece en su parte superior
 > ![](images/Captura%20de%20pantalla%202016-10-05%20a%20las%2018.03.29.png)
 
-### El *controller* inicial {#inicial}
+### El *controller* inicial 
 
 En cada momento habrá un *view controller* inicial que es el que se muestra cuando se carga la aplicación. Se distingue visualmente porque tiene una flecha apuntando a él desde la izquierda:
 
@@ -73,7 +73,7 @@ Para **convertir un *view controller* en inicial**, teniéndolo seleccionado ir 
 
 También podemos arrastrar la flecha que indica que un controlador es el inicial desde el actual hasta el que queremos convertir en inicial.
 
-## Segues {#segues}
+## Segues 
 
 Son las transiciones entre los *controllers*. Podemos **crear un *segue* visualmente** con `Ctrl+Arrastrar` entre un elemento cualquiera de un view controller (por ejemplo un botón), que será el de *controller* de origen, y el *controller* destino. Se nos dará a **elegir el tipo de *segue*** en un menú contextual.
 
@@ -166,7 +166,7 @@ En el método del *unwinding*, nótese que podemos usar el parámetro, que es el
 
 Finalmente, decir que cuando se produce un *unwind*, el controlador desde el que se vuelve también recibe una llamada a `prepare(for:sender:)`, método que podemos sobreescribir si queremos aprovechar para realizar alguna operación antes de volver.
 
-## NIBs {#NIBs}
+## NIBs 
 
 Un problema con los *storyboards* es que no funcionan bien para desarrollar en equipo. Aunque dos desarrolladores modifiquen distintas pantallas de la aplicación, si ambas están en el mismo *storyboard* tendremos problemas, ya que no es tan fácil resolver conflictos de versiones como cuando trabajamos con código Swift.
 

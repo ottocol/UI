@@ -1,6 +1,6 @@
 # Sesión 2: Vistas
 
-## Interacción con la interfaz por código {#codigo}
+## Interacción con la interfaz por código 
 
 Hasta ahora hemos visto como crear la interfaz visualmente con Xcode, mediante *storyboards* o NIBs,  pero todo lo que se puede hacer con dicha herramienta se puede hacer también de forma programática, ya que lo único que hace el entorno es crear objetos de la API de Cocoa Touch (o definidos por nosotros) y establecer visualmente sus propiedades.
 
@@ -85,7 +85,7 @@ Puede que tengamos una jerarquía compleja y necesitemos acceder desde el códig
 
 > La jerarquía de vistas de una pantalla determinada de nuestra aplicación puede llegar a ser muy compleja. Es por eso que en Xcode 6 se ha añadido una opción que nos permite mostrar un “despiece” visual en 3D de las vistas que componen la pantalla actual. Dicha opción está disponible en `Debug > View Debugging`.En modo texto podemos usar la propiedad `recursiveDescription` para [imprimir la descripción textual](https://developer.apple.com/library/ios/technotes/tn2239/_index.html#//apple_ref/doc/uid/DTS40010638-CH1-SUBSECTION34) de las vistas que contiene una vista dada.
 
-## Propiedades de una vista {#propiedades}
+## Propiedades de una vista 
 
 A continuación vamos a repasar las propiedades básicas de las vistas, que podremos modificar tanto desde Xcode como de forma programática.
 
@@ -135,7 +135,7 @@ Por otro lado, también podemos hacer que una vista tenga un cierto grado de tra
 
 Por último, también podemos ocultar una vista con la propiedad `isHidden`. Cuando hagamos que una vista se oculte, aunque seguirá ocupando su correspondiente espacio en pantalla, no será visible ni recibirá eventos.
 
-## Algunos componentes de interfaz de usuario {#componentes}
+## Algunos componentes de interfaz de usuario 
 
 A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. Se remite al lector a la documentación de Apple, en concreto el documento llamado [Interface Essentials](https://developer.apple.com/design/human-interface-guidelines/ios/overview/interface-essentials/), excelente y bastante exhaustivo.
 

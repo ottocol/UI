@@ -1,6 +1,6 @@
 # Tablas
 
-## Introducción {#intro}
+## Introducción 
 
 Las vistas de tabla (`UITableView`) se encargan de mostrar, gestionar y hacer *scrolling* de una tabla de elementos de una sola columna. Cada una de las filas se modela con un `UITableViewCell`.
  
@@ -15,7 +15,7 @@ Las tablas pueden ser *simples* (`UITableViewStylePlain`)
 
 Hay varios estilos predefinidos para las filas, que nos permiten mostrar diversos elementos: título, subtítulo, icono a la izquierda, … También podemos crear nuestros propios estilos de celda bien por código o bien gráficamente en el *interface builder*.
 
-## Creación de vistas de tabla {#vistas}
+## Creación de vistas de tabla 
 
 Una vista de tabla interactúa básicamente con tres objetos (aunque podemos implementar todas las funcionalidades en una única clase, como se suele hacer en los casos más simples)
 
@@ -29,7 +29,7 @@ Es muy habitual que el *controller*, el *delegate* y el *data source* sean el mi
 
 Si usamos una vista de tabla dibujada en el *storyboard* podemos conectarla con los dos “colaboradores” gráficamente mediante el “Connections Inspector” del panel “Utilities”  
 
-## Tablas estáticas {#estaticas}
+## Tablas estáticas 
 
 En algunos casos conocemos de partida los elementos que queremos dibujar en la tabla. Ejemplo típico de esto es la aplicación de *Ajustes*, en la que las opciones están colocadas en una tabla simplemente para que estén más organizadas y tengan un formato atractivo. Esto lo podemos conseguir con una *tabla estática*.
 
@@ -42,7 +42,7 @@ Podemos añadir secciones a la tabla y cambiar el número de celdas en cada secc
 
 > Podemos aumentar el número de celdas de modo que no quepan en la pantalla. Para desplazarnos por la tabla podemos seleccionarla y hacer *scroll* con la rueda del ratón
 
-## Tablas dinámicas {#dinamicas}
+## Tablas dinámicas 
 
 En este tipo de tablas los datos son dinámicos: no se conocen por adelantado cuando se está diseñando la aplicación y suelen proceder de alguna fuente externa como una base de datos o un servidor.
 
@@ -179,7 +179,7 @@ Ya podemos conectar la propiedad `dataSource` de la tabla con este objeto. La pr
 
 ![](images/connect.png)
 
-## Gestión de tablas {#gestion}
+## Gestión de tablas 
 
 En las tablas dinámicas podemos por supuesto insertar y eliminar celdas. También podemos seleccionarlas haciendo *tap* sobre ellas. 
 

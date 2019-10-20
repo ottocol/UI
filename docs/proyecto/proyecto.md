@@ -1,6 +1,6 @@
 # Proyecto de la asignatura de interfaces de usuario, parte de iOS básico
 
-Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [el API](developer.marvel.com) de la editorial Marvel, que nos permite consultar información sobre los personajes, los *comics*, las *series*,...
+Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [el API](https://developer.marvel.com/) de la editorial Marvel, que nos permite consultar información sobre los personajes, los *comics*, las *series*,...
 
 ## Pasos iniciales 
 
