@@ -137,7 +137,12 @@ Por último, también podemos ocultar una vista con la propiedad `isHidden`. Cua
 
 ## Algunos componentes de interfaz de usuario 
 
-A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. Se remite al lector a la documentación de Apple, en concreto el documento llamado [Interface Essentials](https://developer.apple.com/design/human-interface-guidelines/ios/overview/interface-essentials/), excelente y bastante exhaustivo.
+A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. 
+
+Se os recomienda consultar la documentación de Apple, en concreto hay dos tipos de documentación que os pueden resultar útiles:
+
+- Desde el punto de vista del diseño y la usabilidad, el documento llamado [Interface Essentials](https://developer.apple.com/design/human-interface-guidelines/ios/overview/interface-essentials/).
+- Desde el punto de vista de desarrollo podéis consultar el apartado ["views and controls"](https://developer.apple.com/documentation/uikit/views_and_controls) de la [documentación de UIKit](https://developer.apple.com/documentation/uikit), con la referencia del API y la forma de usar cada componente en nuestro código.
 
 > Aunque aquí hablemos de controles indistintamente para referirnos a las etiquetas, botones, … en realidad este término tiene un significado más preciso en iOS. La clase `UIControl` es de la que heredan los controles más “interactivos” como los botones, mientras que las etiquetas lo hacen de `UIView` (no obstante todos los`UIControl` son también vistas ya que a su vez esta clase hereda de `UIView`).
 
@@ -253,3 +258,96 @@ self.present(actionSheet, animated: true) {
    print("Ha desaparecido el action sheet")
 }
 ```
+
+### Pickers
+
+Nos permiten elegir uno de entre una lista de valores, usando la metáfora visual de la típica rueda que se gira para seleccionar el valor deseado. En el API se corresponden con la clase [`UIPickerView`](https://developer.apple.com/documentation/uikit/uipickerview).
+
+![](images/picker.png)
+
+Comparados con la mayoría de los otros controles son bastante más complejos, ya que un *picker* necesita de la ayuda de dos *delegates* (dos objetos que sean conformes a ciertos protocolos): 
+
+- Un *delegate* (protocolo `UIPickerViewDelegate`): gestiona el comportamiento general del picker
+- Un *datasource* (protocolo `UIPickerViewDataSource`): gestiona el "modelo de datos": cuántas filas y columnas tiene
+
+Estos dos protocolos heredan de `NSObjectProtocol`, con lo que los objetos conformes a ellos deben ser conformes también a este último (esto se puede conseguir de modo sencillo haciendo que la clase herede de `NSObject`, ya que esta clase es conforme a este protocolo).
+
+Por ejemplo supongamos una clase `GestorPicker` que para hacer el código más compacto va a hacer tanto de *delegate* como de *datasource*:
+
+```swift
+class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+    var lista = ["Pepe", "Eva", "Juan", "María"]
+
+    //METODOS DE UIPickerViewDelegate
+    //número de "columnas" del Picker
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    //número de "filas"
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return lista.count
+    }
+
+    //METODOS DE UIPickerViewDataSource
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return lista[row]
+    }   
+}
+```
+
+En el *view controller* de la pantalla con el *picker* definiríamos una instancia de `GestorPicker`
+
+```swift
+let gestorPicker = GestorPicker()
+```
+Crearíamos un *outlet* que represente al *picker* con Ctrl+Arrastrar
+
+```swift
+@IBOutlet weak var miPicker: UIPickerView! 
+```
+Y finalmente dentro del `viewDidLoad` "enlazaríamos" el *picker* con su *datasource* y su *delegate*, que en este caso son el mismo objeto.
+
+```swift
+self.miPicker.delegate = self.gestorPicker
+self.miPicker.dataSource = self.gestorPicker
+```
+
+Los métodos anteriores nos permiten pintar el *picker*, pero además nos interesará saber qué opción está seleccionada. En cualquier momento podemos obtener el número de fila seleccionado en el *picker* con
+
+```swift
+//Cambiar el 0 por la "columna" que queramos
+self.miPicker.selectedRow(inComponent: 0)
+```
+
+Además si nos interesa podemos ser avisados en el momento en que el usuario seleccione una opción. Cuando se produzca ese evento, el objeto que actúe de *delegate* del *picker* recibirá una llamada a su método `pickerView(_:,didSelectRow:,inComponent:)`:
+
+```swift
+class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+    var lista = ["Pepe", "Eva", "Juan", "María"]
+    ...
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print("Seleccionada fila: \(row), dato: \(lista[row])")
+    }
+    ...
+}
+```
+
+### Otros controles (*sliders*, *switches*, *date pickers*)
+
+Estos controles son muy heterogéneos, pero todos tienen en común que tienen un valor asociado y que este valor puede cambiar debido a las acciones del usuario. El tipo del valor y la(s) propiedade(s) para acceder a él serán muy distintas según el tipo de control, por ejemplo:
+
+- Un `UISwitch` es booleano y se sabe si está a "on" con `isOn`
+- Un `UISlider` tiene un valor `Float` y se accede a él con la propiedad `value`
+- Un `UIDatePicker` tiene una fecha y se accede a ella con la propiedad `date`
+
+Pero en todos se usa la misma idea, implementar un *action* vinculado al evento de cambio del valor de modo que en su código podamos acceder al valor actual. Por ejemplo para un *slider* tendríamos algo como
+
+```swift
+//Este método se ha creado con el "assistant editor" y Ctrl+Arrastrar
+//de la ventana del storyboard al editor con el código del view controller
+//Elegimos Connection "action" y type "UISlider"
+@IBAction func cambiaSlider(_ sender: UISlider) {
+    print("El valor es: \(sender.value)")
+}
+```
+> Es importante que al crear el *action*, si lo hacemos gráficamente con Ctrl+Arrastrar, en el *popup* de opciones elijamos como tipo `UISlider` (o en general, el tipo del control en cuestión). Así el parámetro *sender* que representa el objeto que ha generado el evento tendrá el tipo adecuado y no necesitaremos hacer un *cast* para acceder a la propiedad deseada, como pasaría si lo dejamos con tipo `Any`.
