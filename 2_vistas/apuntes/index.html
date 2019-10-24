@@ -318,6 +318,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pickers" class="md-nav__link">
+    Pickers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-controles-sliders-switches-date-pickers" class="md-nav__link">
+    Otros controles (sliders, switches, date pickers)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -528,6 +542,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pickers" class="md-nav__link">
+    Pickers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otros-controles-sliders-switches-date-pickers" class="md-nav__link">
+    Otros controles (sliders, switches, date pickers)
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -696,7 +724,12 @@
 <p>Por otro lado, también podemos hacer que una vista tenga un cierto grado de transparencia, o esté oculta. A diferencia de <code>backgroundColor</code>, que sólo afecta al fondo de la vista, con la propiedad <code>alpha</code>, de tipo <code>CGFloat</code>, podemos controlar el nivel de transparencia de la vista completa con todo su contenido y sus subvistas. Si una vista no tiene transparencia, podemos poner su propiedad <code>opaque</code> a <code>true</code> para así optimizar la forma de dibujarla. Esta propiedad sólo debe establecerse a <code>true</code> si la vista llena todo su contendo y no deja ver nada del fondo. De no ser así, el resultado es impredecible. Debemos llevar cuidado con esto, ya que por defecto dicha propiedad es <code>true</code>.</p>
 <p>Por último, también podemos ocultar una vista con la propiedad <code>isHidden</code>. Cuando hagamos que una vista se oculte, aunque seguirá ocupando su correspondiente espacio en pantalla, no será visible ni recibirá eventos.</p>
 <h2 id="algunos-componentes-de-interfaz-de-usuario">Algunos componentes de interfaz de usuario<a class="headerlink" href="#algunos-componentes-de-interfaz-de-usuario" title="Permanent link">&para;</a></h2>
-<p>A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. Se remite al lector a la documentación de Apple, en concreto el documento llamado <a href="https://developer.apple.com/design/human-interface-guidelines/ios/overview/interface-essentials/">Interface Essentials</a>, excelente y bastante exhaustivo.</p>
+<p>A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. </p>
+<p>Se os recomienda consultar la documentación de Apple, en concreto hay dos tipos de documentación que os pueden resultar útiles:</p>
+<ul>
+<li>Desde el punto de vista del diseño y la usabilidad, el documento llamado <a href="https://developer.apple.com/design/human-interface-guidelines/ios/overview/interface-essentials/">Interface Essentials</a>.</li>
+<li>Desde el punto de vista de desarrollo podéis consultar el apartado <a href="https://developer.apple.com/documentation/uikit/views_and_controls">"views and controls"</a> de la <a href="https://developer.apple.com/documentation/uikit">documentación de UIKit</a>, con la referencia del API y la forma de usar cada componente en nuestro código.</li>
+</ul>
 <blockquote>
 <p>Aunque aquí hablemos de controles indistintamente para referirnos a las etiquetas, botones, … en realidad este término tiene un significado más preciso en iOS. La clase <code>UIControl</code> es de la que heredan los controles más “interactivos” como los botones, mientras que las etiquetas lo hacen de <code>UIView</code> (no obstante todos los<code>UIControl</code> son también vistas ya que a su vez esta clase hereda de <code>UIView</code>).</p>
 </blockquote>
@@ -837,6 +870,121 @@
 <span class="p">}</span>
 </pre></div>
 </td></tr></table>
+
+<h3 id="pickers">Pickers<a class="headerlink" href="#pickers" title="Permanent link">&para;</a></h3>
+<p>Nos permiten elegir uno de entre una lista de valores, usando la metáfora visual de la típica rueda que se gira para seleccionar el valor deseado. En el API se corresponden con la clase <a href="https://developer.apple.com/documentation/uikit/uipickerview"><code>UIPickerView</code></a>.</p>
+<p><img alt="" src="../images/picker.png" /></p>
+<p>Comparados con la mayoría de los otros controles son bastante más complejos, ya que un <em>picker</em> necesita de la ayuda de dos <em>delegates</em> (dos objetos que sean conformes a ciertos protocolos): </p>
+<ul>
+<li>Un <em>delegate</em> (protocolo <code>UIPickerViewDelegate</code>): gestiona el comportamiento general del picker</li>
+<li>Un <em>datasource</em> (protocolo <code>UIPickerViewDataSource</code>): gestiona el "modelo de datos": cuántas filas y columnas tiene</li>
+</ul>
+<p>Estos dos protocolos heredan de <code>NSObjectProtocol</code>, con lo que los objetos conformes a ellos deben ser conformes también a este último (esto se puede conseguir de modo sencillo haciendo que la clase herede de <code>NSObject</code>, ya que esta clase es conforme a este protocolo).</p>
+<p>Por ejemplo supongamos una clase <code>GestorPicker</code> que para hacer el código más compacto va a hacer tanto de <em>delegate</em> como de <em>datasource</em>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">GestorPicker</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">UIPickerViewDelegate</span><span class="p">,</span> <span class="bp">UIPickerViewDataSource</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">lista</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Pepe&quot;</span><span class="p">,</span> <span class="s">&quot;Eva&quot;</span><span class="p">,</span> <span class="s">&quot;Juan&quot;</span><span class="p">,</span> <span class="s">&quot;María&quot;</span><span class="p">]</span>
+
+    <span class="c1">//METODOS DE UIPickerViewDelegate</span>
+    <span class="c1">//número de &quot;columnas&quot; del Picker</span>
+    <span class="kd">func</span> <span class="nf">numberOfComponents</span><span class="p">(</span><span class="k">in</span> <span class="n">pickerView</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="c1">//número de &quot;filas&quot;</span>
+    <span class="kd">func</span> <span class="nf">pickerView</span><span class="p">(</span><span class="kc">_</span> <span class="n">pickerView</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">,</span> <span class="n">numberOfRowsInComponent</span> <span class="n">component</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">lista</span><span class="p">.</span><span class="bp">count</span>
+    <span class="p">}</span>
+
+    <span class="c1">//METODOS DE UIPickerViewDataSource</span>
+    <span class="kd">func</span> <span class="nf">pickerView</span><span class="p">(</span><span class="kc">_</span> <span class="n">pickerView</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">,</span> <span class="n">titleForRow</span> <span class="n">row</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">forComponent</span> <span class="n">component</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">lista</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+    <span class="p">}</span>   
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>En el <em>view controller</em> de la pantalla con el <em>picker</em> definiríamos una instancia de <code>GestorPicker</code></p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">let</span> <span class="nv">gestorPicker</span> <span class="p">=</span> <span class="n">GestorPicker</span><span class="p">()</span>
+</pre></div>
+</td></tr></table>
+Crearíamos un <em>outlet</em> que represente al <em>picker</em> con Ctrl+Arrastrar</p>
+<p><table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">miPicker</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">!</span> 
+</pre></div>
+</td></tr></table>
+Y finalmente dentro del <code>viewDidLoad</code> "enlazaríamos" el <em>picker</em> con su <em>datasource</em> y su <em>delegate</em>, que en este caso son el mismo objeto.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kc">self</span><span class="p">.</span><span class="n">miPicker</span><span class="p">.</span><span class="n">delegate</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">gestorPicker</span>
+<span class="kc">self</span><span class="p">.</span><span class="n">miPicker</span><span class="p">.</span><span class="n">dataSource</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">gestorPicker</span>
+</pre></div>
+</td></tr></table>
+
+<p>Los métodos anteriores nos permiten pintar el <em>picker</em>, pero además nos interesará saber qué opción está seleccionada. En cualquier momento podemos obtener el número de fila seleccionado en el <em>picker</em> con</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//Cambiar el 0 por la &quot;columna&quot; que queramos</span>
+<span class="kc">self</span><span class="p">.</span><span class="n">miPicker</span><span class="p">.</span><span class="n">selectedRow</span><span class="p">(</span><span class="n">inComponent</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table>
+
+<p>Además si nos interesa podemos ser avisados en el momento en que el usuario seleccione una opción. Cuando se produzca ese evento, el objeto que actúe de <em>delegate</em> del <em>picker</em> recibirá una llamada a su método <code>pickerView(_:,didSelectRow:,inComponent:)</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6
+7
+8</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">GestorPicker</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">UIPickerViewDelegate</span><span class="p">,</span> <span class="bp">UIPickerViewDataSource</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">lista</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Pepe&quot;</span><span class="p">,</span> <span class="s">&quot;Eva&quot;</span><span class="p">,</span> <span class="s">&quot;Juan&quot;</span><span class="p">,</span> <span class="s">&quot;María&quot;</span><span class="p">]</span>
+    <span class="p">...</span>
+    <span class="kd">func</span> <span class="nf">pickerView</span><span class="p">(</span><span class="kc">_</span> <span class="n">pickerView</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">,</span> <span class="n">didSelectRow</span> <span class="n">row</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">inComponent</span> <span class="n">component</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Seleccionada fila: </span><span class="si">\(</span><span class="n">row</span><span class="si">)</span><span class="s">, dato: </span><span class="si">\(</span><span class="n">lista</span><span class="p">[</span><span class="n">row</span><span class="p">]</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="otros-controles-sliders-switches-date-pickers">Otros controles (<em>sliders</em>, <em>switches</em>, <em>date pickers</em>)<a class="headerlink" href="#otros-controles-sliders-switches-date-pickers" title="Permanent link">&para;</a></h3>
+<p>Estos controles son muy heterogéneos, pero todos tienen en común que tienen un valor asociado y que este valor puede cambiar debido a las acciones del usuario. El tipo del valor y la(s) propiedade(s) para acceder a él serán muy distintas según el tipo de control, por ejemplo:</p>
+<ul>
+<li>Un <code>UISwitch</code> es booleano y se sabe si está a "on" con <code>isOn</code></li>
+<li>Un <code>UISlider</code> tiene un valor <code>Float</code> y se accede a él con la propiedad <code>value</code></li>
+<li>Un <code>UIDatePicker</code> tiene una fecha y se accede a ella con la propiedad <code>date</code></li>
+</ul>
+<p>Pero en todos se usa la misma idea, implementar un <em>action</em> vinculado al evento de cambio del valor de modo que en su código podamos acceder al valor actual. Por ejemplo para un <em>slider</em> tendríamos algo como</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">//Este método se ha creado con el &quot;assistant editor&quot; y Ctrl+Arrastrar</span>
+<span class="c1">//de la ventana del storyboard al editor con el código del view controller</span>
+<span class="c1">//Elegimos Connection &quot;action&quot; y type &quot;UISlider&quot;</span>
+<span class="kr">@IBAction</span> <span class="kd">func</span> <span class="nf">cambiaSlider</span><span class="p">(</span><span class="kc">_</span> <span class="n">sender</span><span class="p">:</span> <span class="bp">UISlider</span><span class="p">)</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;El valor es: </span><span class="si">\(</span><span class="n">sender</span><span class="p">.</span><span class="n">value</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<blockquote>
+<p>Es importante que al crear el <em>action</em>, si lo hacemos gráficamente con Ctrl+Arrastrar, en el <em>popup</em> de opciones elijamos como tipo <code>UISlider</code> (o en general, el tipo del control en cuestión). Así el parámetro <em>sender</em> que representa el objeto que ha generado el evento tendrá el tipo adecuado y no necesitaremos hacer un <em>cast</em> para acceder a la propiedad deseada, como pasaría si lo dejamos con tipo <code>Any</code>.</p>
+</blockquote>
                 
                   
                 
