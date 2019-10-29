@@ -1,5 +1,4 @@
-# Ejercicio de vistas en iOS
-## Controles básicos (2,5 puntos)
+# Ejercicio de vistas en iOS: controles básicos (2,5 puntos)
 
 El objetivo es practicar con los controles básicos de la interfaz de usuario en iOS creando un "panel de control" ficticio para una supuesta nave espacial al estilo del que aparece en la figura.
 

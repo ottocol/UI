@@ -1,4 +1,4 @@
-# Ejercicios de *Autolayout*
+# Ejercicios de *Autolayout* (1,5 puntos)
 
 El objetivo es añadir *autolayout* a la aplicación de “pioneras” que hicimos en sesiones anteriores para que la interfaz se vea correctamente en todos los modelos de iPhone.
 

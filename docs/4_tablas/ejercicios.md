@@ -1,8 +1,8 @@
-# Ejercicios de tablas
+# Ejercicios de tablas (2 puntos)
 
 Vamos a crear una pequeña aplicación en la que se muestre una tabla con una lista de dato y se puedan insertar y eliminar filas
 
-### Crear la interfaz (0,25)
+### Crear la interfaz (0,25 puntos)
 
 Crea otra pantalla, al estilo de la que aparece en la figura. Tiene que tener los siguientes componentes:
 - Un *text field*
@@ -13,7 +13,7 @@ Crea otra pantalla, al estilo de la que aparece en la figura. Tiene que tener lo
 
 > Aunque habría que usar *autolayout*, para simplificar el ejercicio puedes ignorar este aspecto.
 
-### Mostrar datos en la tabla (0,75)
+### Mostrar datos en la tabla (0,75 puntos)
 
 - Crea una clase Swift llamada `DSTabla` que va a hacer de *datasource* de la tabla seleccionándola. **Haz que el `DSTabla` implemente el protocolo `UITableViewDataSource`**
 - Conecta el `DSTabla` con la propiedad `dataSource` de la tabla
@@ -28,13 +28,13 @@ var lista = ["Daenerys Targaryen", "Jon Nieve", "Cersei Lannister", "Eddard Star
 	- `tableView(_:, numberOfRowsInSection:)` recuerda que debe devolver el número de filas de la tabla
 	- `tableView(_:, cellForRowAt:)`: recuerda que debe devolver la celda para una fila determinada
    
-### Insertar filas (0,5)
+### Insertar filas (0,5 puntos)
 
 - Implementa en el *datasource* un método  `insertarCelda(enTabla:,enFila:,conTexto:) ` que al pasarle el `UITableView`, un número de fila y un texto añada el texto a la lista de datos y luego añada visualmente la fila en la tabla.
 
 En la interfaz haz que cuando se escriba un texto en el campo de texto y se pulse el botón `Insertar` se llame al método `insertarCelda (enTabla:,enFila:,conTexto:) ` que has definido.
 
-### Delegate (0,75)
+### Delegate (0,5 puntos)
 
 Vamos a hacer que se puedan "marcar" filas de la tabla. Para ello necesitas algún objeto que actúe de *delegate*. Crea para ello una clase `DelegateTabla` 
 
