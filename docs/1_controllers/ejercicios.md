@@ -57,6 +57,9 @@ Tienes que añadir un *outlet* al campo de texto para que su contenido se pueda 
 ### Hacer que el texto cambie según el botón pulsado
 
 - Lo primero es añadir físicamente los ficheros `*.txt` con los textos al proyecto para que se puedan cargar dinámicamente por código. Pulsa con el botón derecho sobre el proyecto y selecciona `Add files to Pioneras`. Selecciona los tres `.txt`, que se añadirán al proyecto
+
+> Otra opción sería añadir los ficheros a la carpeta `Assets.xcassets`. Si quieres hacerlo así, clica en esa carpeta y con el botón `+`  de la parte inferior crea un nuevo *asset* de tipo `New Data Set`. Por defecto se llama `data`. Cámbiale el nombre por `lovelace` y arrastra el archivo `lovelace.txt`. Repite la misma operación de crear *asset*, cambiar nombre y arrastrar archivo para las otras dos "pioneras".
+
 - Para que le podamos decir al controlador secundario qué fichero tiene que abrir, debes crear una propiedad en el `SecundarioViewController` llamada `nomFich` de tipo `String`
 
 - Para establecer una asociación sencilla entre cada segue y los datos a mostrar puedes usar el identificador del *segue*. Haz clic sobre él y en el `Attributes inspector` cambia su `identifier`, respectivamente por `lovelace`, `hopper` y `liskov`
@@ -71,7 +74,19 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 }
 ```
 
-- Finalmente, en el `viewDidLoad()` del `SecundarioViewController` puedes acceder a la propiedad `self.nomFich`, cargar el texto del fichero y mostrarlo en el campo de texto. *Tendrás que escribir el código tú mismo*. Haz uso de los métodos:
+- Finalmente, en el `viewDidLoad()` del `SecundarioViewController` puedes acceder a la propiedad `self.nomFich`, cargar el texto del fichero y mostrarlo en el campo de texto. *Tendrás que escribir el código tú mismo*. **Si no has usado el `assets.xcassets`** puedes utilizar los métodos:
 	- `Bundle.main.path(forResource:, ofType:)`, que devuelve la trayectoria completa para acceder a un recurso incluido en el proyecto sabiendo su nombre y su tipo (en el tipo pon solo “txt”, sin el punto).
 	- Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de `String(contentsOfFile:encoding)`. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado `String.Encoding.utf8`). CUIDADO, este método está marcado con `throws`, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)
+   
+Si has usado el  `assets.xcassets` puedes cargar los datos como sigue:
+
+```swift
+//CAMBIA nombre_del_asset por el que proceda
+var texto = ""
+if let data = NSDataAsset(name: "nombre_del_asset")?.data {
+    texto = String(data: data, encoding: .utf8)
+}
+```
+   
+
 
