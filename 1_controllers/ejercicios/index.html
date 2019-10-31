@@ -548,7 +548,7 @@
 <ul>
 <li>Finalmente, en el <code>viewDidLoad()</code> del <code>SecundarioViewController</code> puedes acceder a la propiedad <code>self.nomFich</code>, cargar el texto del fichero y mostrarlo en el campo de texto. <em>Tendrás que escribir el código tú mismo</em>. <strong>Si no has usado el <code>assets.xcassets</code></strong> puedes utilizar los métodos:<ul>
 <li><code>Bundle.main.path(forResource:, ofType:)</code>, que devuelve la trayectoria completa para acceder a un recurso incluido en el proyecto sabiendo su nombre y su tipo (en el tipo pon solo “txt”, sin el punto).</li>
-<li>Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de <code>String(contentsOfFile:encoding)</code>. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado <code>String.Encoding.utf8</code>). CUIDADO, este método está marcado con <code>throws</code>, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)</li>
+<li>Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de <code>String(contentsOfFile:,encoding:)</code>. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado <code>String.Encoding.utf8</code>). CUIDADO, este método está marcado con <code>throws</code>, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)</li>
 </ul>
 </li>
 </ul>
