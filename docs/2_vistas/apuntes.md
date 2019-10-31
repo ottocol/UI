@@ -275,6 +275,7 @@ Estos dos protocolos heredan de `NSObjectProtocol`, con lo que los objetos confo
 Por ejemplo supongamos una clase `GestorPicker` que para hacer el código más compacto va a hacer tanto de *delegate* como de *datasource*:
 
 ```swift
+import UIKit
 class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var lista = ["Pepe", "Eva", "Juan", "María"]
 
