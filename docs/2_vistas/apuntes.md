@@ -278,7 +278,7 @@ Por ejemplo supongamos una clase `GestorPicker` que para hacer el código más c
 class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
     var lista = ["Pepe", "Eva", "Juan", "María"]
 
-    //METODOS DE UIPickerViewDelegate
+    //METODOS DE UIPickerViewDatasource
     //número de "columnas" del Picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -288,7 +288,7 @@ class GestorPicker : NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
         return lista.count
     }
 
-    //METODOS DE UIPickerViewDataSource
+    //METODOS DE UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return lista[row]
     }   
