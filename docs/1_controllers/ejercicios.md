@@ -76,7 +76,7 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
 - Finalmente, en el `viewDidLoad()` del `SecundarioViewController` puedes acceder a la propiedad `self.nomFich`, cargar el texto del fichero y mostrarlo en el campo de texto. *Tendrás que escribir el código tú mismo*. **Si no has usado el `assets.xcassets`** puedes utilizar los métodos:
 	- `Bundle.main.path(forResource:, ofType:)`, que devuelve la trayectoria completa para acceder a un recurso incluido en el proyecto sabiendo su nombre y su tipo (en el tipo pon solo “txt”, sin el punto).
-	- Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de `String(contentsOfFile:encoding)`. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado `String.Encoding.utf8`). CUIDADO, este método está marcado con `throws`, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)
+	- Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de `String(contentsOfFile:,encoding:)`. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado `String.Encoding.utf8`). CUIDADO, este método está marcado con `throws`, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)
    
 Si has usado el  `assets.xcassets` puedes cargar los datos como sigue:
 
