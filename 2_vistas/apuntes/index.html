@@ -901,7 +901,7 @@
 18</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kd">class</span> <span class="nc">GestorPicker</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">UIPickerViewDelegate</span><span class="p">,</span> <span class="bp">UIPickerViewDataSource</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nv">lista</span> <span class="p">=</span> <span class="p">[</span><span class="s">&quot;Pepe&quot;</span><span class="p">,</span> <span class="s">&quot;Eva&quot;</span><span class="p">,</span> <span class="s">&quot;Juan&quot;</span><span class="p">,</span> <span class="s">&quot;María&quot;</span><span class="p">]</span>
 
-    <span class="c1">//METODOS DE UIPickerViewDelegate</span>
+    <span class="c1">//METODOS DE UIPickerViewDatasource</span>
     <span class="c1">//número de &quot;columnas&quot; del Picker</span>
     <span class="kd">func</span> <span class="nf">numberOfComponents</span><span class="p">(</span><span class="k">in</span> <span class="n">pickerView</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
         <span class="k">return</span> <span class="mi">1</span>
@@ -911,7 +911,7 @@
         <span class="k">return</span> <span class="n">lista</span><span class="p">.</span><span class="bp">count</span>
     <span class="p">}</span>
 
-    <span class="c1">//METODOS DE UIPickerViewDataSource</span>
+    <span class="c1">//METODOS DE UIPickerViewDelegate</span>
     <span class="kd">func</span> <span class="nf">pickerView</span><span class="p">(</span><span class="kc">_</span> <span class="n">pickerView</span><span class="p">:</span> <span class="bp">UIPickerView</span><span class="p">,</span> <span class="n">titleForRow</span> <span class="n">row</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span> <span class="n">forComponent</span> <span class="n">component</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">String</span><span class="p">?</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">lista</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
     <span class="p">}</span>   
