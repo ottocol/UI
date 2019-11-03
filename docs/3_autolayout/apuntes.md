@@ -94,17 +94,7 @@ Podemos intentar resolver estos problemas de forma automática. Para eso está e
 
 ### Previsualizar el efecto de las restricciones
 
-Aunque podemos visualizar el efecto de las restricciones ejecutando la aplicación en el simulador, es un proceso un poco tedioso, y más si queremos comprobar el aspecto en distintos dispositivos con distinto tamaño de pantalla. Tendríamos que ejecutar el simulador para cada uno de ellos. Desde Xcode 5 existe la posibilidad de previsualizar el aspecto de la interfaz (incluyendo por supuesto el autolayout). 
-
-Para previsualizar la interfaz, desde el editor del *storyboard* seleccionamos el `Assistant editor` (icono ![](images/assistant_editor_icon.png) de la barra de herramientas). Como siempre sucede con este tipo de editor, el área principal se dividirá en 2. Si en la parte derecha no aparece la *preview*, la podemos seleccionar manualmente con los iconos de su zona superior
-
-![](images/assistant_editor_preview_storyboard.png)
-
-En la *preview* se ve el aspecto que va a tener la interfaz en un determinado hardware. En la parte inferior pone el nombre, por ejemplo “iPhone 4-inch”. Si pasamos el ratón por el nombre aparecerá a su izquierda un botón que sirve para rotar la pantalla.
-
-  ![](images/hardware_storyboard_preview.png)
-
-En la parte inferior izquierda de la ventana de *preview* hay un símbolo `+` que sirve para añadir otros modelos de dispositivo a la previsualización.
+Podemos previsualizar el efecto de las restricciones desde el propio Xcode. En la parte inferior del *storyboard editor* se ve el dispositivo que estamos usando actualmente, aparece algo como "View as: iPhone XR". Si clicamos con el ratón en ese nombre aparecerá una barra de herramientas para cambiar el dispositivo y/o la orientación
 
 ### Restricciones sobre el tamaño
 
