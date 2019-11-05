@@ -6,6 +6,8 @@ Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [el AP
 
 ###Registro en la API de Marvel
 
+Puedes usar las cla
+
 Lo primero que necesitas es [registrarte](https://secure.marvel.com/user/register?referer=https%3A%2F%2Fdeveloper.marvel.com%2Faccount) en Marvel para poder obtener un par de claves. Este paso es necesario porque la API tiene un número máximo de llamadas diario, lo que significa que no podemos compartir todos las mismas claves.
 
 ###Acceso a la API 

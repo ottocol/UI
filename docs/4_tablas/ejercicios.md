@@ -5,6 +5,7 @@ Vamos a crear una pequeña aplicación en la que se muestre una tabla con una li
 ### Crear la interfaz (0,25 puntos)
 
 Crea otra pantalla, al estilo de la que aparece en la figura. Tiene que tener los siguientes componentes:
+
 - Un *text field*
 - Un *button* con el texto "Insertar"
 - Un *table view*
