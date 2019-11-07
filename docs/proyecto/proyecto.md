@@ -197,9 +197,9 @@ Esta es la segunda de las pantallas del *tab bar*. Simplemente debe consistir en
 
 ## Apéndice: creación de la plantilla de proyecto desde cero
 
-> Esta sección está solo para que veas cómo se ha creado la plantilla de proyecto, no es necesario que lo hagas si has usado la plantilla que está en moodle
+> Esta sección está solo para que veas cómo se ha creado la plantilla de proyecto, no es necesario que lo hagas si has usado la plantilla que está en moodle.
  
-Por desgracia Xcode no integra ningún sistema de gestión de dependencias de librerías de terceros, así que acudiremos a una herramienta que no es de Apple pero que se ha convertido en un estándar *de facto* en el mundo iOS: [*CocoaPods*](http://cocoapods.org).
+Hasta Xcode 11 no había ningún sistema de gestión de dependencias de librerías de terceros para iOS incluido en el IDE. Desde Xcode 11 tenemos el *Swift Package Manager*, pero durante todo el tiempo que no ha existido una herramienta propia de Apple, la comunidad ha tenido que "cubrir ese hueco" desarrollando gestores de paquetes para iOS. Probablemente el más conocido sea[*CocoaPods*](http://cocoapods.org) que es el que vamos a usar aquí.
 
 Cocoapods es a la vez un repositorio de librerías y un gestor de dependencias para instalar automáticamente estas librerías en nuestros proyectos. Hay muchas librerías de terceros disponibles con este sistema, puedes buscarlas desde la página de CocoaPods.
 
@@ -218,7 +218,8 @@ Si todo va bien se instalará un comando llamado `pod`. Ejecútalo desde la term
 2. Con un editor de textos cualquiera, crear un fichero llamado `Podfile` en el directorio del proyecto (el que contiene el fichero `.xcodeproj`). Este archivo debe contener la configuración y las dependencias (o *pods*) del proyecto
 
 ```bash
-platform :ios, '11.0'
+//SUSTITUYE la versión de ios por la que quieras usar como target de tu app
+platform :ios, '12.0'
 use_frameworks!
 //SUSTITUYE 'Marvel' por el nombre de tu proyecto, si no se llama así!!!
 target 'Marvel' do
