@@ -860,9 +860,9 @@
 <p>Esta es la segunda de las pantallas del <em>tab bar</em>. Simplemente debe consistir en una imagen estática y un <em>text view</em> con información sobre la aplicación.</p>
 <h2 id="apendice-creacion-de-la-plantilla-de-proyecto-desde-cero">Apéndice: creación de la plantilla de proyecto desde cero<a class="headerlink" href="#apendice-creacion-de-la-plantilla-de-proyecto-desde-cero" title="Permanent link">&para;</a></h2>
 <blockquote>
-<p>Esta sección está solo para que veas cómo se ha creado la plantilla de proyecto, no es necesario que lo hagas si has usado la plantilla que está en moodle</p>
+<p>Esta sección está solo para que veas cómo se ha creado la plantilla de proyecto, no es necesario que lo hagas si has usado la plantilla que está en moodle.</p>
 </blockquote>
-<p>Por desgracia Xcode no integra ningún sistema de gestión de dependencias de librerías de terceros, así que acudiremos a una herramienta que no es de Apple pero que se ha convertido en un estándar <em>de facto</em> en el mundo iOS: <a href="http://cocoapods.org"><em>CocoaPods</em></a>.</p>
+<p>Hasta Xcode 11 no había ningún sistema de gestión de dependencias de librerías de terceros para iOS incluido en el IDE. Desde Xcode 11 tenemos el <em>Swift Package Manager</em>, pero durante todo el tiempo que no ha existido una herramienta propia de Apple, la comunidad ha tenido que "cubrir ese hueco" desarrollando gestores de paquetes para iOS. Probablemente el más conocido sea<a href="http://cocoapods.org"><em>CocoaPods</em></a> que es el que vamos a usar aquí.</p>
 <p>Cocoapods es a la vez un repositorio de librerías y un gestor de dependencias para instalar automáticamente estas librerías en nuestros proyectos. Hay muchas librerías de terceros disponibles con este sistema, puedes buscarlas desde la página de CocoaPods.</p>
 <p>Para instalar <code>cocoapods</code>, desde la terminal hacer</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
@@ -884,7 +884,9 @@ sudo gem install cocoapods  --pre
 3
 4
 5
-6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>platform :ios, <span class="s1">&#39;11.0&#39;</span>
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>//SUSTITUYE la versión de ios por la que quieras usar como target de tu app
+platform :ios, <span class="s1">&#39;12.0&#39;</span>
 use_frameworks!
 //SUSTITUYE <span class="s1">&#39;Marvel&#39;</span> por el nombre de tu proyecto, si no se llama así!!!
 target <span class="s1">&#39;Marvel&#39;</span> <span class="k">do</span>
