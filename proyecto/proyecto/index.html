@@ -340,8 +340,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#estructura-general-de-la-interfaz" class="md-nav__link">
-    Estructura general de la interfaz
+  <a href="#uso-de-la-plantilla-de-proyecto" class="md-nav__link">
+    Uso de la plantilla de proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-que-debe-tener-la-aplicacion" class="md-nav__link">
+    Estructura que debe tener la aplicación
   </a>
   
 </li>
@@ -521,8 +528,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#estructura-general-de-la-interfaz" class="md-nav__link">
-    Estructura general de la interfaz
+  <a href="#uso-de-la-plantilla-de-proyecto" class="md-nav__link">
+    Uso de la plantilla de proyecto
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#estructura-que-debe-tener-la-aplicacion" class="md-nav__link">
+    Estructura que debe tener la aplicación
   </a>
   
 </li>
@@ -664,17 +678,20 @@
 <p>Este "miniproyecto" trata de hacer una pequeña aplicación basándose en <a href="https://developer.marvel.com/">el API</a> de la editorial Marvel, que nos permite consultar información sobre los personajes, los <em>comics</em>, las <em>series</em>,...</p>
 <h2 id="pasos-iniciales">Pasos iniciales<a class="headerlink" href="#pasos-iniciales" title="Permanent link">&para;</a></h2>
 <h3 id="registro-en-la-api-de-marvel">Registro en la API de Marvel<a class="headerlink" href="#registro-en-la-api-de-marvel" title="Permanent link">&para;</a></h3>
-<p>Lo primero que necesitas es <a href="https://secure.marvel.com/user/register?referer=https%3A%2F%2Fdeveloper.marvel.com%2Faccount">registrarte</a> en Marvel para poder obtener un par de claves. Este paso es necesario porque la API tiene un número máximo de llamadas diario, lo que significa que no podemos compartir todos las mismas claves.</p>
+<p>Para poder usar la API de Marvel hacen falta claves de desarrollador. La plantilla de proyecto disponible en la web ya tiene unas incorporadas. Con esas claves se pueden hacer 3000 peticiones diarias al API, probablemente suficientes para su uso en clase. No obstante también puedes registrarte desde el <a href="https://developer.marvel.com/">portal de desarrolladores</a> de Marvel para poder obtener claves propias. </p>
 <h3 id="acceso-a-la-api">Acceso a la API<a class="headerlink" href="#acceso-a-la-api" title="Permanent link">&para;</a></h3>
 <p>La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo <em>parsear</em> el JSON. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. </p>
 <blockquote>
 <p><strong>IMPORTANTE</strong>: para acelerar el trabajo en el aula tenéis disponible en moodle la plantilla de <em>workspace</em> ya creada. </p>
 </blockquote>
-<h2 id="estructura-general-de-la-interfaz">Estructura general de la interfaz<a class="headerlink" href="#estructura-general-de-la-interfaz" title="Permanent link">&para;</a></h2>
+<h2 id="uso-de-la-plantilla-de-proyecto">Uso de la plantilla de proyecto<a class="headerlink" href="#uso-de-la-plantilla-de-proyecto" title="Permanent link">&para;</a></h2>
+<p>En la plantilla de workspace descargada <strong>abre el fichero Marvel.xcworkspace</strong>, que es un <em>workspace</em> de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (<strong>NO ABRAS DIRECTAMENTE el <code>Marvel.xcodeproj</code></strong>). Si lo has abierto correctamente, deberías ver dos proyectos, uno llamado <code>Marvel</code>, y otro llamado <code>Pods</code>. El proyecto principal es el primero, el segundo son librerías auxiliares. </p>
 <blockquote>
-<p>En la plantilla de workspace descargada <strong>abre el fichero Marvel.xcworkspace</strong>, que es un <em>workspace</em> de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (<strong>NO ABRAS DIRECTAMENTE el <code>Marvel.xcodeproj</code></strong>).</p>
-<p>Primero hay que hacer un <code>Product &gt; Clean Build Folder</code>, y <code>Product &gt; Build</code> para asegurarse de que las dependencias están compiladas y accesibles en nuestro código. Una vez hecho esto podemos ejecutar la app, en la consola aparecerá una lista de personajes cuyo nombre empieza por "Spider". Puedes mirar el código del View Controller para ver cómo se ha hecho.</p>
+<p>Si quieres ver más información sobre la estructura del proyecto, o cómo crearlo partiendo de cero, puedes verlo en el <a href="#apendice-creacion-de-la-plantilla-de-proyecto-desde-cero">Apéndice</a></p>
 </blockquote>
+<p><strong>Primero hay que hacer un <code>Product &gt; Clean Build Folder</code>, y <code>Product &gt; Build</code></strong> para asegurarse de que las dependencias están compiladas y accesibles en nuestro código. Una vez hecho esto podemos ejecutar la app, en la consola aparecerá una lista de personajes cuyo nombre empieza por "Spider". Puedes mirar el código del View Controller para ver cómo se ha hecho.</p>
+<p>Una vez hecho el <em>build</em>, puedes comprobar si la conexión con el API funciona bien ejecutando la aplicación, no verás nada en la pantalla del simulador pero en la consola de Xcode debería aparecer una lista de personajes que comienzan por "spider". Puedes examinar el código del view controller para ver cómo se ha hecho, usamos una librería auxiliar llamada <code>Marvelous</code> que implementa el acceso al API de forma sencilla.</p>
+<h2 id="estructura-que-debe-tener-la-aplicacion">Estructura que debe tener la aplicación<a class="headerlink" href="#estructura-que-debe-tener-la-aplicacion" title="Permanent link">&para;</a></h2>
 <p>Para que te hagas una idea de la estructura, se muestra el <em>storyboard</em> de la aplicación ya terminada</p>
 <p><img alt="" src="../images/storyboard.png" /></p>
 <p>En la aplicación se podrá buscar, listar y mostrar los detalles de alguno de los recursos que ofrece el API. Elige tú lo que prefieras: personajes, comics, creadores... </p>
@@ -717,6 +734,9 @@
 <li>Selecciona la <em>search bar</em> (te será más fácil si lo haces en el árbol de componentes) y en el <code>connections inspector</code> (panel de la derecha de Xcode, icono de más a la derecha) conecta el <em>outlet</em> <code>delegate</code> con el <em>controller</em> de esta pantalla. Recuerda que el <em>controller</em> está representado gráficamente con un icono de color amarillo que aparece en la parte superior de cada pantalla de la <em>app</em> en el <em>storyboard</em>.</li>
 </ul>
 <p><img alt="" src="../images/connect_delegate.gif" /></p>
+<blockquote>
+<p>Si has hecho esto ya no es necesario que establezcas la conexión por código, asignando la propiedad <code>delegate</code> de la barra de búsqueda al <em>controller</em></p>
+</blockquote>
 <ul>
 <li>Pon en la cabecera <code>ListaController</code> que esta clase implementa el protocolo <code>UISearchBarDelegate</code></li>
 <li>En el <code>ListaController</code> implementa el método <code>searchBarSearchButtonClicked(_)</code>, que se llamará cuando se escriba algo en la barra y se pulse el botón del teclado "buscar". Para probar que funciona de momento basta que imprimas en la consola el texto escrito en la barra y quites el teclado <em>on screen</em>.</li>
