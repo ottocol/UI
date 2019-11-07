@@ -6,9 +6,7 @@ Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [el AP
 
 ###Registro en la API de Marvel
 
-Puedes usar las cla
-
-Lo primero que necesitas es [registrarte](https://secure.marvel.com/user/register?referer=https%3A%2F%2Fdeveloper.marvel.com%2Faccount) en Marvel para poder obtener un par de claves. Este paso es necesario porque la API tiene un número máximo de llamadas diario, lo que significa que no podemos compartir todos las mismas claves.
+Para poder usar la API de Marvel hacen falta claves de desarrollador. La plantilla de proyecto disponible en la web ya tiene unas incorporadas. Con esas claves se pueden hacer 3000 peticiones diarias al API, probablemente suficientes para su uso en clase. No obstante también puedes registrarte desde el [portal de desarrolladores](https://developer.marvel.com/) de Marvel para poder obtener claves propias. 
 
 ###Acceso a la API 
 
@@ -17,11 +15,17 @@ La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerla
 > **IMPORTANTE**: para acelerar el trabajo en el aula tenéis disponible en moodle la plantilla de *workspace* ya creada. 
 
 
-## Estructura general de la interfaz
+## Uso de la plantilla de proyecto
 
-> En la plantilla de workspace descargada **abre el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**).
-> 
-> Primero hay que hacer un `Product > Clean Build Folder`, y `Product > Build` para asegurarse de que las dependencias están compiladas y accesibles en nuestro código. Una vez hecho esto podemos ejecutar la app, en la consola aparecerá una lista de personajes cuyo nombre empieza por "Spider". Puedes mirar el código del View Controller para ver cómo se ha hecho.
+En la plantilla de workspace descargada **abre el fichero Marvel.xcworkspace**, que es un *workspace* de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (**NO ABRAS DIRECTAMENTE el `Marvel.xcodeproj`**). Si lo has abierto correctamente, deberías ver dos proyectos, uno llamado `Marvel`, y otro llamado `Pods`. El proyecto principal es el primero, el segundo son librerías auxiliares. 
+
+> Si quieres ver más información sobre la estructura del proyecto, o cómo crearlo partiendo de cero, puedes verlo en el [Apéndice](#apendice-creacion-de-la-plantilla-de-proyecto-desde-cero)
+
+**Primero hay que hacer un `Product > Clean Build Folder`, y `Product > Build`** para asegurarse de que las dependencias están compiladas y accesibles en nuestro código. Una vez hecho esto podemos ejecutar la app, en la consola aparecerá una lista de personajes cuyo nombre empieza por "Spider". Puedes mirar el código del View Controller para ver cómo se ha hecho.
+
+Una vez hecho el *build*, puedes comprobar si la conexión con el API funciona bien ejecutando la aplicación, no verás nada en la pantalla del simulador pero en la consola de Xcode debería aparecer una lista de personajes que comienzan por "spider". Puedes examinar el código del view controller para ver cómo se ha hecho, usamos una librería auxiliar llamada `Marvelous` que implementa el acceso al API de forma sencilla.
+
+## Estructura que debe tener la aplicación
 
 Para que te hagas una idea de la estructura, se muestra el *storyboard* de la aplicación ya terminada
 
@@ -78,6 +82,8 @@ Ahora vamos a conectar el *view controller* con la barra de búsqueda:
 - Selecciona la *search bar* (te será más fácil si lo haces en el árbol de componentes) y en el `connections inspector` (panel de la derecha de Xcode, icono de más a la derecha) conecta el *outlet* `delegate` con el *controller* de esta pantalla. Recuerda que el *controller* está representado gráficamente con un icono de color amarillo que aparece en la parte superior de cada pantalla de la *app* en el *storyboard*.
 
 ![](images/connect_delegate.gif)
+
+> Si has hecho esto ya no es necesario que establezcas la conexión por código, asignando la propiedad `delegate` de la barra de búsqueda al *controller*
 
 - Pon en la cabecera `ListaController` que esta clase implementa el protocolo `UISearchBarDelegate`
 - En el `ListaController` implementa el método `searchBarSearchButtonClicked(_)`, que se llamará cuando se escriba algo en la barra y se pulse el botón del teclado "buscar". Para probar que funciona de momento basta que imprimas en la consola el texto escrito en la barra y quites el teclado *on screen*.
