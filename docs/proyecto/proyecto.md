@@ -160,14 +160,17 @@ Esta sería la que muestra todos los datos de un personaje, comic, creador,... j
 ```swift
 let colaBackground = OperationQueue()
 colaBackground.addOperation {
-    if let thumb = personajes[0].thumbnail {
+    //SUPONIENDO que la variable con el personaje se llama "personaje"
+    if let thumb = personaje.thumbnail {
       let url = "\(thumb.basePath!)/portrait_uncanny.\(thumb.extension!)"
+      //cambiamos la URL por https://. Necesario en iOS>=9
       let urlHttps = url.replacingOccurrences(of: "http", with: "https")
         if let urlFinal = URL(string:urlHttps) {
             do {
                let datos = try Data(contentsOf:urlFinal)
                 if let img = UIImage(data: datos) {
                     OperationQueue.main.addOperation {
+                        //suponiendo que el outlet de la imagen se llama "miImagen"
                         self.miImagen.image = img
                     }
                 }

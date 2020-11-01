@@ -32,11 +32,6 @@ Los métodos anteriores y sus “complementarios” (con `disappear` en lugar de
 
 ![](images/DraggedImage-2.png)
 
-### Rotaciones 
-
-[https://developer.apple.com/reference/uikit/uiviewcontroller](images/https://developer.apple.com/reference/uikit/uiviewcontroller)
-
-
 ### Instanciar controladores y vistas 
 
 Podemos hacerlo de varias formas. De más sencilla a más compleja (pero también más flexible)
@@ -45,21 +40,21 @@ Podemos hacerlo de varias formas. De más sencilla a más compleja (pero tambié
  - **Gráficamente, con `.nib`**: en cada archivo `nib` guardamos una pantalla (con su jerarquía de vistas), pero no el controlador, que se crea por código
 - **Totalmente por código**: tenemos que instanciar el controlador y en su método  `loadView` crear la jerarquía de vistas que queremos que contenga (`UIView`, `UIButton`, lo que sea) y asignar la raíz de la jerarquía de vistas a `self.view`.
 
-En los siguientes apartados vamos a ver las dos primeras opciones con algo más de detalle.
+Dado el tiempo disponible, solo vamos a ver la primera opción con más detalle. En general los *storyboards* van a ser suficientes para aplicaciones no demasiado complejas.
 
+## Navegación con Storyboards 
 
+Los *storyboards* son la forma recomendada por Apple de crear interfaces de usuario. Un *storyboard* contiene la representación gráfica de las “pantallas” (los controladores) que componen nuestra aplicación y de las relaciones entre ellas. Además el sistema se encarga automáticamente de moverse por las pantallas cuando sucedan determinados eventos, instanciando los controladores y las vistas automáticamente.
 
-## Storyboards 
+![](images/storyboard.png)
 
-Desde Xcode 5 los *storyboards* son la forma recomendada por Apple de crear interfaces de usuario. Un *storyboard* contiene la representación gráfica de las “pantallas” (los controladores) que componen nuestra aplicación y de las relaciones entre ellas. Además el sistema se encarga automáticamente de moverse por las pantallas cuando sucedan determinados eventos, instanciando los controladores y las vistas automáticamente.
+!!! Ejercicio
+    Vamos a hacer aquí un *storyboard* muy sencillo con solo dos pantallas, pero que nos servirá para aprender lo básico de la navegación y el paso de datos entre controladores. De momento:
+    
+    - Crea el proyecto de Xcode: `File > New > Project...`. En la primera pantalla del asistente elige el *template* `App`, y en la segunda pon el nombre del proyecto, `NavegacionStoryboard` y asegúrate de que el *Interface* es `Storyboard`
+    -  En el `Main.storyboard` crea una pantalla con un botón que ponga "Pantalla secundaria" y un `text field` en el que escribiremos algo para pasárselo a la siguiente pantalla    
 
-
-### El *controller* de cada pantalla 
-
-Por defecto, los view controller que añadimos visualmente al *storyboard* son clases propias de Cocoa, es decir, no tenemos que escribir código pero tampoco podemos sobreescribir sus métodos ya que no son clases nuestras. Podemos cambiar la clase de cualquier elemento en el Interface Builder seleccionándolo y yendo al icono del `Identity inspector`: ![](images/identity_inspector.png) en el área de `Utilities`. Seleccionaremos el *controller* y cambiaremos su `Class` por una escrita por nosotros y que herede de `UIViewController`.
-
-> Seleccionar el *view controller* con el ratón haciendo clic sobre él a veces no es sencillo, ya que acabamos seleccionando los elementos de la vista contenidos en él. Podemos hacerlo más fácilmente pulsando el icono de *view controller* que aparece en su parte superior
-> ![](images/vc_icon.png)
+![](images/ui_primaria.png)
 
 ### El *controller* inicial 
 
@@ -72,6 +67,58 @@ Para **convertir un *view controller* en inicial**, teniéndolo seleccionado ir 
 ![](images/view_controller_icon.png)
 
 También podemos arrastrar la flecha que indica que un controlador es el inicial desde el actual hasta el que queremos convertir en inicial.
+
+
+### El *controller* de cada pantalla 
+
+Simplificando, cada pantalla de nuestra app está controlada por una clase descendiente de la clase de UIKit `UIViewController`. Como ya hemos visto unas cuantas veces, la pantalla inicial de cada *app* está asociada a la clase `ViewController` de la plantilla. Puedes ver esto en Xcode, seleccionando con el ratón el *view controller* y yendo al icono del `Identity inspector` en el panel de la derecha: ![](images/identity_inspector.png). 
+
+Para seleccionar el *view controller* con el ratón pulsa el icono del círculo amarillo con un cuadrado dentro que aparece en la barra de su parte superior. 
+
+![](images/vc_icon.png)
+
+> Otra opción es seleccionarlo en el panel que aparece a la izquierda del *storyboard* con el árbol de componentes
+> 
+> ![](images/component_tree.png)
+
+
+!!! Ejercicio
+    **(continúa)** Selecciona el View Controller de la única pantalla por el momento de la app y simplemente comprueba en el panel de la derecha que la clase asociada es `ViewController`. Si quisieras cambiar la clase lo harías aquí (¡pero no lo hagas!).
+
+Podemos añadir nuevas pantallas a nuestra *app* arrastrando al *storyboard* un componente de tipo `View Controller` del panel de componentes de UI. 
+
+!!! Ejercicio
+    **(continúa)** Añade una nueva pantalla a tu *app*, arrastrando un  *view controller* al *storyboard*. Está en el mismo panel que el resto de los componentes de UI como botones, labels,...(recuerda que se accede con el botón `+` de la esquina superior derecha de Xcode). Ahora el *storyboard* debe mostrar que tienes dos pantallas, aunque por el momento estarán desconectadas entre sí
+
+    ![](images/2_pantallas.png)
+
+
+Por defecto, estos nuevos view controller estarán asociados a clases propias de iOS, y si queremos personalizar su comportamiento tendremos que crear una clase propia que herede de `UIViewController` e implemente los métodos básicos de gestión del ciclo de vida. En Xcode hay una plantilla para ello. Hay que:
+
+1. ir al menú `File > New > File...` 
+2. En la primera pantalla del asistente que aparecerá seleccionar `Cocoa Touch Class`, pulsar `Next`
+3. Poner un nombre a nuestra clase, por ejemplo `ViewControllerSecundario` y en `Subclass of` poner `UIViewController`, ya que necesitamos que herede de esta clase. El resto de opciones las dejamos por defecto. Pulsar `Next`
+4. Finalmente nos dejará elegir dónde guardar físicamente el archivo swift, podemos dejarlo por defecto y pulsar `Create`
+
+Si todo va bien verás que entre los archivos del proyecto aparece la nueva clase creada y que tiene la estructura tipica de un view controller (tiene por ejemplo un `viewDidLoad`).
+
+!!! Ejercicio
+    **(continúa)** Sigue las instrucciones anteriores para crear una clase `ViewControllerSecundario`, que después asociaremos a la pantalla secundaria.
+
+Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Recordemos que eso se hace en el `Identity inspector` ![](images/identity_inspector.png) del panel de la derecha.
+
+!!! Ejercicio
+    **(continúa)** Teniendo seleccionado el *view controller* de la segunda pantalla que añadiste al *storyboard* (recuerda, icono del círculo amarillo con un cuadrado dentro) ve al `Identity inspector` y cambia el `Class` por `ViewControllerSecundario`.
+
+    Para comprobar que funciona:
+
+    1. Mete un `print("hola, soy el controller secundario")` en el `viewDidLoad()` del `ViewControllerSecundario`
+    2. Como las pantallas todavía están desconectadas y no se puede llegar a la segunda desde la primera, puedes hacer temporalmente que la segunda sea la inicial arrastrando a ella la flecha que indica que es controlador inicial
+
+    ![](images/secundaria_como_inicial.png)
+    
+    3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario.
+    4. Acuérdate de dejar otra vez la primera pantalla como pantalla inicial arrastrando la flechita que lo indica.
 
 ## Segues 
 
@@ -97,7 +144,8 @@ En el caso del *present*, se distingue entre `Present Modally` y `Present As Pop
 
 Podemos **configurar las propiedades del *segue*** haciendo clic sobre él y yendo al icono de propiedades ![](images/attr_inspector.png) del área de `Utilities`. Aquí podemos cambiar el tipo y también la transición usada para navegar de una pantalla a otra.
 
-#### Estilos de presentación y de transición
+### Estilos de presentación y de transición
+
 Podemos usar diversos estilos a la hora de presentar de forma modal un *controller*. Por ejemplo podemos indicar que el nuevo controlador debe ocupar toda la pantalla, o bien solo el alto dejando una zona a los lados, o bien un recuadro central como un cuadro de diálogo…
 
 ![Tomado de la documentación de Apple](images/DraggedImage-4.png "Tomado de la documentación de Apple")
@@ -110,7 +158,8 @@ En Swift especificamos el estilo dando valores a la propiedad `modalPresentation
 
 Por otro lado, también podemos especificar una **animación** para la transición entre el *controller* actual y el siguiente. De nuevo es una propiedad del *controller* destino, no del *segue*. En Xcode se controla gráficamente con la propiedad `Transition style` del *inspector de atributos*. En Swift con la propiedad `modalTransitionStyle` del *controller* a presentar.
 
-#### Pasar datos de un *controller* a otro en un *segue*
+### Pasar datos de un *controller* a otro en un *segue*
+
 Cuando se va a saltar de un *controller* a otro a través de un *segue*, se llama al método `prepare(for:sender:)` del *controller* origen. Podemos sobreescribir este método para pasarle datos al *controller* destino. El primer parámetro va a instanciarse al *segue* y a partir de este podemos obtener una referencia al destino.
 
 Por ejemplo supongamos que tenemos dos *controller* conectados por un *segue*, y este se dispara con un botón en el primero.
@@ -165,58 +214,3 @@ Ahora en la pantalla que dispara el *unwind* debemos conectar usando `Ctrl+Arras
 En el método del *unwinding*, nótese que podemos usar el parámetro, que es el *segue*, para obtener el `destination`, que ahora será el *controller* al que volvemos.
 
 Finalmente, decir que cuando se produce un *unwind*, el controlador desde el que se vuelve también recibe una llamada a `prepare(for:sender:)`, método que podemos sobreescribir si queremos aprovechar para realizar alguna operación antes de volver.
-
-## NIBs 
-
-Un problema con los *storyboards* es que no funcionan bien para desarrollar en equipo. Aunque dos desarrolladores modifiquen distintas pantallas de la aplicación, si ambas están en el mismo *storyboard* tendremos problemas, ya que no es tan fácil resolver conflictos de versiones como cuando trabajamos con código Swift.
-
-En algunas ocasiones puede interesarnos más que cada desarrollador trabaje con sus propias pantallas, o al menos que cada una pueda modificarse de forma individual. Esto lo conseguimos con los archivos NIB, que almacenan una única jerarquía de vistas: típicamente una “pantalla”, aunque también puede ser una subvista compleja.
-
-Un archivo NIB (o `.xib`, en un momento veremos la diferencia) contiene la jerarquía de vistas asociada a un determinado *view controller*, pero normalmente no se crea de manera manual, sino visualmente con el Interface Builder. De hecho, el nombre significa “NeXT Interface Builder”, referenciando la famosa plataforma [NeXTSTEP](http://en.wikipedia.org/wiki/NeXTSTEP) de la que hereda y es deudora Cocoa.
-
-Hasta que apareció iOS 5 los NIB eran la forma habitual de crear interfaces de usuario, pero por defecto las versiones actuales de Xcode (desde la 5, correspondiéndose con iOS7) usan *storyboards*. Nótese que un NIB contiene únicamente la parte gráfica de “una pantalla” de nuestra aplicación y que por tanto es responsabilidad del desarrollador cambiar de un controlador a otro y cargar el NIB correspondiente conforme se va navegando.
-
-Un archivo .xib, que es lo que vemos en la lista de archivos de proyecto en Xcode, es básicamente un NIB serializado en forma de XML, lo que podemos comprobar haciendo *clic* sobre él con el botón derecho en Xcode y seleccionando `Open as` \> `Source code`.
-
-En Xcode podemos crear un NIB de dos formas:
-- Crear un controller y automáticamente un NIB asociado
-- Crear directamente el NIB y luego asociarle un controller por código
-
-### Crear y editar un NIB
-
-Podemos crear un *view controller* con un NIB asociado con `File`\>`New`\> `File...`, seleccionando la plantilla “Cocoa Touch Class” dentro del apartado “Source” y en el paso siguiente, haciendo que nuestra clase sea subclase de un *controller* estándar (por ejemplo `UIViewController`) y marcando la casilla `create XIB file`. 
-
- ![](images/create_controller_nib.png)
-
-También podemos crear directamente un NIB, sin *controller*, yendo al menú `File`\>`New`\> `File...` y seleccionando la plantilla “View” dentro del apartado “User interface”.
-
-![](images/nuevo_nib.png)
-
-El editor visual para NIB es el mismo que para *storyboard*, con la única diferencia de que estamos editando una “única pantalla” de nuestra aplicación.
-
-El NIB tiene un concepto que no tienen los *storyboard* y es el del **File’s Owner**. Este es el objeto que ha cargado en memoria el NIB. Normalmente el “propietario” del NIB va a ser el *controller* asociado, pero puede ser cualquier otro objeto. El *file`s owner`* tiene su propio icono en el editor visual
-
- ![](images/files_owner.png)
-
-> En el módulo de introducción a iOS creábamos visualmente el esqueleto de los *outlets* y *actions* haciendo `Ctrl-Drag` desde los elementos del interfaz hacia el código fuente. También se pueden crear *outlets* y actions arrastrando entre el icono del File’s Owner y el elemento de interfaz, pero es un método ligeramente distinto (primero se escribe manualmente el código y luego se hace la conexión).
-
-Podemos especificar la clase concreta del File’s owner haciendo clic sobre su icono y yendo al `Identity inspector` del área de `Utilities`. Aquí normalmente seleccionaremos el *controller* que queremos que gestione esta “pantalla” de la aplicación.
-
-### Mostrar un controller con un NIB
-Si el NIB tiene un *controller* asociado, se cargará automáticamente al presentar el *controller*. Por ejemplo, supongamos que hemos creado una clase `ViewControllerNIB`. Una vez creada una instancia del controller especificamos, si es necesario, el estilo de la transición (`modalTransitionStyle`) y el estilo de presentación (`modalPresentationStyle `). Y finalmente presentamos el *controller* con `present(_,animated:,completion:)`, donde:
-- `animated` es un booleano que indica si queremos o no animación
-- `completion` es una clausura en la que ponemos el código a ejecutar una vez se haya presentado el *controller*
-
-```swift
-//creamos el controller
-let vc = ViewControllerNIB()
-//Seleccionamos la transición. Por defecto es "coverVertical"
-vc.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal;
-//presentamos el controller. Usamos una "trailing closure"
-self.present(vc, animated: true) {
-   print("presentado!")
-}
-```
-
-Ahora, para volver atrás y dejar de ver el *controller* presentado, usamos el método `dismiss(animated:completion)`, cuyos parámetros son iguales que el `present` excepto el primero que se omite. Este método lo podemos implementar en el controlador que se ha presentado, o bien en el *presentador*, ya que si el “presentado” no lo implementa el sistema lo redirige al otro. 
-
