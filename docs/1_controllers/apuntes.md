@@ -1,5 +1,10 @@
 # Sesión 1: View Controllers
 
+
+!!! info "Importante"
+
+    En estos apuntes de *View Controllers* verás un ejercicio intercalado, que se irá completando poco a poco. Vale **1 punto** de la nota total del módulo de iOS básico.
+
 ## *View controllers*. Funciones básicas 
 
 Los *view controllers* son la C del MVC. Su tarea más importante es gestionar una jerarquía de vistas. Cada *controller* tiene una vista “principal” o “raíz” (su propiedad `view`), y esa a su vez tiene *subvistas* que por supuesto pueden contener otras *subvistas* y así sucesivamente. 
@@ -117,7 +122,7 @@ Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Reco
 
     ![](images/secundaria_como_inicial.png)
     
-    3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario.
+    3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario` .
     4. Acuérdate de dejar otra vez la primera pantalla como pantalla inicial arrastrando la flechita que lo indica.
 
 ## Segues 
@@ -144,6 +149,9 @@ En el caso del *present*, se distingue entre `Present Modally` y `Present As Pop
 
 Podemos **configurar las propiedades del *segue*** haciendo clic sobre él y yendo al icono de propiedades ![](images/attr_inspector.png) del área de `Utilities`. Aquí podemos cambiar el tipo y también la transición usada para navegar de una pantalla a otra.
 
+!!! Ejercicio
+    **(continúa...)** Agrega un *segue* entre el botón de la primera pantalla y la segunda, recuerda que debes usar `Crtl`+arrastrar. Ejecuta la *app* para comprobar que efectivamente se cambia de pantalla pulsando en el botón, aunque de momento *no podrás volver atrás* (luego veremos cómo se hace).
+
 ### Estilos de presentación y de transición
 
 Podemos usar diversos estilos a la hora de presentar de forma modal un *controller*. Por ejemplo podemos indicar que el nuevo controlador debe ocupar toda la pantalla, o bien solo el alto dejando una zona a los lados, o bien un recuadro central como un cuadro de diálogo…
@@ -164,10 +172,10 @@ Cuando se va a saltar de un *controller* a otro a través de un *segue*, se llam
 
 Por ejemplo supongamos que tenemos dos *controller* conectados por un *segue*, y este se dispara con un botón en el primero.
 
-Supongamos que el primer *controller* es un objeto de la clase `ViewController`, mientras que el segundo es de la clase `ViewController2`. En el código de `ViewController2` podría haber algo como:
+Supongamos que el primer *controller* es un objeto de la clase `ViewController`, mientras que el segundo es de la clase `ViewControllerSecundario`. En el código de `ViewControllerSecundario` podría haber algo como:
 
 ```swift
-class ViewController2 : UIViewController {
+class ViewControllerSecundario : UIViewController {
     var mensaje = ""
 
     override func viewDidLoad() {
@@ -184,19 +192,23 @@ Podemos acceder a esta propiedad `texto` desde el *controller* anterior sobreesc
 ```swift
 override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier=="siguiente") {
-            if let vc2 = segue.destination as? ViewController2 {
+            if let vc2 = segue.destination as? ViewControllerSecundario {
                 vc2.mensaje = "Bienvenidos a la pantalla 2"
             }
         }
  }
 ```
 
+!!! Ejercicio
+    **(Continúa...)** prueba el código anterior en la *app* y comprueba que efectivamente cuando se pasa de una pantalla a otra, la información se está pasando de un *controller* a otro. En lugar de tomar un mensaje fijo "bienvenidos a la pantalla 2", haz que se pase e imprima lo que se escriba en el campo de texto de la pantalla 1.
+
 ### Volver atrás en un *segue*
 
 Aunque podemos crear un *segue* de modo visual, no podemos configurar visualmente cómo volver a la pantalla anterior cuando hemos seguido un *segue*. Esta “vuelta atrás” se llama *unwinding* y para conseguirla tenemos que escribir algo de código.
 
-En el *controller* *al que se vuelve atrás* debemos implementar un método que puede tener el nombre que deseemos pero debe tener una signatura específica:
-- Está “marcada” con un `@IBAction`
+En el *controller* *al que se vuelve atrás* debemos implementar lo que se llama un *unwind action*, un método que puede tener el nombre que deseemos pero debe tener una signatura específica:
+
+- Está marcada con un `@IBAction`
 - Tiene como único parámetro un `UIStoryboardSegue`, que es el *segue* que se está usando para volver atrás. Por ejemplo
 
 ```swift
@@ -212,5 +224,15 @@ Ahora en la pantalla que dispara el *unwind* debemos conectar usando `Ctrl+Arras
 > Si intentamos hacer esta operación de `Ctrl+Arrastrar` sin haber implementado el método anterior, veremos que no tiene efecto
 
 En el método del *unwinding*, nótese que podemos usar el parámetro, que es el *segue*, para obtener el `destination`, que ahora será el *controller* al que volvemos.
+
+!!! Ejercicio
+    **(Continúa...)** 
+
+    - Crea un botón "Atrás" en la segunda pantalla
+    - Implementa un *unwind action* en el `ViewControllerSecundario`, recuerda que debe ser un método marcado con `@IBAction` y con un parámetro de tipo `UIStoryboardSegue`
+    - Conecta gráficamente el botón "Atrás" con el icono de "Exit" de la segunda pantalla.
+
+    comprueba que ya se puede ir adelante y atrás en el *segue*
+
 
 Finalmente, decir que cuando se produce un *unwind*, el controlador desde el que se vuelve también recibe una llamada a `prepare(for:sender:)`, método que podemos sobreescribir si queremos aprovechar para realizar alguna operación antes de volver.

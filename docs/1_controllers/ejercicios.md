@@ -1,8 +1,8 @@
-# Ejercicios de *view controllers* (1,5 puntos)
+# Ejercicio de *view controllers* (1,5 puntos)
 
 Vamos a hacer una aplicación que vamos a llamar “Pioneras”, y que nos dará datos de algunas mujeres pioneras de la informática. La aplicación tendrá una pantalla principal en la que aparecerán sus imágenes, y haciendo *tap* sobre cada una podremos ir a las pantallas secundarias donde se nos dará más información.
 
-> Al crear el proyecto aseguráos de estar usando git (Sea desde Xcode o manualmente) ya que habrá que guardar y marcar el estado con un commit especial en un momento intermedio
+> Al crear el proyecto aseguráos de estar usando git  ya que habrá que guardar y marcar el estado con un commit especial en un momento intermedio. No es necesario subir el repositorio a Github, con tenerlo en local nos valdría
 
 ## Realizar la estructura básica de la aplicación (0,5 puntos)
 
