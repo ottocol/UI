@@ -196,6 +196,160 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2_vistas/apuntes/" title="Vistas" class="md-nav__link">
+      Vistas
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../2_vistas/ejercicios/" title="Ejercicios" class="md-nav__link">
+      Ejercicios
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Tablas
+      </label>
+    
+    <a href="./" title="Tablas" class="md-nav__link md-nav__link--active">
+      Tablas
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Tabla de contenidos</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-vistas-de-tabla" class="md-nav__link">
+    Creación de vistas de tabla
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablas-estaticas" class="md-nav__link">
+    Tablas estáticas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablas-dinamicas" class="md-nav__link">
+    Tablas dinámicas
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-objeto-tabla" class="md-nav__link">
+    El objeto Tabla
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-fuente-de-datos-o-datasource" class="md-nav__link">
+    La fuente de datos o datasource
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-tablas" class="md-nav__link">
+    Gestión de tablas
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-celdas" class="md-nav__link">
+    Seleccionar celdas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertar-y-eliminar-filas" class="md-nav__link">
+    Insertar y eliminar filas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ejercicios/" title="Ejercicios" class="md-nav__link">
+      Ejercicios
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -523,9 +677,11 @@
 </td></tr></table>
 
 <h3 id="insertar-y-eliminar-filas">Insertar y eliminar filas<a class="headerlink" href="#insertar-y-eliminar-filas" title="Permanent link">&para;</a></h3>
-<p>iOS nos ofrece de forma automática el “modo edición”, en el que en la parte izquierda de cada celda aparece un icono indicador de las operaciones que se pueden hacer con ella. Hay dos indicadores: 
-- <img alt="" src="../images/DraggedImage.png" /> Una señal de “prohibido” para poder borrar la celda(pulsando sobre la señal y luego sobre el botón “Borrar” que aparece).
-- <img alt="" src="../images/DraggedImage-1.png" /> Un símbolo de ‘+’ que sirve para insertar una nueva celda</p>
+<p>iOS nos ofrece de forma automática el “modo edición”, en el que en la parte izquierda de cada celda aparece un icono indicador de las operaciones que se pueden hacer con ella. Hay dos indicadores: </p>
+<ul>
+<li><img alt="" src="../images/prohibido.png" /> Una señal de "prohibido" para poder borrar la celda (pulsando sobre la señal y luego sobre el botón “Borrar” que aparece).</li>
+<li><img alt="" src="../images/mas.png" /> Un símbolo de ‘+’ que sirve para insertar una nueva celda</li>
+</ul>
 <p>Podemos activar el modo edición con el método <code>setEditing</code> del objeto tabla:</p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">//</span><span class="nt">suponemos</span> <span class="nt">que</span> <span class="s2">&quot;miTabla&quot;</span> <span class="nt">es</span> <span class="nt">un</span> <span class="nt">outlet</span> <span class="nt">a</span> <span class="nt">la</span> <span class="nt">tabla</span>
@@ -534,8 +690,8 @@
 </td></tr></table>
 
 <p>Por defecto al activar el modo edición en todas las celdas aparecerá la señal de “prohibido”. Implementando en el <em>delegate</em> el método <code>tableView(_:,editingStyleForRowAt:)</code> podemos especificar qué tipo de estilo de edición queremos para una celda determinada. El sistema nos “preguntará” el estilo de edición para un número de celda y debemos devolver <code>UITableViewCellEditingStyle.delete</code>o bien <code>UITableViewCellEditingStyle.insert</code>.</p>
-<p>Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS <strong>avisará al <em>datasource</em> de que se está intentando insertar o eliminar una celda, NO al *delegate</strong><em>. Esto es lógico ya que los datos los gestiona el </em>datasource*.</p>
-<p>Así, cuando se pulse sobre el <img alt="" src="../images/DraggedImage-2.png" /> y luego sobre “delete” o sobre el <img alt="" src="../images/DraggedImage-3.png" />, se llamará al método del <em>datasource</em> llamado <code>tableView(_:, commit:, forRowAt:)</code>. En este método tenemos que hacer dos cosas:
+<p>Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS <strong>avisará al <em>datasource</em> de que se está intentando insertar o eliminar una celda, NO al <em>delegate</em> </strong>. Esto es lógico ya que los datos los gestiona el <em>datasource</em>.</p>
+<p>Así, cuando se pulse sobre el <img alt="" src="../images/prohibido.png" /> y luego sobre “delete” o sobre el <img alt="" src="../images/mas.png" />, se llamará al método del <em>datasource</em> llamado <code>tableView(_:, commit:, forRowAt:)</code>. En este método tenemos que hacer dos cosas:
 - Actualizar los datos (borrar el dato o insertar uno nuevo)
 - LLamar a un método del API de tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)</p>
 <p>Es muy importante destacar que <strong>primero hay que actualizar los datos</strong> y luego ocuparse de la parte gráfica. Si lo hacemos al revés no funcionará bien, ya que iOS intentará redibujar la tabla usando los datos “antiguos”.</p>
@@ -597,6 +753,41 @@
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../2_vistas/ejercicios/" title="Ejercicios" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Ejercicios
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../ejercicios/" title="Ejercicios" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Ejercicios
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
