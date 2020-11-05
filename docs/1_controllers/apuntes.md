@@ -122,7 +122,7 @@ Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Reco
 
     ![](images/secundaria_como_inicial.png)
     
-    3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario` .
+    3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario`.
     4. Acuérdate de dejar otra vez la primera pantalla como pantalla inicial arrastrando la flechita que lo indica.
 
 ## Segues 

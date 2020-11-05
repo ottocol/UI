@@ -31,11 +31,11 @@ En la parte inferior derecha del *storyboard* hay una barra de botones específi
 
 ![](images/barra_autolayout.png)
 
-Los que nos sirven para añadir restricciones son el tercero y el cuarto. Luego veremos el uso de los restantes.
+Los que nos sirven para añadir restricciones son el segundo y el tercero. Luego veremos el uso de los restantes.
 
 Vamos a arreglar el ejemplo anterior en el que queríamos centrar horizontal y verticalmente el botón. Tenemos que añadir dos restricciones: una de centrado horizontal y otra de centrado vertical. En terminología de *autolayout* esto son restricciones de alineado (*align*).
 
-1. Seleccionamos este con el ratón y pulsamos sobre el icono de `Align` (el tercero).
+1. Seleccionamos este con el ratón y pulsamos sobre el icono de `Align` ![](images/align.png)(el segundo).
 2. En el *popup* que aparece marcamos las casillas de `Horizontally in container` y `Vertically in container`
 3. Pulsamos sobre el botón que ahora pondrá `Add 2 constraints` para hacer efectivas las restricciones.
 
@@ -47,11 +47,11 @@ Las restricciones añadidas las podemos ver en varios sitios de Xcode:
 
 - En el área de `Document outline`, que es accesible pulsando sobre el icono ![](images/document_outline.png) que aparece en la parte inferior izquierda del *storyboard*. Aquí podemos ver un “árbol” desplegable con las restricciones. 
    ![](images/doc_outline_constraints.png)
-- En el `Size inspector` (icono ![](images/size_inspector_icon.png) del panel de la derecha de Xcode) aparece una lista de restricciones aplicadas al componente actual. Cada una tiene un botón `Edit` para cambiar sus propiedades. 
+- En el `Size inspector` (icono ![](images/size_inspector.png) del panel de la derecha de Xcode) aparece una lista de restricciones aplicadas al componente actual. Cada una tiene un botón `Edit` para cambiar sus propiedades, aunque aquí se muestran en su forma "matemática" que no es la más intuitiva (luego veremos que las restricciones son en realidad ecuaciones).
 
 Para editar las restricciones:
 
-* Si hacemos clic sobre una restricción, en el área de `Utilities` de la derecha de la pantalla, dentro del `Size inspector` (el icono con una regla ![](images/size_inspector.png) del panel derecho de Xcode) aparecerán sus propiedades, que podemos editar. Luego veremos qué significan exactamente estas propiedades.
+* Si hacemos clic sobre una restricción, ya hemos visto que podemos editar sus propiedades en el  `Size inspector` ![](images/size_inspector.png) del panel derecho de Xcode).
 * Si seleccionamos una restricción y pulsamos la tecla `Backspace` se eliminará esta.
 
 ### Añadiendo restricciones con el ratón
@@ -106,9 +106,63 @@ No obstante, también podemos poner restricciones sobre el tamaño. Podemos fija
 
 Si especificamos el tamaño mediante una restricción podemos forzar a que el contenido del botón tenga que “cortarse” porque no cabe, o bien que tenga que añadirse un *padding* al sobrar espacio. 
 
-## Más sobre las restricciones 
+## Prioridades 
 
-### Formulación completa de una restricción
+En *autolayout a veces puede haber reglas contradictorias o ambiguas. Una forma de resolver estas ambigüedades o contradicciones es mediante el uso de  **prioridades**.
+
+### Prioridades de las restricciones
+
+Cada restricción tiene asignada una **prioridad**, que es un valor numérico que especifica su “importancia” (a mayor valor, mayor prioridad):
+
+- El valor por defecto es 1000, que significa que el sistema entiende que la restricción **debe cumplirse**. 
+- Valores menores que 1000 indican que el sistema intentará cumplir la restricción pero que es posible que no lo haga, si hay restricciones contradictorias de mayor prioridad.
+
+Podemos cambiar/ver la prioridad actual de la misma forma que podemos cambiar/ver el resto de propiedades de la restricción (ver apartado anterior).
+
+### Prioridades de los componentes
+
+Hay casos en los que puede ser necesario "comprimir" o "ensanchar" los componentes para cumplir las restricciones. En el siguiente ejemplo, estamos fijando el espacio horizontal entre componentes y de componentes a márgenes muy pequeño, en 8 puntos, pero para que los espacios se cumplan, alguno de los componentes, o los dos, se tendría que ensanchar con respecto a su tamaño intrínseco:
+
+![](images/hugging_ambiguo.png)  
+
+Como vemos Xcode indica que hay un problema con las restricciones, ya que el *layout* es ambiguo. Para cumplir las restricciones se podría ensanchar la imagen o el *label* con respecto a su tamaño intrínseco. ¿Cuál elegir?
+
+![](images/2_soluciones.png)
+
+Además de las restricciones, también los componentes GUI tienen dos valores de prioridad, relativos al tamaño. El **Content hugging** indica la prioridad que para el componente tiene evitar el *padding* (o "relleno" o "ensanchado"). Por defecto tiene un valor de 251. 
+
+> Fijaos en que es un valor relativamente bajo, indicando que si hay reglas que lleven a aumentar el *padding* se tomarán en cuenta salvo que tengan prioridad muy baja.
+
+El problema anterior se podría resolver modificando el *hugging* de alguno de los dos componentes, el *label* o la imagen. Si subimos la prioridad de un componente haremos que se "expanda" el otro, y a la inversa, si la bajamos, lo haremos "expandirse" a él.
+
+En el problema inverso al anterior, podríamos haber exigido que los espacios entre componentes fueran muy grandes, forzando entonces a que uno de los dos componentes se "comprima" (y por ejemplo en el caso del *label* deje de mostrar parte de su contenido). Para poder decidir cuál de ellos tenemos la **Compression resistance**, que es la prioridad que para el componente tiene mostrar completo su contenido, resistiéndose por tanto a ser comprimido. Por defecto los componentes tienen este valor a 750. De nuevo jugando con este valor podemos decidir qué componente se debería comprimir.
+
+> Si una regla con prioridad por defecto lleva a que el contenido de un elemento se comprima ganará la regla, pero no será así si su prioridad es menor que 750. Nótese que se ha escogido un valor por defecto relativamente alto para evitar que reglas "no demasiado importantes" lleven a que se compriman los componentes y dejen de mostrarse "completos" como títulos de botones, textos de *labels*, etc.
+
+## Stack views
+
+Son agrupaciones de componentes en forma de fila o columna, y se usan para crear fácilmente *layouts* de elementos en disposición horizontal o vertical. Así solo hay que especificar las restricciones del *stack view* como un bloque, y no de cada componente por separado.
+
+![](images/stack_view_vertical.png)
+
+Para crear un *stack view*, seleccionar varios elementos (manteniendo pulsado `Command` + clic del ratón en cada uno) y luego pulsar sobre el último botón de la barra de *autolayout*, llamado `Embed In` (recordad, parte inferior derecha de la ventana del *storyboard*). En el menú desplegable del botón, elegir `Stack View`. Si los componentes seleccionados estaban más o menos en vertical se creará un *stack view* de este tipo y lo mismo si están en horizontal, aunque el tipo se puede cambiar en las propiedades.
+
+Las propiedades del *stack view* son accesibles seleccionándolo con el ratón y como siempre en el *Inspector de propiedades* (el icono con una escuadra, panel derecho de Xcode). Podemos indicar cómo se reparten los componentes el espacio disponible, dejar un espacio adicional entre ellos, especificar la alineación,...
+
+![](images/stack_view_properties.png)
+
+También podemos anidar *stack views*, tener unos dentro de otros, por ejemplo aquí tenemos uno horizontal anidado dentro de una fila de uno vertical
+
+![](images/stack_view_anidado.png)
+
+## Restricciones "avanzadas" 
+
+!!! info "Nota"
+
+    Esta parte es complementaria, y aunque interesante, no es necesaria para realizar los ejercicios de la sesión.
+
+
+### Formulación matemática de una restricción
 
 Internamente, cada restricción se formula como una ecuación lineal en la que:
 
@@ -132,24 +186,16 @@ Podemos por ejemplo cambiar la constante por 50, con lo que conseguiremos que el
 
 Si en lugar de seleccionar el componente GUI seleccionamos directamente una restricción y nos vamos al `Size inspector` podremos editar directamente las propiedades de la restricción, incluyendo también los propios atributos.
 
-### Prioridades
+### Expresar restricciones usando código Swift
 
-Cada restricción tiene asignada una **prioridad**, que es un valor numérico que especifica su “importancia” (a mayor valor, mayor prioridad). El valor por defecto es 1000, que significa que el sistema entiende que la restricción **debe cumplirse**. Valores menores que 1000 indican que el sistema intentará cumplir la restricción pero que es posible que no lo haga si hay restricciones contradictorias de mayor prioridad.
+En lugar de usar el editor visual de Xcode podemos especificar las restricciones por código. Esto puede resultar interesante en diversas situaciones: 
 
-Podemos cambiar/ver la prioridad actual de la misma forma que podemos cambiar/ver el resto de propiedades de la restricción (ver apartado anterior).
-
-Además de las restricciones, también los componentes GUI tienen dos valores de prioridad, relativos al tamaño:
-
-- *Compression resistance*: indica la prioridad que para el componente tiene mostrar completo su contenido (resistiéndose por tanto a ser comprimido, y de ahí el nombre. Por defecto los componentes tienen este valor alto (aunque menos que 1000, por defecto está fijado a 750). Si una regla con prioridad por defecto conlleva a que el contenido del botón no se vea completo ganará la regla, pero no será así si su prioridad es menor que 750.
-- *Content hugging*: indica la prioridad que para el componente tiene evitar el *padding*. Por defecto tiene un valor bajo, indicando que si hay reglas que lleven a aumentar el padding se tomarán en cuenta salvo que tengan prioridad muy baja.
-
-## Formular restricciones usando código 
-
-En lugar de usar el editor visual de Xcode podemos especificar las restricciones en el código fuente. Esto puede resultar interesante en diversas situaciones: a veces los elementos de la interfaz se crean dinámicamente y por tanto no se puede especificar el *layout* en Xcode. Otras veces puede ser que aunque los elementos del interfaz no cambien sí queramos que cambien dinámicamente las restricciones para conseguir distintos efectos de *layout*.
+- A veces los elementos de la interfaz se crean dinámicamente y por tanto no se puede especificar el *layout* por adelantado en Xcode. 
+- Otras veces, aunque los elementos de la interfaz no cambien en sí puede que queramos cambiar dinámicamente las restricciones para conseguir efectos dinámicos de *layout*.
 
 Hay dos formas de hacerlo: directamente con el API de autolayout o con un mayor nivel de abstracción usando el llamado “Visual Format Language”. Si podemos elegir, la mejor forma es la segunda, ya que es mucho más intuitivo especificar las restricciones y entenderlas leyendo luego el código.
 
-### El API básico de autolayout
+#### El API básico de autolayout
 
 Cada restricción es un objeto de la clase `NSLayoutConstraint`. En el inicializador de esta clase se especifica directamente parámetro por parámetro cada una de las propiedades de la restricción. Por ejemplo, supongamos que estamos en un *view controller* y queremos centrar un botón en su contenedor en el eje de las X. El botón lo tenemos en un *outlet* llamado `boton`, y ya sabemos que a la vista podemos acceder desde el *controller* con `self.view` . La restricción en forma de expresión matemática sería algo como
 
@@ -189,7 +235,7 @@ self.boton.translatesAutoresizingMaskIntoConstraints = false
 
 Esto habría que hacerlo *antes* de activar las restricciones.
 
-### Visual Format Language
+#### Visual Format Language
 
 La conversión de ecuación matemática a llamada del API es bastante directa, pero tiene el problema de que no es fácil y rápido deducir intuitivamente la restricción leyendo el código. Es mucho más intuitivo leer “el componente debe estar centrado en el eje X pero desplazado 10 pixels a la izquierda” que leer `superview.centroX = componente.centroX + 10`.
 

@@ -93,7 +93,7 @@ class MiDataSource : NSObject, UITableViewDataSource {
 }
 ```
 
-> Si usamos un *controller* como *datasource*, como es habitual en la mayoría de ejemplos que verás en libros y en tutoriales en la web, no será necesario especificar la herencia de `NSObject` porque los *controller* ya heredan por defecto de esta clase.
+> Si usamos un *view controller* como *datasource*, como es habitual en la mayoría de ejemplos que verás en libros y en tutoriales en la web, no será necesario especificar la herencia de `NSObject` porque los *controller* ya heredan por defecto de esta clase.
 
 Vamos a hacer un ejemplo sencillo en el que cada celda simplemente muestra el número de fila en que está, y tenemos 1000 celdas. En un ejemplo algo más realista, los datos estarían almacenados en una BD, o bien en un array en memoria.
 
@@ -212,7 +212,7 @@ Cuando el usuario selecciona una celda haciendo *tap* sobre ella se llama al mé
 func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   if let celda = tableView.cellForRow(at: indexPath) {
     //Si no hay marca de verificación la ponemos. Si la hay la quitamos      
-    if celda.accessoryType==UITableViewCellAccessoryType.none {
+    if celda.accessoryType==UITableViewCell.AccessoryType.none {
        celda.accessoryType = .checkmark
     }
     else {
@@ -227,8 +227,9 @@ func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 ### Insertar y eliminar filas
 
 iOS nos ofrece de forma automática el “modo edición”, en el que en la parte izquierda de cada celda aparece un icono indicador de las operaciones que se pueden hacer con ella. Hay dos indicadores: 
-- ![](images/DraggedImage.png) Una señal de “prohibido” para poder borrar la celda(pulsando sobre la señal y luego sobre el botón “Borrar” que aparece).
-- ![](images/DraggedImage-1.png) Un símbolo de ‘+’ que sirve para insertar una nueva celda
+
+- ![](images/prohibido.png) Una señal de "prohibido" para poder borrar la celda (pulsando sobre la señal y luego sobre el botón “Borrar” que aparece).
+- ![](images/mas.png) Un símbolo de ‘+’ que sirve para insertar una nueva celda
 
 Podemos activar el modo edición con el método `setEditing` del objeto tabla:
 
@@ -237,9 +238,9 @@ Podemos activar el modo edición con el método `setEditing` del objeto tabla:
 
 Por defecto al activar el modo edición en todas las celdas aparecerá la señal de “prohibido”. Implementando en el *delegate* el método `tableView(_:,editingStyleForRowAt:)` podemos especificar qué tipo de estilo de edición queremos para una celda determinada. El sistema nos “preguntará” el estilo de edición para un número de celda y debemos devolver `UITableViewCellEditingStyle.delete`o bien `UITableViewCellEditingStyle.insert`.
 
-Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS **avisará al *datasource* de que se está intentando insertar o eliminar una celda, NO al *delegate***. Esto es lógico ya que los datos los gestiona el *datasource*.
+Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS **avisará al *datasource* de que se está intentando insertar o eliminar una celda, NO al *delegate* **. Esto es lógico ya que los datos los gestiona el *datasource*.
 
-Así, cuando se pulse sobre el ![](images/DraggedImage-2.png) y luego sobre “delete” o sobre el ![](images/DraggedImage-3.png), se llamará al método del *datasource* llamado `tableView(_:, commit:, forRowAt:)`. En este método tenemos que hacer dos cosas:
+Así, cuando se pulse sobre el ![](images/prohibido.png) y luego sobre “delete” o sobre el ![](images/mas.png), se llamará al método del *datasource* llamado `tableView(_:, commit:, forRowAt:)`. En este método tenemos que hacer dos cosas:
 - Actualizar los datos (borrar el dato o insertar uno nuevo)
 - LLamar a un método del API de tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)
 

@@ -69,13 +69,13 @@ override func loadView() {
 }
 ```
 
-Podemos eliminar una vista enviándole el mensaje `removeFromSuperview` (se le envía a la vista hija que queremos eliminar). Podemos también consultar la jerarquía con los siguientes métodos:
+Podemos eliminar una vista llamando a su método `removeFromSuperview()`. Podemos también consultar la jerarquía con los siguientes métodos:
 
 - `superview`: Nos da la vista padre de la vista destinataria del mensaje.
 - `subviews`: Nos da la lista de subvistas de una vista dada.
 - `isDescendantOfView:` Comprueba si una vista es descendiente de otra.
 
-Como vemos, una vista tiene una lista de vistas hijas. Cada vista hija tiene un índice, que determinará el orden en el que se dibujan. El índice 0 es el más cercano al observador, y por lo tanto tapará a los índices superiores. Podemos insertar una vista en un índice determinado de la lista de subvistas con `insertSubview:atIndex:`.
+Como vemos, una vista tiene una lista de vistas hijas. Cada vista hija tiene un índice, que determinará el orden en el que se dibujan. El índice 0 es el más cercano al observador, y por lo tanto tapará a los índices superiores. Podemos insertar una vista en un índice determinado de la lista de subvistas con `insertSubview(_:,at:)`.
 
 Puede que tengamos una jerarquía compleja y necesitemos acceder desde el código a una determinada vista por ejemplo para inicializar su valor. Una opción es hacer un *outlet* para cada vista que queramos modificar, pero esto podría sobrecargar nuestro objeto de *outlets*. También puede ser complejo y poco fiable el buscar la vista en la jerarquía. En estos casos, lo más sencillo es darle a las vistas que buscamos una etiqueta (*tag*) mediante la propiedad `Tag` del inspector de atributos (debe ser un valor entero), o asignando la propiedad `tag` de forma programática. Podremos localizar en nuestro código una vista a partir de su etiqueta mediante `viewWithTag`. Llamando a este método sobre una vista, buscará entre todas las subvistas aquella con la etiqueta indicada:
 
@@ -95,9 +95,7 @@ Entre las propiedades más importantes en las vistas encontramos aquellas refere
 
 Cuando se crea de forma visual, el marco se puede definir pulsando con el ratón sobre los márgenes de la vista y arrastrando para así mover sus límites. En el código estos límites se especifican mediante el tipo `CGRect`, en el que se especifica posición `(x,y)` de inicio, y el ancho y el alto que ocupa la vista. Estos datos se especifican en el sistema de coordenadas de la supervista.
 
-El sistema de coordenadas tiene su origen en la esquina superior izquierda. Las coordenadas no se dan en *pixels*, sino en **puntos**, una medida que nos permite independizarnos de la resolución en pixels de la pantalla. Las coordenadas en puntos son reales, no enteras.
-
-En los modelos de iPhone/iPod Touch de 3.5’’ la resolución de pantalla en puntos es de 320x480 (aun en los de *retina display*, que tiene un número de pixels mucho mayor). Los dispositivos de 4’’ usan una resolución de 320x568 puntos. El iPhone 6 devuelve 375x667 y el 6 plus 736x414. Podéis consultar una [tabla muy completa](http://www.iosres.com) con muchos más datos 
+El sistema de coordenadas tiene su origen en la esquina superior izquierda. Las coordenadas no se dan en *pixels*, sino en **puntos**, una medida que nos permite independizarnos de la resolución en pixels de la pantalla. Las coordenadas en puntos son reales, no enteras. Podéis consultar una [tabla muy completa](http://www.iosres.com) con muchos más datos. 
 
 > Otros frameworks de iOS definen sistemas de coordenadas distintos. Los de gráficos (Core Graphics y OpenGL ES) ponen el origen en la esquina inferior izquierda con el eje Y apuntando hacia arriba.
 
