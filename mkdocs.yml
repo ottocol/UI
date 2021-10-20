@@ -2,10 +2,10 @@ site_name: IUDM-iOS-basico
 
 
 nav:
-  - View Controllers: '1_controllers/apuntes.md'
-  - Ejercicio: '1_controllers/ejercicios.md'
-  # - Vistas: '2_vistas/apuntes.md'
-  # - Ejercicios: '2_vistas/ejercicios.md'
+  #- View Controllers: '1_controllers/apuntes.md'
+  #- Ejercicio: '1_controllers/ejercicios.md'
+  - Vistas: '2_vistas/apuntes.md'
+  - Ejercicios: '2_vistas/ejercicios.md'
   # - Autolayout: '3_autola yout/apuntes.md'
   # - Ejercicios: '3_autolayout/ejercicios.md'
   # - Tablas: '4_tablas/apuntes.md'

@@ -2,7 +2,7 @@
 
 Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [el API](https://developer.marvel.com/) de la editorial Marvel, que nos permite consultar información sobre los personajes, los *comics*, las *series*,...
 
-## Pasos iniciales 
+## Pasos iniciales
 
 ###Registro en la API de Marvel
 
@@ -130,7 +130,7 @@ Opcionalmente **(0,25 puntos extra)**, puedes hacer que aparezca un *spinner* mi
 La nueva pantalla mostrará los datos de un *item* al hacer *tap*. Como una vez en los detalles queremos poder volver atrás al listado de forma sencilla, lo mejor es usar un *navigation controller*:
 
 
-### El *navigation controller*  
+### El *navigation controller*
 
 En este apartado todavía no estamos implementando la vista de detalle, solo creando la jerarquía de navegación.
 

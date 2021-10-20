@@ -4,7 +4,7 @@ A diferencia de los otros tipos de *controllers* que hemos visto, los controlado
 
 En esta parte básica de la asignatura vamos a ver los dos controladores contenedores más típicos: el *tab bar* y el *navigation*. Los dos nos sirven para organizar la *app* en diferentes pantallas, con la diferencia de que el *navigation controller* se usa cuando la navegación es jerárquica/secuencial (por ejemplo, un par de vistas maestro/detalle, o un asistente con varios pasos) y el *tab bar* cuando queremos dividir nuestra *app* en distintos "apartados" pero no hay una relación jerárquica entre ellos.
 
-## Tab bar controllers 
+## Tab bar controllers
 
 Permiten diseñar la típica aplicación dividida por “apartados” o “tabs”. Por ejemplo lo podemos ver en la aplicación de “salud” de iOS (entre muchísimas otras)
 
@@ -34,7 +34,7 @@ En el apartado `Tab bar item`, si elegimos uno de los iconos del sistema no podr
 
 > En el [último apartado](#iconos) de los apuntes se habla algo más sobre el formato de los iconos que podemos añadir a una *tab bar*
 
-## Navigation controllers 
+## Navigation controllers
 
 Los *navigation controller* sirven para crear estructuras de navegación jerárquica en las que tenemos pantallas y “subpantallas”. Estando en una de ellas podemos volver atrás una a una. El *navigation controller* se encargará de que se vaya cambiando automáticamente al controlador apropiado (el de la pantalla actual).
 

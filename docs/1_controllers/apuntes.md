@@ -5,7 +5,7 @@
 
     En estos apuntes de *View Controllers* verás un ejercicio intercalado, que se irá completando poco a poco. Vale **1 punto** de la nota total del módulo de iOS básico.
 
-## *View controllers*. Funciones básicas 
+## *View controllers*. Funciones básicas
 
 Los *view controllers* son la C del MVC. Su tarea más importante es gestionar una jerarquía de vistas. Cada *controller* tiene una vista “principal” o “raíz” (su propiedad `view`), y esa a su vez tiene *subvistas* que por supuesto pueden contener otras *subvistas* y así sucesivamente. 
 
@@ -15,7 +15,7 @@ Hay dos tipos básicos de controladores: los que muestran directamente contenido
 
 ![Ejemplo de contenedor: split view en un iPad (tomado de la View Controller Programming Guide de Apple)](images/DraggedImage-1.png "Ejemplo de contenedor: split view en un iPad (tomado de la View Controller Programming Guide de Apple)")
 
-### Otras tareas de los *view controllers* 
+### Otras tareas de los *view controllers*
 
 Además de gestionar la jerarquía de vistas, los controladores actúan como el “pegamento” que relaciona la vista con el modelo. El controlador es el lugar típico para poner el código que reacciona a los eventos del usuario, como por ejemplo qué hacer cuando se pulsa un botón.
 
@@ -23,7 +23,7 @@ Además de gestionar la jerarquía de vistas, los controladores actúan como el 
 
 Por otro lado, los *controllers* son los responsables de adaptar las dimensiones de los componentes de la interfaz a las dimensiones reales de la pantalla. Para ello se usan varios mecanismos: *autolayout*, *size classes* y *traits*, que veremos a nivel introductorio en las siguientes sesiones.
 
-### Ciclo de vida de un *controller* 
+### Ciclo de vida de un *controller*
 
 Cada controlador va pasando por una serie de estados conforme se carga la aplicación, se muestra la pantalla que este gestiona, se cambia de pantalla, etc. 
 
@@ -37,7 +37,7 @@ Los métodos anteriores y sus “complementarios” (con `disappear` en lugar de
 
 ![](images/DraggedImage-2.png)
 
-### Instanciar controladores y vistas 
+### Instanciar controladores y vistas
 
 Podemos hacerlo de varias formas. De más sencilla a más compleja (pero también más flexible)
 
@@ -47,7 +47,7 @@ Podemos hacerlo de varias formas. De más sencilla a más compleja (pero tambié
 
 Dado el tiempo disponible, solo vamos a ver la primera opción con más detalle. En general los *storyboards* van a ser suficientes para aplicaciones no demasiado complejas.
 
-## Navegación con Storyboards 
+## Navegación con Storyboards
 
 Los *storyboards* son la forma recomendada por Apple de crear interfaces de usuario. Un *storyboard* contiene la representación gráfica de las “pantallas” (los controladores) que componen nuestra aplicación y de las relaciones entre ellas. Además el sistema se encarga automáticamente de moverse por las pantallas cuando sucedan determinados eventos, instanciando los controladores y las vistas automáticamente.
 
@@ -61,7 +61,7 @@ Los *storyboards* son la forma recomendada por Apple de crear interfaces de usua
 
 ![](images/ui_primaria.png)
 
-### El *controller* inicial 
+### El *controller* inicial
 
 En cada momento habrá un *view controller* inicial que es el que se muestra cuando se carga la aplicación. Se distingue visualmente porque tiene una flecha apuntando a él desde la izquierda:
 
@@ -74,7 +74,7 @@ Para **convertir un *view controller* en inicial**, teniéndolo seleccionado ir 
 También podemos arrastrar la flecha que indica que un controlador es el inicial desde el actual hasta el que queremos convertir en inicial.
 
 
-### El *controller* de cada pantalla 
+### El *controller* de cada pantalla
 
 Simplificando, cada pantalla de nuestra app está controlada por una clase descendiente de la clase de UIKit `UIViewController`. Como ya hemos visto unas cuantas veces, la pantalla inicial de cada *app* está asociada a la clase `ViewController` de la plantilla. Puedes ver esto en Xcode, seleccionando con el ratón el *view controller* y yendo al icono del `Identity inspector` en el panel de la derecha: ![](images/identity_inspector.png). 
 
@@ -125,7 +125,7 @@ Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Reco
     3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario`.
     4. Acuérdate de dejar otra vez la primera pantalla como pantalla inicial arrastrando la flechita que lo indica.
 
-## Segues 
+## Segues
 
 Son las transiciones entre los *controllers*. Podemos **crear un *segue* visualmente** con `Ctrl+Arrastrar` entre un elemento cualquiera de un view controller (por ejemplo un botón), que será el de *controller* de origen, y el *controller* destino. Se nos dará a **elegir el tipo de *segue*** en un menú contextual.
 
