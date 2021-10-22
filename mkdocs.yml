@@ -2,14 +2,15 @@ site_name: IUDM-iOS-basico
 
 
 nav:
-  #- View Controllers: '1_controllers/apuntes.md'
-  #- Ejercicio: '1_controllers/ejercicios.md'
+  
   - Vistas: '2_vistas/apuntes.md'
-  - Ejercicios: '2_vistas/ejercicios.md'
+  - Ejercicios sobre vistas: '2_vistas/ejercicios.md'
+  - Controllers: '1_controllers/apuntes.md'
+  - Ejercicios de controllers: '1_controllers/ejercicios.md'
+  - Tablas: '4_tablas/apuntes.md'
+  - Ejercicios de tablas: '4_tablas/ejercicios.md'
   # - Autolayout: '3_autola yout/apuntes.md'
   # - Ejercicios: '3_autolayout/ejercicios.md'
-  # - Tablas: '4_tablas/apuntes.md'
-  # - Ejercicios: '4_tablas/ejercicios.md'
   # - Controladores contenedores: '5_contenedores/apuntes.md'
   # - Miniproyecto: 'proyecto/proyecto.md'
 
