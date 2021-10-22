@@ -1,10 +1,10 @@
 # Tablas
 
-## Introducción 
+## Introducción
 
 Las vistas de tabla (`UITableView`) se encargan de mostrar, gestionar y hacer *scrolling* de una tabla de elementos de una sola columna. Cada una de las filas se modela con un `UITableViewCell`.
  
-> Si necesitamos más de una columna podemos usar `UICollectionView`, que veréis  en la parte “avanzada” de la asignatura.
+> Si necesitamos más de una columna podemos usar `UICollectionView`, que veréis  en la parte “avanzada” de la asignatura. En las últimas versiones de iOS las funcionalidades de `UICollectionView` se han ampliado para permitir mostrar solo una columna. 
 
 Descritas así, puede parecer que las tablas deben desempeñar un papel muy limitado en las aplicaciones iOS, pero nada más lejos de la realidad. Son la forma más habitual en aplicaciones móviles de mostrar listas de elementos, no solo en iOS sino en todas las plataformas. Además su aspecto visual es enormemente configurable, con lo que que muchas "pantallas" de *apps* que a primera vista no lo parecen, en realidad son tablas, por ejemplo en las aplicaciones de Mail, Ajustes, Reloj…
 
@@ -15,21 +15,21 @@ Las tablas pueden ser *simples* (`UITableViewStylePlain`)
 
 Hay varios estilos predefinidos para las filas, que nos permiten mostrar diversos elementos: título, subtítulo, icono a la izquierda, … También podemos crear nuestros propios estilos de celda bien por código o bien gráficamente en el *interface builder*.
 
-## Creación de vistas de tabla 
+## Creación de vistas de tabla
 
-Una vista de tabla interactúa básicamente con tres objetos (aunque podemos implementar todas las funcionalidades en una única clase, como se suele hacer en los casos más simples)
+Una vista de tabla interactúa básicamente con tres objetos. Pueden ser distintos o puede ser el mismo objeto que desempeñe más de un papel:
 
-En primer lugar, el *view controller*. Ya hemos visto el papel que hace en las aplicaciones.
+- En primer lugar, el *view controller*. Ya hemos visto el papel que hace en las aplicaciones.
 
-En segundo lugar, el *data source*: las vistas de tabla solo almacenan directamente los datos de las filas actualmente visibles en pantalla. El resto se los piden a un objeto que debe ser conforme al protocolo `UITableViewDataSource`. Este es obligatorio, no podemos crear una tabla sin él.
+- En segundo lugar, el *data source*: las vistas de tabla solo almacenan directamente los datos de las filas actualmente visibles en pantalla. El resto se los piden a un objeto que debe ser conforme al protocolo `UITableViewDataSource`. Este es obligatorio, no podemos crear una tabla sin él.
 
-Y finalmente el *delegate*: para gestionar algunos eventos de manipulación de la tabla (como la edición, el borrado, o el mover una fila) y controlar algunos aspectos de la apariencia de las celdas, se usa el `UITableViewDelegate` 
+- Y finalmente el *delegate*: para gestionar algunos eventos de manipulación de la tabla (como la edición, el borrado, o el mover una fila) y controlar algunos aspectos de la apariencia de las celdas, se usa el `UITableViewDelegate` 
 
-Es muy habitual que el *controller*, el *delegate* y el *data source* sean el mismo objeto.
+Es muy habitual, al menos en los casos más simples, que el *controller*, el *delegate* y el *data source* sean el mismo objeto.
 
-Si usamos una vista de tabla dibujada en el *storyboard* podemos conectarla con los dos “colaboradores” gráficamente mediante el “Connections Inspector” del panel “Utilities”  
+Si usamos una vista de tabla dibujada en el *storyboard* podemos conectarla con los dos “colaboradores” gráficamente mediante el “Connections Inspector” del panel “Utilities”. La otra opción es establecer la conexión por código, fijando ciertas propiedades de la tabla, que luego veremos.  
 
-## Tablas estáticas 
+## Tablas estáticas
 
 En algunos casos conocemos de partida los elementos que queremos dibujar en la tabla. Ejemplo típico de esto es la aplicación de *Ajustes*, en la que las opciones están colocadas en una tabla simplemente para que estén más organizadas y tengan un formato atractivo. Esto lo podemos conseguir con una *tabla estática*.
 
@@ -42,7 +42,7 @@ Podemos añadir secciones a la tabla y cambiar el número de celdas en cada secc
 
 > Podemos aumentar el número de celdas de modo que no quepan en la pantalla. Para desplazarnos por la tabla podemos seleccionarla y hacer *scroll* con la rueda del ratón
 
-## Tablas dinámicas 
+## Tablas dinámicas
 
 En este tipo de tablas los datos son dinámicos: no se conocen por adelantado cuando se está diseñando la aplicación y suelen proceder de alguna fuente externa como una base de datos o un servidor.
 
@@ -179,7 +179,7 @@ Ya podemos conectar la propiedad `dataSource` de la tabla con este objeto. La pr
 
 ![](images/connect.png)
 
-## Gestión de tablas 
+## Gestión de tablas
 
 En las tablas dinámicas podemos por supuesto insertar y eliminar celdas. También podemos seleccionarlas haciendo *tap* sobre ellas. 
 
@@ -241,22 +241,23 @@ Por defecto al activar el modo edición en todas las celdas aparecerá la señal
 Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS **avisará al *datasource* de que se está intentando insertar o eliminar una celda, NO al *delegate* **. Esto es lógico ya que los datos los gestiona el *datasource*.
 
 Así, cuando se pulse sobre el ![](images/prohibido.png) y luego sobre “delete” o sobre el ![](images/mas.png), se llamará al método del *datasource* llamado `tableView(_:, commit:, forRowAt:)`. En este método tenemos que hacer dos cosas:
+
 - Actualizar los datos (borrar el dato o insertar uno nuevo)
-- LLamar a un método del API de tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)
+- Llamar a un método del API de la tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)
 
 Es muy importante destacar que **primero hay que actualizar los datos** y luego ocuparse de la parte gráfica. Si lo hacemos al revés no funcionará bien, ya que iOS intentará redibujar la tabla usando los datos “antiguos”.
 
 > Simplemente implementando el siguiente método (aunque estuviera vacío) activaremos el *swipe to delete*, pero el botón *delete* no va a funcionar salvo que implementemos el borrado como aquí se muestra
 
 ```swift
-func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle==UITableViewCellEditingStyle.delete {
+func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle==UITableViewCell.EditingStyle.delete {
             self.datos.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         }
-        else if editingStyle==UITableViewCellEditingStyle.insert {
+        else if editingStyle==UITableViewCell.EditingStyle.insert {
             self.datos.insert("Nueva celda", at: indexPath.row)
-            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.bottom)
+            tableView.insertRows(at: [indexPath], with: UITableView.RowAnimation.bottom)
         }
     }
 ```
@@ -274,3 +275,95 @@ let indexPath = IndexPath(row:0,section:0)
 tabla.insertRows(at: [indexPath], 
                      with: UITableViewRowAnimation.fade)
 ```
+
+## Diffable Data Sources
+
+Como hemos visto, el encargado de gestionar los datos mostrados en la tabla y sincronizar el estado de la propia interfaz es el propio programador. Pero esto da lugar a código tedioso y propenso a errores. Sería mucho mejor que iOS se encargara de seguir automáticamente la pista de los datos si estos cambian y actualizara visualmente la tabla de manera automática. Esto lo podemos conseguir con los *Diffable Data Sources*, que se introdujeron en iOS13.
+  
+Para crear un *Diffable Data Source* necesitamos especificar:
+
+- El tipo de los *items* de la tabla. Además este debe ser conforme al protocolo *hashable* (lo son automáticamente tipos básicos como String o Int, luego veremos qué implicaciones tiene esto)
+- El tipo de las secciones de la tabla. En iOS por defecto son simplemente enteros, pero aquí podemos especificar el tipo que queramos (siempre que como antes, sea *hashable*)
+- La `UITableView` asociada al *data source*
+- El código que crea cada celda (lo que hacíamos en el método `tableView(_:, cellForRowAt:)`)
+
+Por ejemplo, supongamos para simplificar que los identificadores de sección van a ser enteros y los datos de la tabla `String`s. Podríamos crear nuestro *diffable data source* como sigue:
+
+```swift
+class MiDiffableDS : UITableViewDiffableDataSource<Int, String> {
+    init(tabla : UITableView) {
+        super.init(
+            tableView: tabla,
+            cellProvider: {  tableView, indexPath, item in
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "miCelda",
+                    for: indexPath
+                )
+
+                cell.textLabel?.text = item
+                return cell
+            })
+    }
+}
+```
+
+cosas interesantes:
+
+- Nuestra clase hereda de  `UITableViewDiffableDataSource`, que es la clase base de los *diffable data sources* en iOS. 
+- Esta clase es genérica y está parametrizada por `<TipoDeSeccion, TipoDeItem>`, en nuestro caso `Int` y `String` como ya hemos dicho
+- En el constructor de la clase base hay que pasar como parámetros:
+  + La `UITableView` asociada. Aquí es donde se hace la conexión entre *datasource* y tabla. En nuestro ejemplo este parámetro se lo pasamos al inicializador de la clase derivada, así se lo podemos pasar desde el *controller* que es el "dueño" de la tabla.
+  + en `cellProvider` pasamos una clausura que básicamente es la implementación que hacíamos antes del `tableView(_:, cellForRowAt:)` (obtener la celda reutilizada, rellenarla de datos y devolverla)
+
+
+Si no queremos "molestarnos" en definir una clase propia también podemos crear directamente una instancia de la clase base y luego asignársela a la tabla como su datasouce:
+
+```swift
+//suponiendo que el UITableView se llame "tabla"
+//Este código podría estar en el viewDidLoad del controller
+let miDataSource = UITableViewDiffableDataSource<Int, String>(
+  tableview: miTabla,
+  //cellProvider igual que antes
+  ...
+)
+miTabla.dataSource = miDataSource
+``` 
+
+De momento no hemos sacado ningún beneficio apreciable de usar un *diffable data source*. Los beneficios empiezan cuando queremos modificar los datos asociados a la tabla. La idea es que el conjunto de datos se representa con lo que se llama un *snapshot*, que podemos modificar (crear de nuevo, añadir datos, borrar datos,...). Una vez modificado el *snapshot* llamamos al método `apply` sobre el *datasource* para que visualmente se apliquen los cambios correspondientes.
+
+Por ejemplo podríamos inicializar los datos como sigue:
+
+```swift
+var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+snapshot.appendSections([0])
+snapshot.appendItems(["uno", "dos", "tres"], toSection: 0)
+ds.apply(snapshot, animatingDifferences: false)
+```
+
+Como vemos en este ejemplo, podemos añadir secciones a la tabla e items dentro de cada sección. Al llamar a `apply` se actualizará la tabla, con una animación si el parámetro `animatingDifferences` es `true`.
+
+En el *snapshot* tenemos métodos para insertar, modificar o eliminar items, por ejemplo:
+
+```swift
+//aquí ds sería el diffable data source que hemos creado
+var snapshot = ds.snapshot()
+snapshot.deleteItems(["uno"])
+ds.apply(snapshot)
+```
+
+Los items se borran especificando un `id`, que en el caso de un tipo simple como `String` se corresponde con el propio contenido. La tabla se actualizará automáticamente tras el `apply`.
+
+Para implementar el borrado de celdas haciendo *tap* sobre ellas en el modo edición tendremos que sobreescribir el método `tableView(_,commit:,atIndexPath:)` en nuestro *diffable data source*:
+
+```swift
+override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        var snapshot = self.snapshot()
+        if let item = itemIdentifier(for: indexPath) {
+            snapshot.deleteItems([item])
+            apply(snapshot)
+        }
+    }
+```
+
+La diferencia es que ahora no tenemos que actualizar visualmente la tabla, solo modificar el snapshot y aplicarlo al *datasource*. Para saber qué item está en la posición `indexPath` usamos el método `itemIdentifier`.
+

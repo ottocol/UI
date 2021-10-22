@@ -102,8 +102,10 @@ Por defecto, estos nuevos view controller estarán asociados a clases propias de
 
 1. ir al menú `File > New > File...` 
 2. En la primera pantalla del asistente que aparecerá seleccionar `Cocoa Touch Class`, pulsar `Next`
-3. Poner un nombre a nuestra clase, por ejemplo `ViewControllerSecundario` y en `Subclass of` poner `UIViewController`, ya que necesitamos que herede de esta clase. El resto de opciones las dejamos por defecto. Pulsar `Next`
-4. Finalmente nos dejará elegir dónde guardar físicamente el archivo swift, podemos dejarlo por defecto y pulsar `Create`
+3. Poner un nombre a nuestra clase, por ejemplo `ViewControllerSecundario` y en `Subclass of` poner `UIViewController`, ya que necesitamos que herede de esta clase. 
+4. Dejar desmarcada la casilla `also create .XIB File`. 
+5. Pulsar `Next`
+6. Finalmente nos dejará elegir dónde guardar físicamente el archivo swift, podemos dejarlo por defecto y pulsar `Create`
 
 Si todo va bien verás que entre los archivos del proyecto aparece la nueva clase creada y que tiene la estructura tipica de un view controller (tiene por ejemplo un `viewDidLoad`).
 
@@ -113,7 +115,7 @@ Si todo va bien verás que entre los archivos del proyecto aparece la nueva clas
 Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Recordemos que eso se hace en el `Identity inspector` ![](images/identity_inspector.png) del panel de la derecha.
 
 !!! Ejercicio
-    **(continúa)** Teniendo seleccionado el *view controller* de la segunda pantalla que añadiste al *storyboard* (recuerda, icono del círculo amarillo con un cuadrado dentro) ve al `Identity inspector` y cambia el `Class` por `ViewControllerSecundario`.
+    **(continúa)** Teniendo seleccionado el *view controller* de la segunda pantalla que añadiste al *storyboard* (recuerda, clic en el icono del círculo amarillo con un cuadrado blanco dentro) ve al `Identity inspector` y cambia el `Class` por `ViewControllerSecundario`.
 
     Para comprobar que funciona:
 
@@ -127,7 +129,7 @@ Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Reco
 
 ## Segues
 
-Son las transiciones entre los *controllers*. Podemos **crear un *segue* visualmente** con `Ctrl+Arrastrar` entre un elemento cualquiera de un view controller (por ejemplo un botón), que será el de *controller* de origen, y el *controller* destino. Se nos dará a **elegir el tipo de *segue*** en un menú contextual.
+Son las transiciones entre los *controllers*. Podemos **crear un *segue* visualmente** con `Ctrl+Arrastrar` entre un elemento cualquiera de un view controller (por ejemplo un botón), que será el de *controller* de origen, y el *controller* destino. Se nos dará opción a elegir el tipo de *segue* en un menú contextual.
 
 ![](images/tipos_segue.png)
 
@@ -139,15 +141,13 @@ Como vemos en el menú contextual hay cuatro tipos de *segue*. Dos de ellos son 
 ![Tab bar controller: cuando se muestra un nuevo controlador, se hace solo en el área de contenido, sin "machacar" la barra de botones](images/tab_bar.png)
 -  *Present* quiere decir que el nuevo *controller* se mostrará de forma modal, de manera similar a cuando en un interfaz gráfico se muestra por ejemplo un cuadro de diálogo modal. No obstante esto no quiere decir que el *controller* antiguo se siga viendo “por debajo”, ya que en dispositivos con tamaño de pantalla limitado el nuevo ocupará toda la pantalla. 
 
-Como vemos en el menú contextual, en el caso del *show* se distingue además entre `Show` “a secas” y `Show detail`. El primero es el indicado cuando el nuevo *controller* va a sustituir completamente al anterior y el segundo cuando el nuevo es “secundario” con respecto al anterior (como en el ejemplo que poníamos del *tab bar*.
+Como vemos en el menú contextual, en el caso del *show* se distingue además entre `Show` “a secas” y `Show detail`. El primero es el indicado cuando el nuevo *controller* va a sustituir completamente al anterior y el segundo cuando el nuevo es “secundario” con respecto al anterior (como en el ejemplo que poníamos del *tab bar*).
 
 En el caso del *present*, se distingue entre `Present Modally` y `Present As Popover`. El primero sería lo que todo el mundo entiende por “modal”: el nuevo controller se pone “encima” del anterior. El segundo es el típico *popover* que aparece en el iPad.
 
 ![Tomado de la documentación de Apple](images/DraggedImage-3.png "Tomado de la documentación de Apple")
 
 > En realidad la forma concreta de mostrar exactamente el nuevo controlador la decide iOS dependiendo de las dimensiones actuales del dispositivo. Por ejemplo en un iPhone SE en vertical no aparecerá un *popover* aunque lo especifiquemos, la que la pantalla es muy pequeña para ello.
-
-Podemos **configurar las propiedades del *segue*** haciendo clic sobre él y yendo al icono de propiedades ![](images/attr_inspector.png) del área de `Utilities`. Aquí podemos cambiar el tipo y también la transición usada para navegar de una pantalla a otra.
 
 !!! Ejercicio
     **(continúa...)** Agrega un *segue* entre el botón de la primera pantalla y la segunda, recuerda que debes usar `Crtl`+arrastrar. Ejecuta la *app* para comprobar que efectivamente se cambia de pantalla pulsando en el botón, aunque de momento *no podrás volver atrás* (luego veremos cómo se hace).
@@ -158,11 +158,7 @@ Podemos usar diversos estilos a la hora de presentar de forma modal un *controll
 
 ![Tomado de la documentación de Apple](images/DraggedImage-4.png "Tomado de la documentación de Apple")
 
-Estos estilos se definen **en una propiedad del *controller* a presentar, y no del *segue***. En Xcode podemos cambiarlos con la propiedad `Presentation` en el *attribute inspector* ![](images/attr_inspector.png) del *controller*:
-
-![](images/presentation.png)
-
-En Swift especificamos el estilo dando valores a la propiedad `modalPresentationStyle` del controller que vamos a presentar.
+Estos estilos se definen **en una propiedad del *controller* a presentar, y no del *segue***. En Xcode podemos cambiarlos con la propiedad `Presentation` en el *attribute inspector* ![](images/attr_inspector.png) del *controller*. En Swift especificamos el estilo dando valores a la propiedad `modalPresentationStyle` del controller que vamos a presentar.
 
 Por otro lado, también podemos especificar una **animación** para la transición entre el *controller* actual y el siguiente. De nuevo es una propiedad del *controller* destino, no del *segue*. En Xcode se controla gráficamente con la propiedad `Transition style` del *inspector de atributos*. En Swift con la propiedad `modalTransitionStyle` del *controller* a presentar.
 
@@ -202,11 +198,11 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 !!! Ejercicio
     **(Continúa...)** prueba el código anterior en la *app* y comprueba que efectivamente cuando se pasa de una pantalla a otra, la información se está pasando de un *controller* a otro. En lugar de tomar un mensaje fijo "bienvenidos a la pantalla 2", haz que se pase e imprima lo que se escriba en el campo de texto de la pantalla 1.
 
-### Volver atrás en un *segue*
+### *Segues* que vuelven atrás (*unwind segues*)
 
-Aunque podemos crear un *segue* de modo visual, no podemos configurar visualmente cómo volver a la pantalla anterior cuando hemos seguido un *segue*. Esta “vuelta atrás” se llama *unwinding* y para conseguirla tenemos que escribir algo de código.
+Los *segues* que vuelven atrás se llaman *unwind segues* y se crean de forma distinta a los *segues* convencionales, ya que la "parte principal" del *segue* se crea en el controller destino, y no en el origen. Esto nos permite "deshacer" por ejemplo varias transiciones a la vez, volviendo varias pantallas atrás.
 
-En el *controller* *al que se vuelve atrás* debemos implementar lo que se llama un *unwind action*, un método que puede tener el nombre que deseemos pero debe tener una signatura específica:
+En el *controller* *destino de la vuelta* debemos implementar lo que se llama un *unwind action*, un método que puede tener el nombre que deseemos pero debe tener una signatura específica:
 
 - Está marcada con un `@IBAction`
 - Tiene como único parámetro un `UIStoryboardSegue`, que es el *segue* que se está usando para volver atrás. Por ejemplo

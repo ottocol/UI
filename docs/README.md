@@ -1,3 +1,3 @@
-# Prefacio
+# Interfaz de usuario, bloque de iOS básico
 
-En esta asignatura vamos a ver una introducción al desarrollo de interfaces para aplicaciones iOS.
+En este bloque de la asignatura vamos a ver una introducción al desarrollo de interfaces para aplicaciones iOS. Aunque ya hemos visto algunos conceptos básicos sobre interfaces en la asignatura de Tecnologías de Desarrollo, aquí profundizaremos un poco más sobre ellos y veremos detalles que no vimos antes, como nuevos componentes de interfaz (sliders, *pickers*,...) o cómo se hacen aplicaciones con varias "pantallas" (varios controladores). Completaremos este bloque con una introducción a las *tablas*, que son la forma estándar en la que podemos mostrar información en forma de listas y también *autolayout*, un mecanismo que nos permite adaptar automáticamente la interfaz al tamaño de la pantalla del dispositivo actual.
