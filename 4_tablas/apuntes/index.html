@@ -198,7 +198,182 @@
   
     <li class="md-nav__item">
       <a href="../../2_vistas/ejercicios/" class="md-nav__link">
-        Ejercicios
+        Ejercicios sobre vistas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_controllers/apuntes/" class="md-nav__link">
+        Controllers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_controllers/ejercicios/" class="md-nav__link">
+        Ejercicios de controllers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Tablas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Tablas
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    Introducción
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creacion-de-vistas-de-tabla" class="md-nav__link">
+    Creación de vistas de tabla
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablas-estaticas" class="md-nav__link">
+    Tablas estáticas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tablas-dinamicas" class="md-nav__link">
+    Tablas dinámicas
+  </a>
+  
+    <nav class="md-nav" aria-label="Tablas dinámicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-objeto-tabla" class="md-nav__link">
+    El objeto Tabla
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-fuente-de-datos-o-datasource" class="md-nav__link">
+    La fuente de datos o datasource
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gestion-de-tablas" class="md-nav__link">
+    Gestión de tablas
+  </a>
+  
+    <nav class="md-nav" aria-label="Gestión de tablas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#seleccionar-celdas" class="md-nav__link">
+    Seleccionar celdas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#insertar-y-eliminar-filas" class="md-nav__link">
+    Insertar y eliminar filas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diffable-data-sources" class="md-nav__link">
+    Diffable Data Sources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/" class="md-nav__link">
+        Ejercicios de tablas
       </a>
     </li>
   
@@ -304,6 +479,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#diffable-data-sources" class="md-nav__link">
+    Diffable Data Sources
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -321,7 +503,7 @@
 <h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
 <p>Las vistas de tabla (<code>UITableView</code>) se encargan de mostrar, gestionar y hacer <em>scrolling</em> de una tabla de elementos de una sola columna. Cada una de las filas se modela con un <code>UITableViewCell</code>.</p>
 <blockquote>
-<p>Si necesitamos más de una columna podemos usar <code>UICollectionView</code>, que veréis  en la parte “avanzada” de la asignatura.</p>
+<p>Si necesitamos más de una columna podemos usar <code>UICollectionView</code>, que veréis  en la parte “avanzada” de la asignatura. En las últimas versiones de iOS las funcionalidades de <code>UICollectionView</code> se han ampliado para permitir mostrar solo una columna. </p>
 </blockquote>
 <p>Descritas así, puede parecer que las tablas deben desempeñar un papel muy limitado en las aplicaciones iOS, pero nada más lejos de la realidad. Son la forma más habitual en aplicaciones móviles de mostrar listas de elementos, no solo en iOS sino en todas las plataformas. Además su aspecto visual es enormemente configurable, con lo que que muchas "pantallas" de <em>apps</em> que a primera vista no lo parecen, en realidad son tablas, por ejemplo en las aplicaciones de Mail, Ajustes, Reloj…</p>
 <p><img alt="" src="../images/apps_tablas.png" /></p>
@@ -329,12 +511,20 @@
  o <em>agrupadas</em> (<code>UITableViewStyleGrouped</code>)</p>
 <p>Hay varios estilos predefinidos para las filas, que nos permiten mostrar diversos elementos: título, subtítulo, icono a la izquierda, … También podemos crear nuestros propios estilos de celda bien por código o bien gráficamente en el <em>interface builder</em>.</p>
 <h2 id="creacion-de-vistas-de-tabla">Creación de vistas de tabla<a class="headerlink" href="#creacion-de-vistas-de-tabla" title="Permanent link">&para;</a></h2>
-<p>Una vista de tabla interactúa básicamente con tres objetos (aunque podemos implementar todas las funcionalidades en una única clase, como se suele hacer en los casos más simples)</p>
+<p>Una vista de tabla interactúa básicamente con tres objetos. Pueden ser distintos o puede ser el mismo objeto que desempeñe más de un papel:</p>
+<ul>
+<li>
 <p>En primer lugar, el <em>view controller</em>. Ya hemos visto el papel que hace en las aplicaciones.</p>
+</li>
+<li>
 <p>En segundo lugar, el <em>data source</em>: las vistas de tabla solo almacenan directamente los datos de las filas actualmente visibles en pantalla. El resto se los piden a un objeto que debe ser conforme al protocolo <code>UITableViewDataSource</code>. Este es obligatorio, no podemos crear una tabla sin él.</p>
+</li>
+<li>
 <p>Y finalmente el <em>delegate</em>: para gestionar algunos eventos de manipulación de la tabla (como la edición, el borrado, o el mover una fila) y controlar algunos aspectos de la apariencia de las celdas, se usa el <code>UITableViewDelegate</code> </p>
-<p>Es muy habitual que el <em>controller</em>, el <em>delegate</em> y el <em>data source</em> sean el mismo objeto.</p>
-<p>Si usamos una vista de tabla dibujada en el <em>storyboard</em> podemos conectarla con los dos “colaboradores” gráficamente mediante el “Connections Inspector” del panel “Utilities”  </p>
+</li>
+</ul>
+<p>Es muy habitual, al menos en los casos más simples, que el <em>controller</em>, el <em>delegate</em> y el <em>data source</em> sean el mismo objeto.</p>
+<p>Si usamos una vista de tabla dibujada en el <em>storyboard</em> podemos conectarla con los dos “colaboradores” gráficamente mediante el “Connections Inspector” del panel “Utilities”. La otra opción es establecer la conexión por código, fijando ciertas propiedades de la tabla, que luego veremos.  </p>
 <h2 id="tablas-estaticas">Tablas estáticas<a class="headerlink" href="#tablas-estaticas" title="Permanent link">&para;</a></h2>
 <p>En algunos casos conocemos de partida los elementos que queremos dibujar en la tabla. Ejemplo típico de esto es la aplicación de <em>Ajustes</em>, en la que las opciones están colocadas en una tabla simplemente para que estén más organizadas y tengan un formato atractivo. Esto lo podemos conseguir con una <em>tabla estática</em>.</p>
 <p>Para crear una pantalla con una tabla estática arrastramos un <code>Table View Controller</code> al <em>storyboard</em>. Es un <em>controller</em> asociado a una vista de tabla que ocupa toda la pantalla del dispositivo. Por defecto usa una tabla dinámica, pero podemos cambiarlo seleccionando la tabla en el <code>Attributes inspector</code> y seleccionando <code>Static Cells</code> en la primera propiedad, <code>Content</code>.</p>
@@ -487,9 +677,11 @@
 </td></tr></table>
 <p>Por defecto al activar el modo edición en todas las celdas aparecerá la señal de “prohibido”. Implementando en el <em>delegate</em> el método <code>tableView(_:,editingStyleForRowAt:)</code> podemos especificar qué tipo de estilo de edición queremos para una celda determinada. El sistema nos “preguntará” el estilo de edición para un número de celda y debemos devolver <code>UITableViewCellEditingStyle.delete</code>o bien <code>UITableViewCellEditingStyle.insert</code>.</p>
 <p>Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS <strong>avisará al <em>datasource</em> de que se está intentando insertar o eliminar una celda, NO al <em>delegate</em> </strong>. Esto es lógico ya que los datos los gestiona el <em>datasource</em>.</p>
-<p>Así, cuando se pulse sobre el <img alt="" src="../images/prohibido.png" /> y luego sobre “delete” o sobre el <img alt="" src="../images/mas.png" />, se llamará al método del <em>datasource</em> llamado <code>tableView(_:, commit:, forRowAt:)</code>. En este método tenemos que hacer dos cosas:
-- Actualizar los datos (borrar el dato o insertar uno nuevo)
-- LLamar a un método del API de tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)</p>
+<p>Así, cuando se pulse sobre el <img alt="" src="../images/prohibido.png" /> y luego sobre “delete” o sobre el <img alt="" src="../images/mas.png" />, se llamará al método del <em>datasource</em> llamado <code>tableView(_:, commit:, forRowAt:)</code>. En este método tenemos que hacer dos cosas:</p>
+<ul>
+<li>Actualizar los datos (borrar el dato o insertar uno nuevo)</li>
+<li>Llamar a un método del API de la tabla para que esta inserción o borrado se represente de manera visual (que gráficamente aparezca o desaparezca la celda)</li>
+</ul>
 <p>Es muy importante destacar que <strong>primero hay que actualizar los datos</strong> y luego ocuparse de la parte gráfica. Si lo hacemos al revés no funcionará bien, ya que iOS intentará redibujar la tabla usando los datos “antiguos”.</p>
 <blockquote>
 <p>Simplemente implementando el siguiente método (aunque estuviera vacío) activaremos el <em>swipe to delete</em>, pero el botón <em>delete</em> no va a funcionar salvo que implementemos el borrado como aquí se muestra</p>
@@ -515,6 +707,75 @@
 <span class="n">tabla</span><span class="p">.</span><span class="n">insertRows</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="p">[</span><span class="n">indexPath</span><span class="p">],</span> 
                      <span class="n">with</span><span class="p">:</span> <span class="n">UITableViewRowAnimation</span><span class="p">.</span><span class="n">fade</span><span class="p">)</span>
 </code></pre></div>
+<h2 id="diffable-data-sources">Diffable Data Sources<a class="headerlink" href="#diffable-data-sources" title="Permanent link">&para;</a></h2>
+<p>Como hemos visto, el encargado de gestionar los datos mostrados en la tabla y sincronizar el estado de la propia interfaz es el propio programador. Pero esto da lugar a código tedioso y propenso a errores. Sería mucho mejor que iOS se encargara de seguir automáticamente la pista de los datos si estos cambian y actualizara visualmente la tabla de manera automática. Esto lo podemos conseguir con los <em>Diffable Data Sources</em>, que se introdujeron en iOS13.</p>
+<p>Para crear un <em>Diffable Data Source</em> necesitamos especificar:</p>
+<ul>
+<li>El tipo de los <em>items</em> de la tabla. Además este debe ser conforme al protocolo <em>hashable</em> (lo son automáticamente tipos básicos como String o Int, luego veremos qué implicaciones tiene esto)</li>
+<li>El tipo de las secciones de la tabla. En iOS por defecto son simplemente enteros, pero aquí podemos especificar el tipo que queramos (siempre que como antes, sea <em>hashable</em>)</li>
+<li>La <code>UITableView</code> asociada al <em>data source</em></li>
+<li>El código que crea cada celda (lo que hacíamos en el método <code>tableView(_:, cellForRowAt:)</code>)</li>
+</ul>
+<p>Por ejemplo, supongamos para simplificar que los identificadores de sección van a ser enteros y los datos de la tabla <code>String</code>s. Podríamos crear nuestro <em>diffable data source</em> como sigue:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">MiDiffableDS</span> <span class="p">:</span> <span class="bp">UITableViewDiffableDataSource</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="kd">init</span><span class="p">(</span><span class="n">tabla</span> <span class="p">:</span> <span class="bp">UITableView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kc">super</span><span class="p">.</span><span class="kd">init</span><span class="p">(</span>
+            <span class="n">tableView</span><span class="p">:</span> <span class="n">tabla</span><span class="p">,</span>
+            <span class="n">cellProvider</span><span class="p">:</span> <span class="p">{</span>  <span class="n">tableView</span><span class="p">,</span> <span class="n">indexPath</span><span class="p">,</span> <span class="n">item</span> <span class="k">in</span>
+                <span class="kd">let</span> <span class="nv">cell</span> <span class="p">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">dequeueReusableCell</span><span class="p">(</span>
+                    <span class="n">withIdentifier</span><span class="p">:</span> <span class="s">&quot;miCelda&quot;</span><span class="p">,</span>
+                    <span class="k">for</span><span class="p">:</span> <span class="n">indexPath</span>
+                <span class="p">)</span>
+
+                <span class="n">cell</span><span class="p">.</span><span class="n">textLabel</span><span class="p">?.</span><span class="n">text</span> <span class="p">=</span> <span class="n">item</span>
+                <span class="k">return</span> <span class="n">cell</span>
+            <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>cosas interesantes:</p>
+<ul>
+<li>Nuestra clase hereda de  <code>UITableViewDiffableDataSource</code>, que es la clase base de los <em>diffable data sources</em> en iOS. </li>
+<li>Esta clase es genérica y está parametrizada por <code>&lt;TipoDeSeccion, TipoDeItem&gt;</code>, en nuestro caso <code>Int</code> y <code>String</code> como ya hemos dicho</li>
+<li>En el constructor de la clase base hay que pasar como parámetros:</li>
+<li>La <code>UITableView</code> asociada. Aquí es donde se hace la conexión entre <em>datasource</em> y tabla. En nuestro ejemplo este parámetro se lo pasamos al inicializador de la clase derivada, así se lo podemos pasar desde el <em>controller</em> que es el "dueño" de la tabla.</li>
+<li>en <code>cellProvider</code> pasamos una clausura que básicamente es la implementación que hacíamos antes del <code>tableView(_:, cellForRowAt:)</code> (obtener la celda reutilizada, rellenarla de datos y devolverla)</li>
+</ul>
+<p>Si no queremos "molestarnos" en definir una clase propia también podemos crear directamente una instancia de la clase base y luego asignársela a la tabla como su datasouce:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//suponiendo que el UITableView se llame &quot;tabla&quot;</span>
+<span class="c1">//Este código podría estar en el viewDidLoad del controller</span>
+<span class="kd">let</span> <span class="nv">miDataSource</span> <span class="p">=</span> <span class="bp">UITableViewDiffableDataSource</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">&gt;(</span>
+  <span class="n">tableview</span><span class="p">:</span> <span class="n">miTabla</span><span class="p">,</span>
+  <span class="c1">//cellProvider igual que antes</span>
+  <span class="p">...</span>
+<span class="p">)</span>
+<span class="n">miTabla</span><span class="p">.</span><span class="n">dataSource</span> <span class="p">=</span> <span class="n">miDataSource</span>
+</code></pre></div>
+<p>De momento no hemos sacado ningún beneficio apreciable de usar un <em>diffable data source</em>. Los beneficios empiezan cuando queremos modificar los datos asociados a la tabla. La idea es que el conjunto de datos se representa con lo que se llama un <em>snapshot</em>, que podemos modificar (crear de nuevo, añadir datos, borrar datos,...). Una vez modificado el <em>snapshot</em> llamamos al método <code>apply</code> sobre el <em>datasource</em> para que visualmente se apliquen los cambios correspondientes.</p>
+<p>Por ejemplo podríamos inicializar los datos como sigue:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nv">snapshot</span> <span class="p">=</span> <span class="bp">NSDiffableDataSourceSnapshot</span><span class="p">&lt;</span><span class="nb">Int</span><span class="p">,</span> <span class="nb">String</span><span class="p">&gt;()</span>
+<span class="n">snapshot</span><span class="p">.</span><span class="n">appendSections</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">snapshot</span><span class="p">.</span><span class="n">appendItems</span><span class="p">([</span><span class="s">&quot;uno&quot;</span><span class="p">,</span> <span class="s">&quot;dos&quot;</span><span class="p">,</span> <span class="s">&quot;tres&quot;</span><span class="p">],</span> <span class="n">toSection</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">ds</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">snapshot</span><span class="p">,</span> <span class="n">animatingDifferences</span><span class="p">:</span> <span class="kc">false</span><span class="p">)</span>
+</code></pre></div>
+<p>Como vemos en este ejemplo, podemos añadir secciones a la tabla e items dentro de cada sección. Al llamar a <code>apply</code> se actualizará la tabla, con una animación si el parámetro <code>animatingDifferences</code> es <code>true</code>.</p>
+<p>En el <em>snapshot</em> tenemos métodos para insertar, modificar o eliminar items, por ejemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//aquí ds sería el diffable data source que hemos creado</span>
+<span class="kd">var</span> <span class="nv">snapshot</span> <span class="p">=</span> <span class="n">ds</span><span class="p">.</span><span class="n">snapshot</span><span class="p">()</span>
+<span class="n">snapshot</span><span class="p">.</span><span class="n">deleteItems</span><span class="p">([</span><span class="s">&quot;uno&quot;</span><span class="p">])</span>
+<span class="n">ds</span><span class="p">.</span><span class="n">apply</span><span class="p">(</span><span class="n">snapshot</span><span class="p">)</span>
+</code></pre></div>
+<p>Los items se borran especificando un <code>id</code>, que en el caso de un tipo simple como <code>String</code> se corresponde con el propio contenido. La tabla se actualizará automáticamente tras el <code>apply</code>.</p>
+<p>Para implementar el borrado de celdas haciendo <em>tap</em> sobre ellas en el modo edición tendremos que sobreescribir el método <code>tableView(_,commit:,atIndexPath:)</code> en nuestro <em>diffable data source</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">override</span> <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="kc">_</span> <span class="n">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">commit</span> <span class="n">editingStyle</span><span class="p">:</span> <span class="bp">UITableViewCell</span><span class="p">.</span><span class="n">EditingStyle</span><span class="p">,</span> <span class="n">forRowAt</span> <span class="n">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nv">snapshot</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">snapshot</span><span class="p">()</span>
+        <span class="k">if</span> <span class="kd">let</span> <span class="nv">item</span> <span class="p">=</span> <span class="n">itemIdentifier</span><span class="p">(</span><span class="k">for</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">snapshot</span><span class="p">.</span><span class="n">deleteItems</span><span class="p">([</span><span class="n">item</span><span class="p">])</span>
+            <span class="n">apply</span><span class="p">(</span><span class="n">snapshot</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre></div>
+<p>La diferencia es que ahora no tenemos que actualizar visualmente la tabla, solo modificar el snapshot y aplicarlo al <em>datasource</em>. Para saber qué item está en la posición <code>indexPath</code> usamos el método <code>itemIdentifier</code>.</p>
                 
               
               
@@ -530,6 +791,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../../1_controllers/ejercicios/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Ejercicios de controllers" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Ejercicios de controllers
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejercicios de tablas" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Ejercicios de tablas
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
