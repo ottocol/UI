@@ -264,6 +264,198 @@
   
 
     
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Autolayout
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Autolayout
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#el-por-que-de-autolayout" class="md-nav__link">
+    El por qué de autolayout
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-restricciones-desde-xcode" class="md-nav__link">
+    Manejo de restricciones desde Xcode
+  </a>
+  
+    <nav class="md-nav" aria-label="Manejo de restricciones desde Xcode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadiendo-restricciones-con-botonesmenus" class="md-nav__link">
+    Añadiendo restricciones con botones/menús
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadiendo-restricciones-con-el-raton" class="md-nav__link">
+    Añadiendo restricciones con el ratón
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones-insuficientes-o-contradictorias" class="md-nav__link">
+    Restricciones insuficientes o contradictorias
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previsualizar-el-efecto-de-las-restricciones" class="md-nav__link">
+    Previsualizar el efecto de las restricciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restricciones-sobre-el-tamano" class="md-nav__link">
+    Restricciones sobre el tamaño
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prioridades" class="md-nav__link">
+    Prioridades
+  </a>
+  
+    <nav class="md-nav" aria-label="Prioridades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prioridades-de-las-restricciones" class="md-nav__link">
+    Prioridades de las restricciones
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prioridades-de-los-componentes" class="md-nav__link">
+    Prioridades de los componentes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stack-views" class="md-nav__link">
+    Stack views
+  </a>
+  
+    <nav class="md-nav" aria-label="Stack views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alignment-y-distribution" class="md-nav__link">
+    Alignment y Distribution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restricciones-avanzadas" class="md-nav__link">
+    Restricciones "avanzadas"
+  </a>
+  
+    <nav class="md-nav" aria-label="Restricciones "avanzadas"">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#formulacion-matematica-de-una-restriccion" class="md-nav__link">
+    Formulación matemática de una restricción
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expresar-restricciones-usando-codigo-swift" class="md-nav__link">
+    Expresar restricciones usando código Swift
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/" class="md-nav__link">
+        Ejercicios de autolayout
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -376,6 +568,19 @@
     Stack views
   </a>
   
+    <nav class="md-nav" aria-label="Stack views">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alignment-y-distribution" class="md-nav__link">
+    Alignment y Distribution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -468,10 +673,10 @@ Las opciones disponibles en el menú dependen de la dirección y sentido en que 
 <p>Generalmente cuando comenzamos a añadir restricciones, las líneas que las representan aparecen en color naranja en lugar de azul. Esto sucede porque todavía <strong>las restricciones son insuficientes</strong> para determinar unívocamente las coordenadas del <em>frame</em> del componente. Por ejemplo si acabamos de crear un botón y lo centramos verticalmente, lo hemos “fijado” en el eje de las <code>x</code> pero no así en el de las <code>y</code>. Además se muestra un contorno dibujado en línea punteada que indica dónde calcula Xcode que acabará posicionándose el componente con las restricciones actuales (y que a lo mejor no es donde nosotros queremos).</p>
 <p>Como regla general nos van a hacer falta <strong>dos restricciones por cada dimensión</strong> (X e Y) para eliminar la ambigüedad, aunque hay elementos que solo necesitan una restricción por dimensión, como los botones. Veamos por qué.</p>
 <p>Los botones tienen lo que se denomina un <em>tamaño intrínseco</em>. Es decir, aunque no lo digamos explícitamente, iOS le asigna el ancho y el alto justo para que quepa el texto mostrado. O sea, es como si ya tuvieran una restricción implícita en la X y en la Y. Así que cuando decimos que el botón esté centrado en la X (verticalmente), a <em>autolayout</em> le basta esta restricción para determinar el comportamiento del botón en esta dimensión, ya que la combina con el tamaño implícito. </p>
-<p>Otros componentes que tienen como tamaño intrínseco su contenido son los <code>UILabel</code>, los <code>UIImage</code>, los <code>UITextField</code>. Los <code>UISwitch</code> tienen también un ancho y alto fijos, así como los <code>UIStepper</code>. Los <code>slider</code> son un caso especial porque tienen un alto fijo pero no pasa así con el ancho (<a href="https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/AnatomyofaConstraint.html#//apple_ref/doc/uid/TP40010853-CH9-SW21">Más información</a>)</p>
+<p>Otros componentes que tienen como tamaño intrínseco su contenido son los <code>UILabel</code>, los <code>UIImage</code>, los <code>UITextField</code>. Los <code>UISwitch</code> tienen también un ancho y alto fijos, así como los <code>UIStepper</code>. Los <code>UISlider</code> son un caso especial porque tienen un alto fijo pero no pasa así con el ancho (<a href="https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/AnatomyofaConstraint.html#//apple_ref/doc/uid/TP40010853-CH9-SW21">Más información</a>)</p>
 <p>Sin embargo no ocurre lo mismo con otros componentes. Por ejemplo los <em>text view</em> con barra de <em>scroll</em> no tienen un <em>tamaño intrínseco</em>. De este modo, añadir la restricción de centrar un <code>Text View</code> en la dimensión X no resuelve la ambigüedad de qué ancho debería tener, o visto de otro modo, en qué valor de x debería empezar su borde izquierdo. Para este tipo de elementos nos harán falta dos restricciones por cada dimensión, o dicho de otro modo 4 en total para posicionar el elemento sin ambigüedades. Otros componentes tienen un tamaño intrínseco solo en una dimensión, por ejemplo los <em>slider</em> lo tienen en la Y pero no en la X, por lo que nos hará falta una única restricción en la Y pero dos en la X.</p>
 <p>Otro problema típico es <strong>cuando movemos con el ratón el elemento una vez se ha establecido la restricción,</strong> de modo que no ocupa la posición que esta restricción está induciendo. Las líneas de restricción también aparecerán en naranja, y el número que indica su tamaño tendrá un símbolo <code>+</code> o <code>-</code> para indicar el desplazamiento. Podemos hacer que el elemento vuelva a la posición que indican las restricciones pulsando sobre el primero de los botones de <em>autolayout</em>, <code>Update Frames</code>.</p>
-<p>Cuando <strong>las restricciones son contradictorias</strong>, las líneas que las representan aparecen en color rojo. Por ejemplo en la siguiente figura hemos intentado especificar un espaciado de 20 puntos con el margen derecho y simultáneamente que esté centrado en horizontal. Claramente esto es imposible, y así lo indica Xcode.</p>
+<p>Cuando <strong>las restricciones son contradictorias</strong>, las líneas que las representan aparecen en color rojo. Por ejemplo en la siguiente figura hemos intentado especificar un espaciado de 20 puntos con el margen derecho, un ancho de 46 y además que esté centrado en horizontal. Con un tamaño de pantalla convencional esto es imposible, y así lo indica Xcode.</p>
 <p><img alt="" src="../images/restricciones_contradictorias.png" /></p>
 <p>Cuando hay problemas con las restricciones estos se muestran también en el <code>Document outline</code> del storyboard. En el ángulo superior derecho del <code>Document outline</code> aparece una pequeña flecha roja indicando que hay problemas, y si la pulsamos aparecerá la lista de restricciones contradictorias e insuficientes.</p>
 <p>Podemos intentar resolver estos problemas de forma automática. Para eso está el botón <code>Resolve autolayout issues</code> de la barra de botones de autolayout (recordar que está en la esquina inferior derecha del <em>storyboard</em>). Hay varias posibilidades:</p>
@@ -517,6 +722,21 @@ Las opciones disponibles en el menú dependen de la dirección y sentido en que 
 <p>Para crear un <em>stack view</em>, seleccionar varios elementos (manteniendo pulsado <code>Command</code> + clic del ratón en cada uno) y luego pulsar sobre el último botón de la barra de <em>autolayout</em>, llamado <code>Embed In</code> (recordad, parte inferior derecha de la ventana del <em>storyboard</em>). En el menú desplegable del botón, elegir <code>Stack View</code>. Si los componentes seleccionados estaban más o menos en vertical se creará un <em>stack view</em> de este tipo y lo mismo si están en horizontal, aunque el tipo se puede cambiar en las propiedades.</p>
 <p>Las propiedades del <em>stack view</em> son accesibles seleccionándolo con el ratón y como siempre en el <em>Inspector de propiedades</em> (el icono con una escuadra, panel derecho de Xcode). Podemos indicar cómo se reparten los componentes el espacio disponible, dejar un espacio adicional entre ellos, especificar la alineación,...</p>
 <p><img alt="" src="../images/stack_view_properties.png" /></p>
+<ul>
+<li>El <code>Axis</code> indica si el <em>stack view</em> es vertical u horizontal</li>
+<li><code>Alignment</code> es la alineación en la perpendicular al eje del <em>stack view</em>, es decir, es la alineación vertical para los <em>stack views</em> horizontales y viceversa. </li>
+<li><code>Distribution</code> se refiere cómo se distribuyen los elementos en la dirección del eje del <em>stack view</em></li>
+</ul>
+<h3 id="alignment-y-distribution"><code>Alignment</code> y <code>Distribution</code><a class="headerlink" href="#alignment-y-distribution" title="Permanent link">&para;</a></h3>
+<p>Como hemos dicho, se refiere cómo se alinean los componentes en la perpendicular al eje del <em>stack view</em>. Para uno horizontal, se referirá entonces a la alineación en vertical: <code>Fill</code>, <code>Top</code>, <code>Center</code> o <code>Bottom</code>. Los valores son distintos para los <em>stack view</em> verticales, en este caso pueden ser <code>Fill</code>, <code>Leading</code>, <code>Center</code> o <code>Trailing</code>.</p>
+<p>En un <em>stack view</em> horizontal, básicamente la altura la determina el elemento más alto. Con <code>Fill</code> indicamos que queremos que todos los componentes tengan el mismo tamaño en Y (el del componente más alto). El resto de opciones son diferentes alineaciones verticales. El mismo razonamiento se puede hacer con un <em>stack view</em> vertical, el elemento más anchho y <code>Fill</code>.</p>
+<p>En cuanto a <code>distribution</code>:</p>
+<ul>
+<li><code>Fill</code>: se llena el espacio del <em>stack view</em> pero cada componente puede tener un tamaño distinto</li>
+<li><code>Fill Equally</code>: se llena el espacio del <em>stack view</em> y todos los componentes tienen el mismo tamaño (ancho para <em>stacks</em> horizontales y alto para verticales).</li>
+<li><code>Fill Proportionally</code>: se llena el espacio del <em>stack view</em>, cada componente de manera proporcional a su tamaño intrínseco.</li>
+<li><code>Equal Spacing</code>: el espacio entre componentes debe ser igual y como mínimo el valor de la propiedad <code>spacing</code> del <em>stack view</em>.</li>
+</ul>
 <p>También podemos anidar <em>stack views</em>, tener unos dentro de otros, por ejemplo aquí tenemos uno horizontal anidado dentro de una fila de uno vertical</p>
 <p><img alt="" src="../images/stack_view_anidado.png" /></p>
 <h2 id="restricciones-avanzadas">Restricciones "avanzadas"<a class="headerlink" href="#restricciones-avanzadas" title="Permanent link">&para;</a></h2>
@@ -628,6 +848,41 @@ Las opciones disponibles en el menú dependen de la dirección y sentido en que 
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../../4_tablas/ejercicios/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Ejercicios de tablas" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Ejercicios de tablas
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejercicios de autolayout" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Ejercicios de autolayout
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -14,7 +14,7 @@
     
     
       
-        <title>Ejercicios de *Autolayout* (1,5 puntos) - IUDM-iOS-basico</title>
+        <title>Ejercicios de autolayout - IUDM-iOS-basico</title>
       
     
     
@@ -96,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicios de *Autolayout* (1,5 puntos)
+              Ejercicios de autolayout
             
           </span>
         </div>
@@ -264,6 +264,90 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apuntes/" class="md-nav__link">
+        Autolayout
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ejercicios de autolayout
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ejercicios de autolayout
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pantalla-inicial-05-puntos" class="md-nav__link">
+    Pantalla inicial (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pantalla-secundaria-05-puntos" class="md-nav__link">
+    Pantalla secundaria (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-screen-05-puntos" class="md-nav__link">
+    Launch Screen (0,5 puntos)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -290,15 +374,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usar-un-stack-view-075-puntos" class="md-nav__link">
-    Usar un stack view (0,75 puntos)
+  <a href="#pantalla-inicial-05-puntos" class="md-nav__link">
+    Pantalla inicial (0,5 puntos)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#anadir-restricciones-de-manera-visual-075-puntos" class="md-nav__link">
-    Añadir restricciones de manera visual (0,75 puntos)
+  <a href="#pantalla-secundaria-05-puntos" class="md-nav__link">
+    Pantalla secundaria (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#launch-screen-05-puntos" class="md-nav__link">
+    Launch Screen (0,5 puntos)
   </a>
   
 </li>
@@ -318,13 +409,26 @@
                 
                 <h1 id="ejercicios-de-autolayout-15-puntos">Ejercicios de <em>Autolayout</em> (1,5 puntos)<a class="headerlink" href="#ejercicios-de-autolayout-15-puntos" title="Permanent link">&para;</a></h1>
 <p>El objetivo es añadir <em>autolayout</em> a la aplicación de “pioneras” que hicimos en sesiones anteriores para que la interfaz se vea correctamente en todos los modelos de iPhone.</p>
-<h2 id="usar-un-stack-view-075-puntos">Usar un stack view (0,75 puntos)<a class="headerlink" href="#usar-un-stack-view-075-puntos" title="Permanent link">&para;</a></h2>
-<p>Usa un stack view en la pantalla principal (la de los botones) para que estos aparezcan ocupando toda la pantalla sea cual sea la resolución. (no es necesario que sea estrictamente toda la pantalla, puedes dejar un margen alrededor de los botones si lo prefieres).</p>
-<h2 id="anadir-restricciones-de-manera-visual-075-puntos">Añadir restricciones de manera visual (0,75 puntos)<a class="headerlink" href="#anadir-restricciones-de-manera-visual-075-puntos" title="Permanent link">&para;</a></h2>
-<p>Añadid restricciones a la pantalla secundaria (la que muestra información sobre cada pionera). Se deben cumplir las siguientes condiciones:</p>
+<h2 id="pantalla-inicial-05-puntos">Pantalla inicial (0,5 puntos)<a class="headerlink" href="#pantalla-inicial-05-puntos" title="Permanent link">&para;</a></h2>
+<p>Incluye los tres botones de la pantalla principal en un stack view vertical para que estos aparezcan con el mismo tamaño (consulta la sección de <em>stack view</em> de los apuntes)</p>
+<p>Una vez hecho esto, haz que ocupen toda la pantalla sea cual sea la resolución. Lo más sencillo es poner distancia 0 del <em>stack view</em> a los 4 bordes.</p>
+<h2 id="pantalla-secundaria-05-puntos">Pantalla secundaria (0,5 puntos)<a class="headerlink" href="#pantalla-secundaria-05-puntos" title="Permanent link">&para;</a></h2>
+<p>Añadid restricciones a la pantalla secundaria (la que muestra información sobre cada pionera). Se deben cumplir las siguientes condiciones aproximadamente: </p>
 <ul>
-<li>El <em>text view</em> debe aparecer centrado horizontal y verticalmente</li>
-<li>El botón debe aparecer en la parte inferior de la pantalla y centrado horizontalmente</li>
+<li>El <em>text view</em> debe aparecer centrado horizontal y verticalmente. Debes fijar además o bien su tamaño o bien la separación con los bordes, queda a tu elección.</li>
+<li>El botón debe aparecer en la parte inferior de la pantalla, a una distancia fija del borde (la que quieras), y centrado horizontalmente.</li>
+</ul>
+<h2 id="launch-screen-05-puntos">Launch Screen (0,5 puntos)<a class="headerlink" href="#launch-screen-05-puntos" title="Permanent link">&para;</a></h2>
+<p>Haz un <code>LaunchScreen.storyboard</code> que quede como el de la siguiente imagen (mis disculpas a todos los diseñadores de interfaces :)):</p>
+<p><img alt="" src="../images/launchScreen.png" /></p>
+<ul>
+<li>La imagen la puedes descargar de <a href="../images/logo_mm_ua.png">aqui</a>. Crea un nuevo "image set" en el <em>assets</em> llamado "logo" y arrástrala allí</li>
+<li>La <code>Image View</code>tiene como image al "logo" y como <em>content mode</em> "aspect fit", para que no se deformen las proporciones</li>
+<li>Tanto la imagen como el label "MM.UA" están centrados en vertical</li>
+<li>La imagen debe tener un aspect ratio de 1:2</li>
+<li>La imagen y el label "MM.UA" deben tener el mismo ancho (selecciona las dos clicando en cada una y manteniendo la tecla <code>Cmd</code>, y luego en el tercer botón de autolayout - "Add new constraints" tienes la restricción de "equal widths")</li>
+<li>La imagen está a 24 puntos del borde izquierdo, el label "MM.UA" a 24 del derecho y entre la imagen y el label también hay 24 puntos</li>
+<li>El label "Universidad de Alicante" está centrado en horizontal y a una distancia de 32 puntos del borde inferior de la imagen </li>
 </ul>
                 
               
@@ -341,6 +445,26 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../apuntes/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Autolayout" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Autolayout
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
