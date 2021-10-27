@@ -9,8 +9,8 @@ nav:
   - Ejercicios de controllers: '1_controllers/ejercicios.md'
   - Tablas: '4_tablas/apuntes.md'
   - Ejercicios de tablas: '4_tablas/ejercicios.md'
-  # - Autolayout: '3_autola yout/apuntes.md'
-  # - Ejercicios: '3_autolayout/ejercicios.md'
+  - Autolayout: '3_autolayout/apuntes.md'
+  - Ejercicios de autolayout: '3_autolayout/ejercicios.md'
   # - Controladores contenedores: '5_contenedores/apuntes.md'
   # - Miniproyecto: 'proyecto/proyecto.md'
 

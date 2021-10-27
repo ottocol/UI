@@ -1,6 +1,6 @@
 # Autolayout
 
-## El por qué de *autolayout* 
+## El por qué de *autolayout*
 
 Hasta ahora en todas las *apps* que hemos desarrollado hemos colocado los componentes de interfaz en coordenadas fijas, arrastrándolas hasta su posición visualmente con Xcode o bien especificando directamente las coordenadas en Swift. El problema de esto es que si cambiamos de dispositivo o se rota la pantalla la interfaz no se va adaptar adecuadamente, ya que las dimensiones han cambiado y las coordenadas antes especificadas ahora pueden no tener sentido.
 
@@ -16,7 +16,7 @@ Si ejecutamos la aplicación en el simulador usando el mismo dispositivo que hem
 
 Necesitamos algún sistema que adapte automáticamente las dimensiones de los componentes de la interfaz a la resolución actual. En iOS ese sistema es **Autolayout**. Es un sistema declarativo y basado en restricciones. El sistema usa las restricciones especificadas para calcular automáticamente el *frame* de cada vista de la interfaz, y adaptarlo a las dimensiones actuales de la ventana.
 
-## Manejo de restricciones desde Xcode 
+## Manejo de restricciones desde Xcode
 
 Para especificar qué aspecto queremos que tenga la interfaz independientemente de la resolución hay que añadir **restricciones**. Básicamente las hay de dos tipos:
 
@@ -73,13 +73,13 @@ Como regla general nos van a hacer falta **dos restricciones por cada dimensión
 
 Los botones tienen lo que se denomina un *tamaño intrínseco*. Es decir, aunque no lo digamos explícitamente, iOS le asigna el ancho y el alto justo para que quepa el texto mostrado. O sea, es como si ya tuvieran una restricción implícita en la X y en la Y. Así que cuando decimos que el botón esté centrado en la X (verticalmente), a *autolayout* le basta esta restricción para determinar el comportamiento del botón en esta dimensión, ya que la combina con el tamaño implícito. 
 
-Otros componentes que tienen como tamaño intrínseco su contenido son los `UILabel`, los `UIImage`, los `UITextField`. Los `UISwitch` tienen también un ancho y alto fijos, así como los `UIStepper`. Los `slider` son un caso especial porque tienen un alto fijo pero no pasa así con el ancho ([Más información](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/AnatomyofaConstraint.html#//apple_ref/doc/uid/TP40010853-CH9-SW21))
+Otros componentes que tienen como tamaño intrínseco su contenido son los `UILabel`, los `UIImage`, los `UITextField`. Los `UISwitch` tienen también un ancho y alto fijos, así como los `UIStepper`. Los `UISlider` son un caso especial porque tienen un alto fijo pero no pasa así con el ancho ([Más información](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/AutolayoutPG/AnatomyofaConstraint.html#//apple_ref/doc/uid/TP40010853-CH9-SW21))
 
 Sin embargo no ocurre lo mismo con otros componentes. Por ejemplo los *text view* con barra de *scroll* no tienen un *tamaño intrínseco*. De este modo, añadir la restricción de centrar un `Text View` en la dimensión X no resuelve la ambigüedad de qué ancho debería tener, o visto de otro modo, en qué valor de x debería empezar su borde izquierdo. Para este tipo de elementos nos harán falta dos restricciones por cada dimensión, o dicho de otro modo 4 en total para posicionar el elemento sin ambigüedades. Otros componentes tienen un tamaño intrínseco solo en una dimensión, por ejemplo los *slider* lo tienen en la Y pero no en la X, por lo que nos hará falta una única restricción en la Y pero dos en la X.
 
 Otro problema típico es **cuando movemos con el ratón el elemento una vez se ha establecido la restricción,** de modo que no ocupa la posición que esta restricción está induciendo. Las líneas de restricción también aparecerán en naranja, y el número que indica su tamaño tendrá un símbolo `+` o `-` para indicar el desplazamiento. Podemos hacer que el elemento vuelva a la posición que indican las restricciones pulsando sobre el primero de los botones de *autolayout*, `Update Frames`.
 
-Cuando **las restricciones son contradictorias**, las líneas que las representan aparecen en color rojo. Por ejemplo en la siguiente figura hemos intentado especificar un espaciado de 20 puntos con el margen derecho y simultáneamente que esté centrado en horizontal. Claramente esto es imposible, y así lo indica Xcode.
+Cuando **las restricciones son contradictorias**, las líneas que las representan aparecen en color rojo. Por ejemplo en la siguiente figura hemos intentado especificar un espaciado de 20 puntos con el margen derecho, un ancho de 46 y además que esté centrado en horizontal. Con un tamaño de pantalla convencional esto es imposible, y así lo indica Xcode.
 
 ![](images/restricciones_contradictorias.png)
 
@@ -106,7 +106,7 @@ No obstante, también podemos poner restricciones sobre el tamaño. Podemos fija
 
 Si especificamos el tamaño mediante una restricción podemos forzar a que el contenido del botón tenga que “cortarse” porque no cabe, o bien que tenga que añadirse un *padding* al sobrar espacio. 
 
-## Prioridades 
+## Prioridades
 
 En *autolayout a veces puede haber reglas contradictorias o ambiguas. Una forma de resolver estas ambigüedades o contradicciones es mediante el uso de  **prioridades**.
 
@@ -151,11 +151,29 @@ Las propiedades del *stack view* son accesibles seleccionándolo con el ratón y
 
 ![](images/stack_view_properties.png)
 
+
+- El `Axis` indica si el *stack view* es vertical u horizontal
+- `Alignment` es la alineación en la perpendicular al eje del *stack view*, es decir, es la alineación vertical para los *stack views* horizontales y viceversa. 
+- `Distribution` se refiere cómo se distribuyen los elementos en la dirección del eje del *stack view*
+
+### `Alignment` y `Distribution`
+
+Como hemos dicho, se refiere cómo se alinean los componentes en la perpendicular al eje del *stack view*. Para uno horizontal, se referirá entonces a la alineación en vertical: `Fill`, `Top`, `Center` o `Bottom`. Los valores son distintos para los *stack view* verticales, en este caso pueden ser `Fill`, `Leading`, `Center` o `Trailing`.
+
+En un *stack view* horizontal, básicamente la altura la determina el elemento más alto. Con `Fill` indicamos que queremos que todos los componentes tengan el mismo tamaño en Y (el del componente más alto). El resto de opciones son diferentes alineaciones verticales. El mismo razonamiento se puede hacer con un *stack view* vertical, el elemento más anchho y `Fill`.
+
+En cuanto a `distribution`:
+
+- `Fill`: se llena el espacio del *stack view* pero cada componente puede tener un tamaño distinto
+- `Fill Equally`: se llena el espacio del *stack view* y todos los componentes tienen el mismo tamaño (ancho para *stacks* horizontales y alto para verticales).
+- `Fill Proportionally`: se llena el espacio del *stack view*, cada componente de manera proporcional a su tamaño intrínseco.
+- `Equal Spacing`: el espacio entre componentes debe ser igual y como mínimo el valor de la propiedad `spacing` del *stack view*.
+
 También podemos anidar *stack views*, tener unos dentro de otros, por ejemplo aquí tenemos uno horizontal anidado dentro de una fila de uno vertical
 
 ![](images/stack_view_anidado.png)
 
-## Restricciones "avanzadas" 
+## Restricciones "avanzadas"
 
 !!! info "Nota"
 
