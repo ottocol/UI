@@ -28,7 +28,7 @@ Vamos a realizar una miniaplicación para llevar la lista de la compra, podremos
 
 ### Crear la fuente de datos de la tabla
 
-- Crear un nuevo grupo (carpeta para organizar código): botón derecho sobre la carpeta amarilla `ListaCompra` y en el menú desplegable, `New Group`. Llamarlo  `Lista`
+- Crear un nuevo grupo (carpeta para organizar código): en el panel izquierdo de Xcode, vista "navegador", botón derecho sobre la carpeta `ListaCompra` y en el menú desplegable, `New Group`. Llamarlo  `Lista`
 - Crear dentro de este grupo un *struct* `Item`, para guardar los datos de un item de la lista
 
 ```swift
