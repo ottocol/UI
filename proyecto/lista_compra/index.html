@@ -715,13 +715,15 @@
 </li>
 </ul>
 <h3 id="implementar-la-funcionalidad-del-boton-guardar">Implementar la funcionalidad del botón "guardar"<a class="headerlink" href="#implementar-la-funcionalidad-del-boton-guardar" title="Permanent link">&para;</a></h3>
-<p>En el <code>NuevoItemViewController</code> creamos:
- - un <em>outlet</em> para el campo de texto
- - una propiedad <code>nombre</code> de tipo String para guardar el mismo dato, ya que desde la pantalla inicial no podemos acceder al campo de texto de la segunda.</p>
+<p>En el <code>NuevoItemViewController</code> creamos:</p>
+<ul>
+<li>un <em>outlet</em> para el campo de texto</li>
+<li>una propiedad <code>nombre</code> de tipo String para guardar el mismo dato, ya que desde la pantalla inicial no podemos acceder al campo de texto de la segunda.</li>
+</ul>
 <p>Queremos que cuando se pulse "guardar" se vuelva atrás a la primera pantalla y además se haga una copia del contenido del campo de texto en la propiedad <code>nombre</code>.</p>
 <p>Para volver atrás:</p>
 <ul>
-<li>Crea una <em>unwind action</em> para volver atrás:  recuerda un método que esté marcado con <code>@IBAction</code> y como parámetros tenga solo uno de tipo <code>UIStoryboardSegue</code>.</li>
+<li>Crea una <em>unwind action</em> en <code>ListaViewController</code> para volver atrás a esta pantalla desde la de nuevo item:  recuerda que es un método que esté marcado con <code>@IBAction</code> y como parámetros tenga solo uno de tipo <code>UIStoryboardSegue</code>.</li>
 </ul>
 <blockquote>
 <blockquote>
@@ -729,8 +731,9 @@
 </blockquote>
 </blockquote>
 <ul>
-<li>Conecta el botón con la <em>unwind action</em> (el icono de "Exit" de la parte superior de la pantalla del dispositivo)</li>
+<li>Conecta el botón de guardar de la pantalla de nuevo item con la <em>unwind action</em> (Ctrl+Arrastrar con el icono de "Exit" de la parte superior de la pantalla del dispositivo). Xcode buscará todas las "unwind actions" de todos los controllers y te mostrará una lista (en este caso solo habrá una, la que creaste antes).</li>
 </ul>
+<p>NOTA: sí, esta forma de trabajar es "rara". Parece raro que el <em>unwind action</em> se cree en la pantalla destino y la conexión se haga desde el "exit" de otra pantalla, pero esto nos permite especificar que queremos saltar desde cualquier pantalla a cualquier pantalla, y también desde varias pantallas ejecutar la misma "unwind action" (volver a una misma pantalla).</p>
 <p>Para copiar el dato a la propiedad "nombre":</p>
 <ul>
 <li>En el <code>NuevoItemViewController</code> crea un método <code>prepare(for:,sender:)</code> que se disparará cuando volvamos atrás por el <em>unwind segue</em></li>
