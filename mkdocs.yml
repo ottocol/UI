@@ -11,7 +11,8 @@ nav:
   - Ejercicios de tablas: '4_tablas/ejercicios.md'
   - Autolayout: '3_autolayout/apuntes.md'
   - Ejercicios de autolayout: '3_autolayout/ejercicios.md'
-  # - Controladores contenedores: '5_contenedores/apuntes.md'
+  - Controladores contenedores: '5_contenedores/apuntes.md'
+  - Miniproyecto: 'proyecto/lista_compra.md'
   # - Miniproyecto: 'proyecto/proyecto.md'
 
 theme:

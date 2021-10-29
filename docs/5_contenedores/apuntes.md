@@ -84,6 +84,8 @@ El tamaño recomendado para los iconos varía según la interfaz se muestre en m
 
 ### SF Symbols
 
-Están disponibles solo desde iOS13. Presentan varias ventajas, entre ellas la de integrarse perfectamente con las fuentes del sistema, estar ya incluídos en iOS (no hay que añadirlos al proyecto) y haber también algunos multicolores. Para más información sobre estos iconos, se recomienda consultar el [apartado correspondiente](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/) de las Human Interface Guidelines
+Están disponibles desde iOS13. Presentan varias ventajas, entre ellas la de integrarse perfectamente con la fuente del sistema, ser vectoriales y por tanto escalables sin perder resolución, estar ya incluídos en iOS (no hay que añadirlos al *assets*) y hpoder renderizarse en distintos modos (monocromo, niveles de color, multicolor). Para más información sobre estos iconos, se recomienda consultar el [apartado correspondiente](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/) de las Human Interface Guidelines.
+
+Apple ofrece una [aplicación para Mac](https://developer.apple.com/sf-symbols/) con la que se puede visualizar el catálogo completo de símbolos, aunque no están disponibles directamente en la web. Hay varios sitios de terceros que muestran la información (podéis buscar "sf symbols online") pero en teoría por motivos de licencia estos sitios no pueden mostrar los iconos en sí.
 
 

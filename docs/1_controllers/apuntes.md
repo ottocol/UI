@@ -7,7 +7,6 @@
 
 ## *View controllers*. Funciones básicas
 
-Los *view controllers* son la C del MVC. Su tarea más importante es gestionar una jerarquía de vistas. Cada *controller* tiene una vista “principal” o “raíz” (su propiedad `view`), y esa a su vez tiene *subvistas* que por supuesto pueden contener otras *subvistas* y así sucesivamente. 
 
 ![Tomado de "View Controller Programming Guide" de Apple](images/DraggedImage.png "Tomado de "View Controller Programming Guide" de Apple")
 
