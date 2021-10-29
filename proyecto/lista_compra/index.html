@@ -1,0 +1,821 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.2">
+    
+    
+      
+        <title>Miniproyecto - IUDM-iOS-basico</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.24c991ad.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#009485">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#miniproyecto-lista-de-la-compra-3-puntos-en-total" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="IUDM-iOS-basico" class="md-header__button md-logo" aria-label="IUDM-iOS-basico" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IUDM-iOS-basico
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Miniproyecto
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="IUDM-iOS-basico" class="md-nav__button md-logo" aria-label="IUDM-iOS-basico" data-md-component="logo">
+      
+  <img src="../../logo.png" alt="logo">
+
+    </a>
+    IUDM-iOS-basico
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_vistas/apuntes/" class="md-nav__link">
+        Vistas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2_vistas/ejercicios/" class="md-nav__link">
+        Ejercicios sobre vistas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_controllers/apuntes/" class="md-nav__link">
+        Controllers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_controllers/ejercicios/" class="md-nav__link">
+        Ejercicios de controllers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_tablas/apuntes/" class="md-nav__link">
+        Tablas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_tablas/ejercicios/" class="md-nav__link">
+        Ejercicios de tablas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_autolayout/apuntes/" class="md-nav__link">
+        Autolayout
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3_autolayout/ejercicios/" class="md-nav__link">
+        Ejercicios de autolayout
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_contenedores/apuntes/" class="md-nav__link">
+        Controladores contenedores
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Miniproyecto
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Miniproyecto
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#organizacion-inicial" class="md-nav__link">
+    Organización inicial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidad-mostrar-lista-de-la-compra-1-punto" class="md-nav__link">
+    Funcionalidad: Mostrar lista de la compra (1 punto)
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionalidad: Mostrar lista de la compra (1 punto)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-tabla-en-el-storyboard" class="md-nav__link">
+    Crear la tabla en el storyboard:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-fuente-de-datos-de-la-tabla" class="md-nav__link">
+    Crear la fuente de datos de la tabla
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidad-de-marcardesmarcar-items-05-puntos" class="md-nav__link">
+    Funcionalidad de marcar/desmarcar items (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidad-de-nuevo-item-1-punto" class="md-nav__link">
+    Funcionalidad de "nuevo item" (1 punto)
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionalidad de "nuevo item" (1 punto)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-pantalla" class="md-nav__link">
+    Crear la pantalla
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-el-controller-de-la-nueva-pantalla" class="md-nav__link">
+    Crear el controller de la nueva pantalla
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementar-la-funcionalidad-del-boton-guardar" class="md-nav__link">
+    Implementar la funcionalidad del botón "guardar"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-la-pantalla-de-notas-y-la-navegacion-hasta-ella-05-puntos" class="md-nav__link">
+    Crear la pantalla de notas y la navegación hasta ella (0,5 puntos)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#organizacion-inicial" class="md-nav__link">
+    Organización inicial
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidad-mostrar-lista-de-la-compra-1-punto" class="md-nav__link">
+    Funcionalidad: Mostrar lista de la compra (1 punto)
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionalidad: Mostrar lista de la compra (1 punto)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-tabla-en-el-storyboard" class="md-nav__link">
+    Crear la tabla en el storyboard:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-fuente-de-datos-de-la-tabla" class="md-nav__link">
+    Crear la fuente de datos de la tabla
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidad-de-marcardesmarcar-items-05-puntos" class="md-nav__link">
+    Funcionalidad de marcar/desmarcar items (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcionalidad-de-nuevo-item-1-punto" class="md-nav__link">
+    Funcionalidad de "nuevo item" (1 punto)
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcionalidad de "nuevo item" (1 punto)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crear-la-pantalla" class="md-nav__link">
+    Crear la pantalla
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crear-el-controller-de-la-nueva-pantalla" class="md-nav__link">
+    Crear el controller de la nueva pantalla
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementar-la-funcionalidad-del-boton-guardar" class="md-nav__link">
+    Implementar la funcionalidad del botón "guardar"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crear-la-pantalla-de-notas-y-la-navegacion-hasta-ella-05-puntos" class="md-nav__link">
+    Crear la pantalla de notas y la navegación hasta ella (0,5 puntos)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="miniproyecto-lista-de-la-compra-3-puntos-en-total">Miniproyecto: Lista de la compra (3 puntos en total)<a class="headerlink" href="#miniproyecto-lista-de-la-compra-3-puntos-en-total" title="Permanent link">&para;</a></h1>
+<p>Vamos a realizar una miniaplicación para llevar la lista de la compra, podremos introducir productos y marcarlos cuando ya los hayamos comprado. Además tendremos una pantalla con un cuadro de texto para escribir nuestras notas, cosas que debemos recordar pero no nos caben en la lista.</p>
+<blockquote>
+<p>La aplicación será funcional pero no guardará los datos de manera persistente. Esto lo veremos en la asignatura de Persistencia en Dispositivos Móviles.</p>
+</blockquote>
+<h2 id="organizacion-inicial">Organización inicial<a class="headerlink" href="#organizacion-inicial" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Crear un nuevo proyecto, llamándolo <code>ListaCompra</code></li>
+<li>Para organizar un poco mejor el código, vamos a meter en una carpeta los <em>view controllers</em> y renombrar el controller inicial:<ul>
+<li>Botón derecho sobre el <code>ViewController</code>, en el menú <em>popup</em> "New Group from Selection".</li>
+<li>Llamar <code>Controllers</code> al nuevo grupo</li>
+<li>Cambiar el nombre de <code>ViewController</code>por <code>ListaViewController</code>, clicando con botón derecho en el código fuente sobre el nombre de la clase y seleccionando la opción de <code>Refactor &gt; Rename...</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="funcionalidad-mostrar-lista-de-la-compra-1-punto">Funcionalidad: Mostrar lista de la compra (1 punto)<a class="headerlink" href="#funcionalidad-mostrar-lista-de-la-compra-1-punto" title="Permanent link">&para;</a></h2>
+<h3 id="crear-la-tabla-en-el-storyboard">Crear la tabla <strong>en el storyboard:</strong><a class="headerlink" href="#crear-la-tabla-en-el-storyboard" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Insertar un componente de UI de tipo <em>table view</em>  en <code>ListaViewController</code></li>
+<li>Ponerle 4 restricciones de autolayout de distancia 0 a los bordes, para que ocupe toda la pantalla del dispositivo</li>
+<li>Configurar la tabla como dinámica, y crear la celda prototipo: en las propiedades de la tabla  (panel derecho, inspector de propiedades)<ul>
+<li>Asegurarse que el <code>Content</code>es <code>Dynamic prototypes</code> (que es una tabla dinámica)</li>
+<li>Incrementar el número de <code>Prototype cells</code> a 1</li>
+<li>Elegir como <code>style</code> <code>Plain</code> que es un estilo preconfigurado solo con un título de celda, nos basta para mostrar esta lista</li>
+<li>Poner como <code>identifier</code> el nombre "miCelda"</li>
+</ul>
+</li>
+<li>Crear un <em>outlet</em> de la tabla,  llamado <code>tabla</code> en <code>ListaViewController</code></li>
+</ul>
+<h3 id="crear-la-fuente-de-datos-de-la-tabla">Crear la fuente de datos de la tabla<a class="headerlink" href="#crear-la-fuente-de-datos-de-la-tabla" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Crear un nuevo grupo (carpeta para organizar código): botón derecho sobre la carpeta amarilla <code>ListaCompra</code> y en el menú desplegable, <code>New Group</code>. Llamarlo  <code>Lista</code></li>
+<li>Crear dentro de este grupo un <em>struct</em> <code>Item</code>, para guardar los datos de un item de la lista</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kd">struct</span> <span class="nc">Item</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">nombre</span> <span class="p">:</span> <span class="nb">String</span>
+    <span class="kd">var</span> <span class="nv">comprado</span> <span class="p">:</span> <span class="nb">Bool</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Crear dentro del grupo <code>Lista</code> la clase <code>ListaHelper</code>: <code>File &gt; New ... &gt; File</code> y en el asistente, elegir <code>Swift File</code>. Crear un fichero llamado <code>ListaHelper</code>, que hará de <em>datasource</em> de la tabla. Queremos que aparezca la lista de cosas a comprar y que si ya están compradas aparezca un "checkmark" al lado.</li>
+</ul>
+<p>Puedes copiar el siguiente código, tienes que completar el segundo método:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">import</span> <span class="nc">UIKit</span>
+
+<span class="kd">class</span> <span class="nc">ListaHelper</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">UITableViewDataSource</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nv">lista</span> <span class="p">:</span> <span class="p">[</span><span class="n">Item</span><span class="p">]</span> <span class="p">=</span> <span class="p">[</span>
+        <span class="n">Item</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;pan&quot;</span><span class="p">,</span> <span class="n">comprado</span><span class="p">:</span> <span class="kc">true</span><span class="p">),</span>
+        <span class="n">Item</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;agua&quot;</span><span class="p">,</span> <span class="n">comprado</span><span class="p">:</span> <span class="kc">false</span><span class="p">),</span>
+        <span class="n">Item</span><span class="p">(</span><span class="n">nombre</span><span class="p">:</span> <span class="s">&quot;tomates&quot;</span><span class="p">,</span> <span class="n">comprado</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+    <span class="p">]</span>
+    <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="kc">_</span> <span class="n">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">numberOfRowsInSection</span> <span class="n">section</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">lista</span><span class="p">.</span><span class="bp">count</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="kc">_</span> <span class="n">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">cellForRowAt</span> <span class="n">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="bp">UITableViewCell</span> <span class="p">{</span>
+        <span class="c1">//TO-DO: escribir código que:</span>
+        <span class="c1">//1. obtenga una celda reutilizada llamando a tableView.dequeueReusableCell</span>
+        <span class="c1">// Acordarse de usar el identificador &quot;miCelda&quot; que hemos configurado antes</span>
+        <span class="c1">//2. rellenar el .text de la celda con el nombre del item en la pos correspondiente del array</span>
+        <span class="c1">//3. si la propiedad `comprado` del item es `true`, fijar `accesoryType`de la celda a `.checkmark`. Si no, a `none`</span>
+        <span class="c1">//4. devolver la celda</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En <code>ListaViewController</code>crear una instancia de <code>ListaHelper</code> y hacer que sea <em>datasource</em> de la tabla:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//En la clase ListaViewController</span>
+
+<span class="c1">//Este outlet ya lo deberíamos tener</span>
+<span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">tabla</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">!</span>
+<span class="c1">//Declaramos e inicializamos el datasource</span>
+<span class="kd">var</span> <span class="nv">miHelper</span> <span class="p">=</span> <span class="n">ListaHelper</span><span class="p">()</span>
+
+<span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+    <span class="c1">// Do any additional setup after loading the view.</span>
+    <span class="c1">//Lo conectamos con la tabla</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">tabla</span><span class="p">.</span><span class="n">dataSource</span> <span class="p">=</span> <span class="n">miHelper</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejecutar el proyecto y comprobar que en pantalla aparece la lista de items</p>
+<h2 id="funcionalidad-de-marcardesmarcar-items-05-puntos">Funcionalidad de marcar/desmarcar items (0,5 puntos)<a class="headerlink" href="#funcionalidad-de-marcardesmarcar-items-05-puntos" title="Permanent link">&para;</a></h2>
+<p>El objeto que es "avisado" cuando hacemos <em>tap</em> en una celda es el <em>delegate</em> de la tabla, por tanto necesitamos uno, haremos que <code>ListaHelper</code> lo sea:</p>
+<p>Añadir el protocolo correspondiente a la cabecera de <code>ListaHelper</code></p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">ListaHelper</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">UITableViewDataSource</span><span class="p">,</span> <span class="bp">UITableViewDelegate</span> <span class="p">{</span>
+   <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Implementar el método <code>didSelectRowAt</code> del delegate, aquí tienes el mismo código que usamos en un ejemplo de la sesión de tablas</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">tableView</span><span class="p">(</span><span class="kc">_</span> <span class="n">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">didSelectRowAt</span> <span class="n">indexPath</span><span class="p">:</span> <span class="n">IndexPath</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="kd">let</span> <span class="nv">celda</span> <span class="p">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">cellForRow</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//Si no hay marca de verificación la ponemos. Si la hay la quitamos      </span>
+    <span class="k">if</span> <span class="n">celda</span><span class="p">.</span><span class="n">accessoryType</span><span class="p">==</span><span class="bp">UITableViewCell</span><span class="p">.</span><span class="n">AccessoryType</span><span class="p">.</span><span class="kr">none</span> <span class="p">{</span>
+       <span class="n">celda</span><span class="p">.</span><span class="n">accessoryType</span> <span class="p">=</span> <span class="p">.</span><span class="n">checkmark</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+       <span class="n">celda</span><span class="p">.</span><span class="n">accessoryType</span> <span class="p">=</span> <span class="p">.</span><span class="kr">none</span>
+    <span class="p">}</span>
+    <span class="c1">//deseleccionamos la celda, si no se quedará con el fondo gris</span>
+    <span class="n">tableView</span><span class="p">.</span><span class="n">deselectRow</span><span class="p">(</span><span class="n">at</span><span class="p">:</span> <span class="n">indexPath</span><span class="p">,</span> <span class="n">animated</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>En el <code>ListaViewController</code>, hay que vincular el <em>delegate</em> de la tabla con la instancia de <code>ListaHelper</code></p>
+<div class="highlight"><pre><span></span><code><span class="kr">@IBOutlet</span> <span class="kr">weak</span> <span class="kd">var</span> <span class="nv">tabla</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">!</span>
+<span class="kd">var</span> <span class="nv">miHelper</span> <span class="p">=</span> <span class="n">ListaHelper</span><span class="p">()</span>
+
+<span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+    <span class="c1">// Do any additional setup after loading the view.</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">tabla</span><span class="p">.</span><span class="n">dataSource</span> <span class="p">=</span> <span class="n">miHelper</span>
+    <span class="o">**//</span><span class="n">AÑADE</span> <span class="n">ESTA</span> <span class="n">LINEA</span><span class="o">**</span>
+    <span class="o">**</span><span class="kc">self</span><span class="p">.</span><span class="n">tabla</span><span class="p">.</span><span class="n">delegate</span> <span class="p">=</span> <span class="n">miHelper</span><span class="o">**</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="funcionalidad-de-nuevo-item-1-punto">Funcionalidad de "nuevo item" (1 punto)<a class="headerlink" href="#funcionalidad-de-nuevo-item-1-punto" title="Permanent link">&para;</a></h2>
+<p>Crearemos una nueva pantalla en la <em>app</em> con un campo de texto donde se pueda escribir el nombre del nuevo item de la lista, y un botón de "guardar"</p>
+<blockquote>
+<p>Desde el punto de vista de la usabilidad seguramente sería mejor que se pudieran editar los items de la lista "in-place" pero así practicamos la navegación entre pantallas con el <em>Navigation controller</em>.</p>
+</blockquote>
+<h3 id="crear-la-pantalla">Crear la pantalla<a class="headerlink" href="#crear-la-pantalla" title="Permanent link">&para;</a></h3>
+<p>En el <em>storyboard</em>, hay que crear la nueva pantalla.</p>
+<ol>
+<li>Desde el panel de componentes de usuario, arrastrar un <code>view controller</code> nuevo, que será la pantalla de añadir item</li>
+<li>Añadirle a este nuevo view controller<ul>
+<li>un cuadro de texto</li>
+<li>un botón "guardar"</li>
+</ul>
+</li>
+<li>Fijar las restricciones de autolayout que consideres necesarias para estos componentes, el botón de guardar debe salir debajo del campo de texto</li>
+</ol>
+<p>Todavía nos falta que se pueda navegar entre la pantalla de lista y la pantalla de nuevo ítem:</p>
+<ol>
+<li>Meter la pantalla de lista dentro de un <em>navigation controller</em>: Seleccionar el <em>view controller</em> (botón del círculo amarillo con el cuadrado blanco dentro, en la parte superior de la pantalla simulada del dispositivo) , luego ir al menú <code>Editor &gt; Embed in...&gt; Navigation controller</code>. Aparecerá el navigation controller conectado automáticamente a la primera pantalla.</li>
+<li>En la pantalla de lista habrá aparecido una barra de navegación en su parte superior, seleccionarla, ir a las propiedades y poner como título "Lista de la compra".</li>
+<li>Vamos a añadir el botón para saltar a la siguiente pantalla:<ul>
+<li>Desde el panel de componentes de UI, arrastrar un <code>Bar Button Item</code> a la barra de navegación de la pantalla de lista, a la parte de la derecha. En las propiedades del nuevo botón elegir como <code>System Item</code> el valor <code>Add</code> para que sea el típico botón de "Añadir" por defecto (en iOS suelen aparecer simplemente con un "+")</li>
+<li>Conectar la pantalla de lista con la de nuevo item con ctrl+arrastrar desde este botón "+" hasta la pantalla de nuevo item. En el menú popup elegir como tipo de segue "show"</li>
+<li>Si probamos la app se podrá navegar entre las dos pantallas, y volver a la primera desde la segunda gracias al botón con el botón <code>&lt; Lista de la compra</code> que aparecerá automáticamente en la barra de navegación.</li>
+</ul>
+</li>
+</ol>
+<h3 id="crear-el-controller-de-la-nueva-pantalla">Crear el controller de la nueva pantalla<a class="headerlink" href="#crear-el-controller-de-la-nueva-pantalla" title="Permanent link">&para;</a></h3>
+<p>Una vez arreglada la navegación, nos falta implementar la funcionalidad de la segunda pantalla. Primero tenemos que crear su <em>controller</em>:</p>
+<ul>
+<li>Crear una clase <code>NuevoItemViewController:</code><ul>
+<li>Botón derecho sobre la carpeta <code>Controllers</code>, seleccionar <code>New File...</code> y en el asistente elegir la plantilla <code>Cocoa Touch Class</code>, viene mejor para crear <em>view controllers</em>.</li>
+<li>En la segunda pantalla del asistente, poner el nombre de la nueva clase (<code>NuevoItemViewController</code>) y especificar que debe ser una subclase de <code>UIViewController</code></li>
+</ul>
+</li>
+<li>Vincular la clase con la pantalla en el <em>storyboard</em><ul>
+<li>En el <em>storyboard</em> seleccionar la segunda pantalla y en el panel de la derecha ir al "identity inspector" (4º icono) y poner como <code>Class</code> la clase creada, <code>NuevoItemViewController</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="implementar-la-funcionalidad-del-boton-guardar">Implementar la funcionalidad del botón "guardar"<a class="headerlink" href="#implementar-la-funcionalidad-del-boton-guardar" title="Permanent link">&para;</a></h3>
+<p>En el <code>NuevoItemViewController</code> creamos:
+ - un <em>outlet</em> para el campo de texto
+ - una propiedad <code>nombre</code> de tipo String para guardar el mismo dato, ya que desde la pantalla inicial no podemos acceder al campo de texto de la segunda.</p>
+<p>Queremos que cuando se pulse "guardar" se vuelva atrás a la primera pantalla y además se haga una copia del contenido del campo de texto en la propiedad <code>nombre</code>.</p>
+<p>Para volver atrás:</p>
+<ul>
+<li>Crea una <em>unwind action</em> para volver atrás:  recuerda un método que esté marcado con <code>@IBAction</code> y como parámetros tenga solo uno de tipo <code>UIStoryboardSegue</code>.</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>si escribes "unwind" el autocompletar de Xcode te dará accesso a una plantilla de código para un <em>unwind action</em>, para que no tengas que escribirlo tú de cero</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>Conecta el botón con la <em>unwind action</em> (el icono de "Exit" de la parte superior de la pantalla del dispositivo)</li>
+</ul>
+<p>Para copiar el dato a la propiedad "nombre":</p>
+<ul>
+<li>En el <code>NuevoItemViewController</code> crea un método <code>prepare(for:,sender:)</code> que se disparará cuando volvamos atrás por el <em>unwind segue</em></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kr">override</span> <span class="kd">func</span> <span class="nf">prepare</span><span class="p">(</span><span class="k">for</span> <span class="n">segue</span><span class="p">:</span> <span class="bp">UIStoryboardSegue</span><span class="p">,</span> <span class="n">sender</span><span class="p">:</span> <span class="nb">Any</span><span class="p">?)</span> <span class="p">{</span>
+    <span class="c1">//TO-DO: coger el valor del campo de texto y asignárselo a la propiedad &quot;nombre&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Para terminar, en el método del <em>unwind</em> del <code>ListaViewController</code> debes crear el nuevo item con el nombre especificado, para ello, este método debe:</p>
+<ul>
+<li>obtener el valor de la propiedad <code>nombre</code> del <code>NuevoItemViewController</code>. Ten en cuenta que el <em>controller</em> lo puedes obtener de la propiedad <code>source</code> del <em>segue</em> que se recibe como parámetro, pero debes hacer un cast (puedes hacerlo con <code>as!</code>) a <code>NuevoItemViewController</code> para que la propiedad <code>nombre</code> sea accesible</li>
+<li>crear un nuevo objeto de la clase <code>Item</code> con ese nombre y el valor de <code>comprado</code> a false (si lo acabamos de añadir no puede estar ya comprado)</li>
+<li>en el <em>datasource</em> <code>miHelper</code> tienes que añadirle a la lista el nuevo <code>Item</code> (método <code>append</code>)</li>
+<li>puedes recargar la tabla para que se muestre el nuevo dato: <code>self.tabla.reloadData()</code></li>
+</ul>
+<h2 id="crear-la-pantalla-de-notas-y-la-navegacion-hasta-ella-05-puntos">Crear la pantalla de notas y la navegación hasta ella (0,5 puntos)<a class="headerlink" href="#crear-la-pantalla-de-notas-y-la-navegacion-hasta-ella-05-puntos" title="Permanent link">&para;</a></h2>
+<p>Para completar la <em>app</em> queremos tener una pantalla con un <em>text view</em> en el que podamos escribir un texto para apuntar algo de lo que queramos acordarnos y que no podemos apuntar en la lista porque no nos cabe. </p>
+<p>Haremos que se pueda elegir entre la pantalla de lista y la que llamaremos de "notas" mediante un <em>tab bar</em>.</p>
+<p>Selecciona en el <em>storyboard</em> el <em>controller</em> de la primera pantalla (recuerda, cuadro blanco en círculo amarillo) y elige la opción de menú de <code>Editor &gt; Embed in &gt; Tab bar controller</code>. Aparecerá un <em>tab bar controller</em> con la primera opción ya asociada a la pantalla de lista. Nos falta crear la pantalla de notas y vincularla al <em>tab bar controller</em></p>
+<p>Crea la nueva pantalla en el <em>storyboard</em>, añadiéndole un <code>Text view</code> que ocupe toda la pantalla (añade las restricciones de autolayout necesarias para esto). No nos va a hacer falta crear código Swift para este <em>controller</em> ya que en esta pantalla no hay nada de lógica propia, solo se puede escribir en el campo de texto.</p>
+<p>Finalmente conecta el <em>tab bar controller</em> a la pantalla de notas con Ctrl-Arrastrar del ratón y entre las opciones de conexión elige <code>Relationship segue - View Controllers</code>. Cambia los iconos  y sus nombres en el <em>tab bar</em> para que reflejen  las dos secciones de la <em>app</em>: "lista" y "notas". Lo más sencillo es que uses SF Symbols en lugar de tener que importar iconos de alguna web.</p>
+<p>El <em>storyboard</em> final de la aplicación debería quedar como el siguiente:</p>
+<p><img alt="" src="../images/storyboard_lista_compra.png" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Pie">
+      
+        
+        <a href="../../5_contenedores/apuntes/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Controladores contenedores" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Controladores contenedores
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.bc35569b.min.js"></script>
+      
+    
+  </body>
+</html>
