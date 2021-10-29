@@ -170,6 +170,7 @@ Una vez arreglada la navegación, nos falta implementar la funcionalidad de la s
 ### Implementar la funcionalidad del botón "guardar"
 
 En el `NuevoItemViewController` creamos:
+
  - un *outlet* para el campo de texto
  - una propiedad `nombre` de tipo String para guardar el mismo dato, ya que desde la pantalla inicial no podemos acceder al campo de texto de la segunda.
  
@@ -177,11 +178,13 @@ Queremos que cuando se pulse "guardar" se vuelva atrás a la primera pantalla y 
 
 Para volver atrás:
 
-- Crea una *unwind action* para volver atrás:  recuerda un método que esté marcado con `@IBAction` y como parámetros tenga solo uno de tipo `UIStoryboardSegue`.
+- Crea una *unwind action* en `ListaViewController` para volver atrás a esta pantalla desde la de nuevo item:  recuerda que es un método que esté marcado con `@IBAction` y como parámetros tenga solo uno de tipo `UIStoryboardSegue`.
 
 >> si escribes "unwind" el autocompletar de Xcode te dará accesso a una plantilla de código para un *unwind action*, para que no tengas que escribirlo tú de cero
 
-- Conecta el botón con la *unwind action* (el icono de "Exit" de la parte superior de la pantalla del dispositivo)
+- Conecta el botón de guardar de la pantalla de nuevo item con la *unwind action* (Ctrl+Arrastrar con el icono de "Exit" de la parte superior de la pantalla del dispositivo). Xcode buscará todas las "unwind actions" de todos los controllers y te mostrará una lista (en este caso solo habrá una, la que creaste antes).
+
+NOTA: sí, esta forma de trabajar es "rara". Parece raro que el *unwind action* se cree en la pantalla destino y la conexión se haga desde el "exit" de otra pantalla, pero esto nos permite especificar que queremos saltar desde cualquier pantalla a cualquier pantalla, y también desde varias pantallas ejecutar la misma "unwind action" (volver a una misma pantalla).
 
 Para copiar el dato a la propiedad "nombre":
 
