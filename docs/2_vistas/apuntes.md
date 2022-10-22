@@ -1,4 +1,4 @@
-# Sesión 1: Vistas
+# Vistas
 
 Como ya hemos visto, todas las aplicaciones iOS que usan la librería UIKit siguen el paradigma modelo/vista/controlador. En esta sesión vamos a ver las vistas, es decir, los componentes de interfaz de usuario de nuestra aplicación.  
 
@@ -6,11 +6,11 @@ Primero veremos algunos de los componentes más usados de UIKit y luego cómo ge
 
 ## Componentes de interfaz de usuario
 
-A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado bastantes de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, campos de texto,… Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. 
+A lo largo de los ejemplos que hemos ido haciendo en las sesiones anteriores ya hemos probado unos cuantos de los controles básicos de interfaz de usuario que nos proporciona iOS: botones, etiquetas, imágenes, … Vamos a ver aquí algunas de las características de los controles, aunque solo vamos a dar unas pinceladas, ya que una descripción exhaustiva de cada propiedad sería imposible y tediosa. 
 
 Se os recomienda consultar la documentación de Apple, en concreto hay dos tipos de documentación que os pueden resultar útiles:
 
-- Desde el punto de vista del diseño y la usabilidad, el documento llamado [Interface Essentials](https://developer.apple.com/design/human-interface-guidelines/ios/overview/interface-essentials/).
+- Desde el punto de vista del diseño y la usabilidad, la parte de las Human Interface Guidelines dedicada a los [componentes de UI](https://developer.apple.com/design/human-interface-guidelines/components/all-components/).
 - Desde el punto de vista de desarrollo podéis consultar el apartado ["views and controls"](https://developer.apple.com/documentation/uikit/views_and_controls) de la [documentación de UIKit](https://developer.apple.com/documentation/uikit), con la referencia del API y la forma de usar cada componente en nuestro código.
 
 > Aunque aquí hablemos de controles indistintamente para referirnos a las etiquetas, botones, … en realidad este término tiene un significado más preciso en iOS. La clase `UIControl` es de la que heredan los controles más “interactivos” como los botones, mientras que las etiquetas lo hacen de `UIView` (no obstante todos los`UIControl` son también vistas ya que a su vez esta clase hereda de `UIView`).
@@ -20,7 +20,7 @@ Se os recomienda consultar la documentación de Apple, en concreto hay dos tipos
 
 Un campo de texto nos proporciona un espacio donde el usuario puede introducir y editar texto. Se define en la clase `UITextField`, y pertenece a un grupo de vistas denominados controles, junto a otros componentes como por ejemplo los botones. Esto es así porque permiten al usuario interactuar con la aplicación. No heredan directamente de `UIView`, sino de su subclase `UIControl`, que incorpora los métodos para tratar eventos de la interfaz mediante el patrón *target-action* como hemos visto anteriormente.
 
-> *target-action* es el nombre genérico que se da en iOS a la idea de vincular un componente de UI con un manejador de evento. Ya hemos visto cómo se hace en Xcode (arrastrar+Ctrl desde el componente en el *storyboard* hasta el código del *controller*). También se puede hacer en código Swift, aunque de momento no veremos cómo.
+> *target-action* es el nombre genérico que se da en iOS a la idea de vincular un componente de UI con un manejador de evento. Ya hemos visto cómo se hace en Xcode (arrastrar+Ctrl desde el componente en el *storyboard* hasta el código del *controller*). También se puede hacer en código Swift, aunque no lo veremos aquí.
 
 Sus propiedades se pueden encontrar en la sección `Text Field` del inspector de atributos. Podremos especificar un texto por defecto (`Text`), o bien un texto a mostrar sombreado en caso de que el usuario no haya introducido nada (`Placeholder Text`). Esto será útil por ejemplo para dar una pista al usuario sobre lo que debe introducir en dicho campo.
 
@@ -49,7 +49,9 @@ Por desgracia, no todos los tipos de teclado en pantalla tienen un botón de “
 ```swift
 override func touchesEnded(_ touches: Set<UITouch>, with: UIEvent?) {
    print("¡touch en la pantalla!")
-   self.view.viewWithTag(100)?.resignFirstResponder()
+   //Necesitamos un outlet para acceder al campo de texto.
+   //Aquí suponemos que lo hemos llamado "campoDeTexto"
+   self.campoDeTexto.resignFirstResponder()
 }
 ```
 
