@@ -8,42 +8,44 @@
       
       
       
-      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.2">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.6">
     
     
       
-        <title>Controllers - IUDM-iOS-basico</title>
+        <title>View Controllers - IUDM-iOS-basico</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.24c991ad.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
           
           
           <meta name="theme-color" content="#009485">
         
       
+      
+
     
     
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
-
+    
     
     
   </head>
@@ -57,7 +59,6 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="teal" data-md-color-accent="teal">
   
     
-    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -65,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#sesion-1-view-controllers" class="md-skip">
+        <a href="#view-controllers" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -73,6 +74,7 @@
     <div data-md-component="announce">
       
     </div>
+    
     
       
 
@@ -84,7 +86,7 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -96,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Controllers
+              View Controllers
             
           </span>
         </div>
@@ -106,22 +108,21 @@
     
     
       <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
       </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
+      <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Limpiar" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
       
@@ -210,250 +211,10 @@
 
   
   
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Controllers
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Controllers
-      </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Tabla de contenidos
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#view-controllers-funciones-basicas" class="md-nav__link">
-    View controllers. Funciones básicas
-  </a>
-  
-    <nav class="md-nav" aria-label="View controllers. Funciones básicas">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#otras-tareas-de-los-view-controllers" class="md-nav__link">
-    Otras tareas de los view controllers
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ciclo-de-vida-de-un-controller" class="md-nav__link">
-    Ciclo de vida de un controller
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#instanciar-controladores-y-vistas" class="md-nav__link">
-    Instanciar controladores y vistas
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#navegacion-con-storyboards" class="md-nav__link">
-    Navegación con Storyboards
-  </a>
-  
-    <nav class="md-nav" aria-label="Navegación con Storyboards">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#el-controller-inicial" class="md-nav__link">
-    El controller inicial
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#el-controller-de-cada-pantalla" class="md-nav__link">
-    El controller de cada pantalla
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#segues" class="md-nav__link">
-    Segues
-  </a>
-  
-    <nav class="md-nav" aria-label="Segues">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#tipos-basicos-de-segue" class="md-nav__link">
-    Tipos básicos de segue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#estilos-de-presentacion-y-de-transicion" class="md-nav__link">
-    Estilos de presentación y de transición
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pasar-datos-de-un-controller-a-otro-en-un-segue" class="md-nav__link">
-    Pasar datos de un controller a otro en un segue
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#segues-que-vuelven-atras-unwind-segues" class="md-nav__link">
-    Segues que vuelven atrás (unwind segues)
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ejercicios/" class="md-nav__link">
-        Ejercicios de controllers
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4_tablas/apuntes/" class="md-nav__link">
-        Tablas
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../4_tablas/ejercicios/" class="md-nav__link">
-        Ejercicios de tablas
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
   
     <li class="md-nav__item">
       <a href="../../3_autolayout/apuntes/" class="md-nav__link">
         Autolayout
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../3_autolayout/ejercicios/" class="md-nav__link">
-        Ejercicios de autolayout
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../5_contenedores/apuntes/" class="md-nav__link">
-        Controladores contenedores
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../proyecto/lista_compra/" class="md-nav__link">
-        Miniproyecto
       </a>
     </li>
   
@@ -471,6 +232,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 <nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
   
   
@@ -594,16 +356,14 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-                
-                <h1 id="sesion-1-view-controllers">Sesión 1: View Controllers<a class="headerlink" href="#sesion-1-view-controllers" title="Permanent link">&para;</a></h1>
-<div class="admonition info">
-<p class="admonition-title">Importante</p>
-<p>En estos apuntes de <em>View Controllers</em> verás un ejercicio intercalado, que se irá completando poco a poco. Vale <strong>1 punto</strong> de la nota total del módulo de iOS básico.</p>
-</div>
+                  
+
+
+<h1 id="view-controllers">View Controllers<a class="headerlink" href="#view-controllers" title="Permanent link">&para;</a></h1>
 <h2 id="view-controllers-funciones-basicas"><em>View controllers</em>. Funciones básicas<a class="headerlink" href="#view-controllers-funciones-basicas" title="Permanent link">&para;</a></h2>
 <p><img alt="Tomado de &quot;View Controller Programming Guide&quot; de Apple" src="../images/DraggedImage.png" title="Tomado de &quot;View Controller Programming Guide&quot; de Apple" /></p>
 <p>Hay dos tipos básicos de controladores: los que muestran directamente contenido (<em>content controllers</em>) y los que contienen otros contenedores (<em>container controllers</em>). Estos últimos contienen a otros controladores. Lo que hace el contenedor es redimensionar y colocar la vista principal de sus hijos, pero cada uno de ellos es responsable de mostrar su propio contenido</p>
@@ -635,15 +395,6 @@
 <h2 id="navegacion-con-storyboards">Navegación con Storyboards<a class="headerlink" href="#navegacion-con-storyboards" title="Permanent link">&para;</a></h2>
 <p>Los <em>storyboards</em> son la forma recomendada por Apple de crear interfaces de usuario. Un <em>storyboard</em> contiene la representación gráfica de las “pantallas” (los controladores) que componen nuestra aplicación y de las relaciones entre ellas. Además el sistema se encarga automáticamente de moverse por las pantallas cuando sucedan determinados eventos, instanciando los controladores y las vistas automáticamente.</p>
 <p><img alt="" src="../images/storyboard.png" /></p>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p>Vamos a hacer aquí un <em>storyboard</em> muy sencillo con solo dos pantallas, pero que nos servirá para aprender lo básico de la navegación y el paso de datos entre controladores. De momento:</p>
-<ul>
-<li>Crea el proyecto de Xcode: <code>File &gt; New &gt; Project...</code>. En la primera pantalla del asistente elige el <em>template</em> <code>App</code>, y en la segunda pon el nombre del proyecto, <code>NavegacionStoryboard</code> y asegúrate de que el <em>Interface</em> es <code>Storyboard</code></li>
-<li>En el <code>Main.storyboard</code> crea una pantalla con un botón que ponga "Pantalla secundaria" y un <code>text field</code> en el que escribiremos algo para pasárselo a la siguiente pantalla    </li>
-</ul>
-</div>
-<p><img alt="" src="../images/ui_primaria.png" /></p>
 <h3 id="el-controller-inicial">El <em>controller</em> inicial<a class="headerlink" href="#el-controller-inicial" title="Permanent link">&para;</a></h3>
 <p>En cada momento habrá un <em>view controller</em> inicial que es el que se muestra cuando se carga la aplicación. Se distingue visualmente porque tiene una flecha apuntando a él desde la izquierda:</p>
 <p><img alt="" src="../images/controlador_inicial.png" /></p>
@@ -658,16 +409,7 @@
 <p>Otra opción es seleccionarlo en el panel que aparece a la izquierda del <em>storyboard</em> con el árbol de componentes</p>
 <p><img alt="" src="../images/component_tree.png" /></p>
 </blockquote>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(continúa)</strong> Selecciona el View Controller de la única pantalla por el momento de la app y simplemente comprueba en el panel de la derecha que la clase asociada es <code>ViewController</code>. Si quisieras cambiar la clase lo harías aquí (¡pero no lo hagas!).</p>
-</div>
 <p>Podemos añadir nuevas pantallas a nuestra <em>app</em> arrastrando al <em>storyboard</em> un componente de tipo <code>View Controller</code> del panel de componentes de UI. </p>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(continúa)</strong> Añade una nueva pantalla a tu <em>app</em>, arrastrando un  <em>view controller</em> al <em>storyboard</em>. Está en el mismo panel que el resto de los componentes de UI como botones, labels,...(recuerda que se accede con el botón <code>+</code> de la esquina superior derecha de Xcode). Ahora el <em>storyboard</em> debe mostrar que tienes dos pantallas, aunque por el momento estarán desconectadas entre sí</p>
-<p><img alt="" src="../images/2_pantallas.png" /></p>
-</div>
 <p>Por defecto, estos nuevos view controller estarán asociados a clases propias de iOS, y si queremos personalizar su comportamiento tendremos que crear una clase propia que herede de <code>UIViewController</code> e implemente los métodos básicos de gestión del ciclo de vida. En Xcode hay una plantilla para ello. Hay que:</p>
 <ol>
 <li>ir al menú <code>File &gt; New &gt; File...</code> </li>
@@ -678,25 +420,7 @@
 <li>Finalmente nos dejará elegir dónde guardar físicamente el archivo swift, podemos dejarlo por defecto y pulsar <code>Create</code></li>
 </ol>
 <p>Si todo va bien verás que entre los archivos del proyecto aparece la nueva clase creada y que tiene la estructura tipica de un view controller (tiene por ejemplo un <code>viewDidLoad</code>).</p>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(continúa)</strong> Sigue las instrucciones anteriores para crear una clase <code>ViewControllerSecundario</code>, que después asociaremos a la pantalla secundaria.</p>
-</div>
 <p>Ya solo nos queda asociar la clase creada a la "pantalla" del <em>storyboard</em>. Recordemos que eso se hace en el <code>Identity inspector</code> <img alt="" src="../images/identity_inspector.png" /> del panel de la derecha.</p>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(continúa)</strong> Teniendo seleccionado el <em>view controller</em> de la segunda pantalla que añadiste al <em>storyboard</em> (recuerda, clic en el icono del círculo amarillo con un cuadrado blanco dentro) ve al <code>Identity inspector</code> y cambia el <code>Class</code> por <code>ViewControllerSecundario</code>.</p>
-<p>Para comprobar que funciona:</p>
-<ol>
-<li>Mete un <code>print("hola, soy el controller secundario")</code> en el <code>viewDidLoad()</code> del <code>ViewControllerSecundario</code></li>
-<li>Como las pantallas todavía están desconectadas y no se puede llegar a la segunda desde la primera, puedes hacer temporalmente que la segunda sea la inicial arrastrando a ella la flecha que indica que es controlador inicial</li>
-</ol>
-<p><img alt="" src="../images/secundaria_como_inicial.png" /></p>
-<ol start="3">
-<li>Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el <code>ViewControllerSecundario</code>, debería aparecer en la consola de Xcode el mensaje de <code>hola, soy el controller secundario</code>.</li>
-<li>Acuérdate de dejar otra vez la primera pantalla como pantalla inicial arrastrando la flechita que lo indica.</li>
-</ol>
-</div>
 <h2 id="segues">Segues<a class="headerlink" href="#segues" title="Permanent link">&para;</a></h2>
 <p>Son las transiciones entre los <em>controllers</em>. Podemos <strong>crear un <em>segue</em> visualmente</strong> con <code>Ctrl+Arrastrar</code> entre un elemento cualquiera de un view controller (por ejemplo un botón), que será el de <em>controller</em> de origen, y el <em>controller</em> destino. Se nos dará opción a elegir el tipo de <em>segue</em> en un menú contextual.</p>
 <p><img alt="" src="../images/tipos_segue.png" /></p>
@@ -713,10 +437,6 @@
 <blockquote>
 <p>En realidad la forma concreta de mostrar exactamente el nuevo controlador la decide iOS dependiendo de las dimensiones actuales del dispositivo. Por ejemplo en un iPhone SE en vertical no aparecerá un <em>popover</em> aunque lo especifiquemos, la que la pantalla es muy pequeña para ello.</p>
 </blockquote>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(continúa...)</strong> Agrega un <em>segue</em> entre el botón de la primera pantalla y la segunda, recuerda que debes usar <code>Crtl</code>+arrastrar. Ejecuta la <em>app</em> para comprobar que efectivamente se cambia de pantalla pulsando en el botón, aunque de momento <em>no podrás volver atrás</em> (luego veremos cómo se hace).</p>
-</div>
 <h3 id="estilos-de-presentacion-y-de-transicion">Estilos de presentación y de transición<a class="headerlink" href="#estilos-de-presentacion-y-de-transicion" title="Permanent link">&para;</a></h3>
 <p>Podemos usar diversos estilos a la hora de presentar de forma modal un <em>controller</em>. Por ejemplo podemos indicar que el nuevo controlador debe ocupar toda la pantalla, o bien solo el alto dejando una zona a los lados, o bien un recuadro central como un cuadro de diálogo…</p>
 <p><img alt="Tomado de la documentación de Apple" src="../images/DraggedImage-4.png" title="Tomado de la documentación de Apple" /></p>
@@ -745,10 +465,6 @@
         <span class="p">}</span>
  <span class="p">}</span>
 </code></pre></div>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(Continúa...)</strong> prueba el código anterior en la <em>app</em> y comprueba que efectivamente cuando se pasa de una pantalla a otra, la información se está pasando de un <em>controller</em> a otro. En lugar de tomar un mensaje fijo "bienvenidos a la pantalla 2", haz que se pase e imprima lo que se escriba en el campo de texto de la pantalla 1.</p>
-</div>
 <h3 id="segues-que-vuelven-atras-unwind-segues"><em>Segues</em> que vuelven atrás (<em>unwind segues</em>)<a class="headerlink" href="#segues-que-vuelven-atras-unwind-segues" title="Permanent link">&para;</a></h3>
 <p>Los <em>segues</em> que vuelven atrás se llaman <em>unwind segues</em> y se crean de forma distinta a los <em>segues</em> convencionales, ya que la "parte principal" del <em>segue</em> se crea en el controller destino, y no en el origen. Esto nos permite "deshacer" por ejemplo varias transiciones a la vez, volviendo varias pantallas atrás.</p>
 <p>En el <em>controller</em> <em>destino de la vuelta</em> debemos implementar lo que se llama un <em>unwind action</em>, un método que puede tener el nombre que deseemos pero debe tener una signatura específica:</p>
@@ -766,80 +482,34 @@
 <p>Si intentamos hacer esta operación de <code>Ctrl+Arrastrar</code> sin haber implementado el método anterior, veremos que no tiene efecto</p>
 </blockquote>
 <p>En el método del <em>unwinding</em>, nótese que podemos usar el parámetro, que es el <em>segue</em>, para obtener el <code>destination</code>, que ahora será el <em>controller</em> al que volvemos.</p>
-<div class="admonition ejercicio">
-<p class="admonition-title">Ejercicio</p>
-<p><strong>(Continúa...)</strong> </p>
-<ul>
-<li>Crea un botón "Atrás" en la segunda pantalla</li>
-<li>Implementa un <em>unwind action</em> en el <code>ViewControllerSecundario</code>, recuerda que debe ser un método marcado con <code>@IBAction</code> y con un parámetro de tipo <code>UIStoryboardSegue</code></li>
-<li>Conecta gráficamente el botón "Atrás" con el icono de "Exit" de la segunda pantalla.</li>
-</ul>
-<p>comprueba que ya se puede ir adelante y atrás en el <em>segue</em></p>
-</div>
 <p>Finalmente, decir que cuando se produce un <em>unwind</em>, el controlador desde el que se vuelve también recibe una llamada a <code>prepare(for:sender:)</code>, método que podemos sobreescribir si queremos aprovechar para realizar alguna operación antes de volver.</p>
-                
-              
-              
-                
 
 
-              
-            </article>
-          </div>
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
       
-        
-<footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Pie">
-      
-        
-        <a href="../../2_vistas/ejercicios/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Ejercicios sobre vistas" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              Ejercicios sobre vistas
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejercicios de controllers" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Siguiente
-              </span>
-              Ejercicios de controllers
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
+        <footer class="md-footer">
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        
-          Made with
-          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-            Material for MkDocs
-          </a>
-        
-        
-      </div>
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
       
     </div>
   </div>
@@ -849,10 +519,11 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copiar al portapapeles", "clipboard.copied": "Copiado al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}, "search": "../../assets/javascripts/workers/search.e99e714c.min.js", "version": null}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.config.lang": "es", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "B\u00fasqueda", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version.title": "Seleccionar versi\u00f3n"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.bc35569b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
       
     
   </body>
