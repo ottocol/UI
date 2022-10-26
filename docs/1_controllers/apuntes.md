@@ -1,9 +1,5 @@
-# Sesión 1: View Controllers
+# View Controllers
 
-
-!!! info "Importante"
-
-    En estos apuntes de *View Controllers* verás un ejercicio intercalado, que se irá completando poco a poco. Vale **1 punto** de la nota total del módulo de iOS básico.
 
 ## *View controllers*. Funciones básicas
 
@@ -52,14 +48,6 @@ Los *storyboards* son la forma recomendada por Apple de crear interfaces de usua
 
 ![](images/storyboard.png)
 
-!!! Ejercicio
-    Vamos a hacer aquí un *storyboard* muy sencillo con solo dos pantallas, pero que nos servirá para aprender lo básico de la navegación y el paso de datos entre controladores. De momento:
-    
-    - Crea el proyecto de Xcode: `File > New > Project...`. En la primera pantalla del asistente elige el *template* `App`, y en la segunda pon el nombre del proyecto, `NavegacionStoryboard` y asegúrate de que el *Interface* es `Storyboard`
-    -  En el `Main.storyboard` crea una pantalla con un botón que ponga "Pantalla secundaria" y un `text field` en el que escribiremos algo para pasárselo a la siguiente pantalla    
-
-![](images/ui_primaria.png)
-
 ### El *controller* inicial
 
 En cada momento habrá un *view controller* inicial que es el que se muestra cuando se carga la aplicación. Se distingue visualmente porque tiene una flecha apuntando a él desde la izquierda:
@@ -85,17 +73,7 @@ Para seleccionar el *view controller* con el ratón pulsa el icono del círculo 
 > 
 > ![](images/component_tree.png)
 
-
-!!! Ejercicio
-    **(continúa)** Selecciona el View Controller de la única pantalla por el momento de la app y simplemente comprueba en el panel de la derecha que la clase asociada es `ViewController`. Si quisieras cambiar la clase lo harías aquí (¡pero no lo hagas!).
-
 Podemos añadir nuevas pantallas a nuestra *app* arrastrando al *storyboard* un componente de tipo `View Controller` del panel de componentes de UI. 
-
-!!! Ejercicio
-    **(continúa)** Añade una nueva pantalla a tu *app*, arrastrando un  *view controller* al *storyboard*. Está en el mismo panel que el resto de los componentes de UI como botones, labels,...(recuerda que se accede con el botón `+` de la esquina superior derecha de Xcode). Ahora el *storyboard* debe mostrar que tienes dos pantallas, aunque por el momento estarán desconectadas entre sí
-
-    ![](images/2_pantallas.png)
-
 
 Por defecto, estos nuevos view controller estarán asociados a clases propias de iOS, y si queremos personalizar su comportamiento tendremos que crear una clase propia que herede de `UIViewController` e implemente los métodos básicos de gestión del ciclo de vida. En Xcode hay una plantilla para ello. Hay que:
 
@@ -108,23 +86,8 @@ Por defecto, estos nuevos view controller estarán asociados a clases propias de
 
 Si todo va bien verás que entre los archivos del proyecto aparece la nueva clase creada y que tiene la estructura tipica de un view controller (tiene por ejemplo un `viewDidLoad`).
 
-!!! Ejercicio
-    **(continúa)** Sigue las instrucciones anteriores para crear una clase `ViewControllerSecundario`, que después asociaremos a la pantalla secundaria.
-
 Ya solo nos queda asociar la clase creada a la "pantalla" del *storyboard*. Recordemos que eso se hace en el `Identity inspector` ![](images/identity_inspector.png) del panel de la derecha.
 
-!!! Ejercicio
-    **(continúa)** Teniendo seleccionado el *view controller* de la segunda pantalla que añadiste al *storyboard* (recuerda, clic en el icono del círculo amarillo con un cuadrado blanco dentro) ve al `Identity inspector` y cambia el `Class` por `ViewControllerSecundario`.
-
-    Para comprobar que funciona:
-
-    1. Mete un `print("hola, soy el controller secundario")` en el `viewDidLoad()` del `ViewControllerSecundario`
-    2. Como las pantallas todavía están desconectadas y no se puede llegar a la segunda desde la primera, puedes hacer temporalmente que la segunda sea la inicial arrastrando a ella la flecha que indica que es controlador inicial
-
-    ![](images/secundaria_como_inicial.png)
-    
-    3. Ejecuta la app, y como la pantalla inicial ahora es la segunda y su controller el `ViewControllerSecundario`, debería aparecer en la consola de Xcode el mensaje de `hola, soy el controller secundario`.
-    4. Acuérdate de dejar otra vez la primera pantalla como pantalla inicial arrastrando la flechita que lo indica.
 
 ## Segues
 
@@ -148,8 +111,6 @@ En el caso del *present*, se distingue entre `Present Modally` y `Present As Pop
 
 > En realidad la forma concreta de mostrar exactamente el nuevo controlador la decide iOS dependiendo de las dimensiones actuales del dispositivo. Por ejemplo en un iPhone SE en vertical no aparecerá un *popover* aunque lo especifiquemos, la que la pantalla es muy pequeña para ello.
 
-!!! Ejercicio
-    **(continúa...)** Agrega un *segue* entre el botón de la primera pantalla y la segunda, recuerda que debes usar `Crtl`+arrastrar. Ejecuta la *app* para comprobar que efectivamente se cambia de pantalla pulsando en el botón, aunque de momento *no podrás volver atrás* (luego veremos cómo se hace).
 
 ### Estilos de presentación y de transición
 
@@ -194,9 +155,6 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
  }
 ```
 
-!!! Ejercicio
-    **(Continúa...)** prueba el código anterior en la *app* y comprueba que efectivamente cuando se pasa de una pantalla a otra, la información se está pasando de un *controller* a otro. En lugar de tomar un mensaje fijo "bienvenidos a la pantalla 2", haz que se pase e imprima lo que se escriba en el campo de texto de la pantalla 1.
-
 ### *Segues* que vuelven atrás (*unwind segues*)
 
 Los *segues* que vuelven atrás se llaman *unwind segues* y se crean de forma distinta a los *segues* convencionales, ya que la "parte principal" del *segue* se crea en el controller destino, y no en el origen. Esto nos permite "deshacer" por ejemplo varias transiciones a la vez, volviendo varias pantallas atrás.
@@ -219,15 +177,6 @@ Ahora en la pantalla que dispara el *unwind* debemos conectar usando `Ctrl+Arras
 > Si intentamos hacer esta operación de `Ctrl+Arrastrar` sin haber implementado el método anterior, veremos que no tiene efecto
 
 En el método del *unwinding*, nótese que podemos usar el parámetro, que es el *segue*, para obtener el `destination`, que ahora será el *controller* al que volvemos.
-
-!!! Ejercicio
-    **(Continúa...)** 
-
-    - Crea un botón "Atrás" en la segunda pantalla
-    - Implementa un *unwind action* en el `ViewControllerSecundario`, recuerda que debe ser un método marcado con `@IBAction` y con un parámetro de tipo `UIStoryboardSegue`
-    - Conecta gráficamente el botón "Atrás" con el icono de "Exit" de la segunda pantalla.
-
-    comprueba que ya se puede ir adelante y atrás en el *segue*
 
 
 Finalmente, decir que cuando se produce un *unwind*, el controlador desde el que se vuelve también recibe una llamada a `prepare(for:sender:)`, método que podemos sobreescribir si queremos aprovechar para realizar alguna operación antes de volver.

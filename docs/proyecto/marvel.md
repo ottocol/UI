@@ -210,23 +210,26 @@ Para instalar `cocoapods`, desde la terminal hacer
 
 ```bash
 #Con --pre decimos que queremos instalar la última versión, aunque sea RC
-sudo gem install cocoapods  --pre
+sudo gem install -n /usr/local/bin cocoapods --pre
 ```
 
 > Esto instala la herramienta desde un repositorio de Internet, así que  necesitarás conectividad...y paciencia, según vaya la red.
 
-Si todo va bien se instalará un comando llamado `pod`. Ejecútalo desde la terminal para comprobar al menos que existe. Ahora debes seguir estos pasos:
+Si todo va bien se instalará un comando llamado `pod`. Ejecútalo desde la terminal para comprobar que existe y no da error. 
+
+Ahora debes seguir estos pasos:
 
 1. Crear un proyecto Xcode para la aplicación. Llámalo por ejemplo `Marvel`
 2. Con un editor de textos cualquiera, crear un fichero llamado `Podfile` en el directorio del proyecto (el que contiene el fichero `.xcodeproj`). Este archivo debe contener la configuración y las dependencias (o *pods*) del proyecto
 
-```bash
-//SUSTITUYE la versión de ios por la que quieras usar como target de tu app
-platform :ios, '12.0'
+```ruby
+#SUSTITUYE la versión de ios por la que quieras usar como target de tu app
+platform :ios, '16.0'
 use_frameworks!
-//SUSTITUYE 'Marvel' por el nombre de tu proyecto, si no se llama así!!!
+#SUSTITUYE 'Marvel' por el nombre de tu proyecto, si no se llama así!!!
 target 'Marvel' do
-   pod 'Marvelous'
+   pod 'MarvelApiWrapper'
+   pod 'SwiftyJSON', '~> 4.0'
 end
 ```
 
