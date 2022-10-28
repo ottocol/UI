@@ -1,90 +1,73 @@
-# Ejercicio de *view controllers* (1,25 puntos)
+# Ejercicio de *view controllers* (2,5 puntos)
 
 Vamos a hacer una aplicación que vamos a llamar “Pioneras”, y que nos dará datos de algunas mujeres pioneras de la informática. La aplicación tendrá una pantalla principal en la que aparecerán sus imágenes, y haciendo *tap* sobre cada una podremos ir a las pantallas secundarias donde se nos dará más información.
 
-> Al crear el proyecto aseguráos de estar usando git  ya que habrá que guardar y marcar el estado con un commit especial en un momento intermedio. No es necesario subir el repositorio a Github, con tenerlo en local nos valdría
+## Realizar la estructura básica de la aplicación (0,75 puntos)
 
-## Realizar la estructura básica de la aplicación (0,5 puntos)
+1. En [este archivo](https://github.com/ottocol/UI/raw/master/material/pioneras.zip) tenemos las imágenes y los textos sobre las tres pioneras: Ada Lovelace, Grace Hopper y Barbara Liskov
+    - Arrastra las imágenes al `Assets.xcassets` (puedes arrastrar la carpeta "imágenes" o los archivos de dentro). Se crearán 3 "Image sets" con los nombres de los archivos originales (sin la extensión).
+    - Puedes hacer lo mismo con los textos, por cada uno se creará un "Dataset" con el nombre del archivo original, sin la extensión. Fíjate en que estos *assets* acaban su nombre por `_bio` para que no colisionen sus nombres con los de las imágenes.
+2. Crea tres botones en la pantalla principal, y para cada uno de ellos en lugar de texto vamos a usar como imagen de fondo la de cada mujer 
+    - Si seleccionas el botón, en el panel derecho, en las propiedades, tienes una sección "Background configuration". Cambia la primera propiedad, "Background" por "Custom", y en el "image" de esta sección pon la que proceda. 
+    - Al final, cada botón debería ocupar todo el ancho de la pantalla y un tercio del alto. Pon las restricciones de *autolayout* que sean necesarias para conseguir esto
 
-1. En [este archivo](https://github.com/ottocol/UI/raw/master/material/pioneras.zip) tenemos las imágenes de las tres pioneras: Ada Lovelace, Grace Hopper y Barbara Liskov, que como siempre **arrastraremos al `Assets.xcassets`**. También tenemos los textos sobre ellas que se mostrarán en las pantallas secundarias.
-2. Crea tres botones en la pantalla principal, y para cada uno de ellos en lugar de texto vamos a usar como imagen de fondo la de cada mujer. Al final cada botón debería ocupar todo el ancho de la pantalla y más o menos un tercio del alto.
-> Importante: no es necesario que la interfaz sea perfecta (todos los botones exactamente del mismo alto, etc). De hecho si la pruebas en un dispositivo de tamaño de pantalla distinto al que estás usando ahora mismo en Xcode verás que se ve “fatal”. Para hacer que todos los botones tengan el mismo alto  y que se adapten bien a la pantalla usaremos un mecanismo que todavía no hemos visto denominado *autolayout*. Por el momento  vamos a ignorar este tema
-3. Arrastra un nuevo “view controller” al storyboard (una “pantalla” nueva), que será el que aparezca cuando se pulse en el primero de los botones (el de Ada Lovelace). Inserta un campo de texto de varias líneas (*text view*) y copia en él el contenido de `lovelace.txt`
-4. Ahora **establece el *segue* entre las dos pantallas**: haz `Ctrl+Arrastrar` desde el primero de los botones con la imagen de Ada Lovelace hasta la segunda pantalla. 
-	- Ejecuta el proyecto para comprobar que funciona lo que has hecho, aunque *todavía no puede volver atrás desde la pantalla secundaria*
-5. Implementa la opción de **volver atrás** de la secundaria a la principal
-	- Crea un botón “atrás” en la pantalla secundaria y colócalo en la parte de arriba (para que no lo tape el teclado *on-screen* si aparece)
-	- En el *controller* destino crea un método para que funcione el *unwinding* (no hace falta que haga nada, solo que exista)
 
-```swift
-@IBAction func retornoDeSecundaria(segue: UIStoryboardSegue) {
-    
-}
-```
+## Crear la pantalla secundaria y la navegación hasta ella (0,75 puntos)
 
-- Con `Ctrl+Arrastrar` conecta el botón “atrás” con el icono de “Exit” de la parte superior del *controller*
-	- Ejecuta el proyecto y comprueba que puedes volver atrás desde la pantalla secundaria
-6. Repite lo que has hecho en el caso de Ada Lovelace para las otras dos mujeres, creando las pantallas secundarias y la navegación adelante y atrás.
+- Crea una pantalla secundaria (un *view controller*) con un botón "volver atrás" y un campo de texto de varias líneas (un *text view*). 
+- Añádele las restricciones de *autolayout* necesarias para que:
+    - El campo de texto quede centrado en horizontal y vertical, y a una distancia horizontal de 40 de uno de los bordes de la pantalla. 
+    - El botón debe aparecer centrado en horizontal, y a una distancia de 20 puntos de la parte superior de la "safe area" y de 40 de la parte superior del campo de texto.
 
-**Aseguráos de guardar el estado actual del proyecto** con un commit cuyo comentario sea “version 1”.
+![](images/pantalla_secundaria_pioneras.png)
 
-## Comunicar un *controller* con otro (0,75 punto)
-
-Es un poco redundante tener tantas pantallas secundarias cuando en realidad lo único que cambia es el texto a mostrar. Valdría con una sola secundaria en la que cambiáramos dinámicamente dicho texto. Vamos a implementarlo así.
-
-Ahora podéis eliminar los segues y las pantallas secundarias, es mejor crearlos de nuevo.
-
-### Crear la nueva interfaz
-
-- Crea de nuevo una pantalla secundaria con un campo de texto de varias líneas
 - Con `Ctrl+arrastrar` podemos crear un *segue* desde cada uno de los botones hasta la pantalla. Habrán tres *segues* que lleguen a la misma, no debería ser problema.
-- Añádele a la pantalla el botón de “atrás” y conéctalo con el icono de “exit”. El código necesario para el *unwinding* (método `retornoDeSecundaria`) ya debería estar en el `ViewController`
-- Comprueba que la navegación funciona correctamente yendo adelante y atrás
+- Implementa la opción de **volver atrás** de la secundaria a la principal: 
 
-### Crear un controlador personalizado para la pantalla secundaria
+    - En el *controller* de la primera pantalla crea un método para que funcione el *unwinding* (no hace falta que haga nada, solo que exista)
 
-Si en la parte derecha de la pantalla miras el *identity inspector* verás que el controlador de la pantalla secundaria es un tipo propio de Cocoa, el `UIViewController`. Vamos a cambiarlo por uno propio
+		```swift
+		@IBAction func retornoDeSecundaria(segue: UIStoryboardSegue) {
+    		
+		}
+		```
+
+    - Con `Ctrl+Arrastrar` conecta el botón “atrás” con el icono de “Exit” de la parte superior del *controller*. Ejecuta el proyecto y comprueba que puedes ir a la secundaria desde la princpal y luego volver atrás. Evidentemente el texto con la biografía todavía no cambiará.
+
+
+## Crear un controlador personalizado para la pantalla secundaria (1 punto)
+
+Si seleccionas el *view controller* de la pantalla secundaria y miras el *identity inspector* en el panel de la derecha de Xcode, verás que el controlador de la pantalla secundaria es un tipo propio de iOS, el `UIViewController`. Vamos a cambiarlo por uno implementado por nosotros:
 
 1. Crea una nueva clase de Cocoa Touch, (File\> New \> File…, plantilla “cocoa touch class”). En la segunda pantalla del asistente dale a la clase el nombre `SecundarioViewController` y haz que sea una subclase de `UIViewController`. Deja sin marcar la opción de crear el .XIB
 2. En el *storyboard*, selecciona el *controller* de la pantalla secundaria (es mejor que lo hagas pulsando en el primero de los iconos que aparecen en  la parte superior) 
 ![](images/iconos_arriba_storyboard.png)
-3. Una vez seleccionado, ve al *identity inspector* en el área de `Utilities` y en el apartado de `Custom class` selecciona como clase la que has creado, `SecundarioViewController`
+3. Una vez seleccionado, ve al *identity inspector* en panel derecho de Xcode y en el apartado de `Custom class` selecciona como clase la que has creado, `SecundarioViewController`
 
 ### Añadirle un *outlet* al controlador secundario
 
-Tienes que añadir un *outlet* al campo de texto para que su contenido se pueda cambiar desde el controlador secundario. Hazlo como habitualmente, con ctrl+arrastrar entre el campo y el `SecundarioViewController`, en el `assistant editor`.
+Tienes que añadir un *outlet* al campo de texto para que su contenido se pueda cambiar desde el controlador secundario. Hazlo como habitualmente, con ctrl+arrastrar entre el campo y el `SecundarioViewController`, en el modo `assistant` del editor.
 
 ### Hacer que el texto cambie según el botón pulsado
 
-- Lo primero es añadir físicamente los ficheros `*.txt` con los textos al proyecto para que se puedan cargar dinámicamente por código. Pulsa con el botón derecho sobre el proyecto y selecciona `Add files to Pioneras`. Selecciona los tres `.txt`, que se añadirán al proyecto
-
-> Otra opción sería añadir los ficheros a la carpeta `Assets.xcassets`. Si quieres hacerlo así, clica en esa carpeta y con el botón `+`  de la parte inferior crea un nuevo *asset* de tipo `Data Set`. Por defecto se llama `data`. Cámbiale el nombre por `lovelace` y arrastra el archivo `lovelace.txt`. Repite la misma operación de crear *asset*, cambiar nombre y arrastrar archivo para las otras dos "pioneras".
-
-- Para que le podamos decir al controlador secundario qué fichero tiene que abrir, debes crear una propiedad en el `SecundarioViewController` llamada `nomFich` de tipo `String`
+- Para que le podamos decir al controlador secundario qué *asset* tiene que usar, debes crear una propiedad en el `SecundarioViewController` llamada `nombreAsset` de tipo `String`
 
 - Para establecer una asociación sencilla entre cada segue y los datos a mostrar puedes usar el identificador del *segue*. Haz clic sobre él y en el `Attributes inspector` cambia su `identifier`, respectivamente por `lovelace`, `hopper` y `liskov`
-- ahora en la clase `ViewController`, que es el controlador de la pantalla principal, puedes implementar el `prepare(for:,sender:)`
+- ahora en la clase `ViewController`, que es el controlador de la pantalla principal, puedes implementar el `prepare(for:,sender:)`. Mira los apuntes para los detalles. En él debes:
+    - Obtener el controlador secundario, a partir del segue (tendrás que hacer un *cast* con `as!` para convertirlo al tipo adecuado)
+    -  establecer el valor de la propiedad `nombreAsset` del controlador secundario al identificador del *segue* concatenado con `_bio`. ya que así se llaman los *assets* de texto.
 
-```swift
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) { 
-  //obtenemos el controller destino y forzamos la conversión al tipo adecuado
-  let controller = segue.destination as! SecundarioViewController
-  //fijamosla propiedad "nomFich" al identificador del segue
-  controller.nomFich = segue.identifier
-}
-```
-
-- Finalmente, en el `viewDidLoad()` del `SecundarioViewController` puedes acceder a la propiedad `self.nomFich`, cargar el texto del fichero y mostrarlo en el campo de texto. *Tendrás que escribir el código tú mismo*. **Si no has usado el `assets.xcassets`** puedes hacer esto:
-	- Primero  usar `Bundle.main.path(forResource:, ofType:)`, que devuelve la trayectoria completa para acceder a un recurso incluido en el proyecto sabiendo su nombre y su tipo (en el tipo pon solo “txt”, sin el punto).
-	- Una vez obtenida la trayectoria, puedes leer el contenido del archivo como una cadena con el constructor de `String(contentsOfFile:,encoding:)`. Donde el primer parámetro es la trayectoria y el segundo el juego de caracteres (en nuestro caso el  valor enumerado `String.Encoding.utf8`). CUIDADO, este método está marcado con `throws`, así que tendrás que actuar en consecuencia. (usar do..catch o cualquier otra alternativa que veas razonable)
-   
-Si has usado el  `assets.xcassets` puedes cargar los datos como sigue:
+- Finalmente, en el `viewDidLoad()` del `SecundarioViewController` puedes acceder a la propiedad `self.nomAsset`, cargar el *asset* y mostrarlo en el campo de texto. Puedes cargar los datos del *asset* como sigue:
 
 ```swift
 //CAMBIA nombre_del_asset por el que proceda
 var texto = ""
-if let data = NSDataAsset(name: "nombre_del_asset")?.data {
-    texto = String(data: data, encoding: .utf8)
+let asset = NSDataAsset(name: nombreAsset)
+if let data = asset?.data {
+    texto = String(data: data, encoding: .utf8) ?? ""
+    self.campoTexto.text = texto
+    //AQUI TE FALTA COLOCAR EL TEXTO EN EL TEXT VIEW
+    //...
 }
 ```
    

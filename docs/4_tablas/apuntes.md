@@ -143,6 +143,15 @@ func tableView(_ tableView: UITableView,
  }
 ```
 
+> Un detalle más: Xcode te avisará de que la propiedad `textLabel` está *deprecated* y que se dejará de usar en futuras versiones de iOS. Aunque no está claro a partir de qué versión de iOS dejará de ser compatible, debido al amplio uso de esta forma de trabajar con celdas de tabla, en la actualidad ésta no es la forma "sancionada" por Apple, que en su lugar promueve el uso de *Content Configurations*. La idea es, en lugar de modificar directamente las propiedades de la celda, crear y modificar una configuración que pudiéramos aplicar a muchas celdas, algo como lo que sigue (aunque en nuestro caso al ser un ejemplo modificamos la configuración para cada celda, deberíamos guardarla aparte).
+
+```swift
+var content = cell.defaultContentConfiguration()
+content?.text = datos[indexPath.row]
+content?.textProperties.color = .blue
+celda.contentConfiguration = content
+```
+
 
 #### Conectar la tabla y el *datasource*
 
@@ -238,7 +247,7 @@ Podemos activar el modo edición con el método `setEditing` del objeto tabla:
 
 Por defecto al activar el modo edición en todas las celdas aparecerá la señal de “prohibido”. Implementando en el *delegate* el método `tableView(_:,editingStyleForRowAt:)` podemos especificar qué tipo de estilo de edición queremos para una celda determinada. El sistema nos “preguntará” el estilo de edición para un número de celda y debemos devolver `UITableViewCellEditingStyle.delete`o bien `UITableViewCellEditingStyle.insert`.
 
-Aunque el modo edición es automático, el borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS **avisará al *datasource* de que se está intentando insertar o eliminar una celda, NO al *delegate* **. Esto es lógico ya que los datos los gestiona el *datasource*.
+Aunque el modo edición es automático, los iconos de "prohibido" o "más" no harán nada por sí solos. El borrado efectivo de las celdas y de su contenido lo tenemos que hacer nosotros, al igual que la inserción. iOS **avisará al *datasource* de que se está intentando insertar o eliminar una celda, NO al *delegate* **. Esto es lógico ya que los datos los gestiona el *datasource*.
 
 Así, cuando se pulse sobre el ![](images/prohibido.png) y luego sobre “delete” o sobre el ![](images/mas.png), se llamará al método del *datasource* llamado `tableView(_:, commit:, forRowAt:)`. En este método tenemos que hacer dos cosas:
 
@@ -247,7 +256,7 @@ Así, cuando se pulse sobre el ![](images/prohibido.png) y luego sobre “delete
 
 Es muy importante destacar que **primero hay que actualizar los datos** y luego ocuparse de la parte gráfica. Si lo hacemos al revés no funcionará bien, ya que iOS intentará redibujar la tabla usando los datos “antiguos”.
 
-> Simplemente implementando el siguiente método (aunque estuviera vacío) activaremos el *swipe to delete*, pero el botón *delete* no va a funcionar salvo que implementemos el borrado como aquí se muestra
+Simplemente implementando el siguiente método (aunque estuviera vacío) activaremos el *swipe to delete*, lo que quiere decir que por ejemplo al pulsar sobre el "prohibido" aparecerá deslizándose desde la derecha de la celda un bótón "delete". No obstante este botón no va a hacer nada salvo que implementemos el borrado como aquí se muestra:
 
 ```swift
 func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -312,9 +321,8 @@ cosas interesantes:
 - Nuestra clase hereda de  `UITableViewDiffableDataSource`, que es la clase base de los *diffable data sources* en iOS. 
 - Esta clase es genérica y está parametrizada por `<TipoDeSeccion, TipoDeItem>`, en nuestro caso `Int` y `String` como ya hemos dicho
 - En el constructor de la clase base hay que pasar como parámetros:
-  + La `UITableView` asociada. Aquí es donde se hace la conexión entre *datasource* y tabla. En nuestro ejemplo este parámetro se lo pasamos al inicializador de la clase derivada, así se lo podemos pasar desde el *controller* que es el "dueño" de la tabla.
-  + en `cellProvider` pasamos una clausura que básicamente es la implementación que hacíamos antes del `tableView(_:, cellForRowAt:)` (obtener la celda reutilizada, rellenarla de datos y devolverla)
-
+    + La `UITableView` asociada. Aquí es donde se hace la conexión entre *datasource* y tabla. En nuestro ejemplo este parámetro se lo pasamos al inicializador de la clase derivada, así se lo podemos pasar desde el *controller* que es el "dueño" de la tabla.
+    + en `cellProvider` pasamos una clausura que básicamente es la implementación que hacíamos antes del `tableView(_:, cellForRowAt:)` (obtener la celda reutilizada, rellenarla de datos y devolverla)
 
 Si no queremos "molestarnos" en definir una clase propia también podemos crear directamente una instancia de la clase base y luego asignársela a la tabla como su datasouce:
 
