@@ -4,7 +4,7 @@ Vamos a hacer una aplicación que vamos a llamar “Pioneras”, y que nos dará
 
 ## Realizar la estructura básica de la aplicación (0,75 puntos)
 
-1. En [este archivo](https://github.com/ottocol/UI/raw/master/material/pioneras.zip) tenemos las imágenes y los textos sobre las tres pioneras: Ada Lovelace, Grace Hopper y Barbara Liskov
+1. En [este archivo](https://github.com/ottocol/UI/raw/master/material/assets_pioneras.zip) tenemos las imágenes y los textos sobre las tres pioneras: Ada Lovelace, Grace Hopper y Barbara Liskov
     - Arrastra las imágenes al `Assets.xcassets` (puedes arrastrar la carpeta "imágenes" o los archivos de dentro). Se crearán 3 "Image sets" con los nombres de los archivos originales (sin la extensión).
     - Puedes hacer lo mismo con los textos, por cada uno se creará un "Dataset" con el nombre del archivo original, sin la extensión. Fíjate en que estos *assets* acaban su nombre por `_bio` para que no colisionen sus nombres con los de las imágenes.
 2. Crea tres botones en la pantalla principal, y para cada uno de ellos en lugar de texto vamos a usar como imagen de fondo la de cada mujer 
