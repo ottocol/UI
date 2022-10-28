@@ -5,16 +5,14 @@ nav:
   
   - Vistas: '2_vistas/apuntes.md'
   - Ejercicios sobre vistas: '2_vistas/ejercicios.md'
-  - Controllers: '1_controllers/apuntes.md'
-  - Ejercicios de controllers: '1_controllers/ejercicios.md'
+  - Autolayout: '3_autolayout/apuntes.md'
   - Tablas: '4_tablas/apuntes.md'
   - Ejercicios de tablas: '4_tablas/ejercicios.md'
-  - Autolayout: '3_autolayout/apuntes.md'
-  - Ejercicios de autolayout: '3_autolayout/ejercicios.md'
-  - Controladores contenedores: '5_contenedores/apuntes.md'
-  - Miniproyecto: 'proyecto/lista_compra.md'
-  # - Miniproyecto: 'proyecto/proyecto.md'
-
+  - Controladores: '1_controllers/apuntes.md'
+  - Ejercicios de controladores: '1_controllers/ejercicios.md'
+  # - Controladores contenedores: '5_contenedores/apuntes.md'
+  # - Miniproyecto: 'proyecto/lista_compra.md'
+ 
 theme:
     language: es
     name: 'material'
