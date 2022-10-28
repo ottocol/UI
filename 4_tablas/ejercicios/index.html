@@ -13,7 +13,7 @@
     
     
       
-        <title>Ejercicios de tablas (2,25 puntos) - IUDM-iOS-basico</title>
+        <title>Ejercicios de tablas - IUDM-iOS-basico</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ejercicios-de-tablas-225-puntos" class="md-skip">
+        <a href="#ejercicios-de-tablas-25-puntos" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Ejercicios de tablas (2,25 puntos)
+              Ejercicios de tablas
             
           </span>
         </div>
@@ -220,6 +220,128 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apuntes/" class="md-nav__link">
+        Tablas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Ejercicios de tablas
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Ejercicios de tablas
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crear-la-interfaz-05-puntos" class="md-nav__link">
+    Crear la interfaz (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mostrar-datos-en-la-tabla-1-punto" class="md-nav__link">
+    Mostrar datos en la tabla (1 punto)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#insertar-filas-05-puntos" class="md-nav__link">
+    Insertar filas (0,5 puntos)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delegate-05-puntos" class="md-nav__link">
+    Delegate (0,5 puntos)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_controllers/apuntes/" class="md-nav__link">
+        Controladores
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1_controllers/ejercicios/" class="md-nav__link">
+        Ejercicios de controladores
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -247,8 +369,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#crear-la-interfaz-025-puntos" class="md-nav__link">
-    Crear la interfaz (0,25 puntos)
+  <a href="#crear-la-interfaz-05-puntos" class="md-nav__link">
+    Crear la interfaz (0,5 puntos)
   </a>
   
 </li>
@@ -289,14 +411,21 @@
                   
 
 
-<h1 id="ejercicios-de-tablas-225-puntos">Ejercicios de tablas (2,25 puntos)<a class="headerlink" href="#ejercicios-de-tablas-225-puntos" title="Permanent link">&para;</a></h1>
-<p>Vamos a crear una pequeña aplicación en la que se muestre una tabla con una lista de dato y se puedan insertar y eliminar filas</p>
-<h3 id="crear-la-interfaz-025-puntos">Crear la interfaz (0,25 puntos)<a class="headerlink" href="#crear-la-interfaz-025-puntos" title="Permanent link">&para;</a></h3>
+<h1 id="ejercicios-de-tablas-25-puntos">Ejercicios de tablas (2,5 puntos)<a class="headerlink" href="#ejercicios-de-tablas-25-puntos" title="Permanent link">&para;</a></h1>
+<p>Vamos a crear una pequeña aplicación en la que se muestre una tabla con una lista de datos y se puedan insertar y eliminar filas</p>
+<h3 id="crear-la-interfaz-05-puntos">Crear la interfaz (0,5 puntos)<a class="headerlink" href="#crear-la-interfaz-05-puntos" title="Permanent link">&para;</a></h3>
 <p>Crea otra pantalla, al estilo de la que aparece en la figura. Tiene que tener los siguientes componentes:</p>
 <ul>
 <li>Un <em>text field</em></li>
 <li>Un <em>button</em> con el texto "Insertar"</li>
 <li>Un <em>table view</em></li>
+</ul>
+<p>En el panel derecho de Xcode, selecciona lad propiedades adecuadas para que la tabla sea dinámica con un solo prototipo.</p>
+<p><strong>Importante</strong>: no te olvides de darle un identificador al prototipo, o <code>cell identifier</code>.</p>
+<p>En cuanto al <em>layout</em>:</p>
+<ul>
+<li>El campo de texto debe aparecer junto al botón (lo más sencillo es que pongas ambos en un <em>stack view</em> centrado) y a una distancia de 20 puntos de la parte superior de la pantalla</li>
+<li>La parte superior de la tabla debe estar a una distancia de 20 puntos de la parte inferior del <em>stack view</em> y los otros tres bordes deben estar a 20 puntos de los bordes de la <em>safe area</em>.</li>
 </ul>
 <p><img alt="" src="../images/interfaz_ejer_tablas.png" />.</p>
 <h3 id="mostrar-datos-en-la-tabla-1-punto">Mostrar datos en la tabla (1 punto)<a class="headerlink" href="#mostrar-datos-en-la-tabla-1-punto" title="Permanent link">&para;</a></h3>
@@ -315,22 +444,22 @@
 </ul>
 </li>
 </ul>
+<p><strong>De nuevo importante</strong>: en el método <code>dequeReusableCell</code> que necesitas llamar dentro del <code>cellForRowAt</code>, no te olvides de usar el mismo <code>cell identifier</code> que le has puesto antes al prototipo. </p>
 <h3 id="insertar-filas-05-puntos">Insertar filas (0,5 puntos)<a class="headerlink" href="#insertar-filas-05-puntos" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Implementa en el <em>datasource</em> un método  <code>insertarCelda(enTabla:,enFila:,conTexto:)</code> que al pasarle el <code>UITableView</code>, un número de fila y un texto añada el texto a la lista de datos y luego añada visualmente la fila en la tabla.</li>
-</ul>
-<p>En la interfaz haz que cuando se escriba un texto en el campo de texto y se pulse el botón <code>Insertar</code> se llame al método <code>insertarCelda (enTabla:,enFila:,conTexto:)</code> que has definido.</p>
+<p>Implementa en la clase <code>DSTabla</code> un método  <code>addCelda(texto:String)</code> que al pasarle un texto, añada el texto a la lista de datos y luego añada visualmente la fila en la tabla.</p>
+<p>El método <code>insertRows</code>, que se usa para insertar filas visualmente en una tabla, necesita el <code>UITableView</code>, al que en principio no tiene acceso la clase <code>DSTabla</code>. Tendrás que crear un constructor para esta clase que admita como parámetro el <code>UITableView</code>, y pasárselo desde el <em>ViewController</em>. Al hacer estos cambios ten en cuenta que no puedes llamar al constructor de <code>DSTabla</code> antes de que el <code>ViewController</code> esté creado. </p>
+<p>Haz que al pulsar el botón "insertar" de la interfaz se coja el texto del campo de texto y se añada como texto de la nueva celda.</p>
 <h3 id="delegate-05-puntos">Delegate (0,5 puntos)<a class="headerlink" href="#delegate-05-puntos" title="Permanent link">&para;</a></h3>
 <p>Vamos a hacer que se puedan "marcar" filas de la tabla. Para ello necesitas algún objeto que actúe de <em>delegate</em>. Crea para ello una clase <code>DelegateTabla</code> </p>
 <ul>
 <li>Haz que esta clase herede de <code>NSObject</code> e implemente el protocolo <code>UITableViewDelegate</code></li>
-<li>Implementa en esta clase un método similar al que en las transparencias marca o desmarca una fila poniéndole un "checkmark", pero aquí cambiando el texto a color rojo (propiedad <code>textColor</code> a <code>UIColor.red</code>) y si está en rojo pasando a negro.</li>
+<li>Implementa en esta clase un método similar al que hemos visto en clase que marca o desmarca una fila poniéndole un "checkmark", pero aquí cambiando el texto a color rojo (propiedad <code>textColor</code> a <code>UIColor.red</code>) y si está en rojo pasando a negro.</li>
 </ul>
-<p>Ahora vamos a conectar el <em>delegate</em> con la tabla gráficamente, en vez de por código. Para ello:</p>
+<p>Ahora vamos a conectar el <em>delegate</em> con la tabla gráficamente, en vez de por código, así practicamos esta manera de hacerlo. Para ello:</p>
 <ol>
 <li>Arrastrar un componente <code>Object</code> al árbol de componentes de la pantalla del móvil (al árbol que aparece a la izquierda, no a la pantalla en sí).</li>
-<li>Seleccionar el componente, y en el <code>Identity inspector</code> (cuarto icono del panel derecho de Xcode), escribir el nombre de la clase <code>DelegateTabla</code> en <code>Custom Class</code>.</li>
-<li>Conectar tabla y delegate: seleccionamos la tabla con el ratón y vamos al <code>Connections inspector</code> (el icono <img alt="" src="../images/conn_inspector.png" /> panel derecho de Xcode). Arrastramos con el ratón (no hace falta <code>Ctrl</code>) desde el círculo que representa al <code>delegate</code> hasta el icono del objeto que representa a la clase <code>TablaDelegate</code></li>
+<li>Seleccionar el componente <code>Object</code>, y en el <code>Identity inspector</code> (cuarto icono del panel derecho de Xcode), escribir el nombre de la clase <code>DelegateTabla</code> en <code>Custom Class</code>.</li>
+<li>Conectar tabla y delegate: seleccionamos la tabla con el ratón y vamos al <code>Connections inspector</code> (el último icono del panel derecho de Xcode). Arrastramos con el ratón (no hace falta <code>Ctrl</code>) desde el círculo que representa al <code>delegate</code> hasta el icono del objeto que representa a la clase <code>TablaDelegate</code></li>
 </ol>
 <p>Una vez hecho esto, comprueba que funciona correctamente.</p>
 
@@ -348,6 +477,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="../apuntes/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Tablas" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Tablas
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../1_controllers/apuntes/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Controladores" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Controladores
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

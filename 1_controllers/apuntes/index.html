@@ -13,7 +13,7 @@
     
     
       
-        <title>View Controllers - IUDM-iOS-basico</title>
+        <title>Controladores - IUDM-iOS-basico</title>
       
     
     
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              View Controllers
+              Controladores
             
           </span>
         </div>
@@ -215,6 +215,202 @@
     <li class="md-nav__item">
       <a href="../../3_autolayout/apuntes/" class="md-nav__link">
         Autolayout
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_tablas/apuntes/" class="md-nav__link">
+        Tablas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4_tablas/ejercicios/" class="md-nav__link">
+        Ejercicios de tablas
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Controladores
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Controladores
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#view-controllers-funciones-basicas" class="md-nav__link">
+    View controllers. Funciones básicas
+  </a>
+  
+    <nav class="md-nav" aria-label="View controllers. Funciones básicas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otras-tareas-de-los-view-controllers" class="md-nav__link">
+    Otras tareas de los view controllers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ciclo-de-vida-de-un-controller" class="md-nav__link">
+    Ciclo de vida de un controller
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instanciar-controladores-y-vistas" class="md-nav__link">
+    Instanciar controladores y vistas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navegacion-con-storyboards" class="md-nav__link">
+    Navegación con Storyboards
+  </a>
+  
+    <nav class="md-nav" aria-label="Navegación con Storyboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-controller-inicial" class="md-nav__link">
+    El controller inicial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#el-controller-de-cada-pantalla" class="md-nav__link">
+    El controller de cada pantalla
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#segues" class="md-nav__link">
+    Segues
+  </a>
+  
+    <nav class="md-nav" aria-label="Segues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipos-basicos-de-segue" class="md-nav__link">
+    Tipos básicos de segue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estilos-de-presentacion-y-de-transicion" class="md-nav__link">
+    Estilos de presentación y de transición
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pasar-datos-de-un-controller-a-otro-en-un-segue" class="md-nav__link">
+    Pasar datos de un controller a otro en un segue
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#segues-que-vuelven-atras-unwind-segues" class="md-nav__link">
+    Segues que vuelven atrás (unwind segues)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ejercicios/" class="md-nav__link">
+        Ejercicios de controladores
       </a>
     </li>
   
@@ -429,9 +625,9 @@
 <ul>
 <li><em>Show</em> es la forma recomendada habitualmente, ya que permite que el controlador actual “decida” cómo mostrar físicamente el nuevo. Por ejemplo si el controlador actual “ocupa” toda la pantalla, el nuevo también lo hará, pero si por ejemplo es un <em>tab bar controller</em> solo cambiará la parte de la pantalla que muestra contenido, no la barra de herramientas
 <img alt="Tab bar controller: cuando se muestra un nuevo controlador, se hace solo en el área de contenido, sin &quot;machacar&quot; la barra de botones" src="../images/tab_bar.png" /></li>
-<li><em>Present</em> quiere decir que el nuevo <em>controller</em> se mostrará de forma modal, de manera similar a cuando en un interfaz gráfico se muestra por ejemplo un cuadro de diálogo modal. No obstante esto no quiere decir que el <em>controller</em> antiguo se siga viendo “por debajo”, ya que en dispositivos con tamaño de pantalla limitado el nuevo ocupará toda la pantalla. </li>
+<li><em>Present</em> quiere decir que el nuevo <em>controller</em> se mostrará de forma modal, de manera similar a cuando en un interfaz gráfico se muestra por ejemplo un cuadro de diálogo modal. No obstante esto no quiere decir que siempre el <em>controller</em> antiguo se siga viendo “por debajo”, ya que en dispositivos con tamaño de pantalla limitado el nuevo ocupará toda la pantalla. Este estilo suele llevar aparejada una animación.</li>
 </ul>
-<p>Como vemos en el menú contextual, en el caso del <em>show</em> se distingue además entre <code>Show</code> “a secas” y <code>Show detail</code>. El primero es el indicado cuando el nuevo <em>controller</em> va a sustituir completamente al anterior y el segundo cuando el nuevo es “secundario” con respecto al anterior (como en el ejemplo que poníamos del <em>tab bar</em>).</p>
+<p>Como vemos en el menú contextual, en el caso del <em>show</em> se distingue además entre <code>Show</code> “a secas” y <code>Show detail</code>. El primero es el indicado cuando el nuevo <em>controller</em> va a sustituir completamente al anterior y el segundo se usa únicamente en el "split view controller", que sirve para mostrar vistas estilo "maestro/detalle" a "pantalla partida".</p>
 <p>En el caso del <em>present</em>, se distingue entre <code>Present Modally</code> y <code>Present As Popover</code>. El primero sería lo que todo el mundo entiende por “modal”: el nuevo controller se pone “encima” del anterior. El segundo es el típico <em>popover</em> que aparece en el iPad.</p>
 <p><img alt="Tomado de la documentación de Apple" src="../images/DraggedImage-3.png" title="Tomado de la documentación de Apple" /></p>
 <blockquote>
@@ -441,7 +637,7 @@
 <p>Podemos usar diversos estilos a la hora de presentar de forma modal un <em>controller</em>. Por ejemplo podemos indicar que el nuevo controlador debe ocupar toda la pantalla, o bien solo el alto dejando una zona a los lados, o bien un recuadro central como un cuadro de diálogo…</p>
 <p><img alt="Tomado de la documentación de Apple" src="../images/DraggedImage-4.png" title="Tomado de la documentación de Apple" /></p>
 <p>Estos estilos se definen <strong>en una propiedad del <em>controller<em> a presentar, y no del </em>segue</em></strong>. En Xcode podemos cambiarlos con la propiedad <code>Presentation</code> en el <em>attribute inspector</em> <img alt="" src="../images/attr_inspector.png" /> del <em>controller</em>. En Swift especificamos el estilo dando valores a la propiedad <code>modalPresentationStyle</code> del controller que vamos a presentar.</p>
-<p>Por otro lado, también podemos especificar una <strong>animación</strong> para la transición entre el <em>controller</em> actual y el siguiente. De nuevo es una propiedad del <em>controller</em> destino, no del <em>segue</em>. En Xcode se controla gráficamente con la propiedad <code>Transition style</code> del <em>inspector de atributos</em>. En Swift con la propiedad <code>modalTransitionStyle</code> del <em>controller</em> a presentar.</p>
+<p>Por otro lado, también podemos especificar una <strong>animación</strong> para la transición entre el <em>controller</em> actual y el siguiente. La propiedad la tenemos en el <em>segue</em> y también en el <em>controller</em> destino. En Xcode se controla gráficamente con la propiedad <code>Transition style</code> del <em>view controller</em> o <code>Transition</code> del <em>segue</em>.</p>
 <h3 id="pasar-datos-de-un-controller-a-otro-en-un-segue">Pasar datos de un <em>controller</em> a otro en un <em>segue</em><a class="headerlink" href="#pasar-datos-de-un-controller-a-otro-en-un-segue" title="Permanent link">&para;</a></h3>
 <p>Cuando se va a saltar de un <em>controller</em> a otro a través de un <em>segue</em>, se llama al método <code>prepare(for:sender:)</code> del <em>controller</em> origen. Podemos sobreescribir este método para pasarle datos al <em>controller</em> destino. El primer parámetro va a instanciarse al <em>segue</em> y a partir de este podemos obtener una referencia al destino.</p>
 <p>Por ejemplo supongamos que tenemos dos <em>controller</em> conectados por un <em>segue</em>, y este se dispara con un botón en el primero.</p>
@@ -498,6 +694,42 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pie" >
+      
+        
+        <a href="../../4_tablas/ejercicios/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Ejercicios de tablas" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              Ejercicios de tablas
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../ejercicios/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: Ejercicios de controladores" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Siguiente
+              </span>
+              Ejercicios de controladores
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
