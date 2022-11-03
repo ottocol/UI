@@ -10,8 +10,9 @@ nav:
   - Ejercicios de tablas: '4_tablas/ejercicios.md'
   - Controladores: '1_controllers/apuntes.md'
   - Ejercicios de controladores: '1_controllers/ejercicios.md'
-  # - Controladores contenedores: '5_contenedores/apuntes.md'
-  # - Miniproyecto: 'proyecto/lista_compra.md'
+  - Controladores contenedores: '5_contenedores/apuntes.md'
+  - Concurrencia en iOS: 'complementario/concurrencia.md'
+  # - Miniproyecto: 'proyecto/marvel.md'
  
 theme:
     language: es
