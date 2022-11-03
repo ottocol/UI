@@ -280,6 +280,36 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5_contenedores/apuntes/" class="md-nav__link">
+        Controladores contenedores
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../complementario/concurrencia/" class="md-nav__link">
+        Concurrencia en iOS
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -315,8 +345,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#registro-en-la-api-de-marvel" class="md-nav__link">
-    Registro en la API de Marvel
+  <a href="#registro-en-la-api-de-marvel-opcional" class="md-nav__link">
+    Registro en la API de Marvel (Opcional)
   </a>
   
 </li>
@@ -363,15 +393,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#crear-los-componentes-de-la-interfaz" class="md-nav__link">
-    Crear los componentes de la interfaz
+  <a href="#crear-la-interfaz" class="md-nav__link">
+    Crear la interfaz
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#gestionar-la-barra-de-busqueda" class="md-nav__link">
-    Gestionar la barra de búsqueda
+  <a href="#crear-el-controller" class="md-nav__link">
+    Crear el controller
   </a>
   
 </li>
@@ -480,24 +510,22 @@
 
 <h1 id="proyecto-de-la-asignatura-de-interfaces-de-usuario-parte-de-ios-basico">Proyecto de la asignatura de interfaces de usuario, parte de iOS básico<a class="headerlink" href="#proyecto-de-la-asignatura-de-interfaces-de-usuario-parte-de-ios-basico" title="Permanent link">&para;</a></h1>
 <p>Este "miniproyecto" trata de hacer una pequeña aplicación basándose en <a href="https://developer.marvel.com/">el API</a> de la editorial Marvel, que nos permite consultar información sobre los personajes, los <em>comics</em>, las <em>series</em>,...</p>
+<p><img alt="" src="../images/marvel_api_splash.png" /></p>
 <h2 id="pasos-iniciales">Pasos iniciales<a class="headerlink" href="#pasos-iniciales" title="Permanent link">&para;</a></h2>
-<h3 id="registro-en-la-api-de-marvel">Registro en la API de Marvel<a class="headerlink" href="#registro-en-la-api-de-marvel" title="Permanent link">&para;</a></h3>
-<p>Para poder usar la API de Marvel hacen falta claves de desarrollador. La plantilla de proyecto disponible en la web ya tiene unas incorporadas. Con esas claves se pueden hacer 3000 peticiones diarias al API, probablemente suficientes para su uso en clase. No obstante también puedes registrarte desde el <a href="https://developer.marvel.com/">portal de desarrolladores</a> de Marvel para poder obtener claves propias. </p>
+<h3 id="registro-en-la-api-de-marvel-opcional">Registro en la API de Marvel (Opcional)<a class="headerlink" href="#registro-en-la-api-de-marvel-opcional" title="Permanent link">&para;</a></h3>
+<p>Para poder usar la API de Marvel hacen falta claves de desarrollador. La plantilla de proyecto disponible en la web <strong>ya tiene unas claves incorporadas, que puedes usar, con lo que en principio no es necesario que te registres</strong>.</p>
+<p>Con esas claves se pueden hacer <strong>3000 peticiones diarias al API</strong>, seguramente suficientes para su uso en clase, no somos tanta gente. No obstante, también puedes registrarte desde el <a href="https://developer.marvel.com/">portal de desarrolladores</a> de Marvel para poder obtener claves propias. </p>
 <h3 id="acceso-a-la-api">Acceso a la API<a class="headerlink" href="#acceso-a-la-api" title="Permanent link">&para;</a></h3>
-<p>La API de Marvel es REST, por lo que acepta peticiones HTTP. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo <em>parsear</em> el JSON. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. </p>
-<blockquote>
-<p><strong>IMPORTANTE</strong>: para acelerar el trabajo en el aula tenéis disponible en moodle la plantilla de <em>workspace</em> ya creada. </p>
-</blockquote>
+<p>La API de Marvel es REST, por lo que acepta peticiones HTTP y devuelve los datos en JSON. No obstante hacerlas directamente con los APIs de iOS sería un poco engorroso, por lo que vamos a usar un par de librerías que nos faciliten no solo hacer la petición en sí sino sobre todo <em>parsear</em> el JSON. Usaremos una librería adicional llamada Marvelous, que encapsula las llamadas al API en una serie de clases de modo que no tenemos que hacer peticiones HTTP directamente. </p>
+<p>Marvelous se distribuye como un "paquete" de la herramienta <a href="https://cocoapods.org/">CocoaPods</a>, que es un repositorio/sistema de gestión de paquetes que surgió antes del que ahora es oficial en Swift, el <a href="https://www.swift.org/package-manager/">Swift Package Manager</a>. Al tardar tanto en aparecer una herramienta oficial, otras de terceros llenaron este vacío como Cocoapods o Carthage.</p>
+<p>Para acelerar el trabajo en el aula tenéis disponible en moodle la plantilla de <em>workspace</em> ya creada con CocoaPods. Si quieres ver cómo se ha hecho o crear tus proyectos con otras librerías de CocoaPods puedes consultar el <a href="#apendice-creacion-de-la-plantilla-de-proyecto-desde-cero">Apéndice</a>.</p>
 <h2 id="uso-de-la-plantilla-de-proyecto">Uso de la plantilla de proyecto<a class="headerlink" href="#uso-de-la-plantilla-de-proyecto" title="Permanent link">&para;</a></h2>
 <p>En la plantilla de workspace descargada <strong>abre el fichero Marvel.xcworkspace</strong>, que es un <em>workspace</em> de Xcode (un conjunto de proyectos), no el proyecto Marvel directamente (<strong>NO ABRAS DIRECTAMENTE el <code>Marvel.xcodeproj</code></strong>). Si lo has abierto correctamente, deberías ver dos proyectos, uno llamado <code>Marvel</code>, y otro llamado <code>Pods</code>. El proyecto principal es el primero, el segundo son librerías auxiliares. </p>
-<blockquote>
-<p>Si quieres ver más información sobre la estructura del proyecto, o cómo crearlo partiendo de cero, puedes verlo en el <a href="#apendice-creacion-de-la-plantilla-de-proyecto-desde-cero">Apéndice</a></p>
-</blockquote>
 <p><strong>Primero hay que hacer un <code>Product &gt; Clean Build Folder</code>, y <code>Product &gt; Build</code></strong> para asegurarse de que las dependencias están compiladas y accesibles en nuestro código. Una vez hecho esto podemos ejecutar la app, en la consola aparecerá una lista de personajes cuyo nombre empieza por "Spider". Puedes mirar el código del View Controller para ver cómo se ha hecho.</p>
 <p>Una vez hecho el <em>build</em>, puedes comprobar si la conexión con el API funciona bien ejecutando la aplicación, no verás nada en la pantalla del simulador pero en la consola de Xcode debería aparecer una lista de personajes que comienzan por "spider". Puedes examinar el código del view controller para ver cómo se ha hecho, usamos una librería auxiliar llamada <code>Marvelous</code> que implementa el acceso al API de forma sencilla.</p>
 <h2 id="estructura-que-debe-tener-la-aplicacion">Estructura que debe tener la aplicación<a class="headerlink" href="#estructura-que-debe-tener-la-aplicacion" title="Permanent link">&para;</a></h2>
 <p>Para que te hagas una idea de la estructura, se muestra el <em>storyboard</em> de la aplicación ya terminada</p>
-<p><img alt="" src="../images/storyboard.png" /></p>
+<p><img alt="" src="../images/storyboard_marvel_reducido.png" /></p>
 <p>En la aplicación se podrá buscar, listar y mostrar los detalles de alguno de los recursos que ofrece el API. Elige tú lo que prefieras: personajes, comics, creadores... </p>
 <h2 id="pantalla-inicial">Pantalla inicial<a class="headerlink" href="#pantalla-inicial" title="Permanent link">&para;</a></h2>
 <p>Puedes comenzar creando un <em>tab bar</em> a partir de la pantalla inicial: selecciónala y en el menú <code>Editor</code> elige <code>Embed In &gt; Tab Bar Controller</code>.</p>
@@ -506,64 +534,92 @@
 <p><img alt="" src="../images/maestro.png" /></p>
 <p>Ve a la primera (y por el momento única) pantalla de contenido del <em>tab bar</em>, selecciona la barra inferior y en las propiedades <code>bar item</code> ponle un título apropiado (por ejemplo "Personajes") y un icono relevante.</p>
 <blockquote>
-<p>Recuerda que tienes unas cuantas webs de donde puedes coger iconos "planos", por ejemplo <a href="https://www.iconfinder.com/iconsets/ios-7-icons">https://www.iconfinder.com/iconsets/ios-7-icons</a> o <a href="http://www.flaticon.com/packs/line-icon-set">http://www.flaticon.com/packs/line-icon-set</a></p>
+<p>Si no te gusta ninguno de los SF Symbols que tiens disponibles en  iOS, hay unas cuantas webs de donde puedes coger iconos "planos", por ejemplo <a href="https://www.iconfinder.com/iconsets/ios-7-icons">https://www.iconfinder.com/iconsets/ios-7-icons</a> o <a href="https://www.flaticon.com/uicons/interface-icons">https://www.flaticon.com/uicons/interface-icons</a></p>
 </blockquote>
-<h3 id="crear-los-componentes-de-la-interfaz">Crear los componentes de la interfaz<a class="headerlink" href="#crear-los-componentes-de-la-interfaz" title="Permanent link">&para;</a></h3>
+<h3 id="crear-la-interfaz">Crear la interfaz<a class="headerlink" href="#crear-la-interfaz" title="Permanent link">&para;</a></h3>
 <p>La tabla:</p>
 <ul>
 <li>Arrastra una <em>table view</em> a la pantalla de "personajes" (o "comics", o lo que hayas elegido)</li>
 <li>Selecciona la tabla y en las propiedades crea un prototipo de celda incrementando el <code>Prototype cells</code> a 1.</li>
 <li>Selecciona el prototipo de celda recién creado (el <code>table view cell</code>) y en las propiedades elige como <code>style</code> el valor <code>Basic</code>, para poder usar uno de los tipos predefinidos de celda y no tener que hacerlo tú.</li>
+<li>Ya que estás, ponle un <code>identifier</code> a la celda prototipo. Recuerda que era un identificador elegido por tí que luego tienes que usar en Swift para recuperar una celda "reciclada".  </li>
 </ul>
-<p>La barra de búsqueda:</p>
-<ul>
-<li>Arrastra un componente de tipo <em>search bar</em> a la pantalla y déjalo justo arriba de la tabla.</li>
-</ul>
-<p>Nos falta fijar el <em>autolayout</em>:</p>
-<ul>
-<li>Selecciona barra y tabla manteniendo pulsada la tecla <code>Cmd</code> e inserta ambas en un <em>stack view</em> utilizando el primero de los botones de <em>autolayout</em> (parte inferior derecha del *storyboard)</li>
-<li>Haz que este <em>stack view</em> ocupe toda la pantalla. Lo más sencillo es ponerle 4 restricciones de distancia 0 a los bordes.</li>
-</ul>
-<p>Una vez hecho esto puedes poner en marcha la <em>app</em> para ver si la interfaz tiene buen aspecto. La tabla aparecerá vacía, por supuesto.</p>
-<h3 id="gestionar-la-barra-de-busqueda">Gestionar la barra de búsqueda<a class="headerlink" href="#gestionar-la-barra-de-busqueda" title="Permanent link">&para;</a></h3>
-<p>La barra de búsqueda utiliza el patrón <em>delegación</em> para gestionar los eventos de escribir en ella, pulsar "buscar" en el teclado, etc.</p>
-<p>El objeto que actúe como <em>delegate</em> de la barra de búsqueda debe implementar el protocolo <code>UISearchBarDelegate</code>. Puede ser cualquiera, aunque siguiendo la filosofía MVC (Monster View Controller) haremos que sea el <em>view controller</em> de la pantalla actual :).</p>
-<p>Vamos a crear este <em>view controller</em>: </p>
+<p>La barra de búsqueda no se inserta como componente visual sino por código, así que la dejamos de momento (cuidado, hay un <em>search bar</em> en la biblioteca de componentes pero es para versiones de iOS anteriores a la 13).</p>
+<p>Nos falta fijar el <em>autolayout</em>. Queremos que la tabla ocupe toda el área de la pantalla. Para ello lo más sencillo es ponerle 4 restricciones de distancia 0 a los bordes.</p>
+<h3 id="crear-el-controller">Crear el <em>controller</em><a class="headerlink" href="#crear-el-controller" title="Permanent link">&para;</a></h3>
+<p>Vamos a crear un <em>view controller</em> para esta primera pantalla</p>
 <ul>
 <li>Crea una nueva clase de Cocoa Touch llamada <code>ListaController</code> y haz que sea una subclase de <code>UIViewController</code></li>
-<li>Asígnale ese <em>controller</em> a la pantalla de lista que has creado antes. Recuerda que esto se hace a través del <code>identity inspector</code>.</li>
+<li>Asígnale ese <em>controller</em> en el <em>storyboard</em> a la pantalla con la tabla. Recuerda que esto se hace a través del <code>identity inspector</code>.</li>
 </ul>
-<p>Ahora vamos a conectar el <em>view controller</em> con la barra de búsqueda:</p>
-<ul>
-<li>Selecciona la <em>search bar</em> (te será más fácil si lo haces en el árbol de componentes) y en el <code>connections inspector</code> (panel de la derecha de Xcode, icono de más a la derecha) conecta el <em>outlet</em> <code>delegate</code> con el <em>controller</em> de esta pantalla. Recuerda que el <em>controller</em> está representado gráficamente con un icono de color amarillo que aparece en la parte superior de cada pantalla de la <em>app</em> en el <em>storyboard</em>.</li>
-</ul>
-<p><img alt="" src="../images/connect_delegate.gif" /></p>
-<blockquote>
-<p>Si has hecho esto ya no es necesario que establezcas la conexión por código, asignando la propiedad <code>delegate</code> de la barra de búsqueda al <em>controller</em></p>
-</blockquote>
-<ul>
-<li>Pon en la cabecera <code>ListaController</code> que esta clase implementa el protocolo <code>UISearchBarDelegate</code></li>
-<li>En el <code>ListaController</code> implementa el método <code>searchBarSearchButtonClicked(_)</code>, que se llamará cuando se escriba algo en la barra y se pulse el botón del teclado "buscar". Para probar que funciona de momento basta que imprimas en la consola el texto escrito en la barra y quites el teclado <em>on screen</em>.</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">searchBarSearchButtonClicked</span><span class="p">(</span><span class="kc">_</span> <span class="n">searchBar</span><span class="p">:</span> <span class="bp">UISearchBar</span><span class="p">)</span> <span class="p">{</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Buscado: </span><span class="si">\(</span><span class="n">searchBar</span><span class="p">.</span><span class="n">text</span><span class="p">!</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-    <span class="n">searchBar</span><span class="p">.</span><span class="n">resignFirstResponder</span><span class="p">()</span>
+<p>Como decíamos, la barra de búsqueda se crea por código Swift. En iOS, desde la versión 13 esto se controla con la clase <code>UISearchController</code>. Este utiliza el patrón <em>delegación</em> para gestionar los eventos de escribir en la barra, pulsar "buscar" en el teclado, etc. El objeto que actúe como <em>delegate</em> del <code>UISearchController</code> debe implementar el protocolo <code>UISearchResultsUpdating</code></p>
+<p>Siguiendo la filosofía MVC (Monster View Controller 😅) para simplificar haremos que la barra de búsqueda esté en el <em>view controller</em> de la pantalla actual, y éste sea el <em>delegate</em>.</p>
+<p><strong>Crea en <code>ListaController</code> un <em>outlet</em> para la tabla</strong>, lo usaremos en un momento (aquí supondremos que lo llamas "tabla").</p>
+<p><strong>Declara un <code>UISearchController</code> en el <code>ListaController</code> , inicialízalo y establece sus propiedades en el <code>viewDidLoad</code></strong> (al añadir el código Xcode se “quejará”" de que el controller no es conforme a <code>UISearchResultsUpdating</code>, lo arreglaremos a continuación).</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//esto debería ser una propiedad de ListaController</span>
+<span class="kd">var</span> <span class="nv">searchController</span> <span class="p">:</span> <span class="bp">UISearchController</span><span class="p">!</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="kr">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kc">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+    <span class="c1">//..aquí podría haber más código</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">searchController</span> <span class="p">=</span> <span class="bp">UISearchController</span><span class="p">(</span><span class="n">searchResultsController</span><span class="p">:</span> <span class="kc">nil</span><span class="p">)</span>
+    <span class="c1">//el delegate somos nosotros (ListaController)</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">searchController</span><span class="p">.</span><span class="n">searchResultsUpdater</span> <span class="p">=</span> <span class="kc">self</span>
+    <span class="c1">//Configuramos el search controller</span>
+    <span class="c1">//esto sería true si quisiéramos mostrar los resultados de búsqueda en un sitio distinto a la tabla</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">searchController</span><span class="p">.</span><span class="n">obscuresBackgroundDuringPresentation</span> <span class="p">=</span> <span class="kc">false</span>
+    <span class="c1">//lo que aparece en la barra de búsqueda antes de teclear nada</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">searchController</span><span class="p">.</span><span class="n">searchBar</span><span class="p">.</span><span class="n">placeholder</span> <span class="p">=</span> <span class="s">&quot;Buscar texto&quot;</span>
+    <span class="c1">//Añadimos la barra de búsqueda a la tabla</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">searchController</span><span class="p">.</span><span class="n">searchBar</span><span class="p">.</span><span class="n">sizeToFit</span><span class="p">()</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">tabla</span><span class="p">.</span><span class="n">tableHeaderView</span> <span class="p">=</span> <span class="n">searchController</span><span class="p">.</span><span class="n">searchBar</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ejecuta la <em>app</em> y comprueba que efectivamente funciona.</p>
-<p>Ahora <strong>tendrás que poner código propio</strong> para que cuando se pulse en el botón de buscar se haga la llamada a la API de Marvel. Por el momento lo más simple es mostrar los resultados con <code>print</code>. Puedes asignárselos también a un array que sea una propiedad del <em>controller</em>, para que luego sean sencillos de mostrar en la tabla.</p>
+<p>Añade <code>UISearchResultsUpdating</code> a la cabecera del controller para que sea el <em>delegate</em> de la barra de búsqueda:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">ListaController</span><span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">UISearchResultsUpdating</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Xcode</p>
+<p>Al añadir el <code>UISearchResultsUpdating</code> Xcode se "quejará"" de que falta implementar el método <code>updateSearchResults</code>. Puedes darle al "fix" del mensaje de error o copiar el código que viene a continuación. </p>
+</div>
+<p>En el <code>ListaController</code> implementa el método <code>updateSearchResults</code>, que se llamará cuando se escriba algo en la barra. Con cada pulsación de tecla se llamará una vez al método. Para probar que funciona, de momento basta que imprimas en la consola el texto escrito en la barra.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">updateSearchResults</span><span class="p">(</span><span class="k">for</span> <span class="n">searchController</span><span class="p">:</span> <span class="bp">UISearchController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">textoBuscado</span> <span class="p">=</span> <span class="n">searchController</span><span class="p">.</span><span class="n">searchBar</span><span class="p">.</span><span class="n">text</span><span class="p">!</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">textoBuscado</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Ejecuta la <em>app</em> y comprueba que efectivamente funciona lo hecho hasta ahora.</p>
+<div class="admonition info">
+<p class="admonition-title">Throttling de las peticiones</p>
+<p>Si con cada pulsación de tecla lanzas una búsqueda al API va a ser todo muy lento e ineficiente. Es mejor que la lances cuando el usuario deje de teclear, dicho de otro modo, cuando hayan pasado X segundos sin escribir más caracteres. A esto se lo conoce como <em>throttling</em>. </p>
+<p>Puedes usar <a href="../Throttler.swift">esta implementación</a> para no tener que escribirlo tú. Puedes añadirlo al proyecto con la opción de menú de <code>File &gt; Add Files to Marvel...</code> seleccionando el archivo y <strong>asegurándote de que está marcada la opción</strong> de <code>Copy items if needed</code> (si no, incluirá solo una referencia al archivo pero no este en sí).</p>
+<p>Una vez añadida la clase <code>Throttler</code>, puedes crear una instancia de la clase en <code>ListaController</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">throttler</span> <span class="p">=</span> <span class="n">Throttler</span><span class="p">(</span><span class="n">minimumDelay</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1">//el delay está en segundos</span>
+</code></pre></div>
+<p>y luego le puedes pasar a su método <code>throttle</code> en una clausura el código que quieras usar con <em>throttling</em>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">updateSearchResults</span><span class="p">(</span><span class="k">for</span> <span class="n">searchController</span><span class="p">:</span> <span class="bp">UISearchController</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">throttler</span><span class="p">.</span><span class="n">throttle</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nv">textoBuscado</span> <span class="p">=</span> <span class="n">searchController</span><span class="p">.</span><span class="n">searchBar</span><span class="p">.</span><span class="n">text</span><span class="p">!</span>
+        <span class="bp">print</span><span class="p">(</span><span class="n">textoBuscado</span><span class="p">)</span>
+    <span class="p">}</span>  
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<p>Tras todo esto <strong>añade tu propio código Swift para que cuando cambie el texto de la barra se haga la llamada a la API de Marvel</strong>. Por el momento lo más simple es mostrar los resultados con <code>print</code>. Puedes asignárselos también a un array que sea una propiedad del <em>controller</em>, para que luego sean sencillos de mostrar en la tabla.</p>
 <h3 id="mostrar-los-resultados-en-la-tabla">Mostrar los resultados en la tabla<a class="headerlink" href="#mostrar-los-resultados-en-la-tabla" title="Permanent link">&para;</a></h3>
-<p>Una vez conseguido esto, tendrás que hacer que los resultados aparezcan en la tabla. Recuerda que necesitas un <em>datasource</em> para ella, y que para simplificar puedes hacer que sea el <code>ListaController</code>. A grandes rasgos esto implica:</p>
+<p>Una vez verificado que funcionan las llamadas al API desde la barra de búsqeda, puedes hacer que los resultados aparezcan en la tabla. Recuerda que necesitas un <em>datasource</em> para ella, y que para simplificar puedes hacer que sea el <code>ListaController</code>. A grandes rasgos esto implica:</p>
 <ul>
 <li>Que, como decíamos antes, el <em>controller</em> debe tener acceso a los datos, por ejemplo guardándolos en una propiedad que sea un array.</li>
-<li>Que tienes que conectar en el <code>connections inspector</code> el <em>outlet</em> <code>datasource</code> con el <em>controller</em>.</li>
-<li>Que el <code>ListaController</code> debe implementar el protocolo <code>UITableViewDataSource</code>. Hay que poner en la cabecera que esto es así, y además implementar los correspondientes métodos en el código del <em>controller</em>, uno para devolver el número de filas en la tabla y otro para devolver una celda dado su <code>indexPath</code>.</li>
+<li>Que tienes que conectar en el <code>connections inspector</code> el <em>outlet</em> <code>datasource</code> con el <em>controller</em> (o fijar el valor de la propiedad <code>datasource</code> de la tabla en código Swift).</li>
+<li>Que el <code>ListaController</code> debe implementar el protocolo <code>UITableViewDataSource</code>. Hay que poner en la cabecera que esto es así, y además implementar los correspondientes métodos en el código del <em>controller</em>, uno para devolver el número de filas en la tabla y otro para devolver una celda dado su <code>indexPath</code>  (te debería ayudar Xcode con el <em>stub</em> de los métodos pero si no lo hace consulta los apuntes del tema de tablas o el ejercicio que hiciste en esa sesión).</li>
 </ul>
-<p>Cada vez que se haga una búsqueda y se añadan datos al array tendrás que decirle a iOS que vuelva a redibujar la tabla llamando a su método <code>reloadData</code>. Cuidado, porque al ser una actualización de la interfaz debes asegurarte de que esto lo estás haciendo desde el <em>thread</em> principal, algo como:</p>
-<div class="highlight"><pre><span></span><code><span class="c1">//sustituye self.vistaTabla por el outlet que hayas definido</span>
+<p>Cada vez que se haga una búsqueda y se añadan datos al array tendrás que decirle a iOS que vuelva a redibujar la tabla llamando al método del <em>table view</em> llamado <code>reloadData()</code>. Cuidado, porque al ser una actualización de la interfaz debes asegurarte de que esto lo estás haciendo desde el <em>thread</em> principal, algo como:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">//sustituye self.tabla por el outlet que hayas definido</span>
 <span class="c1">//para acceder a la tabla desde el controlador</span>
 <span class="n">OperationQueue</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">addOperation</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kc">self</span><span class="p">.</span><span class="n">vistaTabla</span><span class="p">.</span><span class="n">reloadData</span><span class="p">();</span>
+    <span class="kc">self</span><span class="p">.</span><span class="n">tabla</span><span class="p">.</span><span class="n">reloadData</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -598,15 +654,15 @@
 <ul>
 <li>Define en el <code>DetalleViewController</code> una propiedad del tipo de recurso que estés mostrando (<code>RCCharacterObject</code>, <code>RCComicsObject</code>, <code>RCCreatorObject</code>,...)</li>
 <li>En el <code>prepareForSegue</code> de la pantalla de lista instancia esta propiedad para que contenga el objeto a mostrar. Para saber qué fila de la tabla se ha seleccionado puedes seleccionar la propiedad del objeto tabla llamada <code>indexPathForSelectedRow</code>, que almacena el <code>indexPath</code> de la fila seleccionada. La propiedad <code>row</code> de este <em>index path</em> es el número de fila.</li>
-<li>Usa los componentes que consideres necesarios para mostrar los datos del objeto (no es necesario que sean todos, solo los que quieras, para probar que funciona). Tendrás que crear un <em>outlet</em> por cada campo, y rellenar los campos en el <code>viewDidLoad</code> del <em>controller</em>. Puedes consultar la referencia de clases en la <a href="http://cocoadocs.org/docsets/Marvelous/0.7.3/">documentación <em>online</em> de Marvelous</a> para saber qué propiedades tiene cada objeto. La referencia está en Objective-C pero no es difícil deducir qué es cada propiedad</li>
-<li>Entre otras cosas, en esta pantalla deberías mostrar la imagen del personaje, comic, creador o lo que sea que hayas elegido, a un tamaño relativamente pequeño. La carga de la imagen deberías hacerla en un hilo secundario, para no paralizar la interfaz de usuario si la imagen tarda en cargarse:</li>
+<li>Usa los componentes que consideres necesarios para mostrar los datos del objeto (no es necesario que sean todos, solo los que quieras, para probar que funciona). Por ejemplo los personajes tienen un nombre o <code>name</code> y una <code>bio</code> (biografía), entre otros datos (ojo porque la <em>bio</em> en algunos casos está vacía, así que si no aparece puede ser por eso). Tendrás que crear un <em>outlet</em> por cada campo, y rellenar los campos en el <code>viewDidLoad</code> del <em>controller</em>. </li>
+<li>Entre otras cosas, en esta pantalla deberías mostrar la imagen del personaje, comic, creador o lo que sea que hayas elegido, a un tamaño relativamente pequeño. La imagen está en la propiedad <code>thumbnail</code>, ahora veremos los detalles. La carga de la imagen deberías hacerla en un hilo secundario, para no paralizar la interfaz de usuario si la imagen tarda en cargarse:</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span> <span class="nv">colaBackground</span> <span class="p">=</span> <span class="n">OperationQueue</span><span class="p">()</span>
 <span class="n">colaBackground</span><span class="p">.</span><span class="n">addOperation</span> <span class="p">{</span>
     <span class="c1">//SUPONIENDO que la variable con el personaje se llama &quot;personaje&quot;</span>
     <span class="k">if</span> <span class="kd">let</span> <span class="nv">thumb</span> <span class="p">=</span> <span class="n">personaje</span><span class="p">.</span><span class="n">thumbnail</span> <span class="p">{</span>
       <span class="kd">let</span> <span class="nv">url</span> <span class="p">=</span> <span class="s">&quot;</span><span class="si">\(</span><span class="n">thumb</span><span class="p">.</span><span class="n">basePath</span><span class="p">!</span><span class="si">)</span><span class="s">/portrait_uncanny.</span><span class="si">\(</span><span class="n">thumb</span><span class="p">.</span><span class="kd">extension</span><span class="p">!</span><span class="si">)</span><span class="s">&quot;</span>
-      <span class="c1">//cambiamos la URL por https://. Necesario en iOS&gt;=9</span>
+      <span class="c1">//cambiamos la URL por https://. Necesario en iOS</span>
       <span class="kd">let</span> <span class="nv">urlHttps</span> <span class="p">=</span> <span class="n">url</span><span class="p">.</span><span class="n">replacingOccurrences</span><span class="p">(</span><span class="n">of</span><span class="p">:</span> <span class="s">&quot;http&quot;</span><span class="p">,</span> <span class="n">with</span><span class="p">:</span> <span class="s">&quot;https&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="kd">let</span> <span class="nv">urlFinal</span> <span class="p">=</span> <span class="n">URL</span><span class="p">(</span><span class="n">string</span><span class="p">:</span><span class="n">urlHttps</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">do</span> <span class="p">{</span>
@@ -626,7 +682,7 @@
 </code></pre></div>
 <p>Puedes consultar <a href="http://developer.marvel.com/documentation/images">esta página</a> para ver el formato de las URL de las imágenes. Básicamente se construyen con una trayectoria base seguidas de un "modificador" de aspecto y tamaño (<code>portrait_small</code>, <code>landscape_medium</code>, ...) y la extensión del archivo.</p>
 <blockquote>
-<p>En el código anterior se obtiene la URL de la imagen y luego se cambia el <code>http:</code> por <code>https:</code>. En iOS&gt;=9 una <em>app</em> no puede hacer una petición a una URL web si no es con <code>https:</code>. Esto debería cambiarse en la propia librería <code>Marvelous</code>, pero podemos salir del paso con este pequeño <em>parche</em>.</p>
+<p>En el código anterior se obtiene la URL de la imagen y luego se cambia el <code>http:</code> por <code>https:</code>. En iOS, una <em>app</em> no puede hacer una petición a una URL web si no es <code>https:</code>. Por desgracia el API de Marvel nos devuelve las URLs como <code>http:</code>. Podemos "salir del paso" con este pequeño <em>parche</em>.</p>
 </blockquote>
 <h2 id="imagen-a-tamano-completo-1-punto">Imagen a tamaño completo (1 punto)<a class="headerlink" href="#imagen-a-tamano-completo-1-punto" title="Permanent link">&para;</a></h2>
 <p>Implementa una nueva pantalla en la que se pueda ver solo la imagen a mayor tamaño. Haz que la transición se realice con un <em>segue</em> modal pulsando sobre algún botón "ver imagen ampliada" (si tienes activadas las <em>size classes</em> el tipo equivalente es <code>present modally</code>).</p>
@@ -658,8 +714,7 @@ sudo gem install -n /usr/local/bin cocoapods --pre
 <span class="n">use_frameworks!</span>
 <span class="c1">#SUSTITUYE &#39;Marvel&#39; por el nombre de tu proyecto, si no se llama así!!!</span>
 <span class="n">target</span> <span class="s1">&#39;Marvel&#39;</span> <span class="k">do</span>
-   <span class="n">pod</span> <span class="s1">&#39;MarvelApiWrapper&#39;</span>
-   <span class="n">pod</span> <span class="s1">&#39;SwiftyJSON&#39;</span><span class="p">,</span> <span class="s1">&#39;~&gt; 4.0&#39;</span>
+   <span class="n">pod</span> <span class="s1">&#39;Marvelous&#39;</span>
 <span class="k">end</span>
 </code></pre></div>
 <ol start="5">
