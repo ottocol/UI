@@ -535,7 +535,7 @@
 </li>
 <li>Crea tres botones en la pantalla principal, y para cada uno de ellos en lugar de texto vamos a usar como imagen de fondo la de cada mujer <ul>
 <li>Si seleccionas el botón, en el panel derecho, en las propiedades, tienes una sección "Background configuration". Cambia la primera propiedad, "Background" por "Custom", y en el "image" de esta sección pon la que proceda. </li>
-<li>Al final, cada botón debería ocupar todo el ancho de la pantalla y un tercio del alto. Pon las restricciones de <em>autolayout</em> que sean necesarias para conseguir esto</li>
+<li>Al final, cada botón debería ocupar todo el ancho de la pantalla y un tercio del alto. Pon las restricciones de <em>autolayout</em> que sean necesarias para conseguir esto. Lo más sencillo es meter a los tres botones en un "stack view", y ponerle 4 restricciones de distancia 0 a los bordes. Para que los botones ocupen el mismo espacio, la propiedad <code>distribution</code> del <em>stack view</em> debe ser <code>Fill equally</code> (haz también que el <code>spacing</code> sea pequeño, si no los botones saldrán demasiado separados entre sí).</li>
 </ul>
 </li>
 </ol>
@@ -544,7 +544,7 @@
 <li>Crea una pantalla secundaria (un <em>view controller</em>) con un botón "volver atrás" y un campo de texto de varias líneas (un <em>text view</em>). </li>
 <li>Añádele las restricciones de <em>autolayout</em> necesarias para que:<ul>
 <li>El campo de texto quede centrado en horizontal y vertical, y a una distancia horizontal de 40 de uno de los bordes de la pantalla. </li>
-<li>El botón debe aparecer centrado en horizontal, y a una distancia de 20 puntos de la parte superior de la "safe area" y de 40 de la parte superior del campo de texto.</li>
+<li>El botón debe aparecer centrado en horizontal, y a una distancia de 60 puntos de la parte superior de la "safe area" y de 60 de la parte superior del campo de texto.</li>
 </ul>
 </li>
 </ul>
