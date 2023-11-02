@@ -24,7 +24,7 @@ En cuanto al *layout*:
 
 ### Mostrar datos en la tabla (1 punto)
 
-- Crea una clase Swift llamada `DSTabla` que va a hacer de *datasource* de la tabla seleccionándola. **Haz que el `DSTabla` implemente el protocolo `UITableViewDataSource`**
+- Crea una clase Swift llamada `DSTabla` que va a hacer de *datasource* de la tabla seleccionándola. Recuerda que el `DSTabla` debe heredar de `NSObject`e implementar el protocolo `UITableViewDataSource`
 - Conecta el `DSTabla` con la propiedad `dataSource` de la tabla
 - El `DSTabla` va a almacenar los datos en una propiedad `lista` de tipo array de `String` (puedes usar los nombres que aparecen en el ejemplo u otros datos cualesquiera, es indiferente) 
 
@@ -41,11 +41,11 @@ var lista = ["Daenerys Targaryen", "Jon Nieve", "Cersei Lannister", "Eddard Star
 
 ### Insertar filas (0,5 puntos)
 
-Implementa en la clase `DSTabla` un método  `addCelda(texto:String)` que al pasarle un texto, añada el texto a la lista de datos y luego añada visualmente la fila en la tabla.
+Haz que al pulsar sobre el botón insertar se añada el texto a la lista de datos en la última posición (método `append` del array) y luego añada visualmente la fila en la tabla (recuerda que es `insertRows` del `UITableView`).
 
-El método `insertRows`, que se usa para insertar filas visualmente en una tabla, necesita el `UITableView`, al que en principio no tiene acceso la clase `DSTabla`. Tendrás que crear un constructor para esta clase que admita como parámetro el `UITableView`, y pasárselo desde el *ViewController*. Al hacer estos cambios ten en cuenta que no puedes llamar al constructor de `DSTabla` antes de que el `ViewController` esté creado. 
+Un parámetro del `insertRows` es el `IndexPath` de la celda. Puedes crear uno con el constructor `IndexPath(row:, section:)`, pasándole el número de fila y sección. En nuestra tabla solo hay una sección, así que sería la 0.
 
-Haz que al pulsar el botón "insertar" de la interfaz se coja el texto del campo de texto y se añada como texto de la nueva celda.
+> Ten en cuenta que no necesitas el método `tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)` ya que este lo llama iOS cuando pulsas en los iconos de eliminar o añadir celda, pero ahora lo estás haciendo con un botón propio. Solo necesitas insertar el dato en el array y la celda con `insertRows`.
 
 ### Delegate (0,5 puntos)
 
@@ -56,7 +56,7 @@ Vamos a hacer que se puedan "marcar" filas de la tabla. Para ello necesitas alg�
 
 Ahora vamos a conectar el *delegate* con la tabla gráficamente, en vez de por código, así practicamos esta manera de hacerlo. Para ello:
 
-1. Arrastrar un componente `Object` al árbol de componentes de la pantalla del móvil (al árbol que aparece a la izquierda, no a la pantalla en sí).
+1. Arrastrar un componente `Object` al árbol de componentes de la vista del *storyboard* con la pantalla del dispositivo (al árbol que aparece a la izquierda, no a la pantalla en sí).
 2. Seleccionar el componente `Object`, y en el `Identity inspector` (cuarto icono del panel derecho de Xcode), escribir el nombre de la clase `DelegateTabla` en `Custom Class`.
 3. Conectar tabla y delegate: seleccionamos la tabla con el ratón y vamos al `Connections inspector` (el último icono del panel derecho de Xcode). Arrastramos con el ratón (no hace falta `Ctrl`) desde el círculo que representa al `delegate` hasta el icono del objeto que representa a la clase `TablaDelegate`
 

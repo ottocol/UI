@@ -9,7 +9,7 @@ Vamos a hacer una aplicación que vamos a llamar “Pioneras”, y que nos dará
     - Puedes hacer lo mismo con los textos, por cada uno se creará un "Dataset" con el nombre del archivo original, sin la extensión. Fíjate en que estos *assets* acaban su nombre por `_bio` para que no colisionen sus nombres con los de las imágenes.
 2. Crea tres botones en la pantalla principal, y para cada uno de ellos en lugar de texto vamos a usar como imagen de fondo la de cada mujer 
     - Si seleccionas el botón, en el panel derecho, en las propiedades, tienes una sección "Background configuration". Cambia la primera propiedad, "Background" por "Custom", y en el "image" de esta sección pon la que proceda. 
-    - Al final, cada botón debería ocupar todo el ancho de la pantalla y un tercio del alto. Pon las restricciones de *autolayout* que sean necesarias para conseguir esto
+    - Al final, cada botón debería ocupar todo el ancho de la pantalla y un tercio del alto. Pon las restricciones de *autolayout* que sean necesarias para conseguir esto. Lo más sencillo es meter a los tres botones en un "stack view", y ponerle 4 restricciones de distancia 0 a los bordes. Para que los botones ocupen el mismo espacio, la propiedad `distribution` del *stack view* debe ser `Fill equally` (haz también que el `spacing` sea pequeño, si no los botones saldrán demasiado separados entre sí).
 
 
 ## Crear la pantalla secundaria y la navegación hasta ella (0,75 puntos)
@@ -17,7 +17,7 @@ Vamos a hacer una aplicación que vamos a llamar “Pioneras”, y que nos dará
 - Crea una pantalla secundaria (un *view controller*) con un botón "volver atrás" y un campo de texto de varias líneas (un *text view*). 
 - Añádele las restricciones de *autolayout* necesarias para que:
     - El campo de texto quede centrado en horizontal y vertical, y a una distancia horizontal de 40 de uno de los bordes de la pantalla. 
-    - El botón debe aparecer centrado en horizontal, y a una distancia de 20 puntos de la parte superior de la "safe area" y de 40 de la parte superior del campo de texto.
+    - El botón debe aparecer centrado en horizontal, y a una distancia de 60 puntos de la parte superior de la "safe area" y de 60 de la parte superior del campo de texto.
 
 ![](images/pantalla_secundaria_pioneras.png)
 
