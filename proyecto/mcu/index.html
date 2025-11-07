@@ -849,8 +849,7 @@
 <div class="admonition info">
 <p class="admonition-title">Throttling de las peticiones</p>
 <p>Si con cada pulsación de tecla lanzas una búsqueda a la API, va a ser muy lento e ineficiente. Es mejor que la lances cuando el usuario deje de teclear, o dicho de otro modo, cuando hayan pasado X segundos sin escribir más caracteres. A esto se lo conoce como <em>throttling</em>. </p>
-<p>Puedes usar <a href="../Throttler.swift">esta implementación</a> para no tener que escribirlo tú. Puedes añadirlo al proyecto con la opción de menú de <code>File &gt; Add Files to Marvel...</code> seleccionando el archivo y <strong>asegurándote de que está marcada la opción</strong> de <code>Copy items if needed</code> (si no, incluirá solo una referencia al archivo pero no este en sí).</p>
-<p>Una vez añadida la clase <code>Throttler</code>, puedes crear una instancia de la clase en <code>ListaController</code>:</p>
+<p>Entre las plantillas que te has bajado al principio en "util" hay una clase <code>Throttler.swift</code>. Puedes crear una instancia de la clase en <code>ListaController</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nv">throttler</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Throttler</span><span class="p">(</span><span class="n">minimumDelay</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="p">)</span><span class="w">  </span><span class="c1">//el delay está en segundos</span>
 </code></pre></div>
 <p>y luego le puedes pasar a su método <code>throttle</code> en una clausura el código que quieras usar con <em>throttling</em>:</p>
