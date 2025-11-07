@@ -141,9 +141,7 @@ Ejecuta la *app* y comprueba que efectivamente funciona lo hecho hasta ahora.
 !!! info "Throttling de las peticiones"
     Si con cada pulsación de tecla lanzas una búsqueda a la API, va a ser muy lento e ineficiente. Es mejor que la lances cuando el usuario deje de teclear, o dicho de otro modo, cuando hayan pasado X segundos sin escribir más caracteres. A esto se lo conoce como *throttling*. 
     
-    Puedes usar [esta implementación](Throttler.swift) para no tener que escribirlo tú. Puedes añadirlo al proyecto con la opción de menú de `File > Add Files to Marvel...` seleccionando el archivo y **asegurándote de que está marcada la opción** de `Copy items if needed` (si no, incluirá solo una referencia al archivo pero no este en sí).
-
-    Una vez añadida la clase `Throttler`, puedes crear una instancia de la clase en `ListaController`:
+    Entre las plantillas que te has bajado al principio en "util" hay una clase `Throttler.swift`. Puedes crear una instancia de la clase en `ListaController`:
 
     ```swift
     let throttler = Throttler(minimumDelay: 0.5)  //el delay está en segundos
