@@ -1,6 +1,6 @@
 # "Miniproyecto": *app* Marvel Cinematic Universe
 
-Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [la API](https://developer.marvel.com/) no oficial del Marvel Cinematic Universe (MCU), que nos permite consultar información sobre las películas de Marvel Studios.
+Este "miniproyecto" trata de hacer una pequeña aplicación basándose en [la API no oficial](https://github.com/AugustoMarcelo/mcuapi) del Marvel Cinematic Universe (MCU), que nos permite consultar información sobre las películas de Marvel Studios.
 
 ## Pasos iniciales
 
