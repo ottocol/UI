@@ -12,7 +12,7 @@ nav:
   - Ejercicios de controladores: '1_controllers/ejercicios.md'
   - Controladores contenedores: '5_contenedores/apuntes.md'
   - Concurrencia en iOS: 'complementario/concurrencia.md'
-  # - Miniproyecto: 'proyecto/marvel.md'
+  - Miniproyecto: 'proyecto/mcu.md'
  
 theme:
     language: es
