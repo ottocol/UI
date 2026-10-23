@@ -692,8 +692,9 @@
 <p>Vamos a hacer que se puedan "marcar" filas de la tabla. Para ello necesitas algún objeto que actúe de <em>delegate</em>. Podemos hacer que sea el mismo <code>GestorTabla</code></p>
 <ul>
 <li>Haz que la clase <code>GestorTabla</code> implemente el protocolo <code>UITableViewDelegate</code></li>
-<li>Implementa en esta clase un método similar al que hemos visto en clase que marca o desmarca una fila poniéndole un "checkmark", pero aquí cambiando el texto a color rojo (propiedad <code>textColor</code> a <code>UIColor.red</code>) y si está en rojo pasando a negro.</li>
 <li>recuerda que debes asignar la instancia de <code>GestorTabla</code> a la propiedad <code>delegate</code> de la tabla</li>
+<li>Implementa en esta clase un método similar al que hemos visto en clase que marca o desmarca una fila poniéndole un "checkmark", pero aquí cambiando por ejemplo el texto a otro color.</li>
+<li>Ten en cuenta que necesitarás un array de Booleanos para saber qué filas están marcadas, y el color en realidad debes mostrarlo cuando muestres la celda en el método <code>cellForRowAt</code>.</li>
 </ul>
 
 
