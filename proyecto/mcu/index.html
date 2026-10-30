@@ -872,7 +872,7 @@
 
 <span class="n">Task</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nv">movies</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">searchMovies</span><span class="p">(</span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Spider&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">page</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nv">movies</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="n">searchMovies</span><span class="p">(</span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Spider&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">page</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">movie</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">movies</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="bp">print</span><span class="p">(</span><span class="n">movie</span><span class="p">.</span><span class="n">title</span><span class="p">)</span>
 <span class="w">        </span><span class="p">}</span>
@@ -882,7 +882,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>Si ejecutas la aplicación no verás nada en la pantalla del simulador pero en la consola de Xcode debería aparecer una lista de películas en cuyo título aparece la palabra "Spider".</p>
-<p>El único método que tiene la clase <code>MCUAPIClient</code> es <code>searchMovies</code>, al que hay que pasar como parámetros el número de página de los restultados a obtener, el número de resultados por página y un fragmento de texto que buscamos en el título. Para simplificar la aplicación nos "quitaremos de enmedio" la paginación pasando como página la número 1 y pidiendo 50 resultados (de momento en el MCU solo hay 38 películas estrenadas).</p>
+<p>El único método que tiene la clase <code>MCUAPIClient</code> es <code>searchMovies</code>, al que hay que pasar como parámetros el número de página de los restultados a obtener, el número de resultados por página y un fragmento de texto que buscamos en el título. Para simplificar la aplicación nos "quitaremos de enmedio" la paginación pasando como página la número 1 y pidiendo 100 resultados (de momento solo hay 75 películas en la BD).</p>
 <h3 id="storyboard-de-la-aplicacion">Storyboard de la aplicación<a class="headerlink" href="#storyboard-de-la-aplicacion" title="Permanent link">&para;</a></h3>
 <p>Para que te hagas una idea de la estructura, se muestra el <em>storyboard</em> de la aplicación ya terminada</p>
 <p><img alt="" src="../images/storyboard_marvel_reducido.png" /></p>
@@ -979,7 +979,7 @@
 <li>Que, como decíamos antes, el <em>controller</em> debe tener acceso a los datos, por ejemplo guardándolos en una propiedad que sea un array de <code>Movie</code>.</li>
 <li>Que tienes que asignar el valor de la propiedad <code>datasource</code> de la tabla en el <code>ListaController</code> a <code>self</code> (el <em>view controller</em>) (o conectar gráficamente en el <code>connections inspector</code> el <em>outlet</em> <code>datasource</code> con el <em>controller</em>) .</li>
 <li>Que el <code>ListaController</code> debe implementar el protocolo <code>UITableViewDataSource</code>. Hay que poner en la cabecera que esto es así, y además implementar los correspondientes métodos en el código del <em>controller</em>, uno para devolver el número de filas en la tabla y otro para devolver una celda dado su <code>indexPath</code>  (te debería ayudar Xcode con el <em>stub</em> de los métodos pero si no lo hace consulta los apuntes del tema de tablas o el ejercicio que hiciste en esa sesión).</li>
-<li>Para hacerlo más eficiente, no llames al API si la longitud de lo escrito en el campo de texto es menor o igual que 2 (es una propuesta, si quieres puedes probar otro límite).</li>
+<li>Para hacerlo más eficiente, no llames a la API si la longitud de lo escrito en el campo de texto es menor o igual que 2 (es una propuesta, si quieres puedes probar otro límite).</li>
 </ul>
 <p>Cada vez que se haga una búsqueda y se guarden datos en el array tendrás que decirle a iOS que vuelva a redibujar la tabla llamando al método del <em>table view</em> llamado <code>reloadData()</code>.</p>
 <p>Una vez terminado todo esto, esta pantalla debería ser casi totalmente funcional. Solo quedaría ver los detalles de cada <em>item</em> al hacer <em>tap</em> sobre él.</p>
@@ -1017,7 +1017,7 @@
 <div class="highlight"><pre><span></span><code><span class="kc">self</span><span class="p">.</span><span class="n">navigationItem</span><span class="p">.</span><span class="n">searchController</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">self</span><span class="p">.</span><span class="n">searchController</span>
 </code></pre></div>
 <h3 id="creacion-de-la-interfaz-y-conexion-con-la-pantalla-de-lista">Creación de la interfaz y conexión con la pantalla de lista<a class="headerlink" href="#creacion-de-la-interfaz-y-conexion-con-la-pantalla-de-lista" title="Permanent link">&para;</a></h3>
-<p>Esta pantalla sería la que muestra los datos de un personaje, comic, creador,... junto a su imagen si es que la tiene.</p>
+<p>Esta pantalla sería la que muestra los datos de una película junto a su imagen</p>
 <ul>
 <li>Arrastra un "view controller" al <em>storyboard</em></li>
 <li>En la pantalla anterior, haz <code>ctrl+arrastrar</code> entre la celda prototipo y la pantalla actual. Elige el tipo de <em>segue</em> <code>Show</code>.</li>
@@ -1028,7 +1028,7 @@
 </ul>
 <h3 id="implementacion-de-la-funcionalidad">Implementación de la funcionalidad<a class="headerlink" href="#implementacion-de-la-funcionalidad" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Define en el <code>DetalleController</code> una propiedad llamada <code>pelicula</code> de tipo <code>Movie!</code> (el opcional es para que la propiedad pueda estar vacía en algún moment)</li>
+<li>Define en el <code>DetalleController</code> una propiedad llamada <code>pelicula</code> de tipo <code>Movie!</code>. El opcional es para que la propiedad pueda estar vacía en algún momento, que aquí será desde que se crea el <em>controller</em> hasta que el <em>controller</em> anterior le pasa la película a mostrar.</li>
 <li>
 <p>Define en <code>ListaController</code> un método  <code>prepare(for:sender:)</code>, que se disparará al pasar de la pantalla de lista a la de detalle a través del <em>segue</em> de la celda:
     <div class="highlight"><pre><span></span><code><span class="kr">override</span><span class="w"> </span><span class="kd">func</span><span class="w"> </span><span class="nf">prepare</span><span class="p">(</span><span class="k">for</span><span class="w"> </span><span class="n">segue</span><span class="p">:</span><span class="w"> </span><span class="bp">UIStoryboardSegue</span><span class="p">,</span><span class="w"> </span><span class="n">sender</span><span class="p">:</span><span class="w"> </span><span class="nb">Any</span><span class="p">?)</span><span class="w"> </span><span class="p">{</span>
@@ -1040,23 +1040,17 @@
 <p>En este método tienes que pasarle el objeto a mostrar a <code>DetalleController</code>. Para saber qué fila de la tabla se ha seleccionado puedes usar la propiedad del objeto tabla llamada <code>indexPathForSelectedRow</code>, que almacena el <code>indexPath</code> de la fila seleccionada. La propiedad <code>row</code> de este <em>index path</em> es el número de fila.</p>
 </li>
 <li>Tendrás que rellenar los <em>outlets</em> de los componentes de esta pantalla en el <code>viewDidLoad</code> del <code>DetalleController</code>.</li>
-<li>Para mostrar la imagen con el cartel de la película: la URL de la imagen está en la propiedad <code>coverURL</code>. La carga de la imagen deberías hacerla en un hilo secundario, para no paralizar la interfaz de usuario si la imagen tarda en cargarse. Aquí tienes el código casi literal (tendrás que cambiar alguna variable por las que tú uses)</li>
+<li>Para mostrar la imagen con el cartel de la película: la URL de la imagen está en la propiedad <code>coverURL</code>. La carga de la imagen se hará en un hilo secundario, para no paralizar la interfaz de usuario si la imagen tarda en cargarse. Aquí tienes el código casi literal (tendrás que cambiar alguna variable por las que tú uses)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kd">let</span><span class="w"> </span><span class="nv">colaBackground</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">OperationQueue</span><span class="p">()</span>
-<span class="n">colaBackground</span><span class="p">.</span><span class="n">addOperation</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">//SUPONIENDO que la variable con la película se llama &quot;pelicula&quot;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nv">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">self</span><span class="p">.</span><span class="n">pelicula</span><span class="p">.</span><span class="n">coverURL</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kd">let</span><span class="w"> </span><span class="nv">datos</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">Data</span><span class="p">(</span><span class="n">contentsOf</span><span class="p">:</span><span class="w"> </span><span class="n">url</span><span class="p">)</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nv">img</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="bp">UIImage</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="n">OperationQueue</span><span class="p">.</span><span class="n">main</span><span class="p">.</span><span class="n">addOperation</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="c1">//suponiendo que el outlet de la imagen se llama &quot;miImagen&quot;</span>
-<span class="w">                    </span><span class="kc">self</span><span class="p">.</span><span class="n">miImagen</span><span class="p">.</span><span class="n">image</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">img</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span><span class="w">             </span>
-<span class="w">        </span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="n">Task</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// SUPONIENDO que la variable con la película se llama &quot;pelicula&quot;</span>
+<span class="w">    </span><span class="k">guard</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nv">url</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pelicula</span><span class="p">.</span><span class="n">coverURL</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">do</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="p">(</span><span class="n">datos</span><span class="p">,</span><span class="w"> </span><span class="kc">_</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="n">URLSession</span><span class="p">.</span><span class="n">shared</span><span class="p">.</span><span class="n">data</span><span class="p">(</span><span class="n">from</span><span class="p">:</span><span class="w"> </span><span class="n">url</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// suponiendo que el outlet de la imagen se llama &quot;miImagen&quot;</span>
+<span class="w">        </span><span class="n">miImagen</span><span class="p">.</span><span class="n">image</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="bp">UIImage</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="w"> </span><span class="n">datos</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="bp">print</span><span class="p">(</span><span class="s">&quot;No se pudo cargar la imagen: </span><span class="si">\(</span><span class="n">error</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
